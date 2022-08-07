@@ -1,11 +1,7 @@
 # Bem-vindo ao Livro Engenharia de Analytics
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Este livro apresenta as técnicas e os conceitos necessários para que um profissional de dados moderno domine um processo de analytics de ponta a ponta. Contrário ao que tradicionalmente encontramos nas organizações tradicionais, a nossa visão é a de que esse profissional deva vir das áreas de negócio, não de TI como de costume. Para isso, é preciso entender o processo de analytics do início ao fim, e não somente se concentrar na ponta final da visualização de dados e modelagem. Caso contrário, corremos o risco de construir estruturas complexas em cima de pilares extremamente frágeis, dificultando a geração de valor dos projetos de dados e aumentando o estresse e a rotatividade nas equipes de dados.
 
-Check out the content pages bundled with this sample book to see more.
 
 ```{tableofcontents}
 ```

@@ -4,6 +4,12 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
+- file: chapters/05/intro.md
+  sections:
+    - file: chapters/05/01/papel_mas_dw.md
+    - file: chapters/05/02/modelagem_dimensional.md
+    - file: chapters/05/03/esquema_estrela.md
+    - file: chapters/05/04/arquiteturas_dw.md
+    - file: chapters/05/leia_mais.md
 - file: notebooks
 - file: markdown-notebooks
