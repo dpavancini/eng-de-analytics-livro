@@ -1,4 +1,4 @@
-## 1.2 Redefinindo equipes de Dados
+# 1.2 Redefinindo equipes de Dados
 
 Um segundo problema nos projetos de analytics é o foco excessivo na modelagem preditiva sem passar pelas demais etapas da Jornada Data driven nas empresas. Ainda que, em alguns casos, seja possível gerar valor imediato em projetos pontuais de machine learning, o mais natural é que, primeiro, seja necessário desenhar uma infraestrutura moderna de analytics a partir de suas bases de coleta, transformação e armazenamento eficiente dos dados. Caso contrário, corremos o risco de investir recursos em tarefas redundantes ou de transformar os modelos de ciência de dados em um Excel modernizado, que só funciona após duas semanas de trabalho do único analista que o entende e que, em questão de dias, se tornará algo desatualizado.
 

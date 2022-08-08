@@ -1,4 +1,4 @@
-## Veracidade
+# 2.5 Veracidade
 
 Talvez o desafio que gere o maior esforço na análise de dados seja garantir que os dados de diferentes fontes de dados e  processados de diferentes formas mantenham sua integridade, isto é, representam os valores e as regras de negócio que necessitamos que eles tenham. Se não confiamos nos dados, não confiamos nas análises feitas a partir deles.
 

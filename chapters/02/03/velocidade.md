@@ -1,4 +1,4 @@
-## Velocidade
+# 2.3 Velocidade
 
 A evolução do uso de dispositivos móveis, IoT, redes sociais etc. gerou um grande desafio para coletar e processar esse enorme volume de dados com a velocidade necessária. A coleta e o processamento de dados é parte da área de processamento de dados, que também vem sendo objeto de grandes inovações de processos e ferramentas nos últimos anos.
 

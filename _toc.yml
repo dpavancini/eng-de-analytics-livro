@@ -3,24 +3,74 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: chapters/01/intro.md
-  sections:
-    - file: chapters/01/01/por_que_analytics.md
-    - file: chapters/01/02/carreiras_atuais.md
-    - file: chapters/01/03/responsabilidades.md
-    - file: chapters/01/04/northwind.md
-- file: chapters/02/intro.md
-  sections:
-    - file: chapters/02/01/5_vs.md
-    - file: chapters/02/02/volume.md
-    - file: chapters/02/03/velocidade.md
-    - file: chapters/02/04/variedade.md    
-- file: chapters/05/intro.md
-  sections:
-    - file: chapters/05/01/papel_mas_dw.md
-    - file: chapters/05/02/modelagem_dimensional.md
-    - file: chapters/05/03/esquema_estrela.md
-    - file: chapters/05/04/arquiteturas_dw.md
-    - file: chapters/05/leia_mais.md
-
+parts:
+  - caption: Fundamentos
+    chapters:
+    - file: chapters/01/intro.md
+      sections:
+        - file: chapters/01/01/por_que_analytics.md
+        - file: chapters/01/02/carreiras_atuais.md
+        - file: chapters/01/03/responsabilidades.md
+        - file: chapters/01/04/northwind.md
+        - file: chapters/01/05/para_quem.md
+        - file: chapters/01/06/como_organizado.md
+        - file: chapters/01/leia_mais.md
+    - file: chapters/02/intro.md
+      sections:
+        - file: chapters/02/01/5_vs.md
+        - file: chapters/02/02/volume.md
+        - file: chapters/02/03/velocidade.md
+        - file: chapters/02/04/variedade.md
+        - file: chapters/02/05/veracidade.md
+        - file: chapters/02/06/valor.md
+        - file: chapters/02/leia_mais.md
+    - file: chapters/03/intro.md
+      sections:
+        - file: chapters/03/01/pensamento_analitico.md
+        - file: chapters/03/02/tecnicas_problemas.md
+        - file: chapters/03/03/pareto.md
+        - file: chapters/03/04/5_porques.md
+        - file: chapters/03/leia_mais.md  
+    - file: chapters/04/intro.md    
+      sections:
+        - file: chapters/04/01/tipos_de_bd.md
+        - file: chapters/04/02/tipos_de_dados.md
+        - file: chapters/04/03/modelo_relacional.md
+        - file: chapters/04/04/indices.md
+        - file: chapters/04/05/modelagem_bd.md
+        - file: chapters/04/06/planilhas_bd.md
+        - file: chapters/04/leia_mais.md
+    - file: chapters/05/intro.md
+      sections:
+        - file: chapters/05/01/select.ipynb
+        - file: chapters/05/02/join.ipynb
+        - file: chapters/05/03/agregadas.ipynb
+        - file: chapters/05/04/group_by.ipynb
+        - file: chapters/05/05/case_when.ipynb
+        - file: chapters/05/leia_mais.md
+  - caption: Modelando Dados
+    chapters:
+    - file: chapters/06/intro.md
+      sections:
+        - file: chapters/06/01/papel_mas_dw.md
+        - file: chapters/06/02/modelagem_dimensional.md
+        - file: chapters/06/03/esquema_estrela.md
+        - file: chapters/06/04/arquiteturas_dw.md
+        - file: chapters/06/leia_mais.md    
+    - file: chapters/07/intro.md
+      sections:
+        - file: chapters/07/01/medidas.md
+        - file: chapters/07/02/tipos_fato.md
+        - file: chapters/07/leia_mais.md
+    - file: chapters/08/intro.md
+      sections:
+        - file: chapters/08/01/chaves.md
+        - file: chapters/08/02/scd.md
+        - file: chapters/08/03/degeneradas.md
+        - file: chapters/08/04/junk.md
+        - file: chapters/08/leia_mais.md
+    - file: chapters/09/intro.md        
+  # - caption: Transformando dados
+  #   chapters:
+  # - caption: Entregando dados
+  #   chapters:    

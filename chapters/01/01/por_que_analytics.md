@@ -1,4 +1,4 @@
-## 1.1 Por quê Engenharia de Analytics?
+# 1.1 Por quê Engenharia de Analytics?
 
 Nos últimos anos, vimos uma revolução no acesso a formas avançadas de analytics, como ferramentas de self-service, modelos de machine learning, deep learning, big data etc. Saem de cena os relatórios em PowerPoint e Excel e entram os notebooks criados em Python e R como a onda do momento. Empresas de todos os portes lutam para contratar cientistas de dados para “revolucionar seus negócios”. No entanto, os resultados práticos dos projetos de analytics  ou ciência de dados ainda parecem muito aquém do inicialmente esperado pelos gestores. Mas por quê?
 

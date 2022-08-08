@@ -1,4 +1,4 @@
-## 1.3 As responsabilidades do Engenheiro de Analytics
+# 1.3 As responsabilidades do Engenheiro de Analytics
 
 A responsabilidade do Engenheiro de Analytics é garantir que a infraestrutura de dados da empresa permita acessar e analisar os dados-chave para a tomada de decisão e ao mesmo tempo siga um processo tecnicamente bem definido e eficiente. O Engenheiro de Analytics serve ainda como uma ponte entre profissionais mais especializados que ainda realizam tarefas mais complexas ou que necessitam de tecnologias específicas.
 Uma boa analogia para facilitar o seu entendimento sobre as diferenças entre os profissionais de dado foi proposta por Sara Barles, Engenheira de Analytics na Hubspot[^label]:

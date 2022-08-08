@@ -1,0 +1,7 @@
+## Capítulo 9 -  Modelando um Data Warehouse
+
+Agora que já conhecemos os principais conceitos de um Data Warehouse precisamos juntar tudo o que aprendemos na hora de desenhar a arquitetura prática do DW. O conceito de arquitetura de dados não é por acaso; definir a combinação ideal de tabelas, colunas, chaves e etc. é tanto uma ciência como uma arte, e além dos aspectos técnicos deve sempre estar de olho nos requisitos de negócio: a capacidade técnica dos stakeholders, tempo de projeto, complexidade, volume dados, possíveis evoluções e ramificações, entre outros. 
+
+> “Conquistando o mundo, um Mart por vez”
+
+Talvez um dos maiores erros na implementação de um projeto de BI/DW é tentar uma abordagem “big-bang”, onde todo o projeto é entregue de uma só vez. Mesmo que os recursos e equipes para isso estejam disponíveis, o ideal é sempre buscar uma abordagem incremental através da modelagem de uma área de negócio da empresa (Data Marts) por vez. Enquanto cada Mart possui seus fatos específicos, as tabelas dimensão são compartilhadas entre si para garantir a integridade e conformidade do DW. Essa abordagem utilizando dimensões conformadas é típica da chamada arquitetura Bus, devido à sua semelhança com a organização de um ônibus na apresentação original de Ralph Kimball.

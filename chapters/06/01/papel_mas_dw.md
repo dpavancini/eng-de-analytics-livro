@@ -1,4 +1,4 @@
-# O papel do Data Warehouse no Modern Analytics Stack
+# 6.1 O papel do Data Warehouse no Modern Analytics Stack
 
 O data warehouse ocupa lugar central nas arquiteturas modernas de analytics. Tradicionalmente, a construção de um DW era exclusividade de grandes corporações que possuíam os recursos financeiros e técnicos para investir nos servidores dedicados e profissionais especializados necessários para construir DWs e as infra-estruturas de ETL adjacentes. O surgimento dos cloud data warehouses (CDW) trouxe uma revolução no mercado de analytics, pois possibilitou que empresas de qualquer porte possam construir infra-estruturas modernas de forma incremental e utilizando ferramentas de amplo acesso.
 

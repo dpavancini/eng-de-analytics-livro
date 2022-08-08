@@ -1,4 +1,4 @@
-## Valor
+# 2.6 Valor
 
 O que todos os quatro Vs anteriores (volume, velocidade, variedade e veracidade) têm em comum? Eles não possuem valor em si, a não ser pelo resultado que permitem obter. Ou seja, são um meio para o fim. 
 
@@ -8,8 +8,11 @@ Quando analisamos dados, buscamos gerar valor respondendo a desafios distintos. 
 
 A área de analytics geralmente se preocupa com o plano informacional mais do que o operacional. Nesse plano, segundo a consultoria Gartner, há quatro tipos de analytics: descritiva, explicativa, preditiva e prescritiva.  Somente incluir um gráfico ou uma tabela em um relatório não é o suficiente. Precisamos saber qual tipo de analytics utilizar para cada tipo de problema.
 
-![](../../../assets/img/analytics_gartner.png)
-Imagem 9: Os Quatro tipos de analytics.Fonte: adaptado de Gartner (2019)[^Gartner].
+```{figure} ../../../assets/img/analytics_gartner.png
+:name: gartner
+
+Os Quatro tipos de analytics.Fonte: adaptado de Gartner (2019)[^Gartner].
+```
 
 A análise descritiva se preocupa com o passado e é geralmente a primeira a ser implementada. Adicionando contexto e outras técnicas analíticas, como análise estatística, nós passamos para a análise explicativa, isto é, entender o porquê do que aconteceu. Essas duas análises residem geralmente nos relatórios e dashboards que permitem visualizar e explorar dados de forma visual. A grande maioria das empresas ainda está nas etapas da Jornada Data Driven em que essas análises ainda não atingiram seu potencial máximo de geração de valor. 
 

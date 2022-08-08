@@ -1,4 +1,4 @@
-## Variedade
+# 2.4 Variedade
 
 As fontes de dados disponíveis são o ponto de partida de qualquer projeto de dados e, infelizmente, para o profissional de dados, elas podem ser tão variadas quanto complexas.
 
@@ -8,8 +8,10 @@ Algumas fontes de dados, como bancos de dados relacionais, por exemplo, utilizam
 
 Cerca de 80% dos dados gerados e armazenados pelas empresas se enquadram no que chamamos de dados não estruturados, como vídeos, áudios, textos etc. No entanto, como podemos ver no gráfico abaixo, do comparativo da DB-Engines, os bancos de dados relacionais (que armazenam principalmente dados estruturados) ainda são os mais populares por uma larga margem. Por quê?
 
-![](../../../assets/img/db_engines.png)
+```{figure} ../../../assets/img/db_engines.png
+:name: analisar
 
-Gráfico XX: Comparativo da DB-Engines. Fonte: [DB-engines](https://db-engines.com/en/ranking_categories)
+Comparativo da DB-Engines. Fonte: [DB-engines](https://db-engines.com/en/ranking_categories)
+```
 
 O grande motivo é que os bancos relacionais armazenam dados já prontos para serem analisados e inseridos em um relatório. Grande parte das empresas ainda não possui uma infraestrutura de dados sequer para analisar os dados já estruturados, de modo que dados que necessitam de maior esforço para extrair “o joio do trigo” ainda estão em segundo plano.
