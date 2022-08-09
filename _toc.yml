@@ -52,6 +52,8 @@ parts:
         - file: chapters/05/05/case_when.ipynb
         - file: chapters/05/06/sub.ipynb
         - file: chapters/05/leia_mais.md
+    - file: chapters/PROG/intro.md
+    - file: chapters/MAS/intro.md 
   - caption: Modelando Dados
     chapters:
     - file: chapters/06/intro.md
@@ -73,8 +75,22 @@ parts:
         - file: chapters/08/03/degeneradas.md
         - file: chapters/08/04/junk.md
         - file: chapters/08/leia_mais.md
-    - file: chapters/09/intro.md        
+    - file: chapters/09/intro.md
+      sections:
+        - file: chapters/09/01/etapas.md
+        - file: chapters/09/02/planejando_marts.md
+        - file: chapters/09/03/planejando_dimensoes.md
+        - file: chapters/09/04/criando_modelos.md
+        - file: chapters/09/05/mapeamento_chaves.md
+        - file: chapters/09/06/tabela_fato.md
+        - file: chapters/09/07/agregadas_derivadas.md
+        #- file: chapters/09/leia_mais.md
+    - file: chapters/BQ/intro.md   
   # - caption: Transformando dados
   #   chapters:
   # - caption: Entregando dados
-  #   chapters:    
+  #   chapters:
+  # - caption: Tópicos Adicionais
+  #   chapters:
+  #   Criando um banco Postgres
+  #   Extraindo dados com o Airbyte

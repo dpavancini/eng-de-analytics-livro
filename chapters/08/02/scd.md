@@ -21,13 +21,13 @@ Não atualiza uma dimensão se o valor na tabela fonte se altera. Neste caso, o 
 | 1          | 20         | João da Silva | Rio de Janeiro      |
 ```
 
-```{table} O cliente 20 muda de endereço e a Cidade é alterada na tabela fonte:
+```{table} O cliente 20 **muda de endereço** e a Cidade **é alterada na tabela fonte**:
 | ID Cliente | Nome          | Cidade   |
 |------------|---------------|----------|
 | 20         | João da Silva | Curitiba |
 ```
 
-```{table} A tabela de dimensão não se altera:
+```{table} A tabela dimensão **não se altera**:
 | SK Cliente | ID Cliente | Nome          | Cidade (SCD Tipo 0) |
 |------------|------------|---------------|---------------------|
 | 1          | 20         | João da Silva | Rio de Janeiro      |
@@ -49,7 +49,7 @@ Atualiza uma dimensão se o valor na tabela fonte se altera sem manter o valor a
 | 1          | 20         | João da Silva | Rio de Janeiro      |
 ```
 
-```{table} O cliente 20 muda de endereço e a Cidade é alterada na tabela fonte:
+```{table} O cliente 20 **muda de endereço** e a Cidade **é alterada** na tabela fonte:
 
 | ID Cliente | Nome          | Cidade   |
 |------------|---------------|----------|
