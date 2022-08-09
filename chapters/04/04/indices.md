@@ -1,4 +1,4 @@
-## 4.4 Trabalhando com índices
+# 4.4 Trabalhando com índices
 
 Para melhorar o desempenho das consultas, os bancos de dados geralmente possuem uma estrutura de dados adicional chamada de índice. Os índices existem para evitar escanear toda uma tabela sempre que um registro precisar ser consultado e podem ser criados a partir de uma ou mais colunas de uma tabela. Como analytics engineer você vai cedo ou tarde passar por índices na hora de consultar dados de uma tabela ou para melhorar o desempenho de uma consulta que está demorando mais que o desejado. 
 
@@ -6,15 +6,27 @@ Para entender melhor porque os índices são necessários é interessante detalh
 
 É claro que deveria existir alguma forma de otimizar esse processo de consulta, e para isso os bancos de dados utilizam uma estrutura chamada índice, que da mesma forma que um índice em um livro, dá atalhos para a localização de cada registro indexado no banco de dados. O processo de criação desse índice exige que uma nova estrutura de dados seja criada, mapeando cada valor do índice à sua localização física em disco (sua página). Por outro lado, como a leitura de dados utilizando índices é muito mais rápida, é comum que os bancos de dados utilizem índices para as chaves primárias ou outras colunas que são consultadas com frequência. A figura 4.3 apresenta uma simplificação de como esse processo ocorre em uma tabela e como a criação de um índice facilita a consulta pelo banco de dados.
 
-Figura 4.3. Consultas e índices em um banco relacional
+```{figure} ../../../assets/img/db_engines.png
+:name: indices
+
+Consultas e índices em um banco relacional.
+```
 
 Embora os índices sejam essenciais para obter consultas rapidamente em bancos transacionais, seu uso é muito mais limitado para consultas analíticas. Isso ocorre porque a consulta analítica não se preocupa em obter os dados de um pedido específico ou um cliente específico, mas sim obter agregados sobre um grande número de linhas. A consulta analítica traz consigo algumas dificuldades para a estrutura de dados tradicional dos bancos de dados. A primeira dificuldade é que é comum utilizar colunas não indexadas para realizar filtros, juntar tabelas ou calcular agregados. O analista raramente sabe previamente todas as possíveis consultas que irá realizar e que poderiam ser otimizadas com a criação de índices ou outras estruturas.
 
 A segunda dificuldade é que os bancos de dados tradicionais armazenam os dados fisicamente nas páginas como linhas, o que facilita a consulta pelas chaves primárias indexadas das tabelas. No entanto, é raro que uma consulta analítica precise retornar muitas colunas de um único registro. Pelo contrário, o normal em consultas agregadas é realizar contagem ou somas de muitas linhas de uma ou poucas colunas de uma tabela por vez. Isso faz com que o banco de dados tenha que retornar um volume de dados do disco muito maior que o necessário para cada consulta, aumentando a necessidade de CPU e memória e muitas vezes impossibilitando o uso de bancos de dados tradicionais para projetos analíticos. Para contornar essa dificuldade, bancos de dados colunares foram desenvolvidos que armazenam as colunas de forma sequencial e utilizam de estruturas como os sort-maps para realizar operações rapidamente em volumes de dados que podem chegar a petabytes.
 
-Figura 4.4 Em bancos de dados tradicionais, os blocos armazenam linhas da tabela
+```{figure} ../../../assets/img/blocos_sql.png
+:name: blocos_relacional
 
-Figura 4.5 Bancos colunares armazenam colunas de forma sequencial
+Em bancos de dados tradicionais, os blocos armazenam linhas da tabela
+```
+
+```{figure} ../../../assets/img/blocos_colunar.png
+:name: blocos_colunar
+
+Bancos colunares armazenam colunas de forma sequencial
+```
 
 Note que no banco de dados tradicional, cada página armazena os dados de uma linha. Para realizar uma contagem de nomes de clientes distintos, por exemplo, é necessário retornar todos os dados de cada página como CPF, cidade, etc que serão descartados. Por outro lado, no exemplo da figura 4.5 os dados de nome de clientes estão todos armazenados no mesmo bloco e podem ser consultados sem uso de memória adicional.
 

@@ -2,7 +2,7 @@
 
 Em projetos reais de BI/DW é comum que surjam casos onde há atributos que parecem não se encaixar em nenhum conceito de fatos e dimensões padrões como os apresentados anteriormente. Um exemplo comum é em tabelas de Faturas onde há campos que não são medidas mas que são únicos entre cada fatura. Vamos supor um modelo conceitual simples abaixo com algumas dimensões comuns em faturas:
 
-Figura 17. 
+**Figura 17. **
 
 Apesar de simples, esse exemplo gera alguns desafios para o modelador. Isso porque é comum que uma fatura contenha diferentes linhas, que representam cada item e geralmente cada produto contido na fatura. Como o grão da tabela de fato passa a ser o da linha da fatura e não da fatura em si, é comum que algumas alternativas de modelagem sejam tentadas que acabam se mostrando insatisfatórias:
 

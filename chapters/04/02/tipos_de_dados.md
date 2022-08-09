@@ -1,4 +1,4 @@
-## 4.2 Tipos de Dados
+# 4.2 Tipos de Dados
 
 Diferente de planilhas, bancos de dados em geral não permitem misturar diferentes tipos de dados em uma mesma coluna.  Ao manipular e consultar bancos de dados é necessário entender quais os tipos de dados de cada coluna e assim saber as operações que podem ser realizadas com eles. Mas afinal, o que são tipos de dados?
 

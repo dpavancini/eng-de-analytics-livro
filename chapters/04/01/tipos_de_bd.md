@@ -1,4 +1,4 @@
-## 4.1 Tipos de Bancos de Dados
+# 4.1 Tipos de Bancos de Dados
 
 Embora existam muitos tipos de Bancos de DAdos criados ao longo dos anos, atualmente apenas um punhado são utilizados massivamente nas organizações:
 

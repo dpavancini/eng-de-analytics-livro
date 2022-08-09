@@ -1,4 +1,4 @@
-## 4.5 Modelagem de Banco de Dados
+# 4.5 Modelagem de Banco de Dados
 
 Na seção anterior mostramos como bancos de dados são estruturados para representar entidades (clientes, produtos, pedidos,etc). Entender como fazer essa representação, quais entidades devem ser modeladas, quais atributos, chaves etc. são parte da Arquitetura de um Banco de Dados. A criação dessa arquitetura é chamada de Modelagem de Dados.  Nesta seção apresentamos uma breve introdução de diferentes níveis de modelagem de dados que podem ser úteis para um engenheiro de analytics entender onde e como estão armazenados os dados que queremos analisar.  No capítulo 6, apresentamos como utilizar esses conceitos para modelar um Data Warehouse analítico, que é parte das atribuições do analytics engineer moderno.
 Segundo a definição mais recente disponível na Wikipedia, Os modelos de dados são ferramentas que permitem demonstrar como serão construídas as estruturas de dados que darão suporte aos processos de negócio, como esses dados estão organizados e quais os relacionamentos que pretendemos estabelecer entre eles.
@@ -9,7 +9,14 @@ A figura 4.1 abaixo apresenta um exemplo de um diagrama entidade-relacionamento.
 
 Se você tiver background em negócios e não em desenvolvimento de bancos de dados, os modelos ER podem parecer muito distantes dos modelos de dados que são utilizados em planilhas eletrônicas para a criação dos relatórios e análises do dia-a-dia das empresas. E não é à toa; os bancos de dados criados a partir  de modelos ER têm geralmente função operacional e  não são otimizados para a análise de dados. O uso da técnica de normalização para evitar redundância dificulta ainda mais o trabalho do analista, fazendo com que não raramente um modelo ER tenha centenas de tabelas e relações e deixando mesmo consultas simples muito complicadas para quem não é especialista em bancos de dados.
 
-Figura 4.6. Exemplo de um diagrama de Entidade-Relacionamento (ERD)
+```{figure} ../../../assets/img/erd1.png
+:name: erd1
 
+Exemplo de um diagrama de Entidade-Relacionamento (ERD)
+```
 
-Figura 4.7. Exemplo de um diagrama de Entidade-Relacionamento (ERD)
+```{figure} ../../../assets/img/erd_2.png
+:name: erd2
+
+Exemplo de um diagrama de Entidade-Relacionamento (ERD)
+```

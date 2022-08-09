@@ -38,7 +38,10 @@ parts:
         - file: chapters/04/03/modelo_relacional.md
         - file: chapters/04/04/indices.md
         - file: chapters/04/05/modelagem_bd.md
-        - file: chapters/04/06/planilhas_bd.md
+        - file: chapters/04/06/normalizacao.md
+        - file: chapters/04/07/dimensional.md
+        - file: chapters/04/08/outros_modelos.md
+        - file: chapters/04/09/planilhas_bd.md
         - file: chapters/04/leia_mais.md
     - file: chapters/05/intro.md
       sections:
@@ -47,6 +50,7 @@ parts:
         - file: chapters/05/03/agregadas.ipynb
         - file: chapters/05/04/group_by.ipynb
         - file: chapters/05/05/case_when.ipynb
+        - file: chapters/05/06/sub.ipynb
         - file: chapters/05/leia_mais.md
   - caption: Modelando Dados
     chapters:
