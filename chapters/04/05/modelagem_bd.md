@@ -1,3 +1,4 @@
+(modelagem_bd)=
 # 4.5 Modelagem de Banco de Dados
 
 Na seção anterior mostramos como bancos de dados são estruturados para representar entidades (clientes, produtos, pedidos,etc). Entender como fazer essa representação, quais entidades devem ser modeladas, quais atributos, chaves etc. são parte da Arquitetura de um Banco de Dados. A criação dessa arquitetura é chamada de Modelagem de Dados.  Nesta seção apresentamos uma breve introdução de diferentes níveis de modelagem de dados que podem ser úteis para um engenheiro de analytics entender onde e como estão armazenados os dados que queremos analisar.  No capítulo 6, apresentamos como utilizar esses conceitos para modelar um Data Warehouse analítico, que é parte das atribuições do analytics engineer moderno.

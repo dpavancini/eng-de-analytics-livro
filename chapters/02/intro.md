@@ -1,3 +1,4 @@
+(5_vs)=
 # Capítulo 2 - Fundamentos de Analytics
 
 Analytics pode ser definido como o processo sistemático de compilar, processar e analisar dados para a tomada de decisão. Embora possa variar em complexidade e ferramentas utilizadas para cada tipo de empresa e problema, o objetivo é o mesmo: gerar valor para a organização a partir de seus dados internos e externos.

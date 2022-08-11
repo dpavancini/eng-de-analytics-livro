@@ -30,8 +30,8 @@ parts:
         - file: chapters/03/02/tecnicas_problemas.md
         - file: chapters/03/03/pareto.md
         - file: chapters/03/04/5_porques.md
-        - file: chapters/03/leia_mais.md  
-    - file: chapters/04/intro.md    
+        - file: chapters/03/leia_mais.md
+    - file: chapters/04/intro.md
       sections:
         - file: chapters/04/01/tipos_de_bd.md
         - file: chapters/04/02/tipos_de_dados.md
@@ -52,45 +52,59 @@ parts:
         - file: chapters/05/05/case_when.ipynb
         - file: chapters/05/06/sub.ipynb
         - file: chapters/05/leia_mais.md
-    - file: chapters/PROG/intro.md
-    - file: chapters/MAS/intro.md 
+    - file: chapters/06/intro.md
+    - file: chapters/07/intro.md
   - caption: Modelando Dados
     chapters:
-    - file: chapters/06/intro.md
-      sections:
-        - file: chapters/06/01/papel_mas_dw.md
-        - file: chapters/06/02/modelagem_dimensional.md
-        - file: chapters/06/03/esquema_estrela.md
-        - file: chapters/06/04/arquiteturas_dw.md
-        - file: chapters/06/leia_mais.md    
-    - file: chapters/07/intro.md
-      sections:
-        - file: chapters/07/01/medidas.md
-        - file: chapters/07/02/tipos_fato.md
-        - file: chapters/07/leia_mais.md
     - file: chapters/08/intro.md
       sections:
-        - file: chapters/08/01/chaves.md
-        - file: chapters/08/02/scd.md
-        - file: chapters/08/03/degeneradas.md
-        - file: chapters/08/04/junk.md
+        - file: chapters/08/01/papel_mas_dw.md
+        - file: chapters/08/02/modelagem_dimensional.md
+        - file: chapters/08/03/esquema_estrela.md
+        - file: chapters/08/04/arquiteturas_dw.md
         - file: chapters/08/leia_mais.md
     - file: chapters/09/intro.md
       sections:
-        - file: chapters/09/01/etapas.md
-        - file: chapters/09/02/planejando_marts.md
-        - file: chapters/09/03/planejando_dimensoes.md
-        - file: chapters/09/04/criando_modelos.md
-        - file: chapters/09/05/mapeamento_chaves.md
-        - file: chapters/09/06/tabela_fato.md
-        - file: chapters/09/07/agregadas_derivadas.md
+        - file: chapters/09/01/medidas.md
+        - file: chapters/09/02/tipos_fato.md
+        - file: chapters/09/leia_mais.md
+    - file: chapters/10/intro.md
+      sections:
+        - file: chapters/10/01/chaves.md
+        - file: chapters/10/02/scd.md
+        - file: chapters/10/03/degeneradas.md
+        - file: chapters/10/04/junk.md
+        - file: chapters/10/leia_mais.md
+    - file: chapters/11/intro.md
+      sections:
+        - file: chapters/11/01/etapas.md
+        - file: chapters/11/02/planejando_marts.md
+        - file: chapters/11/03/planejando_dimensoes.md
+        - file: chapters/11/04/criando_modelos.md
+        - file: chapters/11/05/mapeamento_chaves.md
+        - file: chapters/11/06/tabela_fato.md
+        - file: chapters/11/07/agregadas_derivadas.md
         #- file: chapters/09/leia_mais.md
-    - file: chapters/BQ/intro.md   
-  # - caption: Transformando dados
-  #   chapters:
+    - file: chapters/12/intro.md
+  - caption: Transformando dados
+    chapters:
+    - file: chapters/13/intro.md
+    - file: chapters/14/intro.md
+    - file: chapters/15/intro.md
+      sections:
+      - file: chapters/15/01/arquiteturas_transformacao.md
+    - file: chapters/16/intro.md 
   # - caption: Entregando dados
   #   chapters:
-  # - caption: Tópicos Adicionais
-  #   chapters:
-  #   Criando um banco Postgres
-  #   Extraindo dados com o Airbyte
+  #   Boas práticas de Data Viz
+  #   BI
+  #   BI na prática (Data studio?)
+  - caption: Tópicos Adicionais
+    chapters:
+    - file: chapters/17/intro.md
+    - file: chapters/18/intro.md
+      sections:
+        - file: chapters/18/01/etl_vs_elt.md
+  #   ETL vs ELT
+  #   ML com dbt e BigQuery
+  #   DataOps

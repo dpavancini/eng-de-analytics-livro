@@ -1,4 +1,4 @@
-(target_header)=
+(banco_dados)=
 # Capítulo 4 - Bancos de dados
 
 Um sistema de gerenciamento de banco de dados  (SGBD)  ou simplesmente, banco de dados, é um conjunto de programas de software que permite aos usuários criar, editar, atualizar, armazenar e recuperar dados em tabelas de banco de dados. Dados em um banco de dados podem ser acrescentados, apagados, alterados, classificados usando um  SGBD (Gomes, 2020).  

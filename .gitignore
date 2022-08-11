@@ -131,3 +131,7 @@ dmypy.json
 
 # Other
 temp/
+dbt_northwind/
+*/logs
+logs/
+*.ipynbx
