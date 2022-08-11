@@ -1,5 +1,5 @@
 (boas_praticas)=
-# Capítulo 6 -  Boas práticas de programação
+# Capítulo 6 -  Boas práticas de desenvolvimento
 
 <!-- Falar de boas práticas de progamação
 
