@@ -31,7 +31,7 @@ Conheça a **1a Formação em Engenharia de Analytics do Brasil** oferecida pela
 :::
 
 :::{grid-item-card}
-:link: https://executablebooks.org/en/latest/feature-vote.html
+:link: https://github.com/dpavancini/eng-de-analytics-livro/issues
 :class-header: bg-light
 
 👍 Sugira novos temas
@@ -41,7 +41,7 @@ Sugira novos temas ou dê feedbacks através das *Issues* neste repositório.
 :::
 
 :::{grid-item-card}
-:link: contribute/intro.md
+:link: https://github.com/dpavancini/eng-de-analytics-livro/issues
 :class-header: bg-light
 
 🙌 Conecte-se
