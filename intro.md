@@ -2,7 +2,7 @@
 1a Edição por [Daniel Avancini](https://www.linkedin.com/in/daniel-avancini-bb8bb629/).
 
 
-Este livro apresenta as técnicas e os conceitos necessários para que um profissional de dados moderno domine um processo de analytics de ponta a ponta. 
+Este livro apresenta as técnicas e os conceitos necessários para que um profissional de dados moderno domine um processo de analytics de ponta a ponta. As técnicas e ferramentas aqui apresentadas são parte do framework **Modern Data Stack**.
 
 Partes deste livro formam a base do curso de Formação em Analytics Engineering da [Indicium Academy](https://indicium.tech/).
 
@@ -20,7 +20,7 @@ Acesse algum das seções abaixo ou utilize a navegação ao final dessa página
 :gutter: 3
 
 :::{grid-item-card}
-:link: https://academy.indicium.tech
+:link: https://academy.indicium.tech/course/ae-08-22?utm_source=livro-eng-analytics&utm_medium=referral&utm_campaign=home_livro
 :class-header: bg-light
 
 💬 Aprenda mais

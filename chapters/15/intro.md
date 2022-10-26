@@ -1,5 +1,5 @@
 (transformacao)=
-# Capítulo 15 -  Transformação de dados com dbt
+# Capítulo 15 -  Transformação de dados
 
 A etapa de transformação de dados é o núcleo do processo de ETL/ELT. É neste momento que as regras de negócio são aplicadas nos modelos para gerar as tabelas finais que serão consumidas por um BI, em um relatório ou mesmo por outro sistema. O tipo de processo e tecnologia usada na transformação vai depender do tipo de dados que queremos transformar, volume de dados, arquitetura de sistemas possível (por exemplo, nuvem vs *on-premises*), capacidade técnica da equipe, entre outros. 
 
