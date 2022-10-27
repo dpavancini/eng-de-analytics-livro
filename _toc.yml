@@ -106,9 +106,9 @@ parts:
         - file: chapters/14/03/exemplo_pratico.md
     - file: chapters/15/intro.md
       sections:
-      - file: chapters/15/01/arquiteturas_transformacao.md
-      - file: chapters/15/02/dbt.md
-    - file: chapters/16/intro.md 
+        - file: chapters/15/01/arquiteturas_transformacao.md
+        - file: chapters/15/02/dbt.md
+  # - file: chapters/16/intro.md 
   # - caption: Consumindo dados
   #   chapters:
   #   Boas práticas de Data Viz
@@ -116,12 +116,12 @@ parts:
   #   BI
   #   Governança de Dados
   #   BI na prática (Data studio?)
-  - caption: Tópicos Adicionais
-    chapters:
-    - file: chapters/17/intro.md
-    - file: chapters/18/intro.md
-      sections:
-        - file: chapters/18/01/etl_vs_elt.md
+  # - caption: Tópicos Adicionais
+  #   chapters:
+  #   - file: chapters/17/intro.md
+  #   - file: chapters/18/intro.md
+  #     sections:
+  #       - file: chapters/18/01/etl_vs_elt.md
   #   ETL vs ELT
   #   ML com dbt e BigQuery
   #   DataOps
