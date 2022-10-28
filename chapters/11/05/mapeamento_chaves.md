@@ -1,4 +1,4 @@
-# 9.5 Mapeamento de Chaves
+# 11.5 Mapeamento de Chaves
 
 Durante a modelagem é importante que o se tome cuidado com o mapeamento das chaves naturais e chaves *surrogates* entre as tabelas-fonte e tabelas do DW. Como mencionado anteriormente, o ideal é não utilizar as chaves naturais na criação das tabelas Fato e Dimensão para isolar o DW de possíveis alterações nas tabelas fonte. Para fazer esse mapeamento devemos levar em conta os diferentes tipos de dimensões que estamos modelando e, no caso de dimensões SCD Tipo 2, os períodos onde as dimensões tem validade. Como as tabelas fontes são na maioria dos casos normalizadas, esses mapeamentos devem ser realizados na fase intermediária do processo de transformação e não devem aparecer no modelo final do DW.  No exemplo abaixo temos um modelo normalizado simples de uma tabela de Pedidos em um ERP:
 

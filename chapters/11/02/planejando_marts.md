@@ -1,4 +1,4 @@
-# 9.2 Planejando os Data Marts
+# 11.2 Planejando os Data Marts
 
 > “Conquistando o mundo, um Mart por vez”
 

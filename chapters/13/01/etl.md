@@ -1,5 +1,5 @@
 (etl)=
-## 13.1 O Precursor: ETL
+# 13.1 O Precursor: ETL
 
 Durante muito tempo (e ainda utilizado em muitas empresas atuais), o processo padrão de de construção de *pipelines* de dados era o ETL. ETL (do inglês, *extract-transform-load*) é o processo sistemático de extrair, transformar, limpar e carregar os dados brutos em um banco de dados ou outro local para visualização ou consumo por outra aplicação. Cada letra da sigla significa uma de suas etapas:
 

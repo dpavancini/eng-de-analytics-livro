@@ -1,4 +1,4 @@
-# 6.3 O esquema estrela
+# 8.3 O esquema estrela
 
 A implementação do modelo dimensional em um banco de dados relacional é chamada de esquema estrela (do inglês, star schema). O centro de um esquema estrela é composto por uma tabela fato que agrupa medidas de um processo de negócio específico (ex. pedidos). A tabela fato é relacionada por diferentes tabelas dimensão que agrupam dimensões relacionadas entre si (ex. clientes, locais, produtos). Diferente do banco de dados normalizado do capítulo 4, os esquemas estrela são em geral desnormalizados e apresentam redundância. No mundo de analytics, a facilidade de consulta é mais importante que ganhos marginais de desempenho do banco de dados.
 

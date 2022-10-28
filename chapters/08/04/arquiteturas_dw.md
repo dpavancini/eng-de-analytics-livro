@@ -1,4 +1,4 @@
-# 6.4 Arquiteturas de Data Warehouse
+# 8.4 Arquiteturas de Data Warehouse
 
 O conceito de criar data warehouses não é novo, e desde os anos 1990 algumas abordagens se tornaram comuns principalmente no ambiente corporativo. As duas abordagens mais comuns são associadas a dois nomes muito representativos no mundo de data warehouse e BI, Ralph Kimball e William (Bill) Inmon. Ambos são autores direta e indiretamente de dezenas de livros e abordagens utilizadas na criação de Data Warehouses mundo afora.  Os esquemas estrela também estão presentes nas diversas abordagens, assim como o uso de fatos e dimensões. A principal diferença entre eles é a recomendação de usar ou não a normalização além das estrelas, que veremos em seguida:
 

@@ -1,5 +1,5 @@
 (etl_open)=
-# Capítulo 17 - MAS na prática com Postgres, Airbyte, dbt e Metabase
+# Capítulo 17 - MDS na prática com Postgres, Airbyte, dbt e Metabase
 
 <!-- - Acessando o BQ
 - Visualizando os dados

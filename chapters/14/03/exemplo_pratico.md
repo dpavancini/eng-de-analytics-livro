@@ -1,5 +1,5 @@
 (ingestao_pratica)=
-## 14.3 Ingestão de dados na prática
+# 14.3 Ingestão de dados na prática
 
 <!-- Fazer usando Airbyte? Ou Hevo? -->
 A ingestão de dados no ELT é realizada de forma a reduzir ao mínimo a transformação dos dados brutos que serão carregados no data warehouse. Na prática, há diferentes formas de realizar essa ingestão desde que esse princípio de mínima transformação seja mantido.

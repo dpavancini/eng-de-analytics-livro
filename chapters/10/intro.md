@@ -1,3 +1,4 @@
+(dimensoes)=
 # Capítulo 10 - Dimensões
 
 Dimensões  são informações de negócios que descrevem os fatos; por exemplo,  cidade, produtos, clientes, datas, etc. De forma geral, podem ser filtradas/agrupadas ou usadas como rótulos em Relatórios e Gráficos.  É comum que uma mesma Tabela Dimensão possa estar relacionada a muitas tabelas Fato, relação essa que é feita por um chave (código que representa uma informação).

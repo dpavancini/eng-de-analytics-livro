@@ -1,5 +1,5 @@
 (dbt)=
-# Transformação de dados com dbt
+# 15.3 Transformação de dados com dbt
 
 Nesta seção vamos apresentar como fazer a modelagem de um DW na prática usando o dbt. Para tanto, nós precisamos primeiro realizar a carga dos dados brutos em nosso DW [(que fizemos na seção anterior)](). Com os dados já inseridos no DW, vamos criar uma séries de modelos para materializar o modelo conceitual do DW que criamos [anteriormente]().
 

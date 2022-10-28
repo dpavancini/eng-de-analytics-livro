@@ -1,11 +1,11 @@
 (processo_elt)=
-## 13.3 O Processo de ELT
+# 13.3 O Processo de ELT
 
 O processo de ETL ({numref}`processo_elt`) se inicia com o problema de negócio: precisamos ter dados confiáveis para utilização na tomada de decisão. Esse problema é o norte de todo o projeto de Analytics ainda que apareça em diferentes "sabores" a depender do cliente ou metodologia utilizada. Vendo dessa forma, percebemos que a maior parte dos conceitos e ferramentas apresentadas neste livro como parte da "caixa de ferramentas" de um Engenheiro de Analytics são necessárias mas não suficientes para um projeto de analytics de sucesso. O real valor será calculado a partir da qualidade e disponibilidade da informação disponível para o usuário final dos dados: o tomador de decisão.
 
 
 ```{figure} ../../../assets/img/processo_elt.png
-:name: elt_mas
+:name: processo_elt
 :height: 450px
 
 Etapas do Processo de ELT
@@ -50,6 +50,6 @@ Na etapa de transformação é que os dados brutos, extraído diretamente dos di
 
 ### Entrega Final
 
-Seguindo as {ref}`boas práticas de programação<boas_praticas>`), somente disponibilizaremos os novos dados pro usuário final depois de realizar testes, documentação e outras tarefas comuns no processo de ***deploy*** de softwares. Ao final do processo, os novos dados ficam disponibilizados no ambiente "produção" do data warehouse para serem transformados em informação e geração de valor de negócio. Para entender melhor esse processo, passaremos pelas etapas comuns do processo de entrega no {ref}`data_ops`.
+Seguindo as {ref}`boas práticas de programação<boas_praticas>`), somente disponibilizaremos os novos dados pro usuário final depois de realizar testes, documentação e outras tarefas comuns no processo de ***deploy*** de softwares. Ao final do processo, os novos dados ficam disponibilizados no ambiente "produção" do data warehouse para serem transformados em informação e geração de valor de negócio.
 
 No próximoa capítulo vamos detalhar o processo de ingestão de dados, a etapa inicial do ELT. Vamos lá?

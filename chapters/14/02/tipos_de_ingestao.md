@@ -1,4 +1,4 @@
-## 14.2 Tipos de Ingestão
+# 14.2 Tipos de Ingestão
 
 É importante verificar os requisitos de negócio para mapear o tipo e periodicidade de processamento de dados necessário. É comum que em projetos de DW o processamento seja feito em lotes (batch), geralmente no período noturno onde há menor sobrecarga nos sistemas. No entanto, em alguns projetos pode ser necessário um processamento com maior frequência, por exemplo, horário ou mesmo em tempo-real.
 

@@ -11,7 +11,7 @@ No geral, uma pilha de dados tem três funções fundamentais: coletar e integra
 
 Todas estas funções são processos do pipeline de dados.
 
-Assim, as ferramentas usadas para cada um desses processos formam o *analytics stack*. Ainda que a arquitetura de um pipeline varie de acordo com as empresas, todos têm esses processos incorporados.
+Assim, as ferramentas usadas para cada um desses processos formam o *data stack*. Ainda que a arquitetura de um pipeline varie de acordo com as empresas, todos têm esses processos incorporados.
 
 ## Os 7 princípios do MDS
 
@@ -44,7 +44,7 @@ Portanto, ao invés de escrever códigos em linguagens proprietárias ou sistema
 * democratização da informação
 ### 4. Governança
 
-Como já mencionado, no *modern analytics stack*, o armazenamento e processamento dos dados são totalmente feitos em uma estrutura em nuvem.
+Como já mencionado, no *modern data stack*, o armazenamento e processamento dos dados são totalmente feitos em uma estrutura em nuvem.
 
 Dessa forma, todas as informações de uma empresa ficam centralizadas e facilmente acessíveis em um só local, simplificando a documentação e governança dos dados.
 
@@ -83,8 +83,7 @@ Agora que conhece suas características, você pode partir para a construção d
 
 ## Arquitetura de Referência
 
-O framework de referência do MDS serve para exemplificar as funções de cada módulo do MAS de modo a auxiliar o entendimento e construção de arquiteturas derivadas. É importante notar que as funções detalhadas abaixo podem ser executadas por uma única ferramenta ou serem parte de um conjunto de funcionalidades (ex. um Data Warehouse Cloud como o Google BigQuery inclui Armazenamento, Processamento (VMs), APIs, Controle de Acesso e Motor de BigData em uma única ferramenta).
-
+O framework de referência do MDS serve para exemplificar as funções de cada módulo do MDS de modo a auxiliar o entendimento e construção de arquiteturas derivadas. É importante notar que as funções detalhadas abaixo podem ser executadas por uma única ferramenta ou serem parte de um conjunto de funcionalidades (ex. um Data Warehouse Cloud como o Google BigQuery inclui Armazenamento, Processamento (VMs), APIs, Controle de Acesso e Motor de BigData em uma única ferramenta).
 
 ### Componentes
 
@@ -174,7 +173,7 @@ A camada de Produtos é a camada que expõe produtos de dados para consumidores 
 **Core**
 Os componentes da camada de Produtos mais comuns são:
 
-- **Self-service BI**: o self-service BI é uma ferramenta de suporte à tomada de decisão que permite construir visualizações de dados e gerar insights a partir dos dados. É uma ferramenta essencial em qualquer infraestrutura de dados para analytics e incluir ferramentas como [Microsoft PowerBI](), [Tableau](), [Qliksense](), [Metabase]() etc.
+- **Self-service BI**: o self-service BI é uma ferramenta de suporte à tomada de decisão que permite construir visualizações de dados e gerar insights a partir dos dados. É uma ferramenta essencial em qualquer infraestrutura de dados para analytics e incluir ferramentas como [Microsoft PowerBI](), [Tableau](), [Metabase](), [Mode](), [Looker]() etc.
 
 **Sob Demanda**
 Os componentes da camada de Produtos menos usuais são:
@@ -205,7 +204,7 @@ Os componentes da camada de Infra & Orquestração menos usuais são:
 
 - **Monitoramento**: componentes que monitoram os recursos da plataforma como consumo de dados, faturamento, etc.
 
-- **Container Registry**: componentes que realizam o registro de [Docker Containers]().
+- **Container Registry**: componentes que realizam o registro de [Docker Containers]() ou [Kubernetes]()
 
 - **IaC**: componentes de *Infrastructure as code* que permitem modularizar e gerenciar infraestrutura em nuvem (ex. [Terraform]()).
 

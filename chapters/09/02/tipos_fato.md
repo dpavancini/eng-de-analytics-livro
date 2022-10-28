@@ -1,4 +1,4 @@
-## Tipos de Tabelas Fato
+# 9.2 Tipos de Tabelas Fato
 
 Existem três tipos principais de tabelas Fato:
 -  Transacional: o grão é definido ao nível de um registro individual como um contrato ou transação.

@@ -9,9 +9,9 @@ Por outro lado, quando falamos de Dados em geral, e Analytics em particular, a s
 
 Provavalmente o maior problema dessas ferramentas é uma tentativa de evitar ao máximo o uso de linguagens de programação em prol de funcionalidades *drag-and-drop* ineficientes e que sofrem do chamado problema de [Inner-platform Effect](https://en.wikipedia.org/wiki/Inner-platform_effect).
 
-Como veremos no {ref}`data_ops`, a forma natural de tratar o desenvolvimento de projetos de dados e analytics é aplicar os processos e ferramentas que já são utilizados com sucesso no desenvolvimento de software. Por outro lado, também falamos que o Engenheiro de Analytics é em geral um profissional de negócio, que em geral não teve um treinamento formal em programação e boas práticas de desenvolvimento. Como conciliar?
+Como proposto pelo DataOps, a forma natural de tratar o desenvolvimento de projetos de dados e analytics é aplicar os processos e ferramentas que já são utilizados com sucesso no desenvolvimento de software. Por outro lado, também falamos que o Engenheiro de Analytics é em geral um profissional de negócio, que em geral não teve um treinamento formal em programação e boas práticas de desenvolvimento. Como conciliar?
 
-O objetivo deste capítulo é introduzir ao Engenheiro de Analytics às boas práticas de programação e desenvolvimento de software utilizadas no {ref}`MAS<MAS>` e nas ferramentas modernas de dados. A primeira diz respeito à convenções de como escrever código em si, enquanto a trata de práticas reconhecidas para a gestão do ciclo de vida de um desenvolvimento. Vamos lá?
+O objetivo deste capítulo é introduzir ao Engenheiro de Analytics às boas práticas de programação e desenvolvimento de software utilizadas no {ref}`MDS<MDS>` e nas ferramentas modernas de dados. A primeira diz respeito à convenções de como escrever código em si, enquanto a trata de práticas reconhecidas para a gestão do ciclo de vida de um desenvolvimento. Vamos lá?
 
 
 > A engenharia de Analytics aplica o princípio de "Data as code" ou "Analytics as code"

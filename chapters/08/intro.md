@@ -1,3 +1,4 @@
+(dw)=
 # Capítulo 8 - Data Warehouses
 
 Data Warehouses são bancos de dados otimizados para consulta de grandes volumes de dados. Ele faz parte das aplicações chamadas OLAP (‘On-line Analytical Processing’) em contraponto aos bancos de dados transacionais OLTP ('Online Transaction Processing’). Embora em muitos casos sejam apresentados como tecnologias distintas, não é incomum que tanto bancos transacionais como DW utilizem o mesmo banco de dados relacional ou alguma variação dele (ex. Amazon Redshift é baseado em PostgreSQL).

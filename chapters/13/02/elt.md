@@ -1,5 +1,5 @@
 (elt)=
-## 13.2 O ELT
+# 13.2 O ELT
 
 Embora existam algumas diferenças de arquitetura e ferramentas utilizadas nos processos de ELT modernos, o quadro geral é o mesmo: na etapa de Extração, ferramentas especializadas permitem “mover” dados de centenas de fontes como ERPs, CRMs, bancos de dados, REST APIs etc. diretamente para um Data Warehouse na nuvem ou on-premises com um baixo custo técnico. Desta forma, a etapa de *Load* é feita simultaneamente à extração. Dentro do DW, a transformação de dados é feita através de scripts SQL ou ferramentas visuais que 
 

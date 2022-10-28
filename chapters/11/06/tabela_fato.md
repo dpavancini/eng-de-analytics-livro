@@ -1,4 +1,4 @@
-# 9.6 Modelando a Tabela Fato
+# 11.6 Modelando a Tabela Fato
 
 O próximo passo é mapear **Tabela Fato Pedidos** a partir da tabela fonte de pedidos e da Tabela Dimensão Clientes criada. Como a `dim_cliente` é SCD Tipo 2, precisamos utilizar tanto a chave natural como as datas de validade da dimensão para mapear a chave SK entre as tabelas, caso contrário iremos acabar duplicando registros. Por fim acrescentamos uma tabela de dimensão de datas e que cria importantes hierarquias e novos agrupamentos possíveis. Omitimos a tabela de endereços para simplificar a exposição, mas ela seria criada de forma semelhante:
 
