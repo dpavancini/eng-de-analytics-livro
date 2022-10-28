@@ -6,7 +6,7 @@ No último capítulo aprendemos sobre a teoria por trás da modelagem dimensiona
 ```{admonition} Atenção
 Você precisará criar uma conta no Google Cloud Platform para essa parte do tutorial e configurar um cartão de crédito. Mas não se preocupe, há uma camada gratuita de serviços grande e nada será cobrado no seu cartão. Se preferir pode cancelar a conta após o tutorial.
 
-Se você tiver interesse (e conhecimento) de simular um DW *on-premises*, pode configurar um banco de dados PostgreSQL em sua máquina local conforme **exemplo no capítulo XX**.
+Se você tiver interesse (e conhecimento) de simular um DW *on-premises*, pode configurar um banco de dados PostgreSQL em sua máquina local.
 ```
 
 Para criar uma instância do Google Big Query é muito fácil. Precisamos apenas acessar o “Big Query” pelo menu lateral ou pela procura do GCP e clicar em “Ativar”.  Pronto! já temos nosso primeiro DW no Big Query configurado. O pŕoximo passo é criarmos nossa credencial para poder utilizar em nossas ferramentas do {ref}`MDS<MDS>` como o [Hevo](https://hevodata.com/) e [dbt](https://www.getdbt.com/).

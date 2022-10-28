@@ -7,6 +7,10 @@ Antes de começar a parte técnica, é bom lembrar que o objetivo de um DW é ge
 
 Atualmente o [dbt](https://www.getdbt.com/) possui uma versão SaaS chamada [dbt cloud](https://www.getdbt.com/product/what-is-dbt/) além da versão open-source. A versão SaaS possui um custo de aprendizagem menor para quem tem menos contato com programação, mas neste curso vamos utilizar a versão open-source. No geral, ambos são muito similares e você utilizar a versão cloud de forma equivalente se desejar.
 
+```{admonition} Dica!
+Para lembrar os comandos do dbt facilmente utilize essa [cheatsheet](https://medium.com/indiciumtech/17-dbt-commands-you-should-start-using-today-581998dbf8f0)
+```
+
 ## Começando um projeto
 
 Nesta subseção vamos aprender como iniciar um projeto dbt. Vamos lá?
