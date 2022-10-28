@@ -67,7 +67,6 @@ parts:
         - file: chapters/08/01/papel_mas_dw.md
         - file: chapters/08/02/modelagem_dimensional.md
         - file: chapters/08/03/esquema_estrela.md
-        - file: chapters/08/04/arquiteturas_dw.md
         - file: chapters/08/leia_mais.md
     - file: chapters/09/intro.md
       sections:
@@ -109,20 +108,3 @@ parts:
         - file: chapters/15/01/processos_transformacao.md
         - file: chapters/15/02/arquiteturas_transformacao.md
         - file: chapters/15/03/dbt.md
-  # - file: chapters/16/intro.md
-  # - caption: Consumindo dados
-  #   chapters:
-  #   Boas práticas de Data Viz
-  #   Relatórios interativos
-  #   BI
-  #   Governança de Dados
-  #   BI na prática (Data studio?)
-  # - caption: Tópicos Adicionais
-  #   chapters:
-  #   - file: chapters/17/intro.md
-  #   - file: chapters/18/intro.md
-  #     sections:
-  #       - file: chapters/18/01/etl_vs_elt.md
-  #   ETL vs ELT
-  #   ML com dbt e BigQuery
-  #   DataOps

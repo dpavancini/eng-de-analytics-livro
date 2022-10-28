@@ -3,7 +3,7 @@
 
 A Abordagem Moderna de Dados (do inglês, *Modern Data Stack*), ou simplesmente MDS, é uma metodologia de construção de infraestruturas de analytics que utiliza conceitos modernos de computação em nuvem, governança de dados e estruturas de times ágeis para implementar projetos de analytics de forma mais eficiente.
 
-## Construindo o Modern Analytics Stack
+## Construindo o Modern Data Stack
 
 Uma estrutura de dados eficiente combina diversos serviços em um data stack, uma pilha de dados.
 
@@ -90,6 +90,12 @@ O framework de referência do MDS serve para exemplificar as funções de cada m
 Nesta seção apresentamos rapidamente o objetivo de cada componente da arquitetura de referência do MDS e exemplos de ferramenta que o implementa. Para uma outra lista de ferramentas veja esse [link](https://snowplowanalytics.com/blog/2021/05/12/modern-data-stack/).
 
 Os componentes mais comuns (**Core**) em implemetações de MDS são apresentados em vermelho no diagrama ao final desta seção. Já os componentes que aparecem em projetos sob demanda estão em amarelo.
+
+```{figure} ../../assets/img/mas_referencia.png
+:name: mds_referencia
+
+Arquitetura de referência do Modern Data Stack
+```
 
 #### Fontes de Dados
 
