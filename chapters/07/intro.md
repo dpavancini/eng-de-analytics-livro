@@ -251,3 +251,11 @@ Os componentes da camada de Governança menos usuais são:
 - **Gestão de Metadados**: componente responsável por gerenciar os metadados dos demais componentes da plataforma (Ex. [Backstage]()). Em geral, em arquiteturas MDS menos complexas esses recursos não são acessáveis diretamente.
 
 - **Model Reporting**: componente responsável por monitorar e reportar resultados de modelos de Machine Learning (ex. [MLFlow]().
+
+# Leia Mais
+
+[Modern Data Stack](https://www.moderndatastack.xyz/)
+
+[What is the modern data stack](https://www.fivetran.com/blog/what-is-the-modern-data-stack)
+
+[The Modern Data Stack: Past, Present, and Future](https://www.getdbt.com/blog/future-of-the-modern-data-stack/)
