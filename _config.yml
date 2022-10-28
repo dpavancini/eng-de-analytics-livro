@@ -4,7 +4,7 @@
 title: Engenharia de Analytics
 author: Daniel Paulon Avancini
 logo: logo_livro.png
-
+only_build_toc_files: true
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:

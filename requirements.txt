@@ -3,4 +3,4 @@ matplotlib
 numpy
 ipython-sql
 sqlalchemy
-dbt-bigquery
+nbformat

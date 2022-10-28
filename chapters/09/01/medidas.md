@@ -1,4 +1,4 @@
-## Tipos de Medidas
+# 9.1 Tipos de Medidas
 Sempre que possível queremos manter as medidas aditivas. Isso facilita o entendimento do usuário e evita problemas, porém em alguns tipos de medidas isso não é possível (e.x contar distinto).  Existem três tipos de medidas utilizadas:
 
 - Aditivas: medidas que podem ser somadas ao longo das dimensões Ex. Unidades Vendidas,

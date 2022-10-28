@@ -1,4 +1,4 @@
-# Diagrama de Pareto
+# 3.3 Diagrama de Pareto
 
 Também conhecido como Gráfico 80/20, é uma ferramenta que permite visualizar a frequência com a qual erros se repetem durante a rotina de produção, relacionando-os com as suas possíveis causas. Serve para encontrar elementos suficientes para estabelecer uma comparação entre a repetição das causas e a ocorrência das falhas identificadas.
 

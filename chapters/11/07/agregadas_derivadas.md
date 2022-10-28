@@ -1,4 +1,4 @@
-# 9.7 Tabelas Agregadas e Derivadas
+# 11.7 Tabelas Agregadas e Derivadas
 
 Ao utilizar tabelas de fatos no menor grão possível obtemos uma flexibilidade importante na arquitetura do DW. Por outro lado, é comum que tabelas de fatos reais possam ficar muito grandes (com milhões ou até bilhões de linhas) de modo que as consultas agregadas como (COUNT,AVG, SUM) nessas tabelas possam levar um tempo considerável. Esse tempo será ainda maior quando existir muitos JOINSs e consultas mais complexas.
 

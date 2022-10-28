@@ -1,3 +1,4 @@
+(bigquery)=
 # Capítulo 12 -  Configurando um Data Warehouse com Big Query
 
 No último capítulo aprendemos sobre a teoria por trás da modelagem dimensional de  Data Warehouses. Para aprendermos a fazer isso na prática, precisamos criar o nosso próprio DW. Embora existam muitas possibilidades de tecnologias e empresas nessa área,  os DWs na nuvem mais utilizados são o [Google BigQuery](https://cloud.google.com/bigquery?hl=pt-br), [Amazon Redshift](https://aws.amazon.com/pt/redshift/) e [Azure Synapse](https://docs.microsoft.com/pt-br/azure/synapse-analytics).
@@ -5,15 +6,14 @@ No último capítulo aprendemos sobre a teoria por trás da modelagem dimensiona
 ```{admonition} Atenção
 Você precisará criar uma conta no Google Cloud Platform para essa parte do tutorial e configurar um cartão de crédito. Mas não se preocupe, há uma camada gratuita de serviços grande e nada será cobrado no seu cartão. Se preferir pode cancelar a conta após o tutorial.
 
-Se você tiver interesse (e conhecimento) de simular um DW *on-premises*, pode configurar um banco de dados PostgreSQL em sua máquina local conforme **exemplo no capítulo XX**.
+Se você tiver interesse (e conhecimento) de simular um DW *on-premises*, pode configurar um banco de dados PostgreSQL em sua máquina local.
 ```
 
-Para criar uma instância do Google Big Query é muito fácil. Precisamos apenas acessar o “Big Query” pelo menu lateral ou pela procura do GCP e clicar em “Ativar”.  Pronto! já temos nosso primeiro DW no Big Query configurado. O pŕoximo passo é criarmos nossa credencial para poder utilizar em nossas ferramentas do {ref}`MAS<MAS>` como o [Hevo](https://hevodata.com/) e [dbt](https://www.getdbt.com/).
+Para criar uma instância do Google Big Query é muito fácil. Precisamos apenas acessar o “Big Query” pelo menu lateral ou pela procura do GCP e clicar em “Ativar”.  Pronto! já temos nosso primeiro DW no Big Query configurado. O pŕoximo passo é criarmos nossa credencial para poder utilizar em nossas ferramentas do {ref}`MDS<MDS>` como o [Hevo](https://hevodata.com/) e [dbt](https://www.getdbt.com/).
 
 
 ```{figure} ../../assets/img/ativando_bq.png
 :name: ativando_bq
-:height: 450px
 
 Ativando o BigQuery no GCP
 ```
@@ -22,7 +22,6 @@ Para criar as credenciais vamos até a seção de Credenciais no “Menu API e S
 
 ```{figure} ../../assets/img/credenciais_bq.png
 :name: credenciais_bq
-:height: 450px
 
 Acessando o menu de credenciais
 ```
@@ -31,7 +30,6 @@ Devemos clicar no botão “Criar Credenciais” e selecionar a última opção:
 
 ```{figure} ../../assets/img/criar_credenciais_bq.png
 :name: criar_credenciais_bq
-:height: 450px
 
 Criar credenciais no BigQuery
 ```
@@ -40,21 +38,18 @@ Vamos criar uma conta de serviço para API BigQuery API. Podemos selecionar o pa
 
 ```{figure} ../../assets/img/criar_credenciais_bq_2.png
 :name: criar_credenciais_bq_2
-:height: 450px
 
 Criar credenciais no BigQuery
 ```
 
 ```{figure} ../../assets/img/criar_credenciais_bq_3.png
 :name: criar_credenciais_bq_3
-:height: 450px
 
 Selecione a opçao "Administrador de recursos do BigQuery"
 ```
 
 ```{figure} ../../assets/img/criar_credenciais_bq_4.png
 :name: criar_credenciais_bq_4
-:height: 450px
 
 Lembre-se de armazenar as credenciais com segurança.
 ```

@@ -1,4 +1,4 @@
-# 7.2 Dimensão de Alteração Lenta  (SCD)
+# 10.2 Dimensão de Alteração Lenta  (SCD)
 
 
 Normalmente é preferível que as dimensões sejam imutáveis, isto é, que o mesmo código 100 em uma tabela de Clientes, por exemplo, diga respeito ao cliente João Fulano. Uma das dificuldades do analytics engineer é que em geral nós não temos controle sobre as fontes de dados (ERP, por exemplo) e não é raro que haja `UPDATEs` nas tabelas originais que alterem as chaves naturais de uma informação. Dimensões que se alteram ao longo do tempo são chamadas de Dimensão de Alteração Lenta (do inglês, *Slow Changing Dimensions*) ou simplesmente SCDs. 

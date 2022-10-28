@@ -53,6 +53,12 @@ parts:
         - file: chapters/05/06/sub.ipynb
         - file: chapters/05/leia_mais.md
     - file: chapters/06/intro.md
+      sections:
+        - file: chapters/06/01/boas_praticas_prog.md
+        - file: chapters/06/02/boas_praticas_dev.md
+        - file: chapters/06/03/intro_git.md
+        - file: chapters/06/04/git_pratica.md
+        - file: chapters/06/leia_mais.md
     - file: chapters/07/intro.md
   - caption: Modelando Dados
     chapters:
@@ -61,7 +67,6 @@ parts:
         - file: chapters/08/01/papel_mas_dw.md
         - file: chapters/08/02/modelagem_dimensional.md
         - file: chapters/08/03/esquema_estrela.md
-        - file: chapters/08/04/arquiteturas_dw.md
         - file: chapters/08/leia_mais.md
     - file: chapters/09/intro.md
       sections:
@@ -84,27 +89,22 @@ parts:
         - file: chapters/11/05/mapeamento_chaves.md
         - file: chapters/11/06/tabela_fato.md
         - file: chapters/11/07/agregadas_derivadas.md
-        #- file: chapters/09/leia_mais.md
+        - file: chapters/11/leia_mais.md
     - file: chapters/12/intro.md
   - caption: Transformando dados
     chapters:
     - file: chapters/13/intro.md
+      sections:
+        - file: chapters/13/01/etl.md
+        - file: chapters/13/02/elt.md
+        - file: chapters/13/03/processo_elt.md
     - file: chapters/14/intro.md
+      sections:
+        - file: chapters/14/01/acessando_dados.md
+        - file: chapters/14/02/tipos_de_ingestao.md
+        - file: chapters/14/03/exemplo_pratico.md
     - file: chapters/15/intro.md
       sections:
-      - file: chapters/15/01/arquiteturas_transformacao.md
-    - file: chapters/16/intro.md 
-  # - caption: Entregando dados
-  #   chapters:
-  #   Boas práticas de Data Viz
-  #   BI
-  #   BI na prática (Data studio?)
-  - caption: Tópicos Adicionais
-    chapters:
-    - file: chapters/17/intro.md
-    - file: chapters/18/intro.md
-      sections:
-        - file: chapters/18/01/etl_vs_elt.md
-  #   ETL vs ELT
-  #   ML com dbt e BigQuery
-  #   DataOps
+        - file: chapters/15/01/processos_transformacao.md
+        - file: chapters/15/02/arquiteturas_transformacao.md
+        - file: chapters/15/03/dbt.md

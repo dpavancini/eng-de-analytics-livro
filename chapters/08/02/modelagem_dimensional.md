@@ -1,4 +1,4 @@
-# 6.2 O Modelo dimensional
+# 8.2 O Modelo dimensional
 
 Como já introduzimos brevemente no {ref}`banco_dados`, o modelo dimensional surgiu como alternativa ao tradicional modelo Entidade-relacionamento dos bancos de dados transacionais para facilitar a criação de bancos de dados analíticos. Esses sistemas precisam responder perguntas sobre os processos de negócio a partir da consulta de muitos dados simultaneamente, ao contrário do banco transacional que se preocupa com a leitura e escrita de muitas pequenas transações. A modelagem dimensional aborda as necessidades específicas da análise dos processos de negócios a partir de um princípio muito simples: da análise de como eles são medidos.
 

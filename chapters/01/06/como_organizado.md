@@ -4,6 +4,6 @@ O livro está organizado para incluir de forma abrangente os conhecimentos neces
 
 Na primeira parte **Fundamentos**, apresentamos conceitos introdutórios sobre os desafios de dados e analytics através dos {ref}`5 Vs<5_vs>`. Em seguida, o {ref}`pensando_analitico` fala de técnicas para facilitar a resolução de problemas de negócio que também são aplicadas pelo Engenheiro de Analytics para solucionar problemas variados relacionados ao pipeline de dados. Em seguida, o {ref}`banco_dados` é essencial para profissionais de negócio que ainda não tem um contato formal com os bancos de dados. Ele é complementado pelo {ref}`sql` que, de forma introdutória, apresenta as principais operações desta linguagem necessárias em projetos de Analytics em geral.
 
-- Parte 2
-- Parte 3
-- Parte 4
+Na parte 2 **Modelando Dados** somos apresentados aos Data Warehouses e às técnicas de modelagem de dados. O {ref}`dw` trata de aspectos conceituais sobre os DWs e seu papel no *Modern Data Stack*. Em seguida, o {ref}`fatos` discute o que são as tabelas fato. O o {ref}`dimensoes` mostra como definir e identificar dimensões e o {ref}`modelagem_dw` aplica um passo-a-passo para modelagem conceitual de um *data warehouse*. Por fim, no {ref}`bigquery` mostramos como configurar um Data Warehouse moderno na prática utilizando o Google BigQuery.
+
+A terceira parte deste livro aplica os conceitos do ELT para **transformar dados** em projetos de Engenharia de Analytics. O primeiro capítulo {ref}`intro_elt` apresenta conceitos do ELT e ETL para profissionais com menos contato na área. Já o o {ref}`ingestao` mostra a teoria e a prática de Ingestão de dados no MDS. Já o  {ref}`transformacao` apresenta as etapas de transformação de dados e faz um exemplo prática completo utilizando o dbt.

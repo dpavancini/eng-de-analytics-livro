@@ -1,4 +1,4 @@
-# Os 5 porquês
+# 3.4 Os 5 porquês
 
 A técnica dos cinco porquês surgiu na década de 1930 e foi criada por Sakichi Toyoda, fundador das indústrias Toyota. Desde o seu surgimento, a ferramenta vem sendo muito utilizada devido à sua simplicidade e eficiência.
 
