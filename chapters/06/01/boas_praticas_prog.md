@@ -1,4 +1,4 @@
-# Boas práticas de programação
+# 6.1 Boas práticas de programação
 
 Quando começamos a escrever um código, uma série de perguntas rapidamente surgem: como vamos chamar esse codigo? quais variáveis são necessárias? Como esse código vai ser utilizado? etc. Atualmente existem centenas ou até milhares de linguagens de programação, cada uma com suas características, melhores práticas e formatações esperadas. Obviamente que não conseguiremos falar de cada uma, e mesmo para uma linguagem específica como o Python existem dezenas de boas práticas (por exemplo, ver [PEP8](https://peps.python.org/pep-0008/)). No entanto, algumas boas práticas se repetem independentemente da linguagem.
 

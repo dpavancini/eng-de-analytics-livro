@@ -7,14 +7,15 @@ Aproximadamente no mesmo período, o desenvolvimento de software experimentou su
 
 Por outro lado, quando falamos de Dados em geral, e Analytics em particular, a situação na maioria das empresas não poderia ser mais diferente. O processo de desenvolvimento e acesso aos dados ainda é largamente manual, dependendo de ciclos de aprovação, abertura de chamados e estruturas de times defasados. Além disso, o desenvolvimento dos pipelines de dados ainda depende de ferramentas de ETL visuais (leia-se Microsoft SSIS, Pentaho PDI etc) que tornam praticamente impossível a aplicação das boas práticas de desenvolvimento de software em projetos de dados.
 
-Provavalmente o maior problema dessas ferramentas é uma tentativa de evitar ao máximo o uso de linguagens de programação em prol de funcionalidades *drag-and-drop* ineficientes e que sofrem do chamado problema de [Inner-platform Effect](https://en.wikipedia.org/wiki/Inner-platform_effect).
+Provavalmente o maior problema dessas ferramentas é uma tentativa de evitar ao máximo o uso de linguagens de programação em prol de funcionalidades *drag-and-drop* ineficientes e que sofrem do chamado problema de [Inner-platform Effect](https://en.wikipedia.org/wiki/Inner-platform_effect). Isto é, a tentativa de simplificar tanto a experiência de desenvolvimento que torna-se necessário replicar funcionalidades que o próprio sistema operacional ou plataforma de dados já disponibiliza por padrão e de forma muito mais eficiente.
 
-Como proposto pelo DataOps, a forma natural de tratar o desenvolvimento de projetos de dados e analytics é aplicar os processos e ferramentas que já são utilizados com sucesso no desenvolvimento de software. Por outro lado, também falamos que o Engenheiro de Analytics é em geral um profissional de negócio, que em geral não teve um treinamento formal em programação e boas práticas de desenvolvimento. Como conciliar?
+Como proposto pelo DataOps, a forma natural de tratar o desenvolvimento de projetos de dados e analytics é aplicar os processos e ferramentas que já são utilizados com sucesso no desenvolvimento de *software*. Por outro lado, também falamos que o Engenheiro de Analytics é em geral um profissional de negócio, que em geral não teve um treinamento formal em programação e boas práticas de desenvolvimento. Como conciliar?
 
 O objetivo deste capítulo é introduzir ao Engenheiro de Analytics às boas práticas de programação e desenvolvimento de software utilizadas no {ref}`MDS<MDS>` e nas ferramentas modernas de dados. A primeira diz respeito à convenções de como escrever código em si, enquanto a trata de práticas reconhecidas para a gestão do ciclo de vida de um desenvolvimento. Vamos lá?
 
-
-> A engenharia de Analytics aplica o princípio de "Data as code" ou "Analytics as code"
+```{admonition} Você sabia?
+A Engenharia de Analytics aplica o princípio de "Data as code" ou "Analytics as code"
+```
 
 <!-- Falar de boas práticas de progamação
 
@@ -26,8 +27,3 @@ O objetivo deste capítulo é introduzir ao Engenheiro de Analytics às boas pr�
 - Separação de ambientes
 - Saber rodar "local" -->
 
-## Leia mais
-
-[The Coming era of data as code](https://thenewstack.io/the-coming-era-of-data-as-code/)
-
-[Simplicity in Software Design: KISS, YAGNI and Occam’s Razor](https://effectivesoftwaredesign.com/2013/08/05/simplicity-in-software-design-kiss-yagni-and-occams-razor/)

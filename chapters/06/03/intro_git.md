@@ -1,5 +1,5 @@
 (git)=
-# Introdução ao controle de Versão e Git
+# 6.3 Introdução ao controle de Versão e Git
 
 Nesta seção falaremos do controle de versão, um dos processos mais importantes no desenvolvimento de softwares e também na Engenharia de Analytics. Também falaremos da ferramenta mais popular de controle de versão chamada git. Vamos lá?
 
@@ -7,7 +7,11 @@ Nesta seção falaremos do controle de versão, um dos processos mais importante
 
 Em primeiro lugar você deve estar se perguntando, afinal o que é "controle de versão"? Eu realmente preciso aprender isso? A resposta começa identificando que você provavelmente já possui seu próprio sistema de controle de versão "caseiro":
 
-[**Figura com diferentes arquivos com nomes V1, V2, etc.**]
+```{figure} ../../../assets/img/excel_copia.png
+:name: excel_copia
+
+Quem nunca sofreu com isso? Fonte: [dropbox.fix](https://dropboxfix.wordpress.com/)
+```
 
 Ou seja, o controle de versão é um processo que registra alterações em um arquivo ou conjunto de arquivos para que você possa lembrar ou retomar versões específicas mais tarde. Infelizmente, a maior parte das aplicações não possuem um controle de versão bem desenvolvido ou que permita ainda o trabalho colaborativo como o necessário em projetos complexos de software ou dados. 
 
@@ -37,7 +41,7 @@ O  Git é organizado em **repositórios** que controlam a versão de todos os ar
 A maior plataforma de hospedagem de Git, o [Github](https://github.com/about), é usado por mais de 83 milhõres de usuários ativos e possui mais de 200 milhões de projetos hospedados. Em 2018 ela foi adquirida pela Microsoft por U$7,5 bilhões.
 ```
 
-### Breve História do Git
+## Breve História do Git
 
 O Git foi desenvolvido para substituir um sistema Controle de Versão proprietário utilizado pelo time de desenvolvimento do *kernel* Linux até então chamado BitKeeper. Por ser um sistema de código-aberto, a decisão da BitKeeper em cobrar pelo seu serviço tornou seu uso inviável por Linus e seu time. Assim, o Git foi desenvolvido com algumas [metas em mente](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Uma-Breve-Hist%C3%B3ria-do-Git):
 
@@ -74,7 +78,7 @@ doesn't do a whole lot, but what it _does_ do is track directory
 contents efficiently.
 ```
 
-### Como o Git funciona
+## Como o Git funciona
 
 ```{admonition} Nota
 Os comandos e termos do Git são escritos na língua inglesa. Vamos tentar traduzir os termos para facilitar o entendimento, mas deixando os termos originais em inglês devidamente registrados.
@@ -85,19 +89,19 @@ Embora pareça "custoso", armazenar a história completa de todos os arquivos em
 
 Em resumo, cada vez que realizamos um `commit` no Git, nós tiramos uma foto do estado de todos os arquivos em nosso repositório naquele momento. É como se pudéssemos salvar não só o arquivo que estamos trabalhando (como faríamos usando o "Salvar" de uma planilha ou arquivo qualquer) mas o próprio diretório em que esta planilha está e o estado de todos os **arquivos simultaneamente**. 
 
-Por exemplo, ao escrever este livro eu posso ter iniciado escrevendo o Capítulo 1 através de um arquivo texto um formato chamado `markdown` (equivalente a um arquivo docx do MS Word). Na primeira versão do Livro, digo ao Git para "congelar" a versão V1  que contém apenas o arquivo `Cap1.md`. Depois, adiciono um arquivo para o Capítulo 2 e mais uma vez salvo a versão do repositório Git. Como não fiz alterações no Capítulo 1, o Git apenas registra que esse arquivo não sofreu mudanças e salva uma imagem do arquivo `Cap2.md` em seu registro. Em seguida, adiciono algumas seções no Capítulo 1 e o Git altera a versão mais recente do arquivo `Cap1.md` para essa versão e registra que não houve alterações no `Cap2.md`. Porém, ao adicionar o Capítulo 3, equivocadamente deletamos os demais capítulos e salvamos o estado do repositório no Git. Neste caso, o Git vai fazer duas operações: registrar um novo arquivo `Cap3.md` e registrar que os outros arquivos foram excluídos da imagem mais recente do repositório. No entanto, como o Git armazena a **histórica completa** dos arquivos, conseguimos prontamente restaurar os demais capítulos na Versão 5 do repositório, sem sofrer nenhuma perda no trabalho. Um ponto importante é que o nome dos arquivos não se altera, as versões apontadas entre parênteses na Figura abaixo serve apenas para indicar a versão do arquivo que o Git está apontando.
+Por exemplo, ao escrever este livro eu posso ter iniciado escrevendo o Capítulo 1 através de um arquivo texto um formato chamado `markdown` (equivalente a um arquivo docx do MS Word). Na primeira versão do Livro, digo ao Git para "congelar" a versão V1  que contém apenas o arquivo `Cap1.md`. Depois, adiciono um arquivo para o Capítulo 2 e mais uma vez salvo a versão do repositório Git. Como não fiz alterações no Capítulo 1, o Git apenas registra que esse arquivo não sofreu mudanças e salva uma imagem do arquivo `Cap2.md` em seu registro. Em seguida, adiciono algumas seções no Capítulo 1 e o Git altera a versão mais recente do arquivo `Cap1.md` para essa versão e registra que não houve alterações no `Cap2.md`. Porém, ao adicionar o Capítulo 3, equivocadamente deletamos os demais capítulos e salvamos o estado do repositório no Git. Neste caso, o Git vai fazer duas operações: registrar um novo arquivo `Cap3.md` e registrar que os outros arquivos foram excluídos da imagem mais recente do repositório. No entanto, como o Git armazena a **históra completa** dos arquivos, conseguimos prontamente restaurar os demais capítulos na Versão 5 do repositório, sem sofrer nenhuma perda no trabalho. Um ponto importante é que o nome dos arquivos não se altera, as versões apontadas entre parênteses na Figura abaixo serve apenas para indicar a versão do arquivo que o Git está apontando.
 
-```{figure} ../../assets/../../assets/img/git_versoes.png
+```{figure} ../../../assets/img/git_versoes.png
 Versões do Git
 ```
 
 Na prática, o Git permite um versionamento ainda mais flexível através do uso de `branches` ("galhos") e outras funcinalidades que veremos na sequência. Ainda assim, em geral, não será necessário entendermos a fundo o funcionamento do Git mas somente suas funções principais.
 
 ```{admonition} Importante
-Se para arquivos de código a história não é importante, o mesmo nem sempre a verdade quando trabalhamos com dados em um repositório Git. Por isso, **não é recomendado armazenar dados** em um sistema de controle de versão. Devemos utilizar sistemas de armazenamento apropriados para isso como um armazenamento na nuvem.
+Se para arquivos de código o tamanho de armazenamento em geral não é importante, o mesmo não é verdade quando trabalhamos com dados em um repositório Git. Por isso, **não é recomendado armazenar dados** em um sistema de controle de versão. Devemos utilizar sistemas de armazenamento apropriados para isso como um armazenamento na nuvem.
 ```
 
-### Os três Estados do Git
+## Os três Estados do Git
 
 Antes de entrarmos na prática do Git, precisamos clarificar um ponto que ajudará no entendimento e na resolução de problemas no Git (acredite, todo desenvolvedor tem ou terá problemas com Git em algum momento).
 
@@ -107,34 +111,10 @@ Quando trabalhamos em um repositório Git, cada arquivo pode estar em três esta
 - *modified* (modificado): quando o arquivo foi modificado e está diferente da última versão registrada no Git. No entanto, as alterações ainda não foram preparadas (*staged*) e portanto o Git não sabe se deve ou não registrá-las em uma novo *commit*.
 - *staged* (preparado): significa que você indicou ao Git que o arquivo deve ser adicionado na próxima versão (*commit*). É um passo intermediário antes de salvar uma nova imagem do diretório.
 
-![Diretório de trabalho, área de preparo, e o diretório Git. [Fonte:](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-O-B%C3%A1sico-do-Git) ](../../../assets/img/git_3_states.png)
+```{figure} ../../../assets/img/git_estados.png
+Diretório de trabalho, área de preparo (índice), e o diretório Git. Adaptado de [fonte]([Diretório de trabalho, área de preparo, e o diretório Git. [Fonte:](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-O-B%C3%A1sico-do-Git))
+```
 
 Quando acessamos uma versão do projeto ou clonamos um repositório remoto, nosso diretório de trabalho será uma cópia do repositório. A partir do momento que modificarmos um arquivo ou adicionarmos um novo arquivo, nosso diretório de trabalho passa a estar em um estado distinto do repositório original.
 
-Por exemplo, ao iniciar o repositório git do nosso exemplo acima, temos e
-
-### Como instalar o Git
-
-- Citar CLI ou ferramentas
-### Iniciando um projeto
-
-### Realizando um Commit
-
-### Trabalhando com *Branches*
-
-- Falar do "arquivo sumir"
-
-### Lidando com conflitos
-### Refazendo coisas
-
-https://git-scm.com/book/pt-br/v2/Fundamentos-de-Git-Desfazendo-coisas#r_undoing
-
-# To do
-
-- Gitinit
-- Git checkout
-- Git diff
-- Git Merge
-- Git pull
-- Git push
 

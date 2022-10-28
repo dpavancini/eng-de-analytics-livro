@@ -57,6 +57,7 @@ parts:
         - file: chapters/06/01/boas_praticas_prog.md
         - file: chapters/06/02/boas_praticas_dev.md
         - file: chapters/06/03/intro_git.md
+        - file: chapters/06/04/git_pratica.md
         - file: chapters/06/leia_mais.md
     - file: chapters/07/intro.md
   - caption: Modelando Dados
@@ -89,7 +90,7 @@ parts:
         - file: chapters/11/05/mapeamento_chaves.md
         - file: chapters/11/06/tabela_fato.md
         - file: chapters/11/07/agregadas_derivadas.md
-        #- file: chapters/09/leia_mais.md
+        - file: chapters/11/leia_mais.md
     - file: chapters/12/intro.md
   - caption: Transformando dados
     chapters:

@@ -1,17 +1,20 @@
-# Boas práticas de desenvolvimento
+# 6.2 Boas práticas de desenvolvimento
 
 > Os primeiros 90% de código levam 90% do tempo de desenvolvimento. O restante 10% do código representa o restante 90% do desenvolvimento
 > [Tom Cargill, Bell Labs](https://en.wikipedia.org/wiki/Ninety%E2%80%93ninety_rule)
 
 O desenvolvimento de software moderno não se resume a códigos bem escritos. O próprio processo de desenvolvimento precisa aderir a boas práticas de gestão, qualidade, entrega contínua e outros conceitos do processo de [DevOps](https://www.atlassian.com/br/devops). Mais do que uma iniciativa individual, o DevOps (e como veremos depois, o DataOps) é uma cultura que precisa ser desenvolvida continuamente em todos os participantes de um projeto de dados.
-
-## Versionamento de código 
-
 ## Debugging
 
 Entender como testar e depurar (*debug*) códigos é essencial para um bom desenvolvimento. Um desenvolvedor sênior é definido muito mais pelo quanto "ele já errou" (e os caminhos para não errar novamente) do que pelo quanto ele "sabe". Em times de desenvolvimento, é comum que um profissional experiente consiga isolar rapidamente um erro que um desenvolvedor junior perdeu uma semana inteira de trabalho resolvendo.
 
-Na prática, isso significa que o investimento em entender mais profundamente uma ferramenta ou linguagem de programação 
+
+```{figure} ../../../assets/img/debugging.png
+:name: debugging
+:height: 450px
+
+*Debugging* é uma arte. Fonte: [monkeyuser.com](http://monkeyuser.com)
+```
 
 ## Entregas rápidas
 
@@ -32,7 +35,12 @@ O próximo passo da boa prática de desenvolvimento é o uso de ferramentas de a
 - Integração Contínua (do inglês, *continuous integration*)
 - Entrega Contínua (do inglês, *continuous delivery*)
 
-[Diagrama de CI/CD]
+```{figure} ../../../assets/img/ci_cd_pipeline_meme.jpg
+:name: ci_cd
+:height: 450px
+
+Na prática a realidade é outra. Fonte: [devrants](https://devrant.com/rants/4577020/ci-cd-pipelines-in-real-life))
+```
 
 
-## Monitoramento e Qualidade
+ <!-- Monitoramento e Qualidade -->
