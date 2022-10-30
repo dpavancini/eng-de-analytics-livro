@@ -31,7 +31,13 @@ html:
   use_repository_button: true
   google_analytics_id: G-XDLZWNXBSG
   baseurl: "https://www.engdeanalytics.com.br"
+  favicon_url: "favicon.ico"
 
 exclude_patterns:
 - venv/*
 - "README.md"  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
+
+sphynx:
+  config:
+    html_extra_path: ['assets']
+    language: 'pt-br'

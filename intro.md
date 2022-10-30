@@ -2,11 +2,11 @@
 1a Edição por [Daniel Avancini](https://www.linkedin.com/in/daniel-avancini-bb8bb629/).
 
 
-Este livro apresenta as técnicas e os conceitos necessários para que um profissional de dados moderno domine um processo de analytics de ponta a ponta. As técnicas e ferramentas aqui apresentadas são parte do framework **Modern Data Stack**.
+Este livro apresenta as técnicas e os conceitos necessários para que um Engenheiro(a) de Analytics domine um processo de analytics de ponta a ponta. As técnicas e ferramentas aqui apresentadas são parte do framework **Modern Data Stack**.
 
 Mais do que tentar ser a fonte da verdade, nosso objetivo é ser um guia para os diferentes temas relacionados à função de Engenharia de Analytics (ou *analytics engineering*). Esperamos que a partir desta leitura e das sugestões de leituras complementares você consiga construir sua própria visão do processo de Engenharia de Analytics e do **Modern Data Stack**.
 
-Partes deste livro formam a base do curso de Formação em Engenharia de Analytics da [Indicium Academy](https://academy.indicium.tech/course/ae-08-22?utm_source=livro-eng-analytics&utm_medium=referral&utm_campaign=home_livro) e dos programas de treinamento dos profissionais da [Indicium](https://indicium.tech?utm_source=livro-eng-analytics&utm_medium=referral&utm_campaign=home_livro)
+Partes deste livro formam a base do curso de Formação em Engenharia de Analytics da [Indicium Academy](https://academy.indicium.tech/course/ae-08-22?utm_source=livro-eng-analytics&utm_medium=referral&utm_campaign=home_livro) e dos programas de treinamento dos profissionais da [Indicium](https://indicium.tech?utm_source=livro-eng-analytics&utm_medium=referral&utm_campaign=home_livro).
 
 --- 
 ## Sumário
@@ -43,7 +43,7 @@ Sugira novos temas ou dê feedbacks através das *Issues* neste repositório.
 :::
 
 :::{grid-item-card}
-:link: https://github.com/dpavancini/eng-de-analytics-livro/issues
+:link: https://join.slack.com/t/superanalyticsbr/shared_invite/zt-1itm3pvb7-e7J3vty1WufYZ~sHplht1Q
 :class-header: bg-light
 
 🙌 Conecte-se

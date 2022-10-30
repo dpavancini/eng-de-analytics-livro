@@ -10,7 +10,7 @@ Os processos de transformação de dados são semelhantes não importa a arquite
 
 No {ref}`MDS<MDS>`, vamos utilizar o próprio *Data Warehouse* como ambiente de transformação e utilizar ferramentas como o dbt para modelar os dados seguindo as melhores práticas de desenvolvimento. Essa decisão evita a necessidade dos Engenheiros de Analytics dominarem muitas linguagens de programação e frameworks de desenvolvimento distintos e foquem apenas na construção do data warehouse utilizando apenas o necessário para o framework do ELT. No equilíbrio entre desenvolvimento e conhecimento de negócio, nosso foco é o negócio.
 
-```{admonition} 
+```{admonition} Veja mais:
 No vídeo abaixo são apresentados dois casos comuns de arquitetura de dados usando ETL tradicional e Moderno:<br><iframe width="560" height="315" src="https://www.youtube.com/embed/XLxoB83Tcd8?start=3516&end=4980" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
 
@@ -55,7 +55,7 @@ As principais desvantagens dessa abordagem são:
 Na abordagem moderna as etapas de processamento de dados ficam dentro do Data Warehouse, de modo que o processo é invertido para **Extract-Load-Transform** (ELT). A principal é diferença em relação à abordagem tradicional é a criação de uma nova função, do [Engenheiro de Analytics](https://blog.indicium.tech/analytics-engineer-conheca-6-responsabilidades-dessa-nova-funcao/), responsável por transformar os dados dentro do Data Warehouse. Essa função resolve o distanciamento entre dados e negócio comum nos processos de ETL tradicionais.
 
 ```{figure} ../../../assets/img/elt.png
-:name: elt
+:name: elt_diagrama
 
 ELT moderno.
 ```

@@ -60,6 +60,10 @@ parts:
         - file: chapters/06/04/git_pratica.md
         - file: chapters/06/leia_mais.md
     - file: chapters/07/intro.md
+      sections:
+        - file: chapters/07/01/principios.md
+        - file: chapters/07/02/arq_referencia.md
+        - file: chapters/07/leia_mais.md
   - caption: Modelando Dados
     chapters:
     - file: chapters/08/intro.md
