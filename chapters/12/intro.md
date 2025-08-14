@@ -1,15 +1,15 @@
 (bigquery)=
 # Capítulo 12 -  Configurando um Data Warehouse com BigQuery
 
-No último capítulo aprendemos sobre a teoria por trás da modelagem dimensional de  Data Warehouses. Para aprendermos a fazer isso na prática, precisamos criar o nosso próprio DW. Embora existam muitas possibilidades de tecnologias e empresas nessa área, os DWs na nuvem mais utilizados são o [Google BigQuery](https://cloud.google.com/bigquery?hl=pt-br), [Amazon Redshift](https://aws.amazon.com/pt/redshift/) e [Azure Synapse](https://docs.microsoft.com/pt-br/azure/synapse-analytics).
+No último capítulo aprendemos sobre a teoria por trás da modelagem dimensional de  Data Warehouses. Para aprendermos a fazer isso na prática, precisamos criar o nosso próprio DW. Embora existam muitas possibilidades de tecnologias e empresas nessa área, os DWs em nuvem mais utilizados são o [Google BigQuery](https://cloud.google.com/bigquery?hl=pt-br), o [Amazon Redshift](https://aws.amazon.com/pt/redshift/) e o [Azure Synapse](https://docs.microsoft.com/pt-br/azure/synapse-analytics).
 
 ```{admonition} Atenção
-Você precisará criar uma conta no Google Cloud Platform para essa parte do tutorial e configurar um cartão de crédito. Mas não se preocupe, há uma ampla camada gratuita de serviços e nada será cobrado no seu cartão. Se preferir, pode cancelar a conta após o tutorial.
+Para essa parte do tutorial, você precisará criar uma conta no Google Cloud Platform (GCP) e configurar um cartão de crédito. Mas não se preocupe, há uma ampla camada gratuita de serviços e nada será cobrado no seu cartão. Se preferir, pode cancelar a conta após o tutorial.
 
 Se você tiver interesse (e conhecimento) em simular um DW *on-premises*, pode configurar um banco de dados PostgreSQL em sua máquina local.
 ```
 
-Para criar uma instância do Google BigQuery, é muito fácil. Precisamos apenas acessar o “BigQuery” pelo menu lateral ou pela busca do GCP e clicar em “Ativar”. Pronto! Já temos nosso primeiro DW no BigQuery configurado. O próximo passo é criarmos nossa credencial para poder utilizar em nossas ferramentas do {ref}`MDS<MDS>` como o [Hevo](https://hevodata.com/) e [dbt](https://www.getdbt.com/).
+Para criar uma instância do Google BigQuery, é muito fácil. Precisamos apenas acessar o “BigQuery” pelo menu lateral ou pela busca do GCP e clicar em “Ativar”. Pronto! Já temos nosso primeiro DW no BigQuery configurado. O próximo passo é criarmos nossa credencial para poder utilizar em nossas ferramentas do {ref}`MDS<MDS>` como o [Hevo](https://hevodata.com/) e o [dbt](https://www.getdbt.com/).
 
 
 ```{figure} ../../assets/img/ativando_bq.png
@@ -54,4 +54,4 @@ Selecione a opção "Administrador de recursos do BigQuery"
 Lembre-se de armazenar as credenciais com segurança.
 ```
 
-Pronto! Você já tem uma instância do BigQuery ativada em sua conta e pode começar a armazenar e processar dados em grande escala em um *data warehouse* moderno na nuvem. Para a maioria dos casos práticos, o BigQuery é uma solução gerenciada que atende facilmente aos requisitos de projetos de *data warehouse*. Em alguns casos, especialmente com grandes volumes de dados, ele pode se tornar caro quando comparado a outras soluções de mercado. Então, é bom sempre estar atento aos custos dos seus serviços na nuvem!
+Pronto! Você já tem uma instância do BigQuery ativada em sua conta, e pode começar a armazenar e processar dados em grande escala em um *data warehouse* moderno na nuvem. Para a maioria dos casos práticos, o BigQuery é uma solução gerenciada que atende facilmente aos requisitos de projetos de *data warehouse*. Em alguns casos, especialmente com grandes volumes de dados, ele pode se tornar caro quando comparado a outras soluções de mercado. Então é bom sempre estar atento aos custos dos seus serviços na nuvem!
