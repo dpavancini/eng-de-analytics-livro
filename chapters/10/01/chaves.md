@@ -4,7 +4,7 @@ Já falamos sobre chaves primárias e estrangeiras, e sobre sua importância em 
 
 ## Chave Natural ou de Negócio
 
-É uma chave de um sistema ou banco de dados que identifica um registro de forma única. Em muitos casos, é simplesmente chamada de ID ou CÓDIGO. Essas chaves entram na tabela dimensão como chaves de negócio, mas não devem ser usadas como chaves da dimensão. Para isso, utilizam-se as chaves de dimensão.
+É uma chave de um sistema ou banco de dados que identifica um registro de forma única. Em muitos casos, é simplesmente chamada de `ID` ou `CÓDIGO`. Essas chaves entram na tabela dimensão como chaves de negócio, mas não devem ser usadas como chaves da dimensão. Para isso, utilizam-se as chaves de dimensão.
 
 ```{table} A coluna ID é uma chave natural ou de negócio.
 | ID  | Nome            | Cidade         |
