@@ -1,6 +1,6 @@
 # 11.7 Tabelas Agregadas e Derivadas
 
-Ao utilizar tabelas de fatos no menor grão possível, obtemos uma flexibilidade importante na arquitetura do DW. Por outro lado, é comum que tabelas de fatos reais fiquem muito grandes (com milhões ou até bilhões de linhas), de modo que consultas agregadas nessas tabelas (como `COUNT`, `AVG`, `SUM`) podem levar um tempo considerável. Esse tempo será ainda maior quando existirem muitos `JOINSs` e consultas mais complexas.
+Ao utilizar tabelas de fatos no menor grão possível, obtemos uma flexibilidade importante na arquitetura do DW. Por outro lado, é comum que tabelas de fatos reais fiquem muito grandes (com milhões ou até bilhões de linhas), de modo que consultas agregadas nessas tabelas (como `COUNT`, `AVG`, `SUM`) podem levar um tempo considerável. Esse tempo será ainda maior quando existirem muitos `JOINs` e consultas mais complexas.
 
 Para amenizar o problema do tempo de consulta muito alto e otimizar o uso do DW, é comum criar **tabelas pré-agregadas** e tabelas resumo no processo de ETL. Devemos tomar especial cuidado com medidas não aditivas ou semiaditivas nesta agregação, pois, em geral, não é possível retornar aos dados originais, ou mesmo realizar agregações adicionais (ex.: médias).
 
