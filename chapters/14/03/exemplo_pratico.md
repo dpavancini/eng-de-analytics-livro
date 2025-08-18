@@ -62,7 +62,7 @@ Configurando um destino no Airbyte
 
 ## Ativando um *sync*
 
-Para executar a ingestão de dados em si, precisamos realizar um *sync* da conexão entre fonte e destindo de dados no Airbyte. Cada *sync* pode ser configurado para executar em intervalos pré-definidos (ex. a cada 24 horas), por período (ex. todo dia às 02:00) ou através de configurações avançadas de CRON. VocÊ pode verificar o status de cada *sync* na página *Connections*
+Para executar a ingestão de dados em si, precisamos realizar um *sync* da conexão entre fonte e destindo de dados no Airbyte. Cada *sync* pode ser configurado para executar em intervalos predefinidos (ex. a cada 24 horas), por período (ex. todo dia às 02:00) ou através de configurações avançadas de CRON. VocÊ pode verificar o status de cada *sync* na página *Connections*
 
 ```{figure} ../../../assets/img/sync_airbyte.png
 :name: sync_airbyte
