@@ -1,6 +1,6 @@
 # 4.9 Planilhas vs Bancos de Dados SQL: Quais as diferenças?
 
-Uma parte considerável dos dados das organizações estão armazenados não em bancos de dados propriamente ditos, mas em planilhas eletrônicas como o Microsoft Excel ou Google Sheets. Na superfície, não parece haver tantas diferenças entre os dois: dados são armazenados em tabelas com linhas e colunas, podem ser armazenados em diferentes tipos, agregados, concatenados, etc.  No entanto, algumas diferenças importantes existem entre os dois:
+Uma parcela considerável dos dados das organizações estão armazenados em planilhas eletrônicas como o Microsoft Excel ou Google Sheets, em vez de banco de dados. À primeira vista, não parece haver tanta diferença entre os dois, já que ambos organizam dados em tabelas com linhas e colunas, permitindo o armazenamento, agregação e concatenação de informações. No entanto, existem diferenças fundamentais entre os dois que impactam diretamente a confiabilidade e o desempenho.
 
 ## Consistência
 
@@ -8,7 +8,7 @@ Uma característica fundamental dos bancos de dados SQL é o rigor com os tipos 
 
 ## Reprodutibilidade
 
-Para realizar uma consulta ou operações sobre dados em uma planilha, precisamos  de instruções detalhadas de como fazer essa consulta.  O resultado final da consulta (os dados) e a forma como chegamos nele se misturam e não há uma forma padrão de reproduzir os passos realizados. O resultado é que a depender da forma como fazemos esse processo, pode ser até mesmo impossível retornar aos dados iniciais que utilizamos no processo.  Para compartilhar a análise, precisamos enviar o arquivo da planilha.
+Para realizar uma consulta ou operações sobre dados em uma planilha, precisamos  de instruções detalhadas de como fazer essa consulta. O resultado final da consulta (os dados) e a forma como chegamos nele se misturam e não há uma forma padrão de reproduzir os passos realizados. O resultado é que a depender da forma como fazemos esse processo, pode ser até mesmo impossível retornar aos dados iniciais que utilizamos no processo.  Para compartilhar a análise, precisamos enviar o arquivo da planilha.
 Em SQL, a consulta se preocupa com o que  queremos consultar, deixando ao banco de dados a tarefa de pensar como fazer a consulta. Dessa forma, separamos a camada de processamento da camada de dados, de modo que podemos compartilhar apenas as instruções (em um simples arquivo txt) e manter os dados isolados. Isso permite uma reprodutibilidade muito maior que em planilhas. 
 
 ## Ausência de chaves 
@@ -21,5 +21,5 @@ SQL é muito mais rápido que o Excel em volumes maiores de dados. Entre outros 
 
 ## Volume
 
-Quando estamos trabalhando com um pequeno volume de dados, algumas centenas ou milhares de linhas, a opção entre planilha e banco de dados não é tão clara. Em grandes volumes, não há opção; as planilhas têm sérias limitações de volume de dados (EXCEL suporta até 1 milhão de linhas, mas com grandes dificuldades) enquanto bancos de dados SQL podem suportar milhões de linhas ou mesmo bilhões.
+Quando estamos trabalhando com um pequeno volume de dados, algumas centenas ou milhares de linhas, a opção entre planilha e banco de dados não é tão clara. Em grandes volumes, não há opção; as planilhas têm sérias limitações de volume de dados (Excel suporta até 1 milhão de linhas, mas com grandes dificuldades) enquanto bancos de dados SQL podem suportar milhões de linhas ou mesmo bilhões.
 
