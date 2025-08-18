@@ -10,10 +10,6 @@ Os processos de transformação de dados são semelhantes, independentemente da 
 
 No {ref}`MDS<MDS>`, vamos utilizar o próprio *data warehouse* como ambiente de transformação, e utilizar ferramentas como o *dbt* para modelar os dados seguindo as melhores práticas de desenvolvimento. Essa decisão evita a necessidade de os Engenheiros de Analytics dominarem muitas linguagens de programação e frameworks de desenvolvimento distintos e focarem apenas na construção do *data warehouse*, utilizando apenas o necessário para o framework do ELT. No equilíbrio entre desenvolvimento e conhecimento de negócio, nosso foco é o negócio.
 
-```{admonition} Veja mais:
-No vídeo abaixo são apresentados dois casos comuns de arquitetura de dados usando ETL tradicional e Moderno:<br><iframe width="560" height="315" src="https://www.youtube.com/embed/XLxoB83Tcd8?start=3516&end=4980" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-```
-
 ## ETL baseado em ferramentas visuais
 
 O diagrama abaixo apresenta uma arquitetura comum em projetos de dados liderados pela área de BI. Nestes projetos, as três etapas do ETL são geralmente realizadas dentro de uma ferramenta monolítica como Pentaho ou Informatica.
