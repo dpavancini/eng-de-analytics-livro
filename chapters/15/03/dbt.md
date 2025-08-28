@@ -29,7 +29,7 @@ Se você clonou o repositório de exemplo, as etapas desta subseção já terão
 
 ```yaml
 name: 'northwind'
-version: '1.0.0'
+version: '1.10.0'
 config-version: 2
 
 profile: 'northwind'
