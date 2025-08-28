@@ -84,16 +84,12 @@ Atualmente, o dbt possui drivers para os principais data warehouses na nuvem e a
 northwind:
   outputs:
     dev:
-      dataset: northwind
-      job_execution_timeout_seconds: 300
-      job_retries: 1
-      keyfile: path/to/keyfile.json
-      location: US
-      method: service-account
-      priority: interactive
-      project: <project_id>
-      threads: 1
-      type: bigquery
+      type: databricks
+      catalog: workspace
+      schema: default
+      host: YOURORG.databrickshost.com  # Substitua pelo seu host
+      http_path: /SQL/YOUR/HTTP/PATH  # Substitua pelo seu path HTTP
+      token: dapiXXXXXXXXXXXXXXXXXXXXXXX  # Substitua pelo seu token de acesso
 ```
 **Exemplo de dbt Profile**
 
