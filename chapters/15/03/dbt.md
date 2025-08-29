@@ -29,7 +29,7 @@ Se você clonou o repositório de exemplo, as etapas desta subseção já terão
 
 ```yaml
 name: 'northwind'
-version: '1.10.0'
+version: '1.10.5'
 config-version: 2
 
 profile: 'northwind'
@@ -145,27 +145,27 @@ Depois de definidas as fontes, elas podem ser chamadas nos modelos através da s
 
 ```sql
 select * 
-from {{source('nome_fonte', 'nome_tabela')}}
+from {{ source('nome_fonte', 'nome_tabela' ) }}
 ```
 
-Não é necessário mapear todas as tabelas do *data warehouse* de uma vez, mas podemos adicionar de forma incremental o que for necessário para os modelos. O uso do arquivo de *sources* permite criar a linhagem dos dados através da função `{ source('nome_da_fonte',’nome_da_tabela’)}}` e também permite documentar e escrever testes sobre as fontes de dados.
+Não é necessário mapear todas as tabelas do *data warehouse* de uma vez, mas podemos adicionar de forma incremental o que for necessário para os modelos. O uso do arquivo de *sources* permite criar a linhagem dos dados através da função `{ source('nome_da_fonte', ’nome_da_tabela’) }}` e também permite documentar e escrever testes sobre as fontes de dados.
 
 ```yaml
 version: 2
 
 sources:
-  - name: northwind # aqui você deve substituir pelo nome do dataset criado pela ferramenta de ingestão no bigquery
-    schema: 
-    description: Essa é a fonte de dados do nosso ERP
+  - name: northwind # aqui você deve substituir pelo nome do dataset criado pela ferramenta de ingestão
+    schema: erp_northwind
+    description: "Essa é a fonte de dados do nosso ERP."
     tables:
       - name: products
-        description: Essa é a tabela de produtos do ERP.
+        description: "Essa é a tabela de produtos do ERP."
 
       - name: employees
-        description: Essa é a tabela de funcionários do ERP.
+        description: "Essa é a tabela de funcionários do ERP."
         
       - name: customers
-        description: Essa é a tabela de clientes do ERP. O dono desse dado é a equipe comercial.
+        description: "Essa é a tabela de clientes do ERP. O dono desse dado é a equipe comercial."
  
 ```
 
@@ -173,7 +173,7 @@ Uma boa prática é incluir o arquivo `sources.yml` no diretório *staging*, ond
 
 ### Criando nossos primeiros modelos
 
-Um modelo em dbt é um arquivo `.sql` que tem como entrada uma tabela fonte do banco de dados ou outro modelo do dbt. Por padrão, o dbt irá criar um objeto no banco de dados com o mesmo nome do arquivo e com o tipo de materialização escolhido (tabela, visualização, etc.). Ao utilizar corretamente a interface do dbt, conseguimos garantir a linhagem dos dados, isto é, a ordem correta em que cada script SQL deve ser executado no banco de dados. Embora seja possível escrever um modelo `.sql` que referencie diretamente uma tabela do banco de dados, essa prática deve ser evitada. As duas interfaces principais de um modelo são as funções `{{ source('nome_da_fonte',’nome_da_tabela’)}}` e `{{ ref(‘nome_do_modelo’) }}`. A primeira indica ao dbt que aquele modelo utiliza dados da tabela fonte do banco de dados que não depende de outros modelos, e a segunda indica que a fonte dos dados é um outro modelo que pode ou não existir no banco de dados inicialmente e deve ser processado na sequência correta.
+Um modelo em dbt é um arquivo `.sql` que tem como entrada uma tabela fonte do banco de dados ou outro modelo do dbt. Por padrão, o dbt irá criar um objeto no banco de dados com o mesmo nome do arquivo e com o tipo de materialização escolhido (tabela, visualização, etc.). Ao utilizar corretamente a interface do dbt, conseguimos garantir a linhagem dos dados, isto é, a ordem correta em que cada script SQL deve ser executado no banco de dados. Embora seja possível escrever um modelo `.sql` que referencie diretamente uma tabela do banco de dados, essa prática deve ser evitada. As duas interfaces principais de um modelo são as funções `{{ source('nome_da_fonte', ’nome_da_tabela’) }}` e `{{ ref(‘nome_do_modelo’) }}`. A primeira indica ao dbt que aquele modelo utiliza dados da tabela fonte do banco de dados que não depende de outros modelos, e a segunda indica que a fonte dos dados é um outro modelo que pode ou não existir no banco de dados inicialmente e deve ser processado na sequência correta.
 
 ```{figure} ../../../assets/img/fluxo_dbt.png
 :name: fluxo_dbt
@@ -207,7 +207,7 @@ with
             , phone
             , company_name
             , contact_title
-        from {{source('northwind','customers')}}
+        from {{ source('northwind', 'customers') }}
 )
 
 select *
@@ -274,7 +274,7 @@ As chaves autoincrementais são muito utilizadas em bancos de dados e de fácil 
 with 
     staging as (
         select *
-        from {{ref('stg_customers')}}
+        from {{ ref('stg_customers') }}
 )
     , transformed as (
         select
@@ -293,7 +293,7 @@ with
         from staging
 )
 
-select *  from transformed
+select * from transformed
 ```
 
 Depois de criadas as tabelas dimensão, mudamos nossa atenção para a tabela fato. Iniciamos pela tabela de capa do pedido (*orders*) e suas dimensões `dim_shippers`, `dim_customers` e `dim_employees`. A ideia é criar uma tabela fato apenas com as chaves estrangeiras, porém, logo vemos que algumas colunas da tabela de pedidos não são medidas, mas crescem proporcionalmente à tabela fato (informações de entrega, Código do Pedido, etc). Desse modo, resolvemos deixar essas informações na tabela fato como dimensões degeneradas. 
@@ -303,38 +303,31 @@ with customers as (
    select
      customer_sk
    , customer_id
-   FROM {{ref('dim_customers')}}   
-),
- 
-employees as (
+   from {{ ref('dim_customers') }}   
+)
+
+, employees as (
    select
      employee_sk
    , employee_id
-   FROM {{ref('dim_employees')}}   
-),
- 
-suppliers as (
-   select
-     supplier_sk
-   , supplier_id
-   FROM {{ref('dim_suppliers')}}   
-),
- 
-shippers as (
+   from {{ ref('dim_employees') }}   
+)
+
+, shippers as (
    select
      shipper_sk
    , shipper_id
-   FROM {{ref('dim_shippers')}}   
-),
- 
-products as (
+   from {{ ref('dim_shippers') }}   
+)
+
+, products as (
    select
      product_sk
    , product_id
-   FROM {{ref('dim_products')}}   
-),
- 
-orders_with_sk as (
+   from {{ ref('dim_products') }}   
+)
+
+, orders_with_sk as (
    select
      orders.order_id
    , employees.employee_sk as employee_fk
@@ -350,13 +343,24 @@ orders_with_sk as (
    , orders.freight
    , orders.ship_address
    , orders.required_date
-   from {{ref('stg_orders')}} orders
-   LEFT JOIN employees employees ON orders.employee_id = employees.employee_id
-   LEFT JOIN customers customers ON orders.customer_id = customers.customer_id
-   LEFT JOIN shippers shippers ON orders.shipper_id = shippers.shipper_sk
+   from {{ ref('stg_orders') }} orders
+   left join employees on orders.employee_id = employees.employee_id
+   left join customers on orders.customer_id = customers.customer_id
+   left join shippers on orders.ship_via = shippers.shipper_sk
+)
+
+, orders_detail_with_sk as (
+	select
+		order_dtl.order_id
+		, products.product_sk as product_fk
+		, order_dtl.discount
+		, order_dtl.unit_price
+		, order_dtl.quantity
+	from {{ ref('stg_order_detail') }} order_dtl
+	left join products on order_dtl.product_id = products.product_id
 )
  
-select * from orders_with_sk
+select * from orders_detail_with_sk
 ```
 
 Ocorre que não queremos apenas a capa dos pedidos, mas também o detalhamento desses pedidos na tabela fato, ou seja, queremos que o grão da tabela seja cada item do pedido, de modo que possamos somar um total ou média de pedidos por produto/cliente sem recorrer a outras operações de JOIN. Como já vimos no capítulo anterior, a melhor opção é juntar a capa do pedido (`orders`) e o detalhe do pedido (`order_details`) na mesma tabela fato, ainda que essa arquitetura não seja tão eficiente em termos de armazenamento:
@@ -392,7 +396,7 @@ select * from final
 
 ## Rodando o pipeline
 
-Falamos sobre como criar os modelos `.sql` do dbt, mas não como eles são materializados de fato, ou seja, se tornam tabelas, visualizações, etc. Este processo é realizado por meio do comando  `dbt run` ou `dbt build`, que processa as dependências entre os modelos geradas a partir das macros `{{ ref() }}` e `{{ source()}}`, e executa cada script em sua sequência correta:
+Falamos sobre como criar os modelos `.sql` do dbt, mas não como eles são materializados de fato, ou seja, se tornam tabelas, visualizações, etc. Este processo é realizado por meio do comando  `dbt run` ou `dbt build`, que processa as dependências entre os modelos geradas a partir das macros `{{ ref() }}` e `{{ source() }}`, e executa cada script em sua sequência correta:
 
 ```{admonition} Para saber mais.
 Leia a documentação oficial do dbt e entenda a diferença entre *dbt run* e *dbt build*.
@@ -401,8 +405,8 @@ Leia a documentação oficial do dbt e entenda a diferença entre *dbt run* e *d
 ```bash
 $ dbt run
 
-00:01:47  Running with dbt=1.10.0
-00:01:47  Found 2 models, 5 tests, 0 snapshots, 0 analyses, 319 macros, 0 operations, 14 seed files, 7 sources, 0 exposures, 0 metrics
+00:01:47  Running with dbt=1.10.9
+00:01:47  Found 13 models, 21 data tests, 14 seeds, 9 sources, 803 macros
 00:01:47  
 00:01:48  Concurrency: 1 threads (target='dev')
 00:01:48  
@@ -421,7 +425,7 @@ $ dbt run
 Podemos notar no output do `dbt run` que o dbt nos informa o tipo de materialização de cada modelo. Mas como configuramos isso? Há duas formas: através de uma configuração em cada modelo ou de forma mais geral no `dbt_project`. No primeiro exemplo abaixo, podemos instruir o dbt a materializar o modelo `fct_order_detail` como tabela no banco de dados, aumentando a performance em relação às visualizações (*views*). No segundo caso, definimos que as tabelas staging não são necessárias em nosso DW, mas apenas no processo de transformação e, por isso, definimos que todos os modelos na pasta `models/staging` não serão materializados (*ephemeral*). Quando os dois casos estiverem presentes para o mesmo modelo, a configuração dada no modelo tem prioridade sobre a presente no projeto. Em geral, **devemos evitar configurar materializações nos modelos e utilizar as opções do dbt_project.**
 
 ```SQL
-{{config (materialized='table')}}
+{{ config (materialized='table') }}
 
 with customers (
 		(...)
@@ -463,7 +467,7 @@ models:
  - name: dim_customers
    columns:
      - name: customer_sk
-       description: The primary key of the customer
+       description: "A chave surrogate da dimensão."
        tests:
          - unique
          - not_null
@@ -474,8 +478,8 @@ Para entender como os testes funcionam na prática, precisamos rodar o comando `
 ```
 $ dbt test
 
-00:07:00  Running with dbt=1.3.0
-00:07:00  Found 2 models, 5 tests, 0 snapshots, 0 analyses, 319 macros, 0 operations, 14 seed files, 7 sources, 0 exposures, 0 metrics
+00:07:00  Running with dbt=1.10.9
+00:07:00  Found 13 models, 21 data tests, 14 seeds, 9 sources, 803 macros
 00:07:00  
 00:07:00  Concurrency: 1 threads (target='dev')
 00:07:00  
@@ -501,8 +505,8 @@ Vemos que nossa tabela dimensão clientes não possui nenhum registro repetido o
 
 ```bash
 $ dbt test
-00:21:52  Running with dbt=1.3.0
-00:21:53  Found 3 models, 7 tests, 0 snapshots, 0 analyses, 319 macros, 0 operations, 14 seed files, 7 sources, 0 exposures, 0 metrics
+00:21:52  Running with dbt=1.10.9
+00:21:53  Found 13 models, 21 data tests, 14 seeds, 9 sources, 803 macros
 ...
 
 00:22:01  5 of 7 FAIL 693 source_unique_northwind_order_details_order_id ................. [FAIL 693 in 1.58s]
@@ -560,15 +564,15 @@ Como exemplo, queremos validar a quantidade de itens em pedidos da nossa tabela 
 Hipoteticamente, após confirmarmos com a Northwind que esse número é consistente, podemos utilizá-lo como validação em nosso teste de dados `sum_quantity_march_1998.sql`. Notamos que a sintaxe do teste é muito próxima à de um modelo, mas devemos escrever nossa consulta final como se quiséssemos que ela “desse errado"; isto é, queremos retornar todas as linhas onde o teste não passa ao rodar o `dbt test`, e o sucesso no teste ocorre quando o resultado da consulta é vazio.
 
 ```SQL
-* If sum of quantity in March-1998 is not 4065, throws an error */
+-- If sum of quantity in March-1998 is not 4065, throws an error
  
 with
    sum_quantity as (
-       SELECT
-           sum(quantity) as cnt
-       FROM {{ ref ('fct_order_detail') }}
-       where order_date
-       between '1998-03-01' and '1998-03-31'
+        select
+            sum(quantity) as cnt
+        from {{ ref ('fct_order_detail') }}
+        where order_date
+        between '1998-03-01' and '1998-03-31'
    )
  
 select * from sum_quantity where cnt != 4065
