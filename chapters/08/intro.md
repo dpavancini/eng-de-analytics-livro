@@ -12,8 +12,8 @@ Ao longo dos anos, diferentes metodologias foram desenvolvidas para facilitar o 
 ```{table}
 |                      | **Banco de Dados Transacional**                                     | **Data Warehouse**                                                                              |
 |----------------------|---------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
-| **Características**  | Alto volume de pequenas transações; consultas simples e rápidas     | Alto volume de dados; consultas complexas e agregadas; armazenamento colunar                    |
+| **Características**  | Alto volume de pequenas transações; consultas rápidas e pontuais    | Alto volume de dados; consultas complexas e agregadas; armazenamento colunar                    |
 | **Estrutura**        | Normalizada                                                         | Denormalizada                                                                                   |
 | **Tipo de consulta** | Qual o saldo do usuário com CPF xyz?                                | Quantos usuários possuem saldo maior que R$500,00?                                              |
-| **Tecnologias**      | SQL Server, MySQL, Oracle Database, PostgreSQL                      | Amazon Redshift, Google BigQuery, Snowflake                                                     |
+| **Tecnologias**      | SQL Server, MySQL, Oracle Database, PostgreSQL                      | Databricks, Amazon Redshift, Google BigQuery, Snowflake                                                     |
 ```
