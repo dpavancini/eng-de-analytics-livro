@@ -1,7 +1,7 @@
 # 9.1 Tipos de Medidas
-Sempre que possível queremos manter as medidas aditivas. Isso facilita o entendimento do usuário e evita problemas, porém em alguns tipos de medidas isso não é possível (e.x contar distinto).  Existem três tipos de medidas utilizadas:
 
-- Aditivas: medidas que podem ser somadas ao longo das dimensões Ex. Unidades Vendidas,
-- Não Aditivas: medidas que não podem ser somadas ao longo das dimensões. Ex: Contar Distinto
-- Semi aditivas:  medidas que podem ser somadas ao longo de algumas dimensões e não de outras. Ex: Saldo do estoque
+Sempre que possível, é preferível manter as medidas aditivas, pois isso facilita o entendimento do usuário e evita problemas. No entanto, em alguns tipos de medidas, isso não é possível (ex.: contagem distinta). Existem três tipos de medidas:
 
+- **Aditivas**: medidas que podem ser somadas ao longo das dimensões. Ex.: unidades vendidas.
+- **Não aditivas**: medidas que não podem ser somadas ao longo das dimensões. Ex.: contagem distinta.
+- **Semiaditivas**: medidas que podem ser somadas ao longo de algumas dimensões e não de outras. Ex.: saldo de estoque.
