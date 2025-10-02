@@ -1,8 +1,8 @@
 # 7.1 Construindo o Modern Data Stack
 
-Uma estrutura de dados eficiente combina diversos serviços em um data stack, uma pilha de dados.
+Uma estrutura de dados eficiente combina diversos serviços em um data stack, ou pilha de dados.
 
-No geral, uma pilha de dados tem três funções fundamentais: coletar e integrar dados em um data warehouse, limpá-los e transformá-los em informações para agregar valor à tomada de decisão através de visualizações, dashboards de BI etc.
+No geral, uma pilha de dados tem três funções fundamentais: **coletar e integrar dados** em um data warehouse, **limpá-los e transformá-los** em informações para agregar valor à tomada de decisão através de **visualizações** em dashboards de BI.
 
 Todas estas funções são processos do pipeline de dados.
 
@@ -10,7 +10,7 @@ Assim, as ferramentas usadas para cada um desses processos formam o *data stack*
 
 ## Os 7 princípios do MDS
 
-A cada dia surgem novas ferramentas e aplicações de ponta em termos de analytics. Por isso, antes de implementar essa abordagem em um projeto, é preciso entender os princípios que a orientam.
+Novas ferramentas e aplicações de ponta em analytics surgem a todo momento. Por isso, antes de implementar essa abordagem, é crucial entender os princípios que a orientam.
 
 Pensando nisso, vamos falar sobre os 7 princípios que toda abordagem moderna de analytics precisa ter.
 
@@ -24,7 +24,7 @@ Com isso, as organizações podem facilmente expandir ou reduzir sua estrutura d
 
 ### 2. Modularidade
 
-O MDS separa a etapa de transformação, onde ocorre aconstrução da regras de negócio, das etapas de extração (extraction) e carregamento (load) de dados no pipeline de dados. Desta forma é possível combinar diferentes ferramentas de ingestão de dados ao pipeline de forma modular, independente de como as transformações de dados sejam realizadas.
+O MDS separa a etapa de transformação (T) das etapas de extração (E) e carregamento (L) no pipeline de dados. Essa abordagem, conhecida como ELT (Extract, Load, Transform), permite combinar diferentes ferramentas de ingestão de dados de forma modular, independente de como as transformações de dados sejam realizadas.
 
 Além disso, ao aplicar essa abordagem, o uso das ferramentas certas, de forma incremental, é simplificado, acelerando a implementação do projeto.
 
@@ -37,9 +37,10 @@ Portanto, ao invés de escrever códigos em linguagens proprietárias ou sistema
 * redução de custos com treinamento
 * menor necessidade de manutenção
 * democratização da informação
+
 ### 4. Governança
 
-Como já mencionado, no *modern data stack*, o armazenamento e processamento dos dados são totalmente feitos em uma estrutura em nuvem.
+Como já mencionado, no *modern data stack*, o armazenamento e processamento dos dados são totalmente feitos em uma estrutura na nuvem.
 
 Dessa forma, todas as informações de uma empresa ficam centralizadas e facilmente acessíveis em um só local, simplificando a documentação e governança dos dados.
 
@@ -66,6 +67,7 @@ Como resultado, usuários distintos podem usufruir de benefícios como:
 * acesso a diferentes ambientes de desenvolvimento
 * trabalho colaborativo
 * redução de erros de produção
+
 ### 7. Testes
 
 Por fim, a abordagem moderna de analytics permite a centralização de boas práticas também de testes no projeto de dados, assim como ocorre em projetos de software modernos.

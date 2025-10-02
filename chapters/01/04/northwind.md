@@ -1,6 +1,6 @@
 # 1.4 Estudo de caso: Northwind Traders
 
-Um dos  objetivos deste livro  é mostrar na prática a aplicação de técnicas, ferramentas e conceitos modernos de analytics. Para isso, utilizaremos como base uma empresa fictícia, a Northwind Traders, e um banco de dados fictício muito utilizado para ensino de bancos de dados. Nosso objetivo é, ao final do livro, termos projetado e criado uma infraestrutura de analytics completa para a Northwind, desde a extração dos dados até a visualização em uma ferramenta de BI moderna.
+Um dos objetivos deste livro é mostrar na prática a aplicação de técnicas, ferramentas e conceitos modernos de analytics. Para isso, utilizaremos como base uma empresa fictícia, a Northwind Traders, e um banco de dados fictício muito utilizado para ensino de bancos de dados. Nosso objetivo é, ao final do livro, termos projetado e criado uma infraestrutura de analytics completa para a Northwind, desde a extração dos dados até a visualização em uma ferramenta de BI moderna.
 
 ## Contexto
 A Northwind Traders é uma loja fictícia que gerencia pedidos, produtos, clientes, fornecedores e muitos outros aspectos de uma pequena empresa. Hoje, ela possui cerca de 30 funcionários e um faturamento mensal de 1 milhão e meio de reais. Seus clientes e fornecedores estão distribuídos em diversos países. Seus principais produtos são alimentos, bebidas e utilidades domésticas.

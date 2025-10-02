@@ -1,6 +1,6 @@
 # 1.5 Para quem é este livro
 
-Este livro foi pensado para servir como **referência para profissionais que atuam como Engenheiros ou Engenharias de Analytics** em empresas de diferentes portes. Por ser uma uma função muito recente nos times de dados, acreditamos que outros profissionais também podem se beneficar deste conteúdo na sua atuação profissional:
+Este livro foi pensado para servir como **referência para profissionais que atuam como Engenheiros ou Engenheiras de Analytics** em empresas de diferentes portes. Por ser uma função muito recente nos times de dados, acreditamos que outros profissionais também podem se beneficar deste conteúdo na sua atuação profissional:
 
 - Analistas de BI buscando aprimorar seu conhecimento técnico;
 - Engenheiros de Dados que atuam na construção de Data Warehouses em times tradicionais;
@@ -13,6 +13,6 @@ Este livro foi pensado para servir como **referência para profissionais que atu
 
 O principal pré-requisito para o entendimento do livro é alguma experiência prévia profissional ou acadêmica com projetos de analytics. Além disso, outros conhecimentos prévios facilitarão o entendimento de alguns capítulos mas podem ser obtidos paralelamente à leitura:
 
-- Conhecimento básico em programação (em especial, Python e terminal Bash);
-- Conhecimento básico em BI;
-- Experiência com ferramentas de suporte a decisão (planilhas, etc).
+- Conhecimento básico em programação, especialmente Python e terminal Bash;
+- Conhecimento básico em ferramentas de BI (Power BI, Tableau, Looker Studio);
+- Experiência com ferramentas de suporte a decisão como planilhas (Excel ou Google Sheets).
