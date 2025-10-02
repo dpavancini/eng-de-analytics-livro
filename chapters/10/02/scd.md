@@ -1,13 +1,12 @@
-# 10.2 Dimensão de Alteração Lenta  (SCD)
+# 10.2 Dimensão de Alteração Lenta (SCD)
 
-
-Normalmente é preferível que as dimensões sejam imutáveis, isto é, que o mesmo código 100 em uma tabela de Clientes, por exemplo, diga respeito ao cliente João Fulano. Uma das dificuldades do analytics engineer é que em geral nós não temos controle sobre as fontes de dados (ERP, por exemplo) e não é raro que haja `UPDATEs` nas tabelas originais que alterem as chaves naturais de uma informação. Dimensões que se alteram ao longo do tempo são chamadas de Dimensão de Alteração Lenta (do inglês, *Slow Changing Dimensions*) ou simplesmente SCDs. 
+Normalmente, é preferível que as dimensões sejam imutáveis, isto é, que o mesmo código 100 em uma tabela de Clientes, por exemplo, se refira ao cliente João Fulano. Uma das dificuldades do analytics engineer é que, em geral, não temos controle sobre as fontes de dados (ERP, por exemplo) e não é raro que haja `UPDATEs` nas tabelas originais que alterem as chaves naturais de uma informação. Dimensões que se alteram ao longo do tempo são chamadas de Dimensões de Alteração Lenta (do inglês, *Slow Changing Dimensions*) ou simplesmente SCDs. 
 
 Para facilitar a implementação, alguns tipos de SCDs que abrangem a grande maioria dos casos práticos já foram definidos pela indústria. Vamos ver quais são?
 
 ## SCD Tipo 0
 
-Não atualiza uma dimensão se o valor na tabela fonte se altera. Neste caso, o estado da tabela de dimensão fica desatualizada em relação aos dados na fonte. 
+Não atualiza uma dimensão se o valor na tabela fonte se altera. Neste caso, o estado da tabela de dimensão fica desatualizado em relação aos dados na fonte. 
 
 ```{table} Tabela Clientes
 | ID Cliente | Nome          | Cidade         |
@@ -35,7 +34,7 @@ Não atualiza uma dimensão se o valor na tabela fonte se altera. Neste caso, o 
 
 ## SCD Tipo 1
 
-Atualiza uma dimensão se o valor na tabela fonte se altera sem manter o valor anterior. Neste caso, o estado da tabela de dimensão fica atualizado em relação aos dados na fonte, porém não temos mais os dados históricos:
+Atualiza uma dimensão se o valor na tabela fonte se altera, sem manter o valor anterior. Neste caso, o estado da tabela de dimensão fica atualizado em relação aos dados na fonte, porém não temos mais os dados históricos:
 
 ```{table} Tabela Clientes
 | ID Cliente | Nome          | Cidade         |
@@ -65,7 +64,7 @@ Atualiza uma dimensão se o valor na tabela fonte se altera sem manter o valor a
 
 ## SCD Tipo 2 
 
-Uma dimensão com SCD Tipo 2 tem registrada as alterações ocorridas na tabela fonte e os períodos onde cada valor da dimensão foi efetivo, além do valor mais atual. Esse é o **tipo recomendado na maioria dos casos**, pois permite criar uma visão histórica de alterações nos dados.
+Uma dimensão com SCD Tipo 2 tem registradas as alterações ocorridas na tabela fonte e os períodos em que cada valor da dimensão esteve vigente, além do valor mais atual. Esse é o **tipo recomendado na maioria dos casos**, pois permite criar uma visão histórica das alterações nos dados.
 
 ```{table} Tabela Clientes
 | ID Cliente | Nome          | Cidade         | Modificado |
@@ -80,7 +79,7 @@ Uma dimensão com SCD Tipo 2 tem registrada as alterações ocorridas na tabela 
 | 1          | 10/04/2015 | NULL     | 1     | 20         | João da Silva | Rio de Janeiro      |
 ```
 
-Após uma mudança na tabela fonte, adicionamos um novo registro na tabela de dimensões e anotamos a validade do registro antigo até a data de modificação. Note que a chave SK da dimensão se altera, mesmo que a chave natural não tenha sido alterada. Assim conseguimos ter consistência e ao mesmo tempo preservar imutabilidade dos dados:
+Após uma mudança na tabela fonte, adicionamos um novo registro na tabela de dimensões e anotamos a validade do registro antigo até a data de modificação. Note que a chave SK da dimensão se altera, mesmo que a chave natural não tenha sido alterada. Assim, conseguimos manter a consistência e, ao mesmo tempo, preservar a imutabilidade dos dados:
 
 ```{table} Tabela Clientes (atualizada)
 | ID Cliente | Nome          | Cidade    | Modificado |
@@ -97,4 +96,4 @@ Após uma mudança na tabela fonte, adicionamos um novo registro na tabela de di
 
 ## SCD Híbrida 
 
-Podem existir casos onde queremos adotar diferentes SCDs para diferentes atributos. Poderíamos por exemplo querer saber o histórico completo das Cidades de um cliente (SCD Tipo 2 ) mas só nos importamos com o nome mais atual desse cliente, já que mudanças de nomes seriam provavelmente para corrigir algum erro de digitação (SCD Tipo 1). Neste caso, chamamos essa tabela de dimensão de SCD Híbrida
+Podem existir casos em que queremos adotar diferentes SCDs para diferentes atributos. Poderíamos, por exemplo, querer saber o histórico completo das Cidades de um cliente (SCD Tipo 2), mas nos importarmos apenas com o nome mais atual desse cliente, já que mudanças de nome seriam, provavelmente, para corrigir algum erro de digitação (SCD Tipo 1). Neste caso, chamamos essa tabela de dimensão de SCD Híbrida.
