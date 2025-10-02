@@ -1,6 +1,6 @@
 # 1.3 As responsabilidades do Engenheiro de Analytics
 
-A responsabilidade do Engenheiro de Analytics é garantir que a infraestrutura de dados da empresa permita acessar e analisar os dados-chave para a tomada de decisão e ao mesmo tempo siga um processo tecnicamente bem definido e eficiente. O Engenheiro de Analytics serve ainda como uma ponte entre profissionais mais especializados que ainda realizam tarefas mais complexas ou que necessitam de tecnologias específicas.
+A responsabilidade do Engenheiro de Analytics é garantir que a infraestrutura de dados da empresa permita acessar e analisar os dados-chave para a tomada de decisão e ao mesmo tempo siga um processo tecnicamente bem definido e eficiente. O Engenheiro de Analytics serve como uma ponte entre profissionais mais especializados que ainda realizam tarefas mais complexas ou que necessitam de tecnologias específicas.
 Uma boa analogia para facilitar o seu entendimento sobre as diferenças entre os profissionais de dado foi proposta por Sara Barles, Engenheira de Analytics na Hubspot[^label]:
 
 ```{epigraph}
@@ -11,13 +11,12 @@ Os engenheiros de dados constroem o armário, eles reúnem a madeira e as ferram
 
 Entre as principais responsabilidades do Engenheiro de Analytics estão:
 
-* Prover a transformação de dados no processo de ELT;
-* Desenvolver a modelagem dimensional em *data warehouses*;
-* Auxiliar em discussões e decisões data driven no nível departamental;
-* Criar, monitorar, estabelecer e prever métricas de negócio e de produtos;
-* Construir dashboards em ferramentas de BI, data warehouse e ELT;
-* Criar e automatizar relatórios inteligentes com o uso de ferramentas, como Data Studio, Power BI, Tableau etc.
+* **Transformação de dados**: Gerenciar o processo de ELT (Extrair, Carregar, Transformar);
+* **Modelagem dimensional**: Desenvolver a estrutura do data warehouse;
+* **Apoio estratégico**: Participar das discussões e decisões data-driven nos departamentos;
+* **Criação de métricas**: Definir, monitorar e prever métricas de negócio e de produto;
+* **Desenvolvimento de dashboards**: Construir dashboards em ferramentas de BI, data warehouse e ELT.
 
-Neste livro apresentaremos técnicas e processos que, se utilizados corretamente, permitem criar uma infraestrutura moderna de dados escalável que atende à grande maioria das necessidades de negócio.  Isso não significa que tecnologias e profissionais especializados não sejam necessários para projetos específicos. Quando possível, tentaremos dar exemplos e materiais introduzindo essas necessidades e caminhos para que você busque se aprofundar nesses temas.
+Neste livro, vamos apresentar técnicas e processos para construir uma infraestrutura de dados moderna e escalável que atenda às necessidades de negócio. Embora tecnologias e profissionais especializados sejam importantes para projetos mais complexos, nosso foco é fornecer uma base sólida. Quando necessário, também daremos exemplos e materiais para que você possa aprofundar seus conhecimentos em temas específicos..
 
 [^label]: Tradução Nossa. Disponível em: https://dataform.co/blog/what-do-analytics-engineers-do.

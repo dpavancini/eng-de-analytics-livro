@@ -93,6 +93,7 @@ parts:
         - file: chapters/11/05/mapeamento_chaves.md
         - file: chapters/11/06/tabela_fato.md
         - file: chapters/11/07/agregadas_derivadas.md
+        - file: chapters/11/08/modelando_com_ia.md
         - file: chapters/11/leia_mais.md
     - file: chapters/12/intro.md
       sections:

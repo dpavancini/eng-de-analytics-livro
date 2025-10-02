@@ -6,7 +6,7 @@ Obter valor da análise de dados é o último e principal desafio. Para isso, va
 
 Quando analisamos dados, buscamos gerar valor respondendo a desafios distintos. Nos níveis estratégico e tático, os dados trazem informação para a tomada de decisão. No plano operacional, a análise é geralmente mais simplificada e quer garantir que os processos estejam dentro dos padrões pré-estabelecidos.
 
-A área de analytics geralmente se preocupa com o plano informacional mais do que o operacional. Nesse plano, segundo a consultoria Gartner, há quatro tipos de analytics: descritiva, explicativa, preditiva e prescritiva.  Somente incluir um gráfico ou uma tabela em um relatório não é o suficiente. Precisamos saber qual tipo de analytics utilizar para cada tipo de problema.
+A área de analytics geralmente se preocupa com o plano informacional mais do que o operacional. Nesse plano, segundo a consultoria Gartner, há quatro tipos de analytics: descritiva, explicativa, preditiva e prescritiva. Somente incluir um gráfico ou uma tabela em um relatório não é o suficiente. Precisamos saber qual tipo de analytics utilizar para cada tipo de problema.
 
 ```{figure} ../../../assets/img/analytics_gartner.png
 :name: gartner

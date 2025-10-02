@@ -1,43 +1,41 @@
 name: deploy-book
 
-# Only run this when the main branch changes
 on:
   push:
-    branches:
-    - main
-
+    branches: [ main ]
   pull_request:
-    branches:
-    - main
+    branches: [ main ]
 
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   deploy-book:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-    # Install dependencies
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.9.15
+      # Install Python
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'   # or '3.9.23'
+          cache: 'pip'
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-    # Build the book
-    - name: Build the book
-      run: |
-        jupyter-book build .
-        
-    # Push the book's HTML to github-pages
-    - name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v3
-      if: ${{ github.event_name == 'push' }}
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: main
-        publish_dir: ./_build/html
-        external_repository: engdeanalytics/engdeanalytics.github.io
-        deploy_key: ${{ secrets.DEPLOY_DOCS }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build the book
+        run: |
+          jupyter-book build .
+
+      # Publish to external repo (user/organization pages)
+      - name: Deploy to GitHub Pages
+        if: ${{ github.event_name == 'push' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # For external repositories, use a deploy key or a PAT, not GITHUB_TOKEN.
+          deploy_key: ${{ secrets.DEPLOY_DOCS }}
+          external_repository: engdeanalytics/engdeanalytics.github.io
+          publish_branch: main        # for user/org pages repo, 'main' is typical
+          publish_dir: ./_build/html
