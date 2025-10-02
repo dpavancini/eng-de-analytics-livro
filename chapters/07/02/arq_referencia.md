@@ -28,11 +28,11 @@ Os componentes de fontes de dados mais comuns são:
 **Sob Demanda**
 Os componentes de fontes de dados menos usuais são:
 
-- **Eventos**: fontes de eventos coletam ações em sistemas em tempo-real, por exemplo, cliques em um website ou utilização de um app. Algumas fontes de eventos são configuradas por sistemas SaaS (como [Google Analytics 4](https://support.google.com/analytics/answer/10089681?hl=pt-BR)), outras podem ser desenvolvidas de forma personalizada para cada projeto (ex. [Snowplow](https://snowplowanalytics.com/)) ou de forma híbrida (ex. CDP).
+- **Eventos**: fontes de eventos coletam ações em sistemas em tempo real, por exemplo, cliques em um website ou utilização de um app. Algumas fontes de eventos são configuradas por sistemas SaaS (como [Google Analytics 4](https://support.google.com/analytics/answer/10089681?hl=pt-BR)), outras podem ser desenvolvidas de forma personalizada para cada projeto (ex. [Snowplow](https://snowplowanalytics.com/)) ou de forma híbrida (ex. CDP).
 
-- **Logs**: são fontes de dados que utilizam os logs de aplicações. Podem ser coletadas em tempo-real ou não.
+- **Logs**: são fontes de dados que utilizam os logs de aplicações. Podem ser coletadas em tempo real ou não.
 
-- **IoT**: são fontes de dados de equipamentos físicos como máquinas, sensores etc. Em geral, processadas em tempo-real.
+- **IoT**: são fontes de dados de equipamentos físicos como máquinas, sensores etc. Em geral, processadas em tempo real.
 
 ### Camada de Ingestão
 
@@ -46,18 +46,18 @@ Os componentes da camada de ingestão mais comuns são:
 **Sob Demanda**
 Os componentes da camada de ingestão menos usuais são:
 
-- **Ingestão em streaming**: é o processo de ingestão de dados em tempo-real, necessário para fontes de dados de Eventos, IoT e Logs em geral. Neste tipo de ingestão, a plataforma de dados recebe os dados de forma **passiva** através de um sistema que "escuta" eventos (ex. [Apache Kafka]() ou [Google PubSub]()).
+- **Ingestão em streaming**: é o processo de ingestão de dados em tempo real, necessário para fontes de dados de Eventos, IoT e Logs em geral. Neste tipo de ingestão, a plataforma de dados recebe os dados de forma **passiva** através de um sistema que "escuta" eventos (ex. [Apache Kafka]() ou [Google PubSub]()).
 
 ### Camada de Transformação
 
-A camada de transformação) é responsável por processar e armazenar os dados extraídos as fontes de dados originais até seu formato final para consumo pelos produtos de dados.
+A camada de transformação é responsável por processar e armazenar os dados extraídos as fontes de dados originais até seu formato final para consumo pelos produtos de dados.
 
 **Core**
 Os componentes da camada de ingestão mais comuns são:
 
 - **Data Warehouse**: o data warehouse é um banco de dados analítico capaz de armazenar, processar e disponibilizar enorme volume de dados para a tomada de decisão. Ele pode ser desenvolvido de uma forma que abstrai suas partes mais técnicas e disponibiliza somente a interface necessária para construção dos modelos (isto é, tabelas) como é o caso dos  Cloud Data Warehouses ([Google Big Query](), [Amazon Redshift](), [Azure Synapse]() e [Snowflake]()) ou ter uma arquitetura mais flexível que também é chamada de [Data Lakehouse](). Na visão do MDS, o Data Warehouse não serve apenas como um banco de dados bruto mas precisa ser modelado para atender aos requisitos de cada cliente, tarefa que fica a cargo da [Engenharia de Analytics]().
 
-- **Processamento em Lotes**: o componente de processamento em lotes é responsável por executar a transformação de dados brutos em dados modelados. Salvo exceções, o processamento é realizado dentro do Data Warehouse através da arquitetura ELT. Em alguns projetos esse processamento pode ser separado do armazenament, como no caso da construção de [Data Lakehouses]().
+- **Processamento em Lotes**: o componente de processamento em lotes é responsável por executar a transformação de dados brutos em dados modelados. Salvo exceções, o processamento é realizado dentro do Data Warehouse através da arquitetura ELT. Em alguns projetos esse processamento pode ser separado do armazenamento, como no caso da construção de [Data Lakehouses]() ou do uso de ferramentas como o Databricks.
 
 - **Modelagem de Dados**: para realizar a modelagem de dados, isto é, a aplicação de regras de negócio, transformações, construção de tabelas etc. utilizamos a ferramenta [dbt]() dentro do MDS. Essa ferramenta **não processa dados diretamente** mas envia instruções (em SQL) para o componente de processamento em lotes da plataforma.
 
@@ -67,9 +67,9 @@ Os componentes da camada de ingestão menos usuais são:
 
 - **Data Lake**: um data lake é um repositório de dados com armazenamento virtualmente infinito que permite guardar qualquer tipo de arquivo digital. Ele pode ou não estar presente no MDS conforme a necessidade e criticidade do projeto.
 
-- **Processamento Streaming**: projetos que possuem fontes de dados em tempo-real necessitam de um componente de processamento de dados em streaming, que consegue processar os dados à medida que chegam na plataforma de dados. 
+- **Processamento Streaming**: projetos que possuem fontes de dados em tempo real necessitam de um componente de processamento de dados em streaming, que consegue processar os dados à medida que chegam na plataforma de dados. O Databricks, por exemplo, oferece recursos robustos para esse tipo de processamento. 
 
-- **Desenvolvimento de AI&ML**: o desenvolvimento de modelos de AI & ML só é previsto em projetos com uma plataforma de dados mais desenvolvida, devido à visão de tratar modelos como software. Para o desenvolvimento de modelos é prevista a utilização de Notebook gerenciados na nuvem ([Amazon SageMaker](), [Google Vertex](), etc) ou através de um PaaS como a [Databricks](). O desenvolvimento e deploy dos modelos deve seguir um processo de MLOps bem estruturado e para isso recomendamos o uso do [framework Kedro]().
+- **Desenvolvimento de AI & ML**: o desenvolvimento de modelos de AI & ML só é previsto em projetos com uma plataforma de dados mais desenvolvida, devido à visão de tratar modelos como software. Para o desenvolvimento de modelos é prevista a utilização de Notebook gerenciados na nuvem ([Amazon SageMaker](), [Google Vertex](), etc) ou através de um PaaS como a [Databricks](). O desenvolvimento e deploy dos modelos deve seguir um processo de MLOps bem estruturado e para isso recomendamos o uso do [framework Kedro]().
 
 
 ### Camada de Disponibilização
@@ -86,7 +86,7 @@ Os componentes da camada de Disponibilização mais comuns são:
 **Sob Demanda**
 Os componentes da camada de Disponibilização menos usuais são:
 
-- **Motor de Big Data**: motor de big data (ou *Big Data Query Engines*) permitem consultar grandes volumes de dados armazenados no Data Lake sem a necessidade de um Data Warehouse. Podem existir em projetos maiores onde há a necessidade desse tipo de acesso direto utilizando ferramentas como o [Athena](), [Presto]() e [Dremio]().
+- **Motor de Big Data**: motor de big data (ou *Big Data Query Engines*) permitem consultar grandes volumes de dados armazenados no Data Lake sem a necessidade de um Data Warehouse. Podem existir em projetos maiores onde há a necessidade desse tipo de acesso direto utilizando ferramentas como o [Athena](), [Presto]() e [Dremio](). O Databricks também se enquadra nesta categoria.
 
 
 ### Camada de Produtos
@@ -167,4 +167,4 @@ Os componentes da camada de Governança menos usuais são:
 
 - **Gestão de Metadados**: componente responsável por gerenciar os metadados dos demais componentes da plataforma (Ex. [Backstage]()). Em geral, em arquiteturas MDS menos complexas esses recursos não são acessáveis diretamente.
 
-- **Model Reporting**: componente responsável por monitorar e reportar resultados de modelos de Machine Learning (ex. [MLFlow]().
+- **Model Reporting**: componente responsável por monitorar e reportar resultados de modelos de Machine Learning (ex. [MLFlow]()).

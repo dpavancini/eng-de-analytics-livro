@@ -4,7 +4,10 @@ Ao longo dos anos, algumas técnicas foram desenvolvidas para facilitar a resolu
 
 ## Ciclo PDCA
 
-O ciclo PDCA foi criado na década de 1920 por Walter Andrew Shewart, um físico norte-americano conhecido por ser pioneiro no controle estatístico de qualidade com o objetivo de facilitar a  tomada de decisões e o alcance de metas. A metodologia trabalha algumas competências essenciais nos colaboradores, como o pensamento estratégico, a capacidade analítica e a comunicação efetiva.
+O ciclo PDCA foi criado na década de 1920 por Walter Andrew Shewart, um físico norte-americano conhecido por ser pioneiro no controle estatístico de qualidade com o objetivo de facilitar a tomada de decisões e o alcance de metas. A metodologia trabalha algumas competências essenciais nos colaboradores, como o pensamento estratégico, a capacidade analítica e a comunicação efetiva.
+
+```{figure} ../../../assets/img/ciclo_pdca.png
+:name: ciclo_pdca
 
 Na década de 1950, ele foi popularizado no mundo todo por outro americano, o professor William Edwards Deming, conhecido como guru do gerenciamento de qualidade e reconhecido por sua importância para a melhoria dos processos produtivos nos EUA durante a Segunda Guerra e também por seu trabalho de consultoria com executivos japoneses.
 
@@ -19,8 +22,7 @@ O ciclo PDCA é assim chamado devido ao nome em inglês de cada uma das etapas q
 
 A metodologia PDCA é largamente utilizada por corporações que desejam melhorar seu nível de gestão através do controle eficiente de processos e atividades internas e externas, padronizando informações e minimizando as chances de erros na tomada de decisões importantes.
 
-Ressaltamos que, uma vez implantado, o ciclo PDCA deve tornar-se uma constante dentro da empresa, um verdadeiro círculo virtuoso objetivando sempre a melhoria contínua.
-Etapas 
+Ressaltamos que, uma vez implantado, o ciclo PDCA deve tornar-se uma constante dentro da empresa, um verdadeiro círculo virtuoso objetivando sempre a melhoria contínua. 
 
 Para compreender melhor o que é ciclo PDCA, confira uma breve explicação sobre cada uma das suas quatro etapas.
 
@@ -30,7 +32,7 @@ Um projeto bem elaborado é primordial para o ciclo PDCA, pois impede falhas fut
 
 ### Execução
 
-Coloque o planejamento em prática e siga-o à risca, ou seja, não queime etapas nem improvise para não comprometer todo o ciclo PDCA. A fase da execução é subdividida em outras três: treinamento de todos os funcionários e gestores envolvidos no projeto, realização propriamente dita, e colheita de dados para uma posterior avaliação.
+Coloque o planejamento em prática e siga-o à risca, ou seja, não queime etapas nem improvise para não comprometer todo o ciclo PDCA. A fase da execução é subdividida em outras três etapas: treinamento de todos os funcionários e gestores envolvidos no projeto, realização propriamente dita, e colheita de dados para uma posterior avaliação.
 
 
 ### Checagem 
@@ -39,4 +41,4 @@ Coloque o planejamento em prática e siga-o à risca, ou seja, não queime etapa
 
 ### Ação
 
-É a última etapa, na qual são aplicadas ações corretivas de modo a estar sempre e continuamente aperfeiçoando o projeto. É simultaneamente fim e começo, pois, após uma minuciosa apuração do que tenha causado erros anteriores, todo o ciclo PDCA é refeito com novas diretrizes e parâmetros.
+É a última etapa, na qual são aplicadas ações corretivas de modo a aprimorar continuamente o projeto. É simultaneamente fim e começo, pois, após uma minuciosa apuração do que tenha causado erros anteriores, todo o ciclo PDCA é refeito com novas diretrizes e parâmetros.

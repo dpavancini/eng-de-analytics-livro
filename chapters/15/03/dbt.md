@@ -542,7 +542,7 @@ models:
 ```
 
 
-- **Teste de valores aceitos (accepted_values)**: esse tipo de teste serve para garantir que os valores de uma coluna estejam em um intervalo pré-definido. Por exemplo, em uma coluna de status de pedido.
+- **Teste de valores aceitos (accepted_values)**: esse tipo de teste serve para garantir que os valores de uma coluna estejam em um intervalo predefinido. Por exemplo, em uma coluna de status de pedido.
 
 ```YAML
 version: 2

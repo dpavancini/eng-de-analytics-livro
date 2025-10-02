@@ -1,7 +1,8 @@
-# eng-de-analytics-livro
+**Livro - Engenharia de Analytics**
+
 Este repositório contém o código-fonte e a estrutura do livro **Engenharia de Analytics**, construído com [Jupyter Book](https://jupyterbook.org/).
 
-## Pré-requisitos
+## Pré-requisitos para colaboração
 
 - Python 3.8 ou superior
 - [pip](https://pip.pypa.io/en/stable/) (gerenciador de pacotes Python)
