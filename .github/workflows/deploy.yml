@@ -29,6 +29,10 @@ jobs:
         run: |
           jupyter-book build .
 
+      # Prevent GitHub Pages from running Jekyll on the site, Jekyll not necessary for jupyter-book.
+      - name: Disable Jekyll on the published site
+        run: touch _build/html/.nojekyll
+
       # Publish to external repo (user/organization pages)
       - name: Deploy to GitHub Pages
         if: ${{ github.event_name == 'push' }}
