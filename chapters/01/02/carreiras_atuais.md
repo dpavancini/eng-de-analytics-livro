@@ -1,13 +1,29 @@
 # 1.2 Redefinindo equipes de Dados
 
-Um segundo problema nos projetos de analytics é o foco excessivo na modelagem preditiva, muitas vezes ignorando as demais etapas da jornada data-driven nas empresas. Embora seja possível gerar valor imediato em projetos pontuais de machine learning, o caminho mais sustentável é, primeiro, construir uma infraestrutura moderna de analytics, com bases sólidas para coleta, transformação e armazenamento eficiente dos dados. Do contrário, corremos o risco de investir recursos em tarefas redundantes ou de transformar os modelos de ciência de dados em "Excel modernizado", que só funciona após duas semanas de trabalho do único analista que o entende e que, em questão de dias, tornam obsoletas rapidamente.
+Um dos grandes problemas recorrentes em projetos de analytics é o **desequilíbrio no foco das equipes**. Muitas iniciativas priorizam modelos preditivos ou análises sofisticadas sem investir na base: coleta, transformação, governança e armazenamento consistente dos dados. O resultado costuma ser insatisfatório: projetos que funcionam apenas nas mãos de poucos especialistas, estruturas frágeis e processos difíceis de reproduzir.  
 
-Na prática, as equipes tradicionais de dados trabalham de forma fragmentada. Engenheiros de Dados se concentram na manutenção de fluxos complexos, raramente se envolvendo com os objetivos de negócio. Cientistas de Dados, por outro lado, criam modelos preditivos sem se preocuparem com a forma como eles serão implementados em produção. Por fim, Analistas de Dados frequentemente têm dificuldade em confiar nos dados que usam em seus relatórios.
+Na prática, isso reflete a forma como as equipes de dados foram tradicionalmente organizadas:  
 
-A estrutura tradicional de equipes de dados pode ter sido importante na evolução dos processos e das tecnologias necessárias para processar e transformar grandes volumes de dados na era do big data, mas o seu custo e complexidade acabaram por limitar esses projetos a grandes empresas com alta capacidade técnica e de investimento. 
+- **Engenheiros de Dados** concentram-se em manter fluxos complexos, mas pouco se conectam com os objetivos de negócio;  
+- **Cientistas de Dados** desenvolvem modelos que raramente chegam a produção com qualidade;  
+- **Analistas de Dados** enfrentam dificuldades para confiar nos dados que utilizam em relatórios e dashboards.  
 
-Com o avanço de tecnologias como cloud data warehouses, processamento de dados como serviço e ferramentas de BI self-service, o cenário mudou. Agora, até equipes pequenas podem gerenciar todo o processo de dados. 
+Esse modelo fragmentado até foi importante na era do *big data*, quando processar grandes volumes era um desafio técnico em si. Mas também trouxe consequências: alto custo, complexidade excessiva e dependência de times numerosos — limitando sua adoção a grandes empresas com alto investimento.  
 
-Para isso, surgiu um novo tipo de profissional: o Engenheiro de Analytics. Esse profissional combina o conhecimento técnico de todas as etapas de um projeto de analytics com uma visão estratégica de negócio. Ele modela dados brutos em informações consistentes para a tomada de decisões, permitindo que empresas de todos os portes construam infraestruturas modernas. Esse papel já é uma realidade em empresas inovadoras como Nubank, Spotify, XP Inc. entre outras.
+---
 
-A responsabilidade do Engenheiro de Analytics é garantir que a infraestrutura de dados da empresa permita acessar e analisar os dados-chave para a tomada de decisão e ao mesmo tempo siga um processo tecnicamente bem definido e eficiente. O analytics engineer serve ainda como uma ponte entre profissionais mais especializados que ainda realizam tarefas mais complexas ou que necessitam de tecnologias específicas.
+## A virada do jogo
+
+Com o avanço de tecnologias como **cloud data warehouses**, **processamento como serviço** e **ferramentas de BI self-service**, o cenário mudou. Hoje até equipes pequenas conseguem gerenciar todo o ciclo de dados com custos viáveis e menor barreira técnica.  
+
+Essa transformação abriu espaço para uma nova forma de organizar times de dados, menos fragmentada e mais integrada.  
+
+---
+
+## O surgimento do Engenheiro de Analytics
+
+É nesse contexto que surge o **Engenheiro de Analytics**: um profissional que combina **conhecimento técnico de ponta a ponta** com **visão estratégica de negócio**.  
+
+Sua missão é **transformar dados brutos em informações consistentes para tomada de decisão**, permitindo que empresas de diferentes portes construam infraestruturas modernas de analytics. Hoje esse papel já é realidade em empresas como Nubank, Spotify, iFood, Airbnb e XP Inc., que vêm adotando esse modelo para ganhar eficiência e escala.  
+
+O Engenheiro(a) de Analytics atua ainda como uma **ponte entre especializações**, garantindo que engenheiros de dados, cientistas e analistas trabalhem de forma mais conectada e com menos atrito.

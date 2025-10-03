@@ -1,15 +1,27 @@
 # Capítulo 1 - Introdução
 
-Este livro apresenta as técnicas e os conceitos necessários para que um profissional de dados moderno domine um processo de analytics de ponta a ponta. Ao contrário do que tradicionalmente encontramos nas organizações tradicionais, a nossa visão é a de que esse profissional deva vir das áreas de negócio, em vez de TI, como é de costume. Para isso, é preciso entender o processo de analytics do início ao fim, e não somente se concentrar na ponta final da visualização de dados e modelagem. Caso contrário, corremos o risco de construir estruturas complexas em cima de pilares extremamente frágeis, dificultando a geração de valor dos projetos de dados e aumentando o estresse e a rotatividade nas equipes de dados.
+Este livro apresenta as técnicas e os conceitos necessários para que um profissional de dados moderno domine um processo de *analytics* de ponta a ponta. 
 
-Essa nova profissão de dados deve combinar as capacidades analíticas, intimamente ligadas ao negócio da empresa, com um conhecimento mais geral sobre todo o processo de analytics, incluindo a capacidade de criar pipelines de dados utilizando boas práticas de engenharia de software, que raramente são aplicadas nas equipes de dados atuais. 
+Diferente do que tradicionalmente encontramos nas organizações, a visão aqui defendida é que esse profissional deve nascer nas áreas de **negócio** — e não apenas em **TI**, como costuma ser. Se limitarmos o trabalho apenas à visualização de dados e modelagem final, corremos o risco de construir estruturas complexas sobre bases frágeis. O resultado: pouco valor de negócio, frustração das equipes e alta rotatividade.  
 
-Para muitos leitores, termos como “pipeline de dados”, “infraestrutura de dados” e “processo de analytics” podem parecer muito distantes do seu dia a dia. Afinal, qual é a relação disso com os painéis e relatórios elaborados todo final do mês?
+A nova profissão de dados que vem ganhando espaço combina **capacidade analítica**, conectada ao negócio, com **boas práticas de engenharia de software** aplicadas ao ciclo de dados. Isso inclui criar *pipelines* versionados, testados, monitorados e documentados — algo raro em equipes tradicionais de analytics.  
 
-Uma boa analogia, emprestada da visão de DataOps é o entendimento do processo de analytics como uma linha de montagem que se inicia com a obtenção dos dados (a matéria-prima), e que os transforma através de diferentes etapas e ferramentas (a linha de montagem), para chegar aos produtos finais de dados, como relatórios, BIs e modelos (os produtos). Durante todo esse processo, testes automatizados são aplicados para garantir que os dados finais estejam nos padrões esperados. Falhas em qualquer etapa do processo são monitoradas, e ferramentas e alertas específicos são automatizados.
+Para muitos leitores, termos como *pipeline de dados*, *infraestrutura de dados* ou *processo de analytics* podem soar distantes do dia a dia. Mas, na prática, estão diretamente relacionados à confiabilidade de relatórios, métricas e dashboards que sustentam decisões diárias.  
 
-Esse novo profissional vem sendo chamado de engenheiro(a) de analytics e é quem complementa e organiza as equipes de dados modernas. 
+Uma boa analogia, inspirada no **DataOps**, é enxergar o processo de analytics como uma linha de montagem:  
 
-Mas por que essa profissão é necessária em primeiro lugar? Analistas, cientistas, engenheiros e engenheiras de dados já não fazem exatamente isso? 
+- **Matéria-prima**: os dados brutos coletados nas fontes;  
+- **Linha de montagem**: etapas e ferramentas que transformam os dados;  
+- **Produto final**: relatórios, painéis, modelos e métricas confiáveis.  
+
+Durante todo o caminho, práticas de engenharia — como **testes automatizados**, **CI/CD**, **documentação**, **observabilidade** e **alertas** — garantem qualidade e confiança. Falhas em qualquer etapa podem (e devem) ser detectadas rapidamente.  
+
+Esse é o espaço do **Engenheiro(a) de Analytics**: o elo que conecta áreas, organiza processos e dá escala às equipes modernas de dados.  
+
+---
+
+Mas por que essa profissão é necessária em primeiro lugar? 
+
+Afinal, **analistas, cientistas e engenheiros de dados** já não fazem exatamente isso?  
 
 É o que discutiremos na próxima seção.
