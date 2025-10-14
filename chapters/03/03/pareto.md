@@ -1,25 +1,41 @@
 # 3.3 Diagrama de Pareto
 
-Também conhecido como Gráfico 80/20, é uma ferramenta que permite visualizar a frequência com a qual erros se repetem durante a rotina de produção, relacionando-os com as suas possíveis causas. Serve para encontrar elementos suficientes para estabelecer uma comparação entre a repetição das causas e a ocorrência das falhas identificadas.
+O Diagrama de Pareto — ou gráfico 80/20 — nos ajuda a priorizar esforços mostrando quais causas explicam a maior parte dos problemas. Em analytics, ele é útil para identificar quais fontes quebram mais os pipelines, quais dimensões geram a maior parte das reclamações ou quais etapas do funil concentram as perdas de receita.
 
-O diagrama é uma versão gráfica do Princípio de Pareto, proposto pelo mesmo autor, Vilfredo Pareto. Segundo tal princípio, que usa a mesma regra dos 80/20, é muito comum que 80% dos problemas verificados sejam originados por 20% das causas. E é isso que o diagrama busca observar na prática. Dessa forma, é possível criar mecanismos para diminuir as falhas de maneira sistemática, focando os esforços nos pontos cruciais, que figuram com maior frequência entre os agentes causadores delas.
+O método traduz visualmente o Princípio de Pareto, formulado por Vilfredo Pareto no início do século XX: numa série de eventos, é comum que cerca de 80% do impacto venha de 20% das causas. O objetivo não é achar um número exato, mas identificar padrões concentrados que merecem foco.
 
 ```{figure} ../../../assets/img/pareto.png
 :name: pareto
 
-## Como criar?
+Diagrama de Pareto com causas ordenadas por impacto acumulado.
+```
 
-Antes de começar a utilizar o gráfico de Pareto para apoiar a gestão da qualidade dentro da empresa, é preciso que fique muito claro qual é o seu objetivo com o uso.
+## Como construir o diagrama
 
-Chamar para uma reunião todo o time e promover um brainstorming é uma boa maneira de garantir que a escolha do objetivo não será arbitrária ou deslocada das necessidades do grupo. Prepare-se levando dados preliminares sobre os problemas que são mais comuns dentro do fluxo de trabalho. Neste momento, não se preocupe em pensar nas causas, pois elas devem aparecer conforme o processo se desenrola.
+1. **Defina o objetivo**  
+   Qual problema queremos reduzir? Ex.: falhas de atualizações no data warehouse, tickets abertos pelo time comercial, cancelamentos de assinaturas.
 
-O principal objetivo de uso do Diagrama de Pareto dentro da gestão da qualidade é criar uma ordenação para os problemas e suas causas. Assim, buscamos entender qual é a relação de ação-benefício para, a partir daí, estabelecer o que deve ser prioridade no planejamento. 
+2. **Colete e padronize os dados**  
+   Agrupe registros por causa, sistema ou categoria. Use tabelas de incidentes, logs de observabilidade ou feedbacks qualificados. Em times modernos é comum extrair esses dados de ferramentas como Jira, Zendesk ou plataformas de monitoramento.
 
-A sua construção busca relacionar, como foi dito, os problemas com as suas causas mais frequentes e segue, de maneira geral, os seguintes passos:
- 
-* defina o objetivo;
-* faça a coleta dos dados;
-* estabeleça uma categorização;
-* construa as barras de ocorrência;
-* faça um gráfico de linha com porcentagens;
-* dedique-se à análise dos dados.
+3. **Classifique as ocorrências**  
+   Crie categorias mutuamente exclusivas. Se necessário, faça uma sessão rápida de *brainstorm* com stakeholders para validar a taxonomia.
+
+4. **Calcule frequências e impacto**  
+   Conte quantas vezes cada causa aparece e, se possível, associe um indicador de impacto (tempo perdido, custo, receita afetada). Ordene do maior para o menor.
+
+5. **Desenhe o gráfico**  
+   Utilize barras para as frequências e uma linha para o percentual acumulado. Ferramentas de BI (Looker, Power BI, Metabase) facilitam esse processo e permitem atualizar o gráfico automaticamente.
+
+6. **Analise e priorize**  
+   Observe onde a curva acumulada se estabiliza. Priorize as causas iniciais e desenhe planos de ação específicos para elas. Revise o gráfico periodicamente para verificar se as causas principais mudaram.
+
+### Dicas e pontos importantes
+
+- Antes de aplicar o **Gráfico de Pareto**, defina claramente **qual é o objetivo da análise** e envolva o time na escolha — uma reunião com brainstorming ajuda a alinhar prioridades e evitar decisões arbitrárias.  
+- Leve **dados preliminares** sobre os principais problemas, sem se preocupar ainda com as causas — elas surgirão naturalmente no processo.  
+- O propósito central do Pareto é **ordenar problemas e causas** para identificar **quais ações trarão maior benefício**, orientando o que deve ser **prioridade no planejamento**.  
+- Use o gráfico para comunicar resultados: “resolvemos os dois principais motivos de falha, reduzindo 65% dos incidentes”.
+- Reavalie as categorias conforme novos produtos são lançados ou novos tipos de erro aparecem.
+
+O Diagrama de Pareto não substitui a investigação detalhada, mas oferece um mapa rápido de onde concentrar energia. Depois de identificar as causas principais, utilize técnicas como os 5 Porquês para descobrir a raiz do problema.
