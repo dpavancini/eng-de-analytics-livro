@@ -39,6 +39,8 @@ Nos últimos anos, as responsabilidades do Engenheiro de Analytics evoluíram, a
 - **CI/CD e testes automatizados** aplicados ao ciclo de dados;  
 - **Documentação e governança** como parte natural do processo;  
 - **Métricas compartilhadas (semantic layer)**: garantir que toda a organização fale a mesma língua.  
+- **Preparação de dados para IA**: curar *datasets* de treinamento, remover vieses e garantir privacidade;  
+- **Monitoramento de produtos de IA**: instrumentar métricas de qualidade, avaliações humanas e *guardrails* para modelos em produção.  
 
 ---
 
