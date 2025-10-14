@@ -1,25 +1,32 @@
 # 2.6 Valor
 
-O que todos os quatro Vs anteriores (volume, velocidade, variedade e veracidade) têm em comum? Eles não possuem valor em si, a não ser pelo resultado que permitem obter. Ou seja, são um meio para o fim. 
+O que todos os quatro Vs — **volume, velocidade, variedade e veracidade** — têm em comum?  
+Nenhum deles possui valor por si só. Eles são apenas **meios para atingir um fim**: gerar **valor de negócio** a partir dos dados.  
 
-Obter valor da análise de dados é o último e principal desafio. Para isso, vamos recorrer às ferramentas já conhecidas dos analistas de negócios, como relatórios e dashboards, e outras mais recentes, como modelos preditivos, prescritivos e até cognitivos. 
+Extrair esse valor é o principal desafio. Para isso, recorremos tanto a **ferramentas tradicionais** — como relatórios e dashboards — quanto a **abordagens mais recentes**, baseadas em modelos **preditivos**, **prescritivos** e até **cognitivos**.  
 
-Quando analisamos dados, buscamos gerar valor respondendo a desafios distintos. Nos níveis estratégico e tático, os dados trazem informação para a tomada de decisão. No plano operacional, a análise é geralmente mais simplificada e quer garantir que os processos estejam dentro dos padrões pré-estabelecidos.
+Quando analisamos dados, buscamos gerar valor respondendo a diferentes tipos de perguntas.  
+- Nos **níveis estratégico e tático**, os dados orientam a **tomada de decisão**;  
+- No **nível operacional**, as análises são mais simples e visam garantir que os **processos estejam sob controle**.  
 
-A área de analytics geralmente se preocupa com o plano informacional mais do que o operacional. Nesse plano, segundo a consultoria Gartner, há quatro tipos de analytics: descritiva, explicativa, preditiva e prescritiva. Somente incluir um gráfico ou uma tabela em um relatório não é o suficiente. Precisamos saber qual tipo de analytics utilizar para cada tipo de problema.
+Em geral, a área de *analytics* concentra-se no plano informacional — aquele que transforma dados em conhecimento para apoiar decisões.  
+Segundo a consultoria **Gartner**, esse plano pode ser dividido em **quatro tipos de analytics**: **descritiva, explicativa, preditiva e prescritiva**.  
+Não basta gerar gráficos e tabelas: é preciso entender **qual tipo de análise usar para cada problema**.
 
 ```{figure} ../../../assets/img/analytics_gartner.png
 :name: gartner
 
-Os Quatro tipos de analytics.Fonte: adaptado de Gartner (2019)[^Gartner].
+Os quatro tipos de analytics. Fonte: adaptado de Gartner (2019)[^Gartner].
 ```
 
-A análise descritiva se preocupa com o passado e é geralmente a primeira a ser implementada. Adicionando contexto e outras técnicas analíticas, como análise estatística, nós passamos para a análise explicativa, isto é, entender o porquê do que aconteceu. Essas duas análises residem geralmente nos relatórios e dashboards que permitem visualizar e explorar dados de forma visual. A grande maioria das empresas ainda está nas etapas da Jornada Data Driven em que essas análises ainda não atingiram seu potencial máximo de geração de valor. 
+A **análise descritiva** busca compreender o que aconteceu no passado e costuma ser o primeiro passo em projetos de dados. Quando adicionamos **contexto** e aplicamos **técnicas estatísticas** para entender *por que* os eventos ocorreram, avançamos para a **análise explicativa**.
 
-Quando queremos “prever o futuro” ou recomendar novas ações, entramos nos campos da análise preditiva e prescritiva. Nesse momento, é comum que não se utilizem mais apenas relatórios e dashboards, mas também modelos com base em inteligência artificial que tomam decisões automatizadas. Esse é o campo natural da ciência de dados, apenas um entre muitos do data analytics.
+Essas duas formas de análise são geralmente apresentadas em **relatórios e dashboards**, que permitem visualizar e explorar os dados de maneira intuitiva. A maioria das empresas ainda se encontra nesse estágio da **Jornada Data-Driven**, com grande potencial para extrair mais valor dessas análises.  
 
-Para gerar valor em analytics, não basta saber as técnicas ou ferramentas mais avançadas. Também é importante entender quais perguntas precisamos responder e como aplicar as técnicas certas para resolvê-las.  E esse é o tema da próxima seção.
+Ao buscar **prever cenários futuros** ou **recomendar ações**, entramos nos domínios da **análise preditiva** e **prescritiva**. Nessas etapas, os relatórios deixam de ser suficientes, dando lugar a **modelos baseados em inteligência artificial e aprendizado de máquina**, capazes de automatizar decisões e otimizar resultados.  
 
+Esse é o território natural da **ciência de dados**, que se integra ao *data analytics* para ampliar o alcance e o impacto das decisões baseadas em dados.  
 
+Por fim, **gerar valor em analytics** vai além de dominar ferramentas ou técnicas sofisticadas. O verdadeiro diferencial está em **definir as perguntas certas** e **aplicar o tipo de análise adequado** para respondê-las — tema que exploraremos na próxima seção.
 
 [^Gartner]: Gartner. 2019 Planning guide for data and analytics. Disponível em: https://www.gartner.com/en/doc/361501-2019-planning-guide-for-data-and-analytics.
