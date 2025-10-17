@@ -1,8 +1,10 @@
 # 4.3 Modelo Relacional
 
-Entre os diferentes tipos de bancos de dados, a abordagem dominante desde os anos 1970 até hoje é o chamado Modelo Relacional. A maior parte dos dados estruturados gerada no mundo é armazenada em tabelas (chamadas relações) dentro de bancos de dados relacionais, que incluem produtos como o Oracle SQL, Microsoft SQL Server, MySQL, PostgreSQL e muito mais.
+Desde a década de 1970, o modelo relacional domina o cenário de dados estruturados. É nele que residem boa parte das aplicações transacionais, sistemas legados e até warehouses modernos. Entender seus fundamentos é essencial para navegar pelas fontes que alimentam um data warehouse e para escrever consultas consistentes.
 
-A tabela é o núcleo de qualquer banco de dados relacional. Uma tabela é uma estrutura simples de linha e colunas e é onde estão armazenados todos os dados de um banco de dados relacional. Cada linha de uma tabela representa um registro e possui exatamente as mesmas colunas, ainda que não necessariamente possua informações em todas elas (podem ter valores nulos). As colunas representam atributos do objeto real que estamos modelando, por exemplo, nome de um cliente, saldo de uma conta, data de um registro. Cada coluna deve conter o mesmo tipo de atributo. A combinação de cada linha e coluna é um campo (equivalente à uma célula em uma planilha) e representa a menor unidade de um banco de dados.
+## Estrutura básica
+
+Uma tabela relacional organiza dados em linhas (registros) e colunas (atributos). Cada linha representa uma ocorrência de uma entidade (cliente, pedido, pagamento) e cada coluna descreve uma característica desse objeto. Assim como em uma planilha, a interseção entre linha e coluna forma um campo; diferente da planilha, o tipo de dado é rigidamente controlado e quem garante a consistência é o SGBD.
 
 ```{figure} ../../../assets/img/db_engines.png
 :name: analisar
@@ -10,15 +12,24 @@ A tabela é o núcleo de qualquer banco de dados relacional. Uma tabela é uma e
 O modelo relacional.
 ```
 
-As tabelas se relacionam entre si através de **chaves**. Uma chave é um conjunto de um ou mais atributos que unicamente definem um registro. Por exemplo, um CPF pode ser uma chave de uma tabela de clientes, pois cada cliente só pode ter um CPF. Se um novo cliente for inserido em uma tabela com um CPF que já existia nela previamente, o banco de dados não irá gravar esse novo registro pela restrição de unicidade. Esse conceito, embora simples, permite criar aplicações muito robustas. O relacionamento entre duas tabelas (não confundir com relações) é dado pelas **chaves primárias** (PK, do inglês *Primary Key*), que define a unicidade de todos os registros em uma tabela, e pelas **chaves estrangeiras** (FK, do inglês *Foreign Key*), que descreve o relacionamento de uma coluna com a chave primária de outra tabela. 
+Tabelas se conectam por meio de **chaves**:
 
-As definições do modelo relacional são baseadas na teoria dos predicados e na teoria dos conjuntos, e são manipuladas através da linguagem SQL (do inglês, *structured query language*). Embora cada banco de dados possua seu próprio “dialeto” de SQL, os conceitos principais são na sua grande maioria os mesmos entre si.  O SQL, por sua vez, é dividido em sub-linguagens que representam diferentes operações que queremos realizar em um banco de dados:
+- **Chave primária (PK, do inglês *Primary Key*)**: identifica unicamente cada linha de uma tabela. Ex.: `customer_id`.
+- **Chave estrangeira (FK, do inglês *Foreign Key*)**: cria o vínculo entre tabelas ao referenciar a PK de outra tabela. Ex.: `orders.customer_id` apontando para `customers.customer_id`.
 
-| Dialeto                                   | Tipo de Operação                                               | Cláusulas SQL                       |
-|-------------------------------------------|----------------------------------------------------------------|-------------------------------------|
-| Linguagem de Definição de Dados (DDL)     | Utilizado para criar, alterar e deletar objetos (ex. tabelas). | CREATE,  ALTER, DROP                |
-| Linguagem  de Manipulação de Dados (DML)  | Possui comandos que interagem com os dados dentro das tabelas. | SELECT, INSERT, UPDATE, DELETE      |
-| Linguagem  de Controle de Dados (DCL)     | Controla os aspectos de autorização de dados e acessos         | GRANT, REVOKE                       |
-| Linguagem de Controle de Transações (DTL) | Controla as transações                                         | BEGIN TRANSACTION, COMMIT, ROLLBACK |
+Com essas relações, conseguimos garantir integridade referencial, evitar duplicidade de registros e construir consultas que cruzam múltiplas tabelas via `JOIN`.
 
-Na prática, o Engenheiro de Analytics precisa entender de forma mais avançada apenas as linguagens de manipulação de dados e de definição de dados enquanto as demais são dominadas por Engenheiros de Dados, Administradores de Banco de Dados e outros profissionais especializados.
+**Nota:** Em alguns cenários, especialmente em tabelas fato ou tabelas de relacionamento, a chave primária é composta pela combinação de duas ou mais colunas. Ao unir atributos como `order_id` e `product_id`, por exemplo, garantimos a unicidade de cada ocorrência sem necessariamente precisar de uma coluna artificial.
+
+## SQL e suas sub-linguagens
+
+O modelo relacional é manipulado por SQL (*Structured Query Language*). Apesar dos “dialetos” específicos de cada banco (PostgreSQL, MySQL, SQL Server), a base da linguagem permanece consistente e se divide em quatro grupos principais:
+
+| Subconjunto                               | Objetivo                                                          | Comandos típicos                    |
+|-------------------------------------------|-------------------------------------------------------------------|-------------------------------------|
+| Linguagem de Definição de Dados (DDL)     | Criar, alterar e remover objetos                                  | `CREATE`, `ALTER`, `DROP`           |
+| Linguagem de Manipulação de Dados (DML)   | Inserir, consultar e alterar registros                            | `SELECT`, `INSERT`, `UPDATE`, `DELETE` |
+| Linguagem de Controle de Dados (DCL)      | Conceder ou revogar privilégios                                   | `GRANT`, `REVOKE`                   |
+| Linguagem de Controle de Transações (TCL) | Garantir atomicidade e consistência de transações                 | `BEGIN`, `COMMIT`, `ROLLBACK`       |
+
+Para analytics engineering, o foco recai em DDL e DML — afinal, criamos tabelas, *views* e modelos, além de ler e transformar dados. Ainda assim, é útil entender permissões (DCL) e transações (TCL), especialmente quando colaboramos com times de engenharia de dados ou administradores de banco.
