@@ -51,6 +51,7 @@ parts:
         - file: chapters/05/04/group_by.ipynb
         - file: chapters/05/05/case_when.ipynb
         - file: chapters/05/06/sub.ipynb
+        - file: chapters/05/07/funcoes_janela.md
         - file: chapters/05/leia_mais.md
     - file: chapters/06/intro.md
       sections:

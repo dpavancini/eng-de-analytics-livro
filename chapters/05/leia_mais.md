@@ -1,7 +1,4 @@
 # Leia Mais
 
-[Is Kimball still relevant in the modern data warehouse (em inglês)](https://www.advancinganalytics.co.uk/blog/2019/6/17/is-kimball-still-relevant-in-the-modern-data-warehouse)
-
-[Star schema vs OBT (em inglês)](https://fivetran.com/blog/star-schema-vs-obt)
-
-[Kimball's dimensional data modelling (em inglês)](https://www.holistics.io/books/setup-analytics/kimball-s-dimensional-data-modeling/)
+- [5 Motivos para Aprender SQL — Indicium Academy (blog, em português)](https://academy.indicium.tech/blog/sql-5-motivos-para-aprender-essa-linguagem)
+- [SQL Tutorial — SQLTutorial.org (em inglês)](https://www.sqltutorial.org/)
