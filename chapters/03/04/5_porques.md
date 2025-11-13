@@ -39,4 +39,9 @@ Com a causa raiz identificada, podemos agir de forma efetiva: renegociar limites
 - Documente cada pergunta e resposta no ticket ou playbook do incidente.
 - Combine os 5 Porquês com dados de observabilidade (logs, métricas, alerts) para evitar suposições.
 
+```{admonition} Atenção
+:class: warning
+Evite respostas baseadas apenas em opinião. Ancore cada “por quê?” em evidências (logs, SLIs) e pare quando chegar a uma causa controlável.
+```
+
 Os 5 Porquês se encaixam perfeitamente no ciclo PDCA: ajudam a aprofundar a etapa de diagnóstico antes de implementar ações corretivas.

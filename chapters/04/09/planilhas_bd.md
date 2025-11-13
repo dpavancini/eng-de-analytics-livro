@@ -10,7 +10,7 @@ Planilhas eletrônicas (Excel, Google Sheets) convivem com bancos de dados em pr
 ## Reprodutibilidade
 
 - **Planilhas**: para realizar consultas ou transformações em uma planilha, é necessário descrever manualmente cada passo. O resultado final (os dados) e o processo utilizado se misturam, sem um padrão claro de reprodução. Dependendo das operações realizadas, pode ser impossível retornar ao estado inicial dos dados. Além disso, para compartilhar a análise, é preciso enviar o próprio arquivo da planilha.
-- **Bancos SQL**: Em SQL, descrevemos o que queremos consultar, e o banco de dados se encarrega de decidir como executar a consulta. Essa separação entre a camada de processamento e a camada de dados permite compartilhar apenas as instruções (por exemplo, um simples arquivo .sql), mantendo os dados protegidos e garantindo reprodutibilidade muito superior à das planilhas.s
+- **Bancos SQL**: Em SQL, descrevemos o que queremos consultar, e o banco de dados se encarrega de decidir como executar a consulta. Essa separação entre a camada de processamento e a camada de dados permite compartilhar apenas as instruções (por exemplo, um simples arquivo .sql), mantendo os dados protegidos e garantindo reprodutibilidade muito superior à das planilhas.
 
 ## Relacionamentos
 
@@ -26,3 +26,8 @@ Planilhas eletrônicas (Excel, Google Sheets) convivem com bancos de dados em pr
 
 - **Planilhas**: são fáceis de compartilhar, mas difíceis de controlar. Alterações simultâneas podem gerar conflitos e versões divergentes.
 - **Bancos SQL**: permitem permissões granulares, logs de auditoria, replicação e *backups* automáticos.
+
+```{admonition} Reprodutibilidade e versionamento
+:class: note
+Consultas e transformações versionadas (ex.: dbt + Git) melhoram rastreabilidade, colaboração e auditoria, algo difícil de sustentar apenas com planilhas compartilhadas.
+```

@@ -26,3 +26,8 @@ No dia a dia, esse olhar analítico se desdobra em perguntas como:
 - como automatizar alertas antes que um indicador crítico fuja da meta?
 
 Responder a essas perguntas exige método, e é exatamente isso que veremos nas próximas seções.
+
+```{admonition} Template de problem statement
+:class: note
+[Métrica/resultado] caiu/subiu [x%] em [período], afetando [área]. Suspeitamos [hipótese inicial]. Validaremos via [fontes] e decidiremos [ação/escalonamento] até [data].
+```

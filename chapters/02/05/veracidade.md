@@ -10,6 +10,15 @@ Alguns pilares de um programa moderno de qualidade de dados:
 - **Linhagem acessível**: rastreie colunas desde a fonte até o BI para acelerar investigações. Ferramentas de *lineage* ajudam a explicar impactos de mudanças antes que o problema aconteça.
 - **Governança de mudanças**: implemente fluxos de aprovação para alterações em regras de negócio.
 
+### Testes práticos com dbt
+
+- `unique` e `not_null` em chaves naturais/surrogates (ex.: `customer_id`).
+- `relationships` para garantir integridade referencial entre fatos e dimensões.
+- `accepted_values` e `dbt-expectations` para regras de domínio (ex.: status válidos, ranges, porcentagens). 
+- Freshness em `sources` para monitorar desatualização.
+
+Exemplo (dim_clientes): `customer_id` `not_null` + `unique`; `customer_status` em {‘ativo’, ‘inativo’, ‘suspenso’}; relacionamento `orders.customer_id -> dim_clientes.customer_id`.
+
 Quando trabalhamos com dados estruturados, ainda valem as restrições clássicas de integridade[^wiki]:
 
 * **integridade de entidade** diz respeito ao conceito de chave primária; é uma regra que afirma que cada tabela deve ter uma chave primária e que a coluna ou as colunas escolhidas para serem a chave primária devem ser únicas e não nulas.

@@ -30,3 +30,8 @@ Bancos colunares armazenam colunas de forma sequencial.
 - **Clusters e *sort keys***: warehouses colunares permitem definir colunas de ordenação que aceleram filtros e *joins* sem precisar de índices tradicionais.
 
 Quando estiver depurando uma consulta lenta, avalie se o gargalo está na origem transacional ou no warehouse. Muitas vezes, uma conversa com o time de engenharia de dados para ajustar índices e particionamento na fonte do warehouse resolve o problema mais rapidamente do que tentar “otimizar SQL” sem contexto.
+
+```{admonition} Databricks em OLAP
+:class: tip
+Em Databricks SQL Warehouse (Delta), índices tradicionais não são a alavanca principal. Prefira: particionamento por colunas de filtro, `OPTIMIZE` para compactação, `ZORDER` para acelerar buscas seletivas, estatísticas atualizadas e evitar “small files” ao ingerir.
+```

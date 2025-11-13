@@ -29,7 +29,7 @@ Vamos conectar o PDCA ao trabalho de um Engenheiro de Analytics.
 
 1. Compare o resultado com o que foi planejado: métricas bateram? hipóteses foram validadas?
 2. Analise logs, painéis de observabilidade e alertas para entender desvios.
-3. Coleta feedback dos consumidores: o que funcionou? onde há ruído? quais novas perguntas surgiram?
+3. Colete feedback dos consumidores: o que funcionou? onde há ruído? quais novas perguntas surgiram?
 
 ### Ação (*Act*)
 

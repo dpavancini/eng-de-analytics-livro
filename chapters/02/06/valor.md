@@ -29,4 +29,15 @@ Esse é o território natural da **ciência de dados**, que se integra ao *data 
 
 Por fim, **gerar valor em analytics** vai além de dominar ferramentas ou técnicas sofisticadas. O verdadeiro diferencial está em **definir as perguntas certas** e **aplicar o tipo de análise adequado** para respondê-las — tema que exploraremos na próxima seção.
 
+```{admonition} KPI/Value tree
+:class: tip
+Conecte métricas a objetivos: defina uma North Star Metric e derive indicadores de suporte (ex.: receita = preço × volume; volume = visitantes × conversão). Use essa árvore para priorizar hipóteses e modelagem.
+```
+
+### Exercício rápido
+
+Escolha 3 métricas Northwind (ex.: receita diária, taxa de conversão, ticket médio). Para cada uma, descreva:  
+- decisões que ela habilita,  
+- origem e granularidade,  
+
 [^Gartner]: Gartner. 2019 Planning guide for data and analytics. Disponível em: https://www.gartner.com/en/doc/361501-2019-planning-guide-for-data-and-analytics.
