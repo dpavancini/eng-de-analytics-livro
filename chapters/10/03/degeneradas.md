@@ -34,3 +34,7 @@ A terceira e melhor forma de modelar entidades como Faturas é por meio do uso d
 :name: fig_dim_degenerada_3
 
 ```
+
+```{admonition} Quando usar
+Use dimensões degeneradas para identificadores de transações que só fazem sentido no contexto da própria fato (ex.: número da fatura, número do pedido, número do bilhete). Elas possibilitam rastreabilidade sem criar uma dimensão gigantesca e redundante.
+```

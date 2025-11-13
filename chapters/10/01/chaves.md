@@ -32,10 +32,16 @@ Uma prática recomendada para criar a chave de dimensão é utilizar uma chave q
 
   - **Chave composta**: quando se faz uma composição de diferentes colunas na tabela fonte, ela é também chamada de chave composta. Um ponto positivo é que é possível extrair algum significado dessa chave, porém nem sempre é fácil garantir que as combinações sejam únicas.
 
-  - **Chave incremental**: uma chave autogerada pelo sistema de forma incremental. É o exemplo da tabela acima, onde a chave é uma sequência de valores inteiros. Um possível problema dessa chave na prática é que há uma limitação de  valores possíveis em tabelas muito grandes.
+  - **Chave incremental**: uma chave autogerada pelo sistema de forma incremental (IDENTITY/SEQUENCE). Simples, performática e curta. Prefira `BIGINT` para evitar limites práticos em tabelas grandes.
 
-  - **Chave hasheada**: outra forma de gerar uma chave única a partir de diferentes campos das dimensões é utilizar uma função hash que transforma diferentes valores em uma cadeia de caracteres única. Se por um lado essa chave pode causar um pouco de estranheza para um usuário de negócio, o ponto positivo é que ela permite virtualmente infinitas combinações.
+  - **Chave hasheada**: gere um hash estável a partir da(s) chave(s) de negócio e, se necessário, de atributos relevantes. Útil para integração entre domínios e em engines sem `SEQUENCE`. Com hashes de 128/256 bits, colisões são improváveis para nossos volumes.
 
 ## Chave Estrangeira (FK)
 
-Uma chave estrangeira é a chave em uma tabela de fatos que aponta para uma SK de uma tabela de dimensão.
+Uma chave estrangeira é a chave em uma tabela de fatos que aponta para a SK de uma tabela de dimensão. Em SCD Tipo 2, a FK aponta para a versão vigente da dimensão no momento do evento — preservando histórico.
+
+```{admonition} Boas práticas
+- Prefira SK inteiras (BIGINT) por performance e tamanho; exponha a chave de negócio como coluna separada.
+- Em SCD2, mantenha colunas padrão: `valid_from`, `valid_to`, `is_current` e, opcionalmente, `load_ts`, `source_system`.
+- Teste unicidade na dimensão: `unique` em SK e em (`business_key`, `valid_from`) para SCD2; teste `relationships` entre fatos e dimensões.
+```

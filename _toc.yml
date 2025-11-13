@@ -84,6 +84,7 @@ parts:
         - file: chapters/10/02/scd.md
         - file: chapters/10/03/degeneradas.md
         - file: chapters/10/04/junk.md
+        - file: chapters/10/05/role_playing.md
         - file: chapters/10/leia_mais.md
     - file: chapters/11/intro.md
       sections:
