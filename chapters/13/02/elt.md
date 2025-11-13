@@ -1,7 +1,10 @@
 (elt)=
 # 13.2 O ELT
 
-Embora existam algumas diferenças de arquitetura e ferramentas utilizadas nos processos de ELT modernos, o quadro geral é o mesmo: na etapa de *Extração*, ferramentas especializadas permitem “mover” dados de centenas de fontes como ERPs, CRMs, bancos de dados, REST APIs etc. diretamente para um *data warehouse* na nuvem ou *on-premises* com um baixo custo técnico. Desta forma, a etapa de *Load* é feita simultaneamente à extração. Dentro do DW, a transformação de dados é feita por meio de scripts SQL ou ferramentas visuais que aplicam as regras de negócio para transformar os dados brutos em conjuntos de dados limpos, estruturados e prontos para o consumo por ferramentas de BI e análise.
+Embora existam variações de arquitetura e ferramentas, o quadro geral é o mesmo:
+
+- Extração/Load: conectores (open‑source e SaaS) movem dados de ERPs, CRMs, bancos, REST APIs e eventos para o DW. Em muitos casos, usam CDC (Change Data Capture) para trazer apenas mudanças. A etapa de load ocorre junto com a extração.
+- Transformação: dentro do DW, aplicamos regras de negócio via SQL/Python, organizando camadas e garantindo qualidade com testes e documentação.
 
 No diagrama abaixo, vemos como a etapa de ELT se destaca na arquitetura geral do {ref}`MDS<MDS>`:
 
@@ -12,9 +15,25 @@ No diagrama abaixo, vemos como a etapa de ELT se destaca na arquitetura geral do
 Exemplo do fluxo de ELT
 ```
 
-Na prática, o processo de ELT é onde a maior parte do trabalho é realizado em um projeto de Analytics. Em projetos de menor complexidade, um Engenheiro de Analytics pode ser responsável pelo fluxo completo: desde a coleta de dados até a entrega final. Em projetos mais críticos, é comum que essa responsabilidade seja dividida entre os Engenheiros de Analytics e Engenheiros de Dados.
+Na prática, o ELT concentra a maior parte do trabalho em projetos de analytics. Em equipes menores, um Engenheiro de Analytics pode cuidar de ponta a ponta; em ambientes críticos, tarefas se dividem entre times de dados (ingestão, plataforma) e analytics (modelagem, métricas, BI).
 
-```{admonition} Pense no ELT como um processo contínuo, sem um fim claro. Os requisitos de analytics são mutáveis, variam com a necessidade do negócio!
+```{admonition} Pense no ELT como um processo contínuo
+Requisitos mudam com o negócio: planeje para evoluir. Automatize, versione e teste para sustentar mudanças com segurança.
 ```
 
-Nas próximas seções, vamos apresentar o processo de ELT passo a passo, contextualizando-o com as etapas apresentadas em outras seções do livro. Esses processos serão detalhados nos próximos capítulos, incluindo exemplos práticos de aplicação. Vamos lá?
+Boas práticas para ELT moderno
+- Camadas bem definidas: Existem duas abordagens predominantes para estruturar as camadas no ELT moderno:
+    - **Estilo Databricks**: Bronze (dados brutos ingestados), Prata (dados limpos, integrados ou intermediários) e Ouro (dados prontos para consumo analítico, como marts ou métricas). Esse padrão é muito comum em arquiteturas lakehouse e enfatiza a clareza do ciclo de vida dos dados.
+    - **Estilo dbt**: Raw (dados brutos carregados), Staging (dados limpos e padronizados), Intermediate (transformações intermediárias que normalizam ou enriquecem), e Marts (modelos finais de negócio, como fatos e dimensões). O dbt incentiva a modularização nomeando modelos e subpastas conforme essas camadas.
+  Nomeie e documente cada camada no seu projeto para garantir rastreabilidade, clareza de propósito e facilitar a colaboração entre times.
+- dbt (ou similar): modelos versionados em Git, testes (`unique`, `not_null`, `relationships`), documentação e macros para DRY.
+- Incrementalidade: use modelos incrementais, janelas de reprocessamento (lookback) e snapshots quando necessário.
+- Observabilidade: monitore freshness/volume/anomalias e alerte quebras cedo (dbt source freshness, ferramentas de DQ).
+- Orquestração: agende e controle dependências (Airflow, Dagster, Prefect, Workflows nativos).
+- Governança e segurança: IAM por papéis, mascaramento e data contracts entre produtores/consumidores.
+
+```{admonition} IA como copiloto
+Peça ajuda para escrever descrições de colunas, sugerir testes mínimos por modelo, rascunhar macros e revisar diffs. Valide a lógica e não exponha dados sensíveis.
+```
+
+Nas próximas seções, apresentamos o processo de ELT passo a passo e contextualizamos com os capítulos seguintes: ingestão (Cap. 14) e transformação (Cap. 15). Vamos lá?

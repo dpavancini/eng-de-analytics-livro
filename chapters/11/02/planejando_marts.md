@@ -11,9 +11,16 @@ Não custa lembrar que precisamos ter sempre em mente que o DW é um projeto de 
 :height: 450px
  Organização dos Data Marts
 ```
-
 Existem duas formas tradicionais de modelar os Data Marts: schema *snowflake* e *star schema*. Ambos utilizam fatos e dimensões, e armazenam as mesmas informações. A principal diferença entre eles é que o *star schema* é integralmente desnormalizado, enquanto no modelo *snowflake* as tabelas de dimensões são normalizadas. Em termos práticos, o modelo *snowflake* necessita, geralmente, de menor espaço de armazenamento e é mais otimizado em termos de bancos de dados tradicionais, já o modelo *star schema* facilita as consultas, pois não necessita da realização de diversos JOINs, mas de apenas um nível para cada tabela de fatos (por isso o nome *star schema*). 
 
 Uma questão natural que surge é sobre qual das arquiteturas é melhor. Na era dos Data Warehouses na nuvem, a rapidez na consulta é, em geral, preferível à otimização de armazenamento, de modo que utilizaremos a arquitetura *star schema* por padrão.
 
 Definidos os Marts iniciais, iniciamos a identificação dos fatos e medidas mais relevantes nesta área de negócio.
+
+```{admonition} Matriz Bus (Kimball)
+Liste Marts (linhas) e Dimensões (colunas). Marque onde cada dimensão é usada e se é conformada entre Marts. Isso guia prioridades, identifica dimensões compartilhadas e evita divergências.
+```
+
+```{admonition} Dica
+Comece por métricas com alto impacto e baixa complexidade (ex.: receita por período/produto/canal). Um corte vertical bem entregue gera tração para evoluir o restante do DW.
+```

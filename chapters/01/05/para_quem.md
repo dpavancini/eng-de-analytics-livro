@@ -2,7 +2,7 @@
 
 No capítulo anterior conhecemos a Northwind, nosso estudo de caso prático. Antes de mergulharmos na construção da sua infraestrutura de dados, vale esclarecer: **para quem este livro foi escrito?**
 
-Este conteúdo foi pensado como uma **referência prática para Engenheiros(as) de Analytics** em empresas de diferentes portes. Por ser uma função relativamente recente nos times de dados, acreditamos que outros perfis também podem se beneficiar do material:  
+Este conteúdo foi pensado como uma **referência prática para Engenheiros de Analytics** em empresas de diferentes portes. Por ser uma função relativamente recente nos times de dados, acreditamos que outros perfis também podem se beneficiar do material:  
 
 - **Analistas de BI** que querem ampliar seu conhecimento técnico;  
 - **Engenheiros de Dados** vindos de times tradicionais de DW que desejam se aproximar do negócio;  
@@ -22,6 +22,11 @@ O principal pré-requisito é alguma experiência prévia — profissional ou ac
 - **Ferramentas de apoio à decisão** como planilhas (Excel ou Google Sheets).  
 
 ---
+
+```{admonition} Fora de escopo
+:class: important
+Não cobrimos engenharia de streaming em tempo real, MLOps aprofundado, ou infraestrutura de baixo nível (rede, provisionamento de clusters e IaC detalhado). Indicaremos referências quando pertinente.
+```
 
 ```{note}
 Mesmo que você não domine todos os pré-requisitos, siga em frente. A proposta deste livro é justamente guiar o aprendizado de forma prática e incremental, com exemplos e desafios aplicados ao estudo de caso.

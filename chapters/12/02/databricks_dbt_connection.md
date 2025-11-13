@@ -5,7 +5,7 @@ Este guia mostra como configurar o dbt Core para se conectar ao Databricks.
 
 ## 1. Instale o dbt Core e o adaptador Databricks
 
-No terminal, execute:
+Recomendado: use um ambiente virtual (venv/conda/pipx). No terminal, execute:
 ```
 pip install dbt-databricks
 ```
@@ -42,7 +42,7 @@ Copie o **Host**, **HTTP Path** e o **Token** gerados para usar na configuraçã
 
 O arquivo `profiles.yml` geralmente fica em `C:\Users\SEU_USUARIO\.dbt\profiles.yml` no Windows.
 
-Exemplo de configuração para Databricks:
+Exemplo de configuração para Databricks (use variáveis de ambiente para segredos):
 
 ```yaml
 default:

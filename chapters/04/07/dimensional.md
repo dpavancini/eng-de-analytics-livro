@@ -20,3 +20,8 @@ Exemplo de esquema estrela para o processo de vendas.
 Observe como as dimensões têm nomes autoexplicativos e colunas orientadas ao negócio. É quase como trabalhar com várias abas de uma planilha conectadas entre si por chaves, mas com a escala e governança de um warehouse.
 
 Na seção **Modelando Dados** vamos aprender como criar os bancos de dados analíticos, ou *data warehouses*. Embora existam diferentes abordagens e arquiteturas na criação desses bancos, todas fazem uso dos esquemas estrela e dos modelos dimensionais para criar os modelos de dados otimizados para analytics.
+
+```{admonition} Para se aprofundar
+:class: note
+A visão completa de modelagem dimensional (fatos e dimensões, SCDs, medidas) é desenvolvida nos Capítulos 8–11.
+```

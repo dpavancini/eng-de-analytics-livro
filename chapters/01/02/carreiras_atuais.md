@@ -18,6 +18,12 @@ Com o avanço de tecnologias como **cloud data warehouses**, **processamento com
 
 Essa transformação abriu espaço para uma nova forma de organizar times de dados, menos fragmentada e mais integrada.  
 
+```{admonition} Antes → Depois
+:class: tip
+Antes: pipelines orquestrados por scripts manuais, consultas soltas em BI e métricas duplicadas em várias ferramentas.  
+Depois: pipelines declarativos e versionados, definições de métricas centralizadas no layer semântico, CI/CD e contratos de dados entre produtores e consumidores.
+```
+
 ---
 
 ## O surgimento do Engenheiro de Analytics
@@ -26,4 +32,4 @@ Essa transformação abriu espaço para uma nova forma de organizar times de dad
 
 Sua missão é **transformar dados brutos em informações consistentes para tomada de decisão**, permitindo que empresas de diferentes portes construam infraestruturas modernas de analytics. Hoje esse papel já é realidade em empresas como Nubank, Spotify, iFood, Airbnb e XP Inc., que vêm adotando esse modelo para ganhar eficiência e escala.  
 
-O Engenheiro(a) de Analytics atua ainda como uma **ponte entre especializações**, garantindo que engenheiros de dados, cientistas e analistas trabalhem de forma mais conectada e com menos atrito.
+O Engenheiro de Analytics atua ainda como uma **ponte entre especializações**, garantindo que engenheiros de dados, cientistas e analistas trabalhem de forma mais conectada e com menos atrito.

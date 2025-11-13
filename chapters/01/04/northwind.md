@@ -35,6 +35,14 @@ Você será o **Engenheiro de Analytics da Northwind**. Sua missão é **estrutu
 
 Cada capítulo corresponderá a uma etapa dessa construção e terminará com um **desafio prático**, simulando situações reais de projeto.  
 
+### Premissas do projeto
+
+- Escopo inicial em lote (batch) com atualização diária;    
+- Consumo principal via Databricks SQL e ferramenta de BI;  
+- Governança e catálogo via Unity Catalog;  
+- Custos e performance monitorados, mas sem otimizações prematuras;  
+- Foco em ELT (extrair/carregar primeiro; transformar no warehouse/lakehouse).  
+
 ```{note}
-Os dados e estudos de caso também estão disponíveis no [repositório]() do Livro. 
+Os dados e estudos de caso estão disponíveis no repositório do livro: https://github.com/dpavancini/eng-de-analytics-livro
 ```

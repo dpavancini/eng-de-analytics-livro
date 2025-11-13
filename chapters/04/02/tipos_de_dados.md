@@ -21,4 +21,17 @@ Ao contrário das planilhas, bancos de dados exigem disciplina com os tipos de d
 - **Validações**: testes automatizados ficam mais simples quando o tipo reflete o domínio esperado (por exemplo, números positivos para quantidade).
 - **Integrações modernas**: warehouses na nuvem suportam tipos semiestruturados (JSON, Variant), permitindo explorar dados de eventos sem perder governança — mas é importante saber quando convertê-los para colunas tradicionais.
 
+```{admonition} Boas práticas
+:class: tip
+- Evite `FLOAT` para valores monetários; prefira `DECIMAL(p,s)` com precisão adequada.  
+- Converta datas e horários para tipos nativos (`DATE`/`TIMESTAMP`) o quanto antes.  
+- Documente domínios de colunas (ex.: status) e converta em testes automatizados.
+```
+
+```{admonition} Exemplo de restrições → testes
+:class: note
+`customer_id` NOT NULL e UNIQUE; `order_date` DATE NOT NULL; `order_status` em (placed, shipped, delivered, cancelled).  
+No dbt, converta cada regra em um teste (`not_null`, `unique`, `accepted_values`).
+```
+
 Como Engenheiro de Analytics, revise os tipos ao ingerir dados e ao modelar tabelas analíticas. Ajustes simples — como converter strings para inteiros ou escolher a precisão correta de um campo monetário — evitam bugs e tornam as transformações mais previsíveis.

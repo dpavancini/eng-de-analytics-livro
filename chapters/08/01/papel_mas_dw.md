@@ -9,3 +9,7 @@ Entre as principais características dos CDWs que permitem seu uso em grande esc
 - Ferramentas de BI, governança de dados e Data Discovery foram desenvolvidas especificamente para as arquiteturas de analytics centralizadas em cloud data warehouses. 
 
 Além do cloud data warehouse, o MDS conta com uma série de ferramentas que facilitam e melhoram os processos de consolidação e visualização de dados. Nós trataremos desses processos nas partes 3 e 4 do livro, respectivamente.
+
+```{admonition} Medallion architecture em 30 segundos
+Organize os dados em camadas lógicas: Bronze (brutos), Prata (limpos e integrados) e Ouro (marts e métricas). Essa separação ajuda na governança, na performance e na colaboração entre domínios.
+```

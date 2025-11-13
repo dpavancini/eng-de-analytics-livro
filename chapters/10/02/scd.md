@@ -1,6 +1,6 @@
 # 10.2 Dimensão de Alteração Lenta (SCD)
 
-Normalmente, é preferível que as dimensões sejam imutáveis, isto é, que o mesmo código 100 em uma tabela de Clientes, por exemplo, se refira ao cliente João Fulano. Uma das dificuldades do analytics engineer é que, em geral, não temos controle sobre as fontes de dados (ERP, por exemplo) e não é raro que haja `UPDATEs` nas tabelas originais que alterem as chaves naturais de uma informação. Dimensões que se alteram ao longo do tempo são chamadas de Dimensões de Alteração Lenta (do inglês, *Slow Changing Dimensions*) ou simplesmente SCDs. 
+Idealmente, dimensões seriam estáticas: o código de cliente “100” sempre representaria o mesmo registro. Na prática, fontes operacionais (ERPs, CRMs) mudam dados e, às vezes, até chaves naturais. Para lidar com essas mudanças, usamos Dimensões de Alteração Lenta (Slowly Changing Dimensions — SCDs), que definem estratégias para atualizar/registrar histórico nas dimensões.
 
 Para facilitar a implementação, alguns tipos de SCDs que abrangem a grande maioria dos casos práticos já foram definidos pela indústria. Vamos ver quais são?
 
@@ -96,4 +96,31 @@ Após uma mudança na tabela fonte, adicionamos um novo registro na tabela de di
 
 ## SCD Híbrida 
 
-Podem existir casos em que queremos adotar diferentes SCDs para diferentes atributos. Poderíamos, por exemplo, querer saber o histórico completo das Cidades de um cliente (SCD Tipo 2), mas nos importarmos apenas com o nome mais atual desse cliente, já que mudanças de nome seriam, provavelmente, para corrigir algum erro de digitação (SCD Tipo 1). Neste caso, chamamos essa tabela de dimensão de SCD Híbrida.
+Podem existir casos em que queremos adotar diferentes SCDs para diferentes atributos. Por exemplo, manter histórico completo da Cidade (Tipo 2) e sobrescrever o Nome (Tipo 1) quando mudanças são apenas correções. Chamamos essa dimensão de SCD híbrida.
+
+```{admonition} Colunas padrão e testes
+Em SCD Tipo 2, padronize colunas: `valid_from`, `valid_to`, `is_current` (0/1). Teste que não há sobreposição de períodos para a mesma `business_key` e que existe exatamente uma linha `is_current = 1` por `business_key`.
+```
+
+```{admonition} Implementação no MDS
+Em dbt, SCD2 é muitas vezes implementado com modelos do tipo snapshot.
+```
+
+```{admonition} Exemplo (dbt snapshot)
+:class: note
+```yaml
+snapshots:
+  - name: dim_clientes_snapshot
+    target_schema: snapshots
+    strategy: timestamp
+    unique_key: id_cliente
+    updated_at: atualizado_em
+```
+
+O downstream materializa `dim_clientes` com colunas padrão (`valid_from`, `valid_to`, `is_current`).
+```
+
+```{admonition} Alternativa (MERGE incremental no Databricks)
+:class: tip
+Para fontes com histórico confiável, é possível implementar SCD2 com modelos incrementais e `MERGE` (Delta), gerando novas versões quando atributos relevantes mudam. Teste sobreposição de períodos por `business_key`.
+```

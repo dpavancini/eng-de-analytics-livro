@@ -1,4 +1,4 @@
-# 7.2 Arquitetura de Referência
+# 6.2 Arquitetura de Referência
 
 O framework de referência do MDS serve para exemplificar as funções de cada módulo do MDS de modo a auxiliar o entendimento e construção de arquiteturas derivadas. É importante notar que as funções detalhadas abaixo podem ser executadas por uma única ferramenta ou serem parte de um conjunto de funcionalidades (ex. um Data Warehouse Cloud como o Databricks inclui Armazenamento, Processamento (VMs), APIs, Controle de Acesso e Motor de BigData em uma única ferramenta).
 
@@ -6,7 +6,7 @@ O framework de referência do MDS serve para exemplificar as funções de cada m
 
 Nesta seção apresentamos rapidamente o objetivo de cada componente da arquitetura de referência do MDS e exemplos de ferramenta que o implementa. Para uma outra lista de ferramentas veja esse [link](https://snowplowanalytics.com/blog/2021/05/12/modern-data-stack/).
 
-Os componentes mais comuns (**Core**) em implemetações de MDS são apresentados em vermelho no diagrama ao final desta seção. Já os componentes que aparecem em projetos sob demanda estão em amarelo.
+Os componentes mais comuns (**Core**) em implementações de MDS são apresentados em vermelho no diagrama ao final desta seção. Já os componentes que aparecem em projetos sob demanda estão em amarelo.
 
 ```{figure} ../../../assets/img/mas_referencia.png
 :name: mds_referencia
@@ -53,17 +53,17 @@ Os componentes da camada de ingestão menos usuais são:
 A camada de transformação é responsável por processar e armazenar os dados extraídos as fontes de dados originais até seu formato final para consumo pelos produtos de dados.
 
 **Core**
-Os componentes da camada de ingestão mais comuns são:
+Os componentes da camada de transformação mais comuns são:
 
 - **Data Warehouse**: o data warehouse é um banco de dados analítico capaz de armazenar, processar e disponibilizar enorme volume de dados para a tomada de decisão. Ele pode ser desenvolvido de uma forma que abstrai suas partes mais técnicas e disponibiliza somente a interface necessária para construção dos modelos (isto é, tabelas) como é o caso dos  Cloud Data Warehouses ([Databricks](), [Google BigQuery](), [Amazon Redshift](), [Azure Synapse]() e [Snowflake]()) ou ter uma arquitetura mais flexível que também é chamada de [Data Lakehouse](). Na visão do MDS, o Data Warehouse não serve apenas como um banco de dados bruto mas precisa ser modelado para atender aos requisitos de cada cliente, tarefa que fica a cargo da [Engenharia de Analytics]().
 
-- **Processamento em Lotes**: o componente de processamento em lotes é responsável por executar a transformação de dados brutos em dados modelados. Salvo exceções, o processamento é realizado dentro do Data Warehouse através da arquitetura ELT. Em alguns projetos esse processamento pode ser separado do armazenamento, como no caso da construção de [Data Lakehouses]() ou do uso de ferramentas como o Databricks.
+- **Processamento em Lotes**: responsável por executar a transformação de dados brutos em dados modelados. Salvo exceções, o processamento ocorre dentro do Data Warehouse (ELT). Em alguns projetos esse processamento pode ser separado do armazenamento, como em [Lakehouses]() ou com engines como o Databricks.
 
 - **Modelagem de Dados**: para realizar a modelagem de dados, isto é, a aplicação de regras de negócio, transformações, construção de tabelas etc. utilizamos a ferramenta [dbt]() dentro do MDS. Essa ferramenta **não processa dados diretamente** mas envia instruções (em SQL) para o componente de processamento em lotes da plataforma.
 
 
 **Sob Demanda**
-Os componentes da camada de ingestão menos usuais são:
+Os componentes da camada de transformação menos usuais são:
 
 - **Data Lake**: um data lake é um repositório de dados com armazenamento virtualmente infinito que permite guardar qualquer tipo de arquivo digital. Ele pode ou não estar presente no MDS conforme a necessidade e criticidade do projeto.
 
@@ -77,9 +77,12 @@ Os componentes da camada de ingestão menos usuais são:
 Também chamada de *serving layer*, essa camada é em geral invisível e parte das ferramentas utilizadas pelo MDS. No entanto, em projetos mais complexos pode ser necessário separar componentes que disponibilizam dados e serviços dos componentes que os constroem.
 
 **Core**
+
 Os componentes da camada de Disponibilização mais comuns são:
 
-- **Data Marts:** os data marts disponibilizam as tabelas finais do processo de ELT de forma estruturada, documentada e otimizada para consulta pelos produtos de dados e analistas. Em geral, são disponibilizados pelo próprio Data Warehouse mas em alguns casos pode ser necessário a utilização de uma camada semântica para acelerar consultas.
+- **Data Marts:** disponibilizam as tabelas finais do processo de ELT de forma estruturada, documentada e otimizada para consulta por produtos de dados e analistas. Em geral, são servidos pelo próprio Data Warehouse.
+
+- **Camada Semântica (Metrics Layer):** define métricas reutilizáveis e consistentes (dimensões, granularidade, políticas de cálculo) expostas para BI e outras aplicações. Exemplos: LookML, dbt metrics/MetricFlow, semantic layers dedicadas.
 
 - **APIs:** APIs são interfaces de comunicação entre os produtos de dados e ambientes externos com a plataforma de dados e incluem interfaces padronizadas (como conexões JDBC com o DW) e APIs gateways que podem ser necessários por questões de desempenho e segurança de cada projeto. 
 
@@ -88,7 +91,6 @@ Os componentes da camada de Disponibilização menos usuais são:
 
 - **Motor de Big Data**: motor de big data (ou *Big Data Query Engines*) permitem consultar grandes volumes de dados armazenados no Data Lake sem a necessidade de um Data Warehouse. Podem existir em projetos maiores onde há a necessidade desse tipo de acesso direto utilizando ferramentas como o [Athena](), [Presto]() e [Dremio](). O Databricks também se enquadra nesta categoria.
 
-
 ### Camada de Produtos
 
 A camada de Produtos é a camada que expõe produtos de dados para consumidores externos à plataforma de dados como analistas de dados, outras aplicações etc. Na arquitetura MDS os produtos de dados devem **necessariamente** ser construídos em cima de uma plataforma de dados que exponha os componentes estruturais necessários para sua construção.
@@ -96,18 +98,18 @@ A camada de Produtos é a camada que expõe produtos de dados para consumidores 
 **Core**
 Os componentes da camada de Produtos mais comuns são:
 
-- **Self-service BI**: o self-service BI é uma ferramenta de suporte à tomada de decisão que permite construir visualizações de dados e gerar insights a partir dos dados. É uma ferramenta essencial em qualquer infraestrutura de dados para analytics e incluir ferramentas como [Microsoft PowerBI](), [Tableau](), [Metabase](), [Mode](), [Looker]() etc.
+- **Self-service BI**: ferramentas para construção de visualizações e exploração de dados, essenciais para suportar decisões. Exemplos incluem [Power BI](), [Tableau](), [Metabase](), [Mode](), [Looker]().
 
 **Sob Demanda**
 Os componentes da camada de Produtos menos usuais são:
 
 - **Reporting**: inclui ferramentas que permitem a construção e automação do envio de relatórios.
 
-- **Data Apps:** são apps (web ou mobile) que permitem interagir com os dados da plataforma ou modelos de AI.
+- **Data Apps:** aplicativos (web ou mobile) que interagem com dados e modelos de IA.
 
-- **Reverse ETL**: o reverse ETL é um componente que permite entregar dados da plataforma de dados via API para as fontes de dados do cliente. Por exemplo, podemos entregar uma classificação de clientes (ex.RFV) para o CRM para otimizar o processo de gestão de carteira.
+- **Reverse ETL**: envia dados da plataforma (via APIs) de volta para sistemas operacionais (ex.: CRM/Marketing), ativando segmentos, classificações (ex.: RFV) e atributos.
 
-- **AI & ML**: são componentes que permitem rodar novos dados em um modelo de *machine learning* para calcular uma previsão. 
+- **AI & ML**: componentes para inferência e serving de modelos. Em LLMs, inclua orquestração de prompts, embeddings e busca vetorial (RAG) quando necessário.
 
 ### Infra & Orquestração
 
@@ -117,8 +119,10 @@ Esta camada disponibiliza recursos para o funcionamento da plataforma de dados. 
 Os componentes da camada de Infra & Orquestração mais comuns são:
 
 - **Orquestração**: componente responsável por orquestrar a execução dos demais componentes da plataforma. Pode ser uma ferramenta dedicada (ex. [Apache Airflow]()) ou parte de outros componentes (ex. execução por intervalos ou periódica).
-- **Compute & Storage**: inclui componentes mais próximos do *bare metal* ou virtualizações de recursos de computação (ex. Máquinas Virtuais EC2) e armazenamento (ex. HDs). Em geral, em arquiteturas MDS menos complexas esses recursos não são acessáveis diretamente.
-- **Redes**: componentes que fornecem recursos de comunicação de rede como IPs estáticos e dinâmicos, grupos de segurança, subredes. Em geral, em arquiteturas MDS menos complexas esses recursos não são acessáveis diretamente.
+
+- **Compute & Storage**: inclui componentes mais próximos do bare metal ou virtualizações de recursos de computação (ex.: VMs) e armazenamento. Em arquiteturas MDS menos complexas esses recursos não são acessíveis diretamente.
+
+- **Redes**: componentes de comunicação de rede (IPs, grupos de segurança, sub-redes). Em arquiteturas MDS menos complexas esses recursos não são acessíveis diretamente.
 
 - **Controle de Acesso**: componentes que permitem gerenciar o acesso à plataforma de dados (ex. IAM).
 
@@ -127,23 +131,22 @@ Os componentes da camada de Infra & Orquestração menos usuais são:
 
 - **Monitoramento**: componentes que monitoram os recursos da plataforma como consumo de dados, faturamento, etc.
 
-- **Container Registry**: componentes que realizam o registro de [Docker Containers]() ou [Kubernetes]()
+- **Container Registry**: registro de imagens Docker para deploy.
 
-- **IaC**: componentes de *Infrastructure as code* que permitem modularizar e gerenciar infraestrutura em nuvem (ex. [Terraform]()).
+- **IaC**: Infrastructure as Code para modularizar e gerenciar infraestrutura (ex.: [Terraform]()).
 
 - **Kubernetes**: é um sistema de orquestração de contêineres open-source que automatiza a implantação, o dimensionamento e a gestão de aplicações em contêineres.
 
-
 ### Operações
-Esta camada é responsável pela operação do desenvolvimento de software como respositório de código, pipelines de CI/CD e alertas.
+Esta camada cobre operação do desenvolvimento: repositório de código, pipelines de CI/CD e alertas.
 
 **Core**
 Os componentes da camada de Operações mais comuns são:
 
-- **VCS**: esse componente é responsável pelo controle de versão de código como [git](), [bitbucket]() e [gitlab](). É um componente core do MDS pois um dos princípios dessa arquitetura é o de tratar *Analytics as Code*.
+- **VCS**: controle de versão (ex.: [Git](), [Bitbucket](), [GitLab]()). É componente core no MDS para tratar Analytics como Código.
 
 **Sob Demanda**
-Os componentes da camada de ingestão menos usuais são:
+Os componentes da camada de Operações menos usuais são:
 
 - **CI/CD**: componentes responsáveis por CI/CD são utilizados para garantir boas práticas de DevOps. Em geral, em arquiteturas MDS menos complexas esses recursos não são acessáveis diretamente.
 
@@ -154,17 +157,17 @@ Os componentes da camada de ingestão menos usuais são:
 **Core**
 Os componentes da camada de Governança mais comuns são:
 
-- **Documentação**: componentes responsáveis por disponilizar e manter atualizada a documentação de códigos, processos etc. da Plataforma de Dados. Pode ser embutido em outros componentes (ex. dbt docs) ou uma ferramenta específica (ex. Wiki ou Confluence).
+- **Documentação**: componentes responsáveis por disponibilizar e manter atualizada a documentação de códigos, processos e dados (ex.: dbt docs, Wiki, Confluence).
 
-- **Segurança**: componentes responsáveis por garantir a segurança da plataforma e monitorar uso de dados pessoais, sensíveis etc.  Em geral, em arquiteturas MDS menos complexas esses recursos não são acessáveis diretamente.
+- **Segurança**: componentes responsáveis por garantir a segurança da plataforma e monitorar uso de dados pessoais/sensíveis. Em arquiteturas MDS menos complexas esses recursos nem sempre são expostos diretamente.
 
-- **Data Quality**: componentes responsáveis por garantir a qualidade dos dados da plataforma. Pode ser parte de outro componente (ex. testes no dbt) ou uma ferramenta específica (ex. [GreatExpectations]()).
+- **Qualidade de Dados**: testes e observabilidade (ex.: testes no dbt, [Great Expectations]()).
 
-- **Catálogo de Dados**: componente responsável por catalogar e documentar os dados disponíveis na plataforma de dados, assim como apresentar o **data lineage** de criação desses dados. Pode ser parte de outro componente (ex. dbt docs) ou uma ferramenta específica (ex. [Openmetadata]()). 
+- **Catálogo de Dados**: catálogo e documentação (inclui linhagem). Pode ser parte de outro componente (ex.: dbt docs) ou ferramenta específica (ex.: [OpenMetadata]()). 
 
 **Sob Demanda**
 Os componentes da camada de Governança menos usuais são:
 
-- **Gestão de Metadados**: componente responsável por gerenciar os metadados dos demais componentes da plataforma (Ex. [Backstage]()). Em geral, em arquiteturas MDS menos complexas esses recursos não são acessáveis diretamente.
+- **Gestão de Metadados**: componente responsável por gerenciar metadados dos demais componentes (ex.: [Backstage]()). Em arquiteturas MDS menos complexas esses recursos nem sempre são expostos diretamente.
 
 - **Model Reporting**: componente responsável por monitorar e reportar resultados de modelos de Machine Learning (ex. [MLFlow]()).

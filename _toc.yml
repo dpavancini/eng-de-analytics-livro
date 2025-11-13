@@ -50,19 +50,21 @@ parts:
         - file: chapters/05/03/agregadas.ipynb
         - file: chapters/05/04/group_by.ipynb
         - file: chapters/05/05/case_when.ipynb
+        - file: chapters/05/07/funcoes_janela.md
         - file: chapters/05/06/sub.ipynb
         - file: chapters/05/leia_mais.md
     - file: chapters/06/intro.md
       sections:
-        - file: chapters/06/01/boas_praticas_prog.md
-        - file: chapters/06/02/boas_praticas_dev.md
-        - file: chapters/06/03/intro_git.md
-        - file: chapters/06/04/git_pratica.md
+        - file: chapters/06/01/principios.md
+        - file: chapters/06/02/arq_referencia.md
+        - file: chapters/06/03/convencoes.md
         - file: chapters/06/leia_mais.md
     - file: chapters/07/intro.md
       sections:
-        - file: chapters/07/01/principios.md
-        - file: chapters/07/02/arq_referencia.md
+        - file: chapters/07/01/boas_praticas_prog.md
+        - file: chapters/07/02/boas_praticas_dev.md
+        - file: chapters/07/03/intro_git.md
+        - file: chapters/07/04/git_pratica.md
         - file: chapters/07/leia_mais.md
   - caption: Modelando Dados
     chapters:
@@ -83,6 +85,7 @@ parts:
         - file: chapters/10/02/scd.md
         - file: chapters/10/03/degeneradas.md
         - file: chapters/10/04/junk.md
+        - file: chapters/10/05/role_playing.md
         - file: chapters/10/leia_mais.md
     - file: chapters/11/intro.md
       sections:
@@ -99,7 +102,6 @@ parts:
       sections:
         - file: chapters/12/01/databricks_data_warehouse.md
         - file: chapters/12/02/databricks_dbt_connection.md
-        - file: chapters/12/03/bigquery_data_warehouse.md
   - caption: Transformando dados
     chapters:
     - file: chapters/13/intro.md

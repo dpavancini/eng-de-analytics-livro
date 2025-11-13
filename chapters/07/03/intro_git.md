@@ -1,5 +1,5 @@
 (git)=
-# 6.3 Introdução ao controle de versão e Git
+# 7.3 Introdução ao controle de versão e Git
 
 Nesta seção falaremos do controle de versão, um dos processos mais importantes no desenvolvimento de softwares e também na Engenharia de Analytics. Também falaremos da ferramenta mais popular de controle de versão chamada Git. Vamos lá?
 
@@ -116,5 +116,3 @@ Diretório de trabalho, área de preparo (índice), e o diretório Git. Adaptado
 ```
 
 Quando acessamos uma versão do projeto ou clonamos um repositório remoto, nosso diretório de trabalho será uma cópia do repositório. A partir do momento que modificarmos um arquivo ou adicionarmos um novo arquivo, nosso diretório de trabalho passa a estar em um estado distinto do repositório original.
-
-

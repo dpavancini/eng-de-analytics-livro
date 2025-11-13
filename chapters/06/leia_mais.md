@@ -1,13 +1,11 @@
-# 6.4 Leia mais
+# 6.4 Leia Mais
 
-[The Coming era of data as code (em inglês)](https://thenewstack.io/the-coming-era-of-data-as-code/)
+[Modern Data Stack (em inglês)](https://www.moderndatastack.xyz/)
 
-[Simplicity in Software Design: KISS, YAGNI and Occam’s Razor (em inglês)](https://effectivesoftwaredesign.com/2013/08/05/simplicity-in-software-design-kiss-yagni-and-occams-razor/)
+[What is the modern data stack (em inglês)](https://www.fivetran.com/blog/what-is-the-modern-data-stack)
 
-[What is CI/CD ](https://www.redhat.com/pt-br/topics/devops/what-is-ci-cd)
+[The Modern Data Stack: Past, Present, and Future (em inglês)](https://www.getdbt.com/blog/future-of-the-modern-data-stack/)
 
-[Livro Git SCM](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Sobre-Controle-de-Vers%C3%A3o)
+[Modern Data Stack: A Evolução da Infraestrutura de Dados](https://datauniverse.com.br/modern-data-stack-a-evolucao-da-infraestrutura-de-dados/)
 
-[Introduction to Git with Scott Chacon of GitHub (em inglês)](https://www.youtube.com/watch?v=ZDR433b0HJY)
-
-[Tutorial git para iniciantes](https://www.hostinger.com.br/tutoriais/tutorial-do-git-basics-introducao)
+[Modern Data Stack — uma alternativa inteligente para buscar maturidade em dados](https://medium.com/@oliveira.octavio/modern-data-stack-uma-alternativa-inteligente-para-buscar-maturidade-em-dados-9948a0c9ebc8)

@@ -9,3 +9,10 @@ Outra otimização comum é a construção de **tabelas derivadas**, que juntam 
 ```{admonition} Importante
 A possibilidade ou necessidade de construção de tabelas agregadas e derivadas dependerá da ferramenta de BI (ou outros produtos de dados que consomem o *Data Warehouse*). É sempre bom entender como cada ferramenta faz a conexão com os dados do *Data Warehouse* para escolher a melhor arquitetura.
 ```
+
+```{admonition} Dicas práticas
+- Nomeie e documente a granularidade das agregações (ex.: `fct_vendas_dia_produto_loja`). Evite agregar além do que o consumo precisa.
+- Mantenha a fato transacional como fonte de verdade. Use agregadas para acelerar consultas frequentes e previsíveis.
+- Para métricas não aditivas, agregue com o agregador correto (média ponderada, último valor do período para semiaditivas) e documente a regra.
+- Considere uma camada semântica de métricas para garantir consistência entre fontes de consumo diferentes.
+```

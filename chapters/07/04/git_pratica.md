@@ -1,5 +1,5 @@
 (git_pratica)=
-# 6.4 Git na prática
+# 7.4 Git na prática
 
 Agora que entendemos a importância do versionamento de código e os conceitos por trás do Git, podemos partir para a prática! Nas próximas seções mostraremos os comandos mais utilizados do Git de forma introdutória para que você possa começar a entender o processo como um todo. Para a grande maioria das pessoas a experiência com Git é uma mistura de amor e ódio, e somente com a prática você se sentirá mais confortável em utilizá-lo. Vamos lá?
 

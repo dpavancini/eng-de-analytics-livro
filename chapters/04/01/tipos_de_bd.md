@@ -26,7 +26,7 @@ Dentro do universo relacional, vale distinguir os bancos projetados para transa�
 
 **Exemplos de OLTP:** PostgreSQL, MySQL, SQL Server, Oracle Database — sustentam aplicações como ERPs, e-commerces e sistemas bancários.
 
-**Exemplos de OLAP:** DataBricks Snowflake, Google BigQuery, Amazon Redshift, Azure Synapse — suportam *dashboards*, análises ad-hoc e modelos preditivos construídos sobre o histórico completo.
+**Exemplos de OLAP:** Databricks SQL Warehouse, Snowflake, Google BigQuery, Amazon Redshift, Azure Synapse — suportam *dashboards*, análises ad‑hoc e modelos preditivos construídos sobre o histórico completo.
 
 Em arquiteturas modernas, é comum sincronizar dados do ambiente OLTP para um repositório OLAP por meio de pipelines de extração de dados. Assim, preservamos a performance das aplicações transacionais enquanto garantimos uma base robusta para analytics.
 

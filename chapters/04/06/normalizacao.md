@@ -18,6 +18,6 @@ Quando o objetivo é análise, tanta fragmentação se torna um obstáculo:
 - **Interfaces automáticas**: ferramentas de BI que inferem relacionamentos podem errar conexões em modelos muito normalizados.
 - **Histórico limitado**: sistemas transacionais costumam sobrescrever valores em vez de manter o histórico completo, o que impede análises de evolução.
 
-Por isso, ao migrarmos dados para um ambiente analítico, normalmente recorremos a modelos **denormalizados** — como o modelo dimensional — que favorecem leituras rápidas e entendimento intuitivo. No capítulo 6 veremos esse processo em detalhe.
+Por isso, ao migrarmos dados para um ambiente analítico, normalmente recorremos a modelos **denormalizados** — como o modelo dimensional — que favorecem leituras rápidas e entendimento intuitivo. No {ref}`dw` (Capítulo 8) e nos Capítulos 9–11 veremos esse processo em detalhe.
 
 [^normalizacao]: Existem diferentes níveis de normalização. A mais utilizada é a terceira forma normal (3FN). A mnemônica popular entre arquitetos diz: “The key, the whole key, and nothing but the key. So help me Codd.” em homenagem a Edgar Codd, criador do modelo relacional.

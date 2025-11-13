@@ -17,22 +17,25 @@ Note que o uso do esquema estrela evita o uso de subqueries para a grande maiori
 
 ```SQL
 SELECT
-	datas.mes,
-	locais.cidade,
-	produto.nome_do_produto,
-	representante.nome_do_representante,
-	SUM(fato_vendas.valor_total)
-FROM
-	datas,
-	locais,
-	produto,
-	representante,
-	fato_vendas
-WHERE
-	datas.chave_data = fato_vendas.chave_data
-	AND locais.chave_local = fato_vendas.chave_local
-	AND produto.chave_produto = fato_vendas.chave_produto
-	AND representante.chave_representante = fato_vendas.chave_representante
+  d.mes,
+  l.cidade,
+  p.nome_do_produto,
+  r.nome_do_representante,
+  SUM(f.valor_total) AS vendas
+FROM fato_vendas as f
+JOIN datas as d ON d.chave_data = f.chave_data
+JOIN locais as l ON l.chave_local = f.chave_local
+JOIN produto as p ON p.chave_produto = f.chave_produto
+JOIN representante as r ON r.chave_representante = f.chave_representante
+GROUP BY 1,2,3,4;
 ```
 
 Em alguns casos pode ser necessária a inclusão de tabelas normalizadas em um data mart. Quando isso ocorre, o esquema resultante é chamado de modelo *snowflake*. Existem ainda outros tipos de tabelas como bridge e hierarquias que respondem a problemas práticos que não são completamente satisfeitos pelo esquema estrela tradicional. Em geral, a omissão ou utilização de outras estruturas no design do data warehouse possui prós e contras e precisa ser avaliada caso a caso pelo analista.
+
+```{admonition} OBT vs. Esquema estrela
+Em alguns cenários modernos, uma “One Big Table” (OBT) simplifica o consumo no BI ao custo de redundância e manutenção. Prefira estrela quando precisar de consistência entre domínios, reutilização de dimensões e evolução sustentável. OBT pode ser útil para acelerar um caso específico, mas evite que vire a regra.
+```
+
+```{admonition} Camada semântica (métricas)
+Uma camada semântica define métricas reutilizáveis (nome, fórmula, granularidade, dimensões permitidas), garantindo consistência entre painéis. Ela pode viver no próprio DW (views), numa ferramenta ou no seu projeto de transformação (dbt metrics/MetricFlow).
+```

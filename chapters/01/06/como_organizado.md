@@ -38,6 +38,17 @@ Na terceira parte, aplicamos os conceitos de ELT em projetos reais de Engenharia
 
 ---
 
+### Mini‑glossário (para ancorar os próximos capítulos)
+
+- **Camadas de dados**:  
+  - staging: padronização inicial e limpeza mínima das fontes;  
+  - intermediate: junções e regras de negócio intermediárias;  
+  - marts: modelos prontos para consumo analítico (fatos e dimensões).  
+- **Layer semântico**: local onde métricas são definidas de forma centralizada (fórmula, granularidade, filtros, escopo).  
+- **Testes de dados**: validações de esquema (not null, unique) e de conteúdo (valores aceitos, relacionamentos).  
+- **CI/CD de dados**: revisão por pares, execuções automatizadas de builds/testes e promoção controlada entre ambientes.  
+- **Delta Lake / Lakehouse**: formato de armazenamento transacional para o data lake; combina flexibilidade de lakes com consistência de warehouses.  
+
 ```{note}
 Cada capítulo se conecta ao estudo de caso da **Northwind Traders**.  
 Assim, você verá como aplicar os conceitos em um cenário prático, finalizando sempre com um **desafio** que reforça o aprendizado.

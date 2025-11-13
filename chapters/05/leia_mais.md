@@ -1,7 +1,8 @@
 # Leia Mais
 
-[Is Kimball still relevant in the modern data warehouse (em inglês)](https://www.advancinganalytics.co.uk/blog/2019/6/17/is-kimball-still-relevant-in-the-modern-data-warehouse)
+- [5 Motivos para Aprender SQL — Indicium Academy (blog, em português)](https://academy.indicium.tech/blog/sql-5-motivos-para-aprender-essa-linguagem)
+- [SQL Tutorial — SQLTutorial.org (em inglês)](https://www.sqltutorial.org/)
 
-[Star schema vs OBT (em inglês)](https://fivetran.com/blog/star-schema-vs-obt)
-
-[Kimball's dimensional data modelling (em inglês)](https://www.holistics.io/books/setup-analytics/kimball-s-dimensional-data-modeling/)
+- [Window functions explainer (PostgreSQL docs, em inglês)](https://www.postgresql.org/docs/current/tutorial-window.html)
+- [Databricks SQL functions (em inglês)](https://docs.databricks.com/en/sql/language-manual/sql-ref-functions-builtin.html)
+- [SQL style and readability (sqlfluff, em inglês)](https://docs.sqlfluff.com/)
