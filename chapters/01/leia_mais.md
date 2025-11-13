@@ -16,5 +16,12 @@ Se você deseja aprofundar seus conhecimentos, aqui estão algumas leituras e re
 - [Nubank: Data Analysts → Analytics Engineers (em inglês)](https://building.nubank.com.br/nubank-data-analysts-are-now-called-analytics-engineers/)  
   Estudo de caso real de como uma das maiores fintechs da América Latina redefiniu o papel de seus analistas.  
 
+- [Data contracts: por que e como adotá-los (em inglês)](https://www.montecarlodata.com/blog/data-contracts/)  
+  Introdução acessível ao conceito de contratos de dados entre times produtores e consumidores.  
+
+- [Introdução ao dbt Semantic Layer (em inglês)](https://www.getdbt.com/blog/introducing-the-dbt-semantic-layer/)  
+  O papel de uma camada de métricas para reduzir deriva de métricas e alinhar decisões.  
+
 ```{note}
 Esses materiais complementares ajudam a consolidar os conceitos apresentados na Introdução e a enxergar como o papel do Engenheiro de Analytics está sendo aplicado em diferentes contextos.
+```

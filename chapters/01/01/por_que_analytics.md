@@ -18,6 +18,13 @@ Na prática, a "passagem de bastão" entre o que analistas e cientistas de dados
 
 Pior: muitas ferramentas e métodos ensinados não seguem boas práticas de engenharia de software, como **versionamento**, **testes**, **CI/CD**, **observabilidade de dados** e **documentação**.  
 
+```{admonition} Anti‑padrão comum
+:class: warning
+Dashboards construídos sobre consultas ad‑hoc não versionadas.  
+Efeitos colaterais: métricas inconsistentes entre áreas, dificuldade de reprocessar e auditar resultados, dependência de pessoas específicas e alto retrabalho.  
+Como evitar: padronize fontes via modelos versionados (dbt), valide com testes de esquema/dados e centralize definições de métricas em um layer semântico.
+```
+
 ---
 
 ## Em resumo

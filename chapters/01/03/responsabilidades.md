@@ -20,13 +20,22 @@ Assim, os analistas de dados podem abrir o armário e encontrar exatamente o que
 
 ## Principais responsabilidades
 
-Entre as principais responsabilidades do Engenheiro de Analytics estão:  
+Para dar clareza de escopo, organize as responsabilidades em três grupos:
 
-- **Transformação de dados (ELT)**: estruturar e manter pipelines modernos;  
-- **Modelagem dimensional**: projetar o *data warehouse* e garantir consistência;  
-- **Definição de métricas**: padronizar indicadores de negócio e produto;  
-- **Apoio estratégico**: participar de discussões e decisões *data-driven*;  
-- **Dashboards e relatórios**: construir visualizações que conectam dados ao negócio.  
+- Own (lidera e é responsável direto):  
+  - **Transformação de dados (ELT)** e orquestração declarativa de pipelines;  
+  - **Modelagem dimensional** e camadas (staging → intermediate → marts);  
+  - **Qualidade e confiabilidade**: testes de esquema/dados, validações, documentação e linhagem;  
+  - **CI/CD de dados**: revisão por pares, automações de build/test, promoção entre ambientes.  
+- Collaborate (constrói em conjunto com outras áreas):  
+  - **Definição de métricas (layer semântico)** com times de negócio/produto;  
+  - **Data contracts** com times produtores de dados;  
+  - **Governança** (catálogo, acessos, privacidade) com dados/segurança.  
+- Influence (atua como consultor e multiplicador):  
+  - **Apoio estratégico** a discussões *data‑driven* e priorização de demandas;  
+  - **Visualizações e relatórios** quando necessário para fechar o ciclo decisão‑dados.  
+
+Nota: testes, documentação e CI não são “acabamentos”; são entregáveis de primeira classe do Engenheiro de Analytics.
 
 ---
 
