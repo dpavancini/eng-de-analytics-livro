@@ -11,11 +11,11 @@ O processo de ELT se inicia com o problema de negócio: precisamos ter dados con
 Etapas do Processo de ELT
 ```
 
-Assim, o processo de ELT é, na verdade, muito mais amplo que apenas extrair os dados das fontes transacionais e disponibilizá-los em um *data warehouse*. De fato, ele engloba todas as etapas de desenvolvimento de uma infraestrutura moderna de analytics: desde o planejamento dos requisitos de negócio, até a entrega final dos dados através de tabelas ou *dashboards*. 
+Assim, o processo de ELT é muito mais amplo do que “extrair e carregar” dados. Ele abrange da descoberta de requisitos até a entrega final em tabelas consumíveis e painéis – passando por governança, automação e qualidade. 
 
 ## Planejamento
 
-O planejamento é essencial para alinhar os objetivos de negócio com a implementação técnica. As etapas de planejamento, no entanto, não são feitas pensando em entregar um planejamento completo do projeto, mas sim **de forma incremental** e incluindo o necessário para a implementação de cada pequena etapa.
+O planejamento alinha objetivos de negócio e implementação técnica. Evite planos extensos e estáticos; prefira ciclos curtos e incrementais, com entregas verificáveis e feedback real do usuário.
 
 ### Entendimento do Problema
 
@@ -33,7 +33,7 @@ Na etapa de **Entendimento do Problema**, nosso objetivo é obter o máximo de i
 
 A partir das necessidades de negócio identificadas, precisamos avaliar a disponibilidade de dados. Nem sempre os dados identificados pelos usuários de negócio são de fácil acesso, ou mesmo acessáveis em primeiro lugar. Além disso, é comum que a forma como os dados brutos estão armazenados fisicamente seja bem diferente do formato com o qual os dados são acessados pela interface dos sistemas empresariais ou relatórios.
 
-Para realizar o mapeamento de dados, utilizamos técnicas como {ref}`diagramas ERD<modelagem_bd>`, planilhas e outros documentos. O importante é conseguir mapear quais dados estão disponíveis e onde estão de uma forma mais conceitual, sem entrar em muitos detalhes ainda. 
+Para realizar o mapeamento de dados, utilize {ref}`diagramas ERD<modelagem_bd>`, planilhas e data discovery no próprio DW. Contratos de dados (schemas esperados, tipos, semântica, SLAs) reduzem surpresas e aceleram o desenvolvimento.
 
 ### Elaboração do Modelo Conceitual do DW
 
@@ -41,14 +41,24 @@ O próximo passo é desenharmos (ou atualizarmos) o modelo conceitual do *data w
 
 ## Ingestão de Dados
 
-Definidos **quais** dados precisamos e **onde** buscá-los, precisamos realizar a ingestão de dados para nosso *data warehouse*. Isto é, extrair esses dados das fontes transacionais e disponibilizá-los na camada bruta do *data warehouse*. Falaremos de forma detalhada sobre essa etapa no {ref}`ingestao`.
+Definidos quais dados precisamos e onde buscá‑los, realizamos a ingestão para o DW: extraímos das fontes e disponibilizamos na camada bruta (Bronze). Veremos detalhes no {ref}`ingestao`.
 
 ## Transformação
 
-Na etapa de transformação, os dados brutos, extraídos diretamente dos diferentes sistemas da empresa, são lapidados e transformados em dados prontos para serem utilizados na tomada de decisão. É nesta **etapa que reside o maior esforço e valor gerado da Engenharia de Analytics.** Veremos quais as principais tarefas, boas práticas e ferramentas práticas no {ref}`transformacao`.
+Na transformação, os dados brutos se tornam conjuntos confiáveis para decisão. É aqui que a Engenharia de Analytics gera mais valor: camadas claras (Prata/Ouro), métricas consistentes, testes e documentação. Veremos tarefas e boas práticas no {ref}`transformacao`.
 
 ### Entrega Final
 
-Seguindo as {ref}`boas práticas de programação<boas_praticas>`), somente disponibilizaremos os novos dados para o usuário final depois de realizar testes, documentação e outras tarefas comuns no processo de ***deploy*** de softwares. Ao final do processo, os novos dados ficam disponibilizados no ambiente "produção" do **data warehouse** para serem transformados em informação e geração de valor de negócio.
+Seguindo as {ref}`boas práticas de programação<boas_praticas>`, só disponibilizamos dados após testes, documentação e revisão (PR). Promova para produção via pipeline (CI/CD) e monitore freshness e volumetria. Dados em produção devem estar prontos para virar informação útil.
 
-No próximo capítulo vamos detalhar o processo de ingestão de dados, a etapa inicial do ELT. Vamos lá?
+## Orquestração e automação
+
+Agende e monitore seus pipelines com orquestradores (Airflow, Dagster, Prefect ou soluções nativas). Modele dependências, trate reprocessamentos (lookback), retentativas e alertas. Conecte‑os ao seu repositório Git e esteira de CI.
+
+## Observabilidade, custos e segurança
+
+- Observabilidade: monitore freshness, volume, schema e anomalias. Alerta rápido reduz impacto.
+- Custos: instrumente query costs e tempo de execução; use partições/clusterização para economizar.
+- Segurança: aplique IAM por papéis, mascaramento e segregação de ambientes (dev/staging/prod).
+
+No próximo capítulo, detalharemos a ingestão de dados, a etapa inicial do ELT. Vamos lá?

@@ -13,4 +13,11 @@ Durante muito tempo (e ainda utilizado em muitas empresas atuais), o processo pa
 Exemplo de processo de ETL
 ```
 
-A sigla ETL não apenas lista as etapas, mas também representa a ordem em que tradicionalmente elas são realizadas em um projeto. No *Modern Data Stack*, no entanto, é proposta outra abordagem, chamada de ELT, em que primeiro os dados brutos são carregados para um *data warehouse* e depois são transformados dentro do próprio DW. Para evitar confusões e manter o padrão do MDS, usaremos a sigla ELT para denotar o processo como um todo.
+A sigla ETL não apenas lista as etapas, mas também representa a ordem tradicional. Com o Modern Data Stack, ficou viável outra abordagem: ELT. Primeiro carregamos dados brutos para o DW/lakehouse e só então transformamos, aproveitando poder de processamento, armazenamento colunar e execução paralela próximos ao dado.
+
+Quando ETL ainda faz sentido?
+- Restrições de compliance que impedem levar dados brutos ao DW (ex.: dados altamente sensíveis sem mascaramento).
+- Transformações específicas que só existem na fonte (APIs com filtros/expansões limitadas, jobs mainframe, etc.).
+- Pipelines legados em migração, onde a troca total não é imediata.
+
+No restante do livro, usaremos ELT para designar o processo moderno de ponta a ponta, enfatizando as práticas de engenharia que o tornam previsível e sustentável.
