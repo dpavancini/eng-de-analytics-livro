@@ -101,7 +101,6 @@ parts:
       sections:
         - file: chapters/12/01/databricks_data_warehouse.md
         - file: chapters/12/02/databricks_dbt_connection.md
-        - file: chapters/12/03/bigquery_data_warehouse.md
   - caption: Transformando dados
     chapters:
     - file: chapters/13/intro.md
