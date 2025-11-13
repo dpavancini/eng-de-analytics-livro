@@ -1,5 +1,5 @@
 (git)=
-# 6.3 Introdução ao controle de versão e Git
+# 7.3 Introdução ao controle de versão e Git
 
 Nesta seção falaremos do controle de versão, um dos processos mais importantes no desenvolvimento de softwares e também na Engenharia de Analytics. Também falaremos da ferramenta mais popular de controle de versão chamada Git. Vamos lá?
 

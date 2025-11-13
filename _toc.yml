@@ -50,20 +50,21 @@ parts:
         - file: chapters/05/03/agregadas.ipynb
         - file: chapters/05/04/group_by.ipynb
         - file: chapters/05/05/case_when.ipynb
-        - file: chapters/05/06/sub.ipynb
         - file: chapters/05/07/funcoes_janela.md
+        - file: chapters/05/06/sub.ipynb
         - file: chapters/05/leia_mais.md
     - file: chapters/06/intro.md
       sections:
-        - file: chapters/06/01/boas_praticas_prog.md
-        - file: chapters/06/02/boas_praticas_dev.md
-        - file: chapters/06/03/intro_git.md
-        - file: chapters/06/04/git_pratica.md
+        - file: chapters/06/01/principios.md
+        - file: chapters/06/02/arq_referencia.md
+        - file: chapters/06/03/convencoes.md
         - file: chapters/06/leia_mais.md
     - file: chapters/07/intro.md
       sections:
-        - file: chapters/07/01/principios.md
-        - file: chapters/07/02/arq_referencia.md
+        - file: chapters/07/01/boas_praticas_prog.md
+        - file: chapters/07/02/boas_praticas_dev.md
+        - file: chapters/07/03/intro_git.md
+        - file: chapters/07/04/git_pratica.md
         - file: chapters/07/leia_mais.md
   - caption: Modelando Dados
     chapters:

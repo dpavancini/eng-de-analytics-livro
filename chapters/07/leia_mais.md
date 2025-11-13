@@ -1,11 +1,11 @@
-# 7.3 Leia Mais
+# 7.4 Leia mais
 
-[Modern Data Stack (em inglês)](https://www.moderndatastack.xyz/)
+[The Analytics Development Lifecycle (dbt Labs, em inglês)](https://www.getdbt.com/resources/the-analytics-development-lifecycle)
 
-[What is the modern data stack (em inglês)](https://www.fivetran.com/blog/what-is-the-modern-data-stack)
+[The Coming era of data as code (em inglês)](https://thenewstack.io/the-coming-era-of-data-as-code/)
 
-[The Modern Data Stack: Past, Present, and Future (em inglês)](https://www.getdbt.com/blog/future-of-the-modern-data-stack/)
+[Simplicity in Software Design: KISS, YAGNI and Occam’s Razor (em inglês)](https://effectivesoftwaredesign.com/2013/08/05/simplicity-in-software-design-kiss-yagni-and-occams-razor/)
 
-[Modern Data Stack: A Evolução da Infraestrutura de Dados](https://datauniverse.com.br/modern-data-stack-a-evolucao-da-infraestrutura-de-dados/)
+[What is CI/CD (em inglês)](https://www.redhat.com/pt-br/topics/devops/what-is-ci-cd)
 
-[Modern Data Stack — uma alternativa inteligente para buscar maturidade em dados](https://medium.com/@oliveira.octavio/modern-data-stack-uma-alternativa-inteligente-para-buscar-maturidade-em-dados-9948a0c9ebc8)
+[Livro Git SCM](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Sobre-Controle-de-Vers%C3%A3o)

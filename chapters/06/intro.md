@@ -1,33 +1,15 @@
-(boas_praticas)=
-# Capítulo 6 - Boas práticas de desenvolvimento
+(MDS)=
+# Capítulo 6 -  O Modern Data Stack
 
-No capítulo anterior, transformamos perguntas de negócio em consultas SQL. Agora, vamos dar o próximo passo: como escrever, versionar, revisar, testar e entregar esse código com qualidade, segurança e previsibilidade — exatamente como times de software fazem há anos com DevOps e práticas ágeis.
+O Modern Data Stack (MDS) surgiu para resolver dores conhecidas dos “velhos” projetos de dados: ferramentas fechadas difíceis de versionar, integrações frágeis, ciclos longos de entrega, dependência de times centralizados e, no fim, métricas inconsistentes nas áreas de negócio. Com a nuvem, o MDS organiza uma forma mais simples, modular e colaborativa de construir analytics — com qualidade e velocidade.
 
-Em muitos times de dados, ainda é comum editar pipelines “ao vivo”, salvar versões em planilhas e depender de ferramentas visuais difíceis de versionar. A Engenharia de Analytics muda esse cenário ao tratar “analytics como código”: tudo rastreável em Git, testável, revisável e implantável via CI/CD.
+Em vez de monólitos, o MDS combina componentes especializados: conectores de ingestão, um data warehouse/lakehouse central, transformação como código (ex.: dbt, Lakeflow Declarative Pipelines), orquestração, testes e uma camada de visualização. A governança acontece de ponta a ponta, com controle de acesso, documentação e linhagem.
 
-## Contexto: DevOps e o “gap” em dados
+O MDS não é uma lista fixa de ferramentas; é um conjunto de princípios para compor a arquitetura adequada a cada contexto, priorizando padrões abertos, automação e reprodutibilidade. Ele também é a fundação para iniciativas de IA/ML: a mesma base serve para features, vetores/embeddings, catálogos, monitoramento e deploy de modelos.
 
-Enquanto o desenvolvimento de software evoluiu com Git, integração/entrega contínua e infraestrutura como código, a realidade de dados em muitas empresas ficou para trás. O acesso e a evolução de pipelines costumam depender de chamados, aprovações manuais e alterações diretas em produção, frequentemente usando ferramentas de ETL “arrasta‑e‑solta”. Esse modelo dificulta versionamento, revisão, testes automatizados e reprodutibilidade.
+O que você vai ver neste capítulo
+- Princípios que guiam a construção do MDS e evitam armadilhas comuns.
+- Uma arquitetura de referência, com camadas e opções de ferramentas.
+- Onde IA/ML e LLMs se encaixam na pilha (feature store, vetores, serving).
 
-Um efeito colateral comum dessas plataformas é o chamado “[inner‑platform effect](https://en.wikipedia.org/wiki/Inner-platform_effect)”: ao tentar simplificar o desenvolvimento, acabam recriando funcionalidades que o próprio SO, o banco ou o ecossistema já oferecem de forma mais eficiente e padronizada — mas com menos transparência e controle para quem mantém.
-
-Como proposto pelo DataOps, levar práticas de DevOps para dados — versionar tudo, automatizar validações, separar ambientes, revisar mudanças por PR — é o caminho natural para ganhar velocidade e qualidade sem abrir mão de governança.
-
-### O que dá errado sem boas práticas
-- Falta de rastreabilidade: múltiplas “verdades” (regras divergentes em planilhas/notebooks) e dificuldade de auditar quem mudou o quê e quando.
-- Deploys manuais em produção: indisponibilidade, dados corrompidos e rollback difícil.
-- Ambientes misturados: desenvolvimento usando dados de produção sem mascaramento ou segregação de papéis.
-- Ausência de testes/monitoramento: incidentes silenciosos, métricas inconsistentes, quebras não detectadas.
-- Acoplamento e dívida técnica: pipelines frágeis, difíceis de evoluir e caros de manter.
-
-O que você vai aprender
-- Boas práticas de programação aplicadas a analytics: legibilidade, DRY, KISS, portabilidade, configuração, logs e tratamento de erros.
-- Boas práticas de desenvolvimento: debugging, revisão de código, separação de ambientes, versionamento semântico, automações e CI/CD.
-- Git: por que usar, como funciona e como aplicar no dia a dia do projeto.
-- Git na prática: comandos essenciais para colaborar em equipe.
-
-```{admonition} IA como copiloto
-LLMs ajudam a escrever mensagens de commit claras, sugerir testes, revisar diffs e padronizar estilo. Úteis para acelerar tarefas repetitivas, mas valide a lógica, segurança e impacto em dados antes de aprovar.
-```
-
-Ao final deste capítulo, você terá uma rotina de desenvolvimento mais previsível e colaborativa, com bases para incorporar testes de dados, automações, code review e qualidade contínua nos seus projetos de analytics.
+Na próxima seção, começamos pelos princípios; depois, detalhamos uma arquitetura de referência, suas variações e trade-offs. Vamos lá?

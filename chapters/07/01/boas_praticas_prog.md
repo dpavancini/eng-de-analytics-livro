@@ -1,4 +1,4 @@
-# 6.1 Boas práticas de programação
+# 7.1 Boas práticas de programação
 
 Antes de qualquer ferramenta, a qualidade de um projeto de analytics depende de código claro, previsível e reutilizável. As práticas abaixo valem para SQL, Python, dbt ou notebooks — e são a base para colaboração, testes e automação.
 

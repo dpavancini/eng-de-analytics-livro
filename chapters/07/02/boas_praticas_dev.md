@@ -1,4 +1,4 @@
-# 6.2 Boas práticas de desenvolvimento
+# 7.2 Boas práticas de desenvolvimento
 
 > Os primeiros 90% de código levam 90% do tempo de desenvolvimento. O restante 10% do código representa o restante 90% do desenvolvimento
 > [Tom Cargill, Bell Labs](https://en.wikipedia.org/wiki/Ninety%E2%80%93ninety_rule)

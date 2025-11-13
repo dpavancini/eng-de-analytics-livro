@@ -25,3 +25,16 @@ Mas por que essa profissão é necessária em primeiro lugar?
 Afinal, **analistas, cientistas e engenheiros de dados** já não fazem exatamente isso?  
 
 É o que discutiremos na próxima seção.
+
+## Mapa da jornada
+
+- Capítulos 1–3: Fundamentos de analytics e pensamento analítico — por que fazer, quem faz e como abordar problemas.
+- Capítulo 4: Bancos de dados na prática — modelos, tipos e como pensar em performance.
+- Capítulo 5: SQL aplicado — consultas, joins, agregações, janelas e composição de análises.
+- Capítulo 6: Modern Data Stack — princípios e arquitetura de referência para equipes data‑driven.
+- Capítulo 7: Boas práticas — Git, revisão, testes, CI/CD, ambientes e qualidade em projetos de dados.
+- Capítulos 8–10: Modelagem — DW/lakehouse, modelo dimensional, fatos, dimensões e SCDs.
+- Capítulo 11: Do plano ao modelo — desenhando marts, mapeando chaves e acelerando com IA.
+- Capítulo 12: Mão na massa — preparando seu ambiente no Databricks e conectando o dbt.
+- Capítulo 13: ELT moderno — visão ponta a ponta para evoluir com segurança.
+- Capítulos 14–15: Ingestão e transformação — conectando fontes com boas práticas e modelando com dbt.

@@ -1,4 +1,4 @@
-# 7.1 Construindo o Modern Data Stack
+# 6.1 Construindo o Modern Data Stack
 
 Uma pilha moderna de dados combina serviços especializados para executar três funções essenciais: coletar e integrar dados, transformá-los em modelos analíticos e disponibilizá-los de forma segura e performática para consumo. Essas funções se materializam em um pipeline reprodutível, testável e versionado.
 
