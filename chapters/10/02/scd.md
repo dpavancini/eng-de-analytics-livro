@@ -105,3 +105,22 @@ Em SCD Tipo 2, padronize colunas: `valid_from`, `valid_to`, `is_current` (0/1). 
 ```{admonition} Implementação no MDS
 Em dbt, SCD2 é muitas vezes implementado com modelos do tipo snapshot.
 ```
+
+```{admonition} Exemplo (dbt snapshot)
+:class: note
+```yaml
+snapshots:
+  - name: dim_clientes_snapshot
+    target_schema: snapshots
+    strategy: timestamp
+    unique_key: id_cliente
+    updated_at: atualizado_em
+```
+
+O downstream materializa `dim_clientes` com colunas padrão (`valid_from`, `valid_to`, `is_current`).
+```
+
+```{admonition} Alternativa (MERGE incremental no Databricks)
+:class: tip
+Para fontes com histórico confiável, é possível implementar SCD2 com modelos incrementais e `MERGE` (Delta), gerando novas versões quando atributos relevantes mudam. Teste sobreposição de períodos por `business_key`.
+```

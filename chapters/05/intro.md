@@ -25,6 +25,11 @@ Como pensar em SQL (ordem de avaliação)
 
 Ao longo das seções, conectaremos cada construção a perguntas práticas de negócio (ticket médio, top N produtos, evolução de vendas) e destacaremos decisões típicas do Engenheiro de Analytics: quando pré‑agregar, quando calcular on‑the‑fly e como manter consistência entre notebooks, dbt e BI.
 
+```{admonition} Nota sobre dialetos (SQLite x Databricks SQL)
+:class: note
+Os notebooks usam SQLite pela simplicidade. Em Databricks SQL, ajuste funções de datas (`DATE_TRUNC` em vez de `STRFTIME`), janelas e tipos. Sempre que houver diferenças, indicamos alternativas. O raciocínio (JOINs, agregações, janelas) é o mesmo.
+```
+
 ```{admonition} IA como copiloto
 Modelos de linguagem (LLMs) aceleram rascunhos de queries e explicam SQL complexo, mas não substituem o seu julgamento. Use a IA para: sugerir JOINs, checar a lógica de um `CASE`, propor testes de qualidade (ex.: “não deve haver `NULL` em chaves”), revisar nomes e clareza. Sempre valide resultados e performance.
 ```

@@ -99,6 +99,6 @@ Crie uma tag para facilitar o filtro e a alocação de custos por catálogo/proj
 Cria a tag para os metadados
 ```
 
-Pronto! Você já tem um ambiente dbt Core configurado no Databricks e pode começar a desenvolver seus modelos de dados. A capacidade de processar dados em grande escala de forma segura, usando as melhores práticas de Engenharia de Dados, como variáveis de ambiente e versionamento com Git, garante um projeto robusto e escalável. E como o Databricks Free Edition não possui custos, ele é uma excelente plataforma para aprender e desenvolver projetos sem se preocupar com despesas inesperadas.
+Pronto! Você configurou o ambiente no Databricks e pode seguir para criar e conectar um projeto dbt Core. A capacidade de processar dados em grande escala de forma segura, usando as melhores práticas de Engenharia de Dados (variáveis de ambiente, versionamento com Git), garante um projeto robusto e escalável. Como o Databricks Free Edition não possui custos, é uma ótima plataforma para aprender sem despesas inesperadas.
 
 Caso o banco de dados fornecido não esteja disponível durante a execução deste tutorial, a alternativa recomendada é carregar as tabelas como seeds no dbt.

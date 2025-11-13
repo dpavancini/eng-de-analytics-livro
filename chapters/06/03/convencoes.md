@@ -4,13 +4,14 @@ Para facilitar a leitura, os exercícios e a implementação prática, adotamos 
 
 Camadas e organização
 - Bronze (bruto), Prata (limpo/integrado), Ouro (marts/métricas).
-- Catálogo/Schema por ambiente e domínio (ex.: `main.analytics_dev`, `main.analytics_prod`).
+- Nomenclatura de três níveis no Databricks (Unity Catalog): `catalog.schema.table`. Defina um catálogo por ambiente e separe schemas por domínio (ex.: `main.analytics_dev.dim_clientes`, `main.analytics_prod.fct_vendas`).
 - Diretórios no dbt: `models/staging` (limpeza), `models/intermediate` (integração), `models/marts` (consumo); `macros/`, `snapshots/`, `seeds/` e `tests/` conforme necessário.
 
 Nomenclatura de modelos e objetos
 - Prefixos de modelos: `stg_` (staging), `int_` (intermediate), `dim_` (dimensões), `fct_` (fatos).
 - Seeds: `seed_`; Snapshots: `snap_`.
 - Evite `select *` em produção; declare colunas explicitamente.
+- Em Databricks/Unity Catalog, padronize snake_case e minúsculas; documente convenções de plural/singular.
 
 Chaves e integridade
 - Chave de Negócio (BK) explícita em dimensões e fatos; Chave Surrogate (SK) inteira (`BIGINT`) ou hasheada quando apropriado.
@@ -33,10 +34,17 @@ Incrementalidade e histórico
 Padrões de junção e performance
 - As‑of join para mapear FKs em dimensões SCD2.
 - Particione/clusterize para performance; evite subconsultas desnecessárias se `GROUP BY` resolver.
+- Em Delta, compacte arquivos periodicamente (`OPTIMIZE`) e considere `ZORDER` para colunas de filtro seletivas.
 
 Segurança e governança
 - Segredos em cofres/variáveis de ambiente; princípio do menor privilégio.
 - Contratos de dados (schemas esperados, tipos, semântica, SLAs) entre produtores e consumidores.
 
-Essas convenções aparecem ao longo do livro e nos exemplos práticos, especialmente nos capítulos de modelagem (8–11), setup (12) e ELT (13–15).
+```{admonition} Unity Catalog: práticas rápidas
+:class: tip
+- Padronize catálogos por ambiente (ex.: `main`/`prod`) e schemas por domínio (ex.: `sales`, `finance`).  
+- Use grants por grupo de acesso e evite permissões a usuários individuais.  
+- Registre dados sensíveis e aplique mascaramento quando necessário.
+```
 
+Essas convenções aparecem ao longo do livro e nos exemplos práticos, especialmente nos capítulos de modelagem (8–11), setup (12) e ELT (13–15).

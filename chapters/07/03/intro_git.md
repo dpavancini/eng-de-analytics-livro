@@ -116,5 +116,3 @@ Diretório de trabalho, área de preparo (índice), e o diretório Git. Adaptado
 ```
 
 Quando acessamos uma versão do projeto ou clonamos um repositório remoto, nosso diretório de trabalho será uma cópia do repositório. A partir do momento que modificarmos um arquivo ou adicionarmos um novo arquivo, nosso diretório de trabalho passa a estar em um estado distinto do repositório original.
-
-
