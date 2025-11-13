@@ -1,12 +1,8 @@
 # 7.1 Construindo o Modern Data Stack
 
-Uma estrutura de dados eficiente combina diversos serviços em um data stack, ou pilha de dados.
+Uma pilha moderna de dados combina serviços especializados para executar três funções essenciais: coletar e integrar dados, transformá-los em modelos analíticos e disponibilizá-los de forma segura e performática para consumo. Essas funções se materializam em um pipeline reprodutível, testável e versionado.
 
-No geral, uma pilha de dados tem três funções fundamentais: **coletar e integrar dados** em um data warehouse, **limpá-los e transformá-los** em informações para agregar valor à tomada de decisão através de **visualizações** em dashboards de BI.
-
-Todas estas funções são processos do pipeline de dados.
-
-Assim, as ferramentas usadas para cada um desses processos formam o *data stack*. Ainda que a arquitetura de um pipeline varie de acordo com as empresas, todos têm esses processos incorporados.
+Ainda que a implementação varie de empresa para empresa, os princípios por trás do MDS são comuns e ajudam a evitar armadilhas de arquitetura e decisões de curto prazo.
 
 ## Os 7 princípios do MDS
 
@@ -14,66 +10,36 @@ Novas ferramentas e aplicações de ponta em analytics surgem a todo momento. Po
 
 Pensando nisso, vamos falar sobre os 7 princípios que toda abordagem moderna de analytics precisa ter.
 
-### 1.Cloud-based
+### 1. Cloud-native
 
-Na abordagem moderna de analytics, o armazenamento de dados de uma organização é totalmente cloud-based: na nuvem.
-
-Essa tecnologia altamente escalável e flexível permite o armazenamento e o processamento de uma quantidade virtualmente infinita de dados em um ambiente online e seguro reduzindo custos com infraestrutura, instalação e manutenção.
-
-Com isso, as organizações podem facilmente expandir ou reduzir sua estrutura de dados sem se preocupar.
+A base do MDS é cloud-native: elasticidade, serviços gerenciados e pagamento por uso. Escalar para cima ou para baixo deixa de ser projeto de infraestrutura e vira configuração. Boas práticas de FinOps (custos visíveis e controlados) e segurança por padrão (IAM, redes, criptografia) são parte do desenho.
 
 ### 2. Modularidade
 
-O MDS separa a etapa de transformação (T) das etapas de extração (E) e carregamento (L) no pipeline de dados. Essa abordagem, conhecida como ELT (Extract, Load, Transform), permite combinar diferentes ferramentas de ingestão de dados de forma modular, independente de como as transformações de dados sejam realizadas.
-
-Além disso, ao aplicar essa abordagem, o uso das ferramentas certas, de forma incremental, é simplificado, acelerando a implementação do projeto.
+Separar responsabilidades reduz acoplamento. No MDS, praticamos ELT(Extract-Load-Transform): conectores trazem dados de fontes diversas (frequentemente via CDC), carregam no warehouse/lakehouse e a transformação ocorre como código, próxima do motor analítico. Isso permite trocar ferramentas por etapa sem reescrever todo o pipeline.
 
 ### 3. Simplicidade
 
-Na abordagem moderna de analytics, a transformação de dados deve ser orientada pela simplicidade. Para isso, deve ser desenvolvida de maneira centralizada, preferencialmente em uma ou poucas linguagens de amplo conhecimento.
-
-Portanto, ao invés de escrever códigos em linguagens proprietárias ou sistemas visuais drag-and-drop, essa abordagem opta pela simplicidade das linguagens de programação, trazendo outros benefícios como:
-
-* redução de custos com treinamento
-* menor necessidade de manutenção
-* democratização da informação
+Prefira padrões abertos e poucas linguagens. Transformação como SQL (e Python quando necessário), organizada em modelos e testes, vence soluções proprietárias e fluxos visuais difíceis de versionar. Menos variantes significa menos treinamento, menos manutenção e mais colaboração.
 
 ### 4. Governança
 
-Como já mencionado, no *modern data stack*, o armazenamento e processamento dos dados são totalmente feitos em uma estrutura na nuvem.
-
-Dessa forma, todas as informações de uma empresa ficam centralizadas e facilmente acessíveis em um só local, simplificando a documentação e governança dos dados.
-
-Com isso, o usuário pode criar lógicas de permissionamento e gerenciar dados sensíveis de forma integrada.
-
-E, para completar, ele não precisa se preocupar com a segurança, manutenção e o gerenciamento dos recursos de dados armazenados na nuvem, já que essa responsabilidade é das empresas provedoras como AWS, por exemplo.
+Governança é transversal: controle de acesso por papéis, documentação e linhagem, classificação de dados sensíveis e políticas de retenção/mascaramento. Data contracts entre produtores e consumidores tornam expectativas explícitas (schemas, SLAs, semântica), reduzindo quebras e retrabalho.
 
 ### 5. Versionamento
 
-Antigamente, uma das grandes dificuldades em se trabalhar com bancos de dados era o controle de versionamento, essencial nas boas práticas de engenharia de software modernas.
-
-Simplificadamente, o versionamento é a capacidade de trabalhar de forma colaborativa em um projeto de dados, sem que o trabalho de uma pessoa gere conflitos com o de outra.
-
-Mas com o modern data stack esses desafios são resolvidos. Sabe por quê?
-
-As ferramentas modernas de ELT utilizadas nessa abordagem, como o DBT, separam os arquivos de modelos de dados, em SQL, do banco de dados em si, solucionando esse problema.
+Trate analytics como código: modelos SQL, macros, seeds, testes, documentação e configurações vivem em Git. Branches, PRs e CI/CD trazem rastreabilidade, revisão e implantação controlada. Versione também contratos e camadas semânticas/métricas.
 
 ### 6. Separação de ambientes
 
-A sexta característica do MDS é a possibilidade de criar ambientes distintos para separação de dados brutos, dados em transformação e dados finais por meio da aplicação de boas práticas de desenvolvimento de software no pipeline de dados.
-
-Como resultado, usuários distintos podem usufruir de benefícios como:
-
-* acesso a diferentes ambientes de desenvolvimento
-* trabalho colaborativo
-* redução de erros de produção
+Ambientes isolados (dev, staging/qa, prod) evitam “testes em produção”. Promova mudanças via pipeline, com dados amostrados/mascarados fora de prod e papéis bem definidos de leitura/escrita. Separe data brutos e finais e catálogos/esquemas por ambiente e domínio.
 
 ### 7. Testes
 
-Por fim, a abordagem moderna de analytics permite a centralização de boas práticas também de testes no projeto de dados, assim como ocorre em projetos de software modernos.
+Qualidade é contínua: teste dados e modelos (not_null, unique, relationships, regras de negócio), verifique freshness e volumetria, e monitore anomalias. Defina SLOs/SLAs e alerte quebras rapidamente. Trate regressões como parte natural do ciclo.
 
-Com um sistema de testes, o analista pode verificar se os dados, modelos e as regras de negócio estão dando resultados consistentes. E, diante dessa informação, ele poderá instalar alertas, caso perceba que determinados resultados saíram do padrão, por exemplo.
+```{admonition} IA como copiloto
+LLMs aceleram rascunhos de arquitetura, geram checklists de governança, propõem testes iniciais e explicam diffs. Use-os para ganhar velocidade, sem abrir mão de revisão humana e validações automatizadas.
+```
 
-Ou seja, os testes são um princípio da abordagem moderna de analytics que garantem a consistência e a confiabilidade dos resultados.
-
-Agora que conhece suas características, você pode partir para a construção da abordagem moderna de analytics na sua empresa.
+Com os princípios em mãos, vamos ver como eles se desdobram em uma arquitetura de referência e como escolher componentes de acordo com o seu contexto.
