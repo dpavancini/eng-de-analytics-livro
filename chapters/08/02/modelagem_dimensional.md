@@ -17,3 +17,19 @@ Geralmente é possível  identificar fatos e dimensões em relatórios
 ```
 
 Apesar de simples, fatos e dimensões permitem modelar processos de negócio complexos para o uso em relatórios, ferramentas de BI e outras aplicações. Nem sempre é simples identificar o que são fatos e dimensões, ou mesmo o que define um processo de negócio ou um agrupamento de dimensões semelhantes. A este processo de identificar os fatos e dimensões que deverão se tornar tabelas no data warehouse dá-se o nome de modelagem dimensional. Seu desenvolvimento envolve não somente tecnologia, mas um pensamento abrangente de como utilizar os dados e a informação para a tomada de decisão, e o Analytics Engineer é a peça fundamental que une as necessidades de negócio ao desenvolvimento físico do data warehouse.
+
+## Grão e consistência
+
+Antes de modelar, defina o grão da tabela fato: o que cada linha representa? Um item de pedido? Um pedido completo? Uma visita ao site? O grão guia as chaves estrangeiras, as medidas e as agregações possíveis. Medidas e dimensões devem ser compatíveis com esse grão.
+
+```{admonition} Para saber mais
+Tipos de medidas (aditivas, semiaditivas e não aditivas) e tipos de fato (transacional, snapshot, acumulado) são detalhados no Capítulo 9.
+```
+
+## Dimensões e regras de negócio
+
+Dimensões capturam contexto: quem, o quê, quando, onde, como. Elas materializam regras de negócio (por exemplo, hierarquia de produtos, territórios de vendas). Algumas dimensões mudam no tempo e precisam de versionamento histórico (SCDs) — veremos opções no Capítulo 10.
+
+```{admonition} Dica
+Padronize dimensões compartilhadas (dimensões conformadas) para garantir métricas consistentes entre data marts diferentes.
+```
