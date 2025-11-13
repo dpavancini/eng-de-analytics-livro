@@ -19,3 +19,11 @@ Evolução do Data Warehouse
 ```
 
 Como já mencionamos, o sucesso ou insucesso de um projeto de BI/DW é medido não por sua complexidade técnica ou arquitetura refinada, mas pelo valor gerado para o usuário final. Por este motivo, a aceleração das entregas permite identificar as consultas reais criadas pelos usuários e otimizar a arquitetura do DW conforme necessário. Uma otimização muito comum é a criação de tabelas resumo e agregadas de consultas lentas ou de alta utilização, que apresentaremos na próxima seção.
+
+```{admonition} Boas práticas para fatos
+- Defina e documente o grão (“uma linha por item de pedido…”) e garanta que todas as medidas sejam compatíveis com ele.
+- Inclua uma chave natural do evento (ex.: `id_pedido`, `id_item`) para rastreabilidade e deduplicação, além de um `load_ts`.
+- Teste `unique` no identificador do evento, `not_null` nas FKs e `relationships` com dimensões.
+- Evite “médias de médias” e somas de percentuais; derive médias/taxas no consumo conforme o grão.
+- Em implementação incremental, use janelas de reprocessamento (lookback) e trate exclusões/retificações (soft deletes) quando aplicável.
+```
