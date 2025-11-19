@@ -114,7 +114,6 @@ parts:
       sections:
         - file: chapters/14/01/acessando_dados.md
         - file: chapters/14/02/tipos_de_ingestao.md
-        - file: chapters/14/03/exemplo_pratico.md
     - file: chapters/15/intro.md
       sections:
         - file: chapters/15/01/processos_transformacao.md

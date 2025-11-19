@@ -1,13 +1,10 @@
 (elt)=
 # 13.2 O ELT
 
-Embora existam variações de arquitetura e ferramentas, o quadro geral é o mesmo:
+O ELT nasceu da combinação de três movimentos: storage barato em cloud, motores analíticos altamente paralelos e ferramentas colaborativas como o dbt. Em vez de transformar antes de carregar, passamos a:
 
-- Extração/Load: conectores (open‑source e SaaS) movem dados de ERPs, CRMs, bancos, REST APIs e eventos para o DW. Em muitos casos, usam CDC (Change Data Capture) para trazer apenas mudanças. A etapa de load ocorre junto com a extração.
-- Transformação: dentro do DW, aplicamos regras de negócio via SQL/Python, organizando camadas e garantindo qualidade com testes e documentação.
-
-No diagrama abaixo, vemos como a etapa de ELT se destaca na arquitetura geral do {ref}`MDS<MDS>`:
-
+1. **Extrair/Carregar**: conectores (open source e SaaS) movem dados de ERPs, CRMs, bancos, APIs e eventos direto para o DW. Na prática, a extração já envia os dados para a camada _raw_ ou _bronze_. Técnicas como CDC (Change Data Capture) evitam reprocessamentos desnecessários.
+2. **Transformar dentro do DW**: usamos SQL/Python próximos ao dado, organizando camadas, versionando em Git e executando em ambiente gerenciado (dbt Cloud, Lakeflow Declarative Pipelines, notebooks, jobs orquestrados).
 
 ```{figure} ../../../assets/img/elt_fluxo.png
 :name: elt_fluxo
@@ -15,25 +12,18 @@ No diagrama abaixo, vemos como a etapa de ELT se destaca na arquitetura geral do
 Exemplo do fluxo de ELT
 ```
 
-Na prática, o ELT concentra a maior parte do trabalho em projetos de analytics. Em equipes menores, um Engenheiro de Analytics pode cuidar de ponta a ponta; em ambientes críticos, tarefas se dividem entre times de dados (ingestão, plataforma) e analytics (modelagem, métricas, BI).
-
-```{admonition} Pense no ELT como um processo contínuo
-Requisitos mudam com o negócio: planeje para evoluir. Automatize, versione e teste para sustentar mudanças com segurança.
-```
+Na maior parte dos projetos de analytics modernos o ELT concentra o esforço diário. Times pequenos podem cuidar de ponta a ponta; estruturas maiores tendem a dividir responsabilidades (plataforma/ingestão, analytics engineering, BI). Independentemente do tamanho, pense no ELT como um processo contínuo: requisitos evoluem, dados mudam e seu pipeline precisa acompanhar.
 
 Boas práticas para ELT moderno
-- Camadas bem definidas: Existem duas abordagens predominantes para estruturar as camadas no ELT moderno:
-    - **Estilo Databricks**: Bronze (dados brutos ingestados), Prata (dados limpos, integrados ou intermediários) e Ouro (dados prontos para consumo analítico, como marts ou métricas). Esse padrão é muito comum em arquiteturas lakehouse e enfatiza a clareza do ciclo de vida dos dados.
-    - **Estilo dbt**: Raw (dados brutos carregados), Staging (dados limpos e padronizados), Intermediate (transformações intermediárias que normalizam ou enriquecem), e Marts (modelos finais de negócio, como fatos e dimensões). O dbt incentiva a modularização nomeando modelos e subpastas conforme essas camadas.
-  Nomeie e documente cada camada no seu projeto para garantir rastreabilidade, clareza de propósito e facilitar a colaboração entre times.
-- dbt (ou similar): modelos versionados em Git, testes (`unique`, `not_null`, `relationships`), documentação e macros para DRY.
-- Incrementalidade: use modelos incrementais, janelas de reprocessamento (lookback) e snapshots quando necessário.
-- Observabilidade: monitore freshness/volume/anomalias e alerte quebras cedo (dbt source freshness, ferramentas de DQ).
-- Orquestração: agende e controle dependências (Airflow, Dagster, Prefect, Workflows nativos).
-- Governança e segurança: IAM por papéis, mascaramento e data contracts entre produtores/consumidores.
+- **Camadas claras**  
+  - Estilo Databricks: Bronze (dados brutos), Prata (dados limpos e integrados) e Ouro (marts, métricas e produtos analíticos).  
+  - Estilo dbt: Raw → Staging → Intermediate → Marts.  
+  Documente o objetivo de cada camada e padronize nomenclaturas para facilitar o handoff entre squads.
+- **dbt (ou similar)**: modele em SQL versionado, aplique testes (`unique`, `not_null`, `relationships`), descreva colunas e use macros para reduzir repetição.
+- **Incrementalidade**: prefira modelos incrementais ou snapshots quando fizer sentido, sempre com lookback configurado para corrigir atualizações retroativas.
+- **Observabilidade**: monitore freshness, volume e esquema com ferramentas próprias ou recursos nativos (dbt source freshness, Great Expectations, Soda). Alertas rápidos evitam dados desatualizados.
+- **Orquestração**: agende dependências com Airflow, Dagster, Prefect ou workflows nativos do DW. Orquestração garante cadência e facilita reprocessamentos.
+- **Governança e segurança**: defina privilégios por catálogo/esquema, oculte dados sensíveis e use data contracts entre produtores e consumidores.
+- **IA como copiloto**: utilize LLMs para rascunhar descrições de colunas, sugerir testes mínimos ou revisar diffs. Ainda assim, valide as regras de negócio e não exponha dados confidenciais.
 
-```{admonition} IA como copiloto
-Peça ajuda para escrever descrições de colunas, sugerir testes mínimos por modelo, rascunhar macros e revisar diffs. Valide a lógica e não exponha dados sensíveis.
-```
-
-Nas próximas seções, apresentamos o processo de ELT passo a passo e contextualizamos com os capítulos seguintes: ingestão (Cap. 14) e transformação (Cap. 15). Vamos lá?
+Nos próximos tópicos vamos detalhar o processo completo de ELT, preparando o terreno para falar de ingestão (Cap. 14) e transformação com dbt (Cap. 15) e transformação com Lakeflow Declarative Pipelines (Cap. 16).

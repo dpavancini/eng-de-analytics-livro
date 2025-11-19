@@ -1,14 +1,18 @@
 # 14.1 Acessando dados
 
-De nada adianta construir um *Modern Data Stack* se não conseguimos acessar os dados armazenados nas fontes transacionais, APIs, planilhas, etc. Cada fonte de dados terá um ou mais formatos de conexão, que podem variar em:
+De nada adianta montar um Modern Data Stack impecável se não conseguimos sair das fontes transacionais. Antes de falar em conectores, pense em um checklist de acesso: onde os dados estão, quem libera credenciais, qual o nível de segurança exigido e quais limites técnicos existem.
 
-- **Vendor do Banco de Dados**: SQL Server, MySQL, PostgreSQL, Oracle, etc.
-- **Tipo de Banco de Dados**: Relacional, NoSQL, etc.
-- **Servidor**: Desktop simples, servidor local, cloud, etc.
-- **Tipos de Conexão**: JDBC, ODBC, API, dump do banco, etc. 
-- **Nível de acesso**: Somente leitura, administrador, tabelas específicas, etc.
+Elementos que variam de uma fonte para outra:
 
-A forma mais comum de conexão a um banco de dados é através de uma conexão direta via protocolo *JDBC* ou *ODBC*. Neste tipo de conexão, podemos enviar consultas SQL diretamente para o banco de dados, como vimos no Capítulo 5. Em outros casos, pode ser necessário utilizar uma API REST desenvolvida pela aplicação que estamos consultando. Nestes casos, a disponibilidade dos dados será limitada pelo que está disponível na API.
+- **Vendor e tipo de banco**: SQL Server, MySQL, PostgreSQL, Oracle, DynamoDB, Mongo, etc.
+- **Onde está hospedado**: servidor local, VM na nuvem, ambiente gerenciado, dispositivos embarcados.
+- **Formato e protocolo**: conexões JDBC/ODBC, dumps periódicos, APIs REST/GraphQL, streams de eventos, arquivos em buckets.
+- **Nível de acesso**: somente leitura, schemas específicos, necessidade de VPN, autenticação multifator.
 
-```{admonition} Considere testar as conexões de dados como o primeiro passo de um projeto, para evitar surpresas no futuro!
+O caminho clássico para bancos relacionais é via JDBC/ODBC, onde enviamos SQL diretamente (como praticado no Capítulo 5). Já em aplicações SaaS, é comum depender de APIs REST com limites de paginação, _rate limits_ e filtros restritos — isso exige planejamento sobre como paginar, quais campos estão disponíveis e qual a cadência possível.
+
+Ferramentas de ingestão modernas abstraem boa parte dessas diferenças, mas o Analytics Engineer continua responsável por coordenar acessos, validar credenciais e definir SLAs com as equipes de origem. Reserve tempo para testar cada conexão logo no início do projeto; descobrir um bloqueio de firewall na véspera da entrega é o tipo de surpresa que queremos evitar.
+
+```{admonition} Teste cedo, documente sempre
+Faça uma conexão de prova assim que receber credenciais, registre dependências (VPNs, IPs liberados, tokens) e mantenha esse inventário junto ao repositório do projeto.
 ```

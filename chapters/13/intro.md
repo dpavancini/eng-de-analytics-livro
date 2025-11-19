@@ -1,14 +1,15 @@
 (intro_elt)=
 # Capítulo 13 - Introdução ao ELT
 
-Nos capítulos anteriores, você viu como modelar dados em um Data Warehouse (DW) usando fatos e dimensões, e praticou SQL para responder perguntas de negócio. Agora começa a parte operacional: como levar dados das fontes até o DW e transformá‑los em modelos confiáveis, versionados e testados. É aqui que entra o ELT.
+Nos capítulos anteriores você aprendeu a modelar fatos e dimensões e a manipular dados com SQL. Agora iniciamos a jornada operacional: sair das fontes transacionais, carregar para o data warehouse e transformar tudo em modelos governados. Esse movimento é guiado pelo ELT.
 
-ELT (Extract, Load, Transform) é a abordagem moderna em que primeiro extraímos e carregamos dados brutos para o DW/lakehouse e, depois, transformamos esses dados “por dentro”, próximo ao motor analítico. Isso favorece performance, governança e colaboração — os pilares do Modern Data Stack.
+ELT (Extract, Load, Transform) é a estratégia moderna em que primeiro extraímos e carregamos dados brutos para o DW/lakehouse e só depois aplicamos as transformações na própria plataforma analítica. Essa inversão libera todo o potencial de processamento do warehouse, facilita o versionamento e cria um terreno fértil para colaboração entre engenharia e negócio.
 
-O que você vai aprender nesta parte
-- A diferença entre ETL e ELT, e quando cada um faz sentido.
-- O fluxo de ponta a ponta: planejamento → ingestão → transformação → entrega.
-- Boas práticas: camadas (bronze/prata/ouro), versionamento (Git), testes e documentação (dbt), qualidade e observabilidade.
-- Como IA/LLMs podem acelerar tarefas repetitivas sem substituir validação humana.
+O que você verá neste capítulo
+- Por que o ETL foi dominante por anos e em que situações ainda faz sentido.
+- Como o ELT reorganiza responsabilidades e por que ele é a base do Modern Data Stack.
+- O processo ponta a ponta: planejamento → ingestão → transformação → entrega → operação.
+- Práticas que sustentam projetos duradouros: camadas bem definidas, versionamento em Git, testes no dbt, observabilidade e automação.
+- Onde IA/LLMs podem acelerar a rotina sem abrir mão de validação humana.
 
-Nos capítulos seguintes desta parte, detalharemos cada etapa: a ingestão de dados (Cap. 14) e a transformação em modelos analíticos (Cap. 15), com processos, ferramentas e exemplos práticos.
+Ao finalizar este capítulo você terá o mapa completo. No Capítulo 14 exploraremos a etapa de ingestão — de modo conceitual, entendendo as escolhas que um Analytics Engineer precisa fazer — e no Capítulo 15 mergulharemos na transformação, parte central do seu dia a dia.

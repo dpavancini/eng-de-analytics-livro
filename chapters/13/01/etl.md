@@ -1,11 +1,13 @@
 (etl)=
 # 13.1 O Precursor: ETL
 
-Durante muito tempo (e ainda utilizado em muitas empresas atuais), o processo padrão de construção de *pipelines* de dados era o ETL. ETL (do inglês, *extract-transform-load*) é o processo sistemático de extrair, transformar, limpar e carregar os dados brutos em um banco de dados ou outro local para visualização ou consumo por outra aplicação. Cada letra da sigla significa uma de suas etapas:
+Antes do Modern Data Stack, a construção de pipelines seguia quase sempre a lógica ETL. Por décadas ela foi sinônimo de integração de dados por uma razão simples: os servidores de aplicação possuíam mais recursos que os bancos analíticos e, portanto, a transformação precisava acontecer “antes” de os dados chegarem ao DW.
 
-- *Extract*: recuperar dados brutos de uma ou mais fontes e salvá-los em um repositório de dados único. 
-- *Transform*: estruturar, enriquecer, limpar e converter dados brutos para um modelo de dados final.
-- *Load*: carregar os dados transformados para um data warehouse ou repositório de dados para utilização em uma ferramenta de BI.
+ETL (*extract-transform-load*) é o processo sistemático de extrair, transformar e carregar dados brutos em um repositório pronto para consumo. Cada letra da sigla indica uma etapa — e, no modelo clássico, também a ordem de execução:
+
+- **Extract**: recuperar dados brutos de uma ou mais fontes e salvá-los em um repositório intermediário.
+- **Transform**: estruturar, padronizar e aplicar regras de negócio. Essa camada costumava ser escrita em scripts proprietários ou ferramentas visuais robustas.
+- **Load**: apenas depois das transformações os dados eram carregados no data warehouse ou data mart.
 
 ```{figure} ../../../assets/img/etl_fluxo.png
 :name: etl_fluxo
@@ -13,11 +15,10 @@ Durante muito tempo (e ainda utilizado em muitas empresas atuais), o processo pa
 Exemplo de processo de ETL
 ```
 
-A sigla ETL não apenas lista as etapas, mas também representa a ordem tradicional. Com o Modern Data Stack, ficou viável outra abordagem: ELT. Primeiro carregamos dados brutos para o DW/lakehouse e só então transformamos, aproveitando poder de processamento, armazenamento colunar e execução paralela próximos ao dado.
+Apesar da mudança trazida pelo ELT, o ETL continua relevante em cenários específicos:
 
-Quando ETL ainda faz sentido?
-- Restrições de compliance que impedem levar dados brutos ao DW (ex.: dados altamente sensíveis sem mascaramento).
-- Transformações específicas que só existem na fonte (APIs com filtros/expansões limitadas, jobs mainframe, etc.).
-- Pipelines legados em migração, onde a troca total não é imediata.
+- Restrições de compliance ou soberania que impedem levar dados sensíveis para o DW antes de mascará-los.
+- Transformações que só existem na origem (jobs em mainframe, stored procedures críticas, APIs limitadas).
+- Ambientes legados em migração, quando ainda não é possível reconstruir o pipeline inteiro de imediato.
 
-No restante do livro, usaremos ELT para designar o processo moderno de ponta a ponta, enfatizando as práticas de engenharia que o tornam previsível e sustentável.
+Entender o ETL ajuda a contextualizar o passo seguinte. Com a popularização dos warehouses em nuvem e da computação elástica, tornou-se mais barato carregar primeiro e transformar depois, o que abre espaço para governança e versionamento superiores. Esse é o espírito do ELT que guia o restante do livro.

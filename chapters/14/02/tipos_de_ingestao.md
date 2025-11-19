@@ -1,8 +1,8 @@
 # 14.2 Tipos de Ingestão
 
-É importante verificar os requisitos de negócio para mapear o tipo e a periodicidade de processamento de dados necessários. Em projetos de DW, é comum que o processamento seja feito em lotes (*batch*), geralmente no período noturno, quando há menor sobrecarga nos sistemas. No entanto, em alguns projetos pode ser necessário um processamento com maior frequência, por exemplo, de hora em hora, ou mesmo em tempo real.
+Escolher como os dados chegam ao DW é tão importante quanto desenhar os modelos. Essa decisão depende do ritmo do negócio e da forma como a fonte se comporta. Pense em três variáveis principais: frequência (batch, micro-batch, streaming), volume (quantos registros por execução) e mutabilidade (há atualizações retroativas?).
 
-É importante reforçar que o processamento de grandes volumes de dados com alta frequência possui desafios técnicos adicionais e um custo de implementação e manutenção mais elevado, portanto, se não for estritamente necessário para o projeto, é melhor evitá-lo, sobretudo em etapas iniciais de implementação. 
+Em projetos de DW tradicionais, lotes noturnos resolvem grande parte das necessidades. Porém, alguns casos pedem atualizações de hora em hora ou quase em tempo real — e aí o custo operacional sobe: mais orquestração, monitoração contínua e risco maior de sobrecarregar sistemas fonte. Comece simples e evolua somente quando o benefício estiver claro.
 
 ### Ingestão *full*
 
@@ -58,5 +58,8 @@ Como podemos abordar esse problema? Em outras palavras, como não precisar fazer
 
 Nem sempre existe um índice que nos permite identificar alterações nos dados como na tabela anterior. Por este motivo, a forma mais segura de processamento incremental é por meio do uso de técnicas baseadas em logs de transações do banco de dados que registram todas as operações de INSERT, DELETE, UPDATE, etc. realizadas. 
 
-Tanto a abordagem baseada em uma data de modificação quanto a baseada em log são técnicas chamadas de [CDC](https://aprendizadodemaquina.com/artigos/o-que-e-change-data-capture-cdc/) (do inglês, *change data capture*).
+Tanto a abordagem baseada em data de modificação quanto a baseada em log são técnicas chamadas de [CDC](https://aprendizadodemaquina.com/artigos/o-que-e-change-data-capture-cdc/) (*change data capture*). Ferramentas como Fivetran, Airbyte e Debezium já implementam CDC nativamente, mas é fundamental que você entenda o conceito para fazer escolhas conscientes e negociar requisitos com as áreas de origem.
 
+---
+
+Este capítulo encerra a parte conceitual da ingestão: você viu como avaliar acessos, mapear restrições e definir estratégias de carga. Nos próximos dois capítulos vamos para o que mais ocupa o tempo de um Analytics Engineer: transformação e modelagem de dados.
