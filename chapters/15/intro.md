@@ -1,6 +1,9 @@
 (transformacao)=
 # Capítulo 15 -  Transformação de dados
 
-A etapa de transformação de dados é o núcleo do processo de ELT. É neste momento que as regras de negócio são aplicadas aos modelos para gerar as tabelas finais que serão consumidas por um BI, em um relatório ou mesmo por outro sistema. O tipo de processo e a tecnologia usada na transformação vão depender do tipo de dados que queremos transformar, do volume de dados, da arquitetura de sistemas possível (por exemplo, nuvem vs *on-premises*), da capacidade técnica da equipe, entre outros. 
+A etapa de transformação de dados é o coração do processo de ELT. É nela que aplicamos as regras de negócio para gerar camadas confiáveis — das tabelas de *staging* até os data marts — que serão consumidas por analistas, aplicações e produtos de dados. Este capítulo passa a concentrar apenas os **conceitos fundamentais**: quais tipos de transformação existem, como organizar camadas, como testar e documentar, e como inserir tudo isso em um ciclo contínuo de DataOps inspirado nas melhores práticas do [dbt](https://docs.getdbt.com/docs/introduction).
 
-Na primeira seção deste capítulo, listamos os tipos de transformações comuns em projetos de Analytics e que são parte fundamental do trabalho da Engenharia de Analytics. Em seguida, comparamos diferentes arquiteturas de transformação de dados. Por fim, apresentamos um exemplo prático completo do *dbt*, a principal ferramenta de transformação de dados no **Modern Data Stack**.
+- Na Seção 15.1 revisitamos os tipos de transformações e quais critérios ajudam a priorizá-las.
+- Na Seção 15.2 detalhamos o desenho das camadas lógicas, convenções de nomeação e contratos de dados que sustentam um projeto robusto.
+
+Nos capítulos seguintes colocaremos tudo isso em prática: o **Capítulo 16** mostrará o passo a passo completo com *dbt Core/dbt Cloud*, enquanto o **Capítulo 17** repetirá o exercício com o Databricks Lakehouse usando o Lakeflow Declarative Pipelines. Use este capítulo como guia de princípios para escolher a melhor abordagem de implementação nas próximas etapas.

@@ -118,4 +118,22 @@ parts:
       sections:
         - file: chapters/15/01/processos_transformacao.md
         - file: chapters/15/02/arquiteturas_transformacao.md
-        - file: chapters/15/03/dbt.md
+        - file: chapters/15/leia_mais.md
+    - file: chapters/16/intro.md
+      sections:
+        - file: chapters/16/01/northwind_modelagem.md
+        - file: chapters/16/02/overview_dbt.md
+        - file: chapters/16/03/setup_northwind.md
+        - file: chapters/16/04/primeira_dimensao.md
+        - file: chapters/16/05/testes_documentacao.md
+        - file: chapters/16/06/dbt_packages.md
+        - file: chapters/16/07/dimensoes.md
+        - file: chapters/16/08/fatos.md
+        - file: chapters/16/09/testes_singulares.md
+        - file: chapters/16/10/estrutura_projeto.md
+        - file: chapters/16/11/conclusao.md
+        - file: chapters/16/leia_mais.md
+    - file: chapters/17/intro.md
+      sections:
+        - file: chapters/17/01/lakeflow.md
+        - file: chapters/17/leia_mais.md

@@ -1,58 +1,37 @@
-# 15.2 Alternativas de Arquitetura de ETL/ELT
+# 15.2 Camadas e convenções de transformação
 
-Os processos de transformação de dados são semelhantes, independentemente da arquitetura do *pipeline* de dados utilizada: seja ela uma arquitetura de ETL tradicional, seja um ELT moderno. No entanto, cada arquitetura vai impactar profundamente na estrutura de times, nos profissionais responsáveis e na produtividade do processo de transformação como um todo. Em geral, há três grandes alternativas de arquitetura:
+Independente da tecnologia, times de Analytics Engineering convergem para padrões parecidos ao organizar as transformações dentro do *data warehouse* ou do *lakehouse*. O próprio [dbt recomenda](https://docs.getdbt.com/best-practices/how-we-structure/organizing-models) separar o código em camadas lógicas para tornar claro o contrato de cada tabela, o grau de confiança e a cadência de atualização.
 
-* **Códigos personalizados**: essa é a forma mais flexível de transformação de dados, onde a transformação é feita por meio de scripts escritos em Python, Java, Scala, etc. A principal ferramenta utilizada é o Spark, uma biblioteca escrita em Scala com APIs em diferentes linguagens. Embora flexível, ETLs em código puro demandam uma capacidade técnica alta da equipe que irá criar e manter os pipelines, configuração de orquestração de tarefas (“o que vem antes do quê”), *log* de erros, entre outros.
+## Camada de *staging*
 
-* **Ferramentas de ETL visuais**: são ferramentas de ETL que permitem criar blocos de transformação de dados de forma visual ou até “*drag-and-drop*”. A curva de aprendizado é geralmente menor em relação aos métodos baseados em código, porém, no médio prazo, as ferramentas visuais geralmente deixam a desejar em termos de boas práticas, como versionamento, *debugging*, etc. A depender da ferramenta, o custo de licenciamento também pode ser elevado.
+- **Objetivo**: replicar fielmente as fontes, padronizando tipos e nomes de colunas.
+- **Boas práticas**:
+  - Uma view/tabela por fonte (ou tabela física).
+  - Prefixos `stg_` e agrupamento por domínio (`stg_erp__orders`, `stg_crm__deals`).
+  - Tratar nulidades, normalizar *timezone*, remover colunas sensíveis quando necessário.
+  - Nunca aplicar regras de negócio complexas aqui; a camada deve servir de “contrato limpo” para o restante do projeto.
 
-* **Data Warehouse/Data Lakehouse**: a transformação dentro do próprio *data warehouse* é a chave do chamado modelo ELT. As vantagens dessa abordagem são a facilidade de utilizar uma linguagem padrão (SQL) e ferramentas específicas, como o *dbt*, para cuidar das atividades auxiliares. Isso permite uma redução do tempo de entrega dos pipelines e uma necessidade técnica menor. Por outro lado, essa abordagem é limitada a dados estruturados (que podem ser armazenados em um banco de dados) e não é adequada para pipelines muito complexos.
+## Camada intermediária (ou *intermediate*)
 
-No {ref}`MDS<MDS>`, vamos utilizar o próprio *data warehouse* como ambiente de transformação, e utilizar ferramentas como o *dbt* para modelar os dados seguindo as melhores práticas de desenvolvimento. Essa decisão evita a necessidade de os Engenheiros de Analytics dominarem muitas linguagens de programação e frameworks de desenvolvimento distintos e focarem apenas na construção do *data warehouse*, utilizando apenas o necessário para o framework do ELT. No equilíbrio entre desenvolvimento e conhecimento de negócio, nosso foco é o negócio.
+- **Objetivo**: combinar múltiplas fontes e preparar agregações/tabelas de suporte.
+- **Boas práticas**:
+  - Modelos `int_` ou `core_` que encapsulam *joins* mais custosos, cálculos compartilhados e chaves substitutas.
+  - Separar responsabilidades (ex.: `int_orders__metrics`, `int_products__enriched`) para facilitar reuso entre fatos e dimensões.
+  - Materializar como *views* ou tabelas incrementais dependendo do custo de recomputação.
 
-## ETL baseado em ferramentas visuais
+## Camada de consumo  (*marts*)
 
-O diagrama abaixo apresenta uma arquitetura comum em projetos de dados liderados pela área de BI. Nestes projetos, as três etapas do ETL são geralmente realizadas dentro de uma ferramenta monolítica como Pentaho ou Informatica.
+- **Objetivo**: expor fatos e dimensões prontas para BI, APIs e *reverse ETL*.
+- **Boas práticas**:
+  - Seguir convenções de modelagem dimensional discutidas nos capítulos 8–11.
+  - Nomear dimensões (`dim_`) e fatos (`fct_`) deixando claro o grão.
+  - Definir materializações persistentes (tabela ou incremental) e políticas de atualização.
+  - Criar *exposures* do dbt para conectar cada mart aos dashboards ou *machine learning* que o consome.
 
-```{figure} ../../../assets/img/etl_ferramenta.png
-:name: etl_ferramenta
+## Contratos e padrões auxiliares
 
-ETL baseado em ferramentas.
-```
+- **Nomenclatura consistente**: usar nomes adequadas para os modelos em cada camada, usar sufixos/prefixos para tabelas e para colunas (`_sk`, `_fk`, `_date`).
+- **Macros e pacotes**: centralizar lógicas repetitivas (por exemplo, normalização de datas ou mascaramento de PII) aumenta a qualidade global.
+- **Documentação contínua**: descrever fontes, colunas e testes dentro dos arquivos `schema.yml` garante que o comando `dbt docs generate` reflita a arquitetura.
 
-As principais desvantagens dessa abordagem são:
-
-- **Lock-in**: toda a lógica do pipeline de dados fica presa dentro da ferramenta. Qualquer mudança de ferramenta envolve um grande retrabalho.
-
-- **Escalabilidade**: essas ferramentas, em geral, possuem dificuldade de escalar para grandes volumes de dados ou necessitam de grandes investimentos para isso.
-
-- **Flexibilidade**: por serem ferramentas visuais, suas capacidades são limitadas pelas funcionalidades disponíveis e reduzem a flexibilidade dos projetos.
-
-- **Governança**: em geral, é complicado garantir a governança nessas ferramentas, de modo que acabam sendo limitadas a um único desenvolvedor, tornando o processo dependente de uma pessoa e não algo estruturado da empresa.
-
-
-## ETL baseado em código
-
-O diagrama abaixo apresenta uma arquitetura comum em projetos de dados complexos liderados pela área de TI. As três etapas do ETL são atribuídas às equipes de Data Engineering ou a outras áreas técnicas da empresa, enquanto os analistas de negócios e cientistas de dados ficam limitados ao consumo desses dados na ponta.
-
-```{figure} ../../../assets/img/etl_codigo.png
-:name: etl_codigo
-
-ETL baseado em código.
-```
-
-As principais desvantagens dessa abordagem são:
-
-- **Dívida técnica**: necessidade de equipes que entendam dos códigos e transformações especializadas e personalizadas para cada projeto.
-
-- **Distância dos analistas**: como são projetos complexos e liderados por times técnicos, há uma grande distância do time de negócio que é "dono" dos dados. Isso gera conflitos entre os times, atrasos nos projetos, e dificuldade de geração de valor.
-
-## Abordagem Moderna
-
-Na abordagem moderna as etapas de processamento de dados ficam dentro do Data Warehouse, de modo que o processo é invertido para **Extract-Load-Transform** (ELT). A principal diferença em relação à abordagem tradicional é a criação de uma nova função, do [Engenheiro de Analytics](https://blog.indicium.tech/analytics-engineer-conheca-6-responsabilidades-dessa-nova-funcao/), responsável por transformar os dados dentro do Data Warehouse. Essa função resolve o distanciamento entre dados e negócio comum nos processos de ETL tradicionais.
-
-```{figure} ../../../assets/img/elt.png
-:name: elt_diagrama
-
-ELT moderno.
-```
+Essas camadas conceituais são independentes da ferramenta, mas o dbt e o Databricks Lakehouse já trazem recursos nativos para reforçar essas boas práticas. No Capítulo 16 veremos como implementar as camadas com dbt; no Capítulo 17 repetiremos a mesma lógica com os recursos de Lakeflow Declarative Pipelines.
