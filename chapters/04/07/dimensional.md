@@ -11,7 +11,7 @@ Um esquema estrela organiza:
 
 As dimensões estão sempre a uma única relação de distância da tabela fato, evitando cadeias longas de *joins* e reduzindo o risco de duplicar registros.
 
-```{figure} ../../../assets/img/esquema_estrela_er.png
+```{figure} ../../../assets/img/04_07_esquema_estrela_er.png
 :name: esquema_estrela_er
 
 Exemplo de esquema estrela para o processo de vendas.

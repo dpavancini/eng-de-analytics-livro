@@ -6,7 +6,7 @@ Nem toda organização precisa enfrentar todos os Vs ao mesmo tempo. Startups po
 
 Para entender onde os 5 Vs aparecem, é útil visualizar as etapas clássicas de uma solução de analytics:
 
-```{figure} ../../../assets/img/etapas.png
+```{figure} ../../../assets/img/02_01_etapas.png
 :name: etapas
 Figura: Etapas de uma solução de análise de dados
 Fonte: elaborada por Indicium Academy.

@@ -8,7 +8,7 @@ Nesta seção apresentamos rapidamente o objetivo de cada componente da arquitet
 
 Os componentes mais comuns (**Core**) em implementações de MDS são apresentados em vermelho no diagrama ao final desta seção. Já os componentes que aparecem em projetos sob demanda estão em amarelo.
 
-```{figure} ../../../assets/img/mas_referencia.png
+```{figure} ../../../assets/img/06_02_mas_referencia.png
 :name: mds_referencia
 
 Arquitetura de referência do Modern Data Stack

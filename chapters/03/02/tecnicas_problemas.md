@@ -6,7 +6,7 @@ Pensamento analítico precisa de método. Técnicas estruturadas nos ajudam a sa
 
 O PDCA (Plan-Do-Check-Act) surgiu na década de 1920 com Walter A. Shewhart e ganhou o mundo pelas mãos de W. Edwards Deming. Embora tenha sido popularizado na indústria, continua muito relevante para analytics: cada etapa força o time a planejar, executar, medir e aprender antes de avançar para o próximo experimento.
 
-```{figure} ../../../assets/img/ciclo_pdca.png
+```{figure} ../../../assets/img/03_02_ciclo_pdca.png
 :name: ciclo_pdca
 ```
 

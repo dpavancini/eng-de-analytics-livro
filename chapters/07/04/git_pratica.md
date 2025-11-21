@@ -60,7 +60,7 @@ git reset <nome_do_arquivo>
 
 O diagrama abaixo mostra um resumo dos estados dos arquivos e as operações mais comuns:
 
-```{figure} ../../../assets/img/git_add_reset.png
+```{figure} ../../../assets/img/07_04_git_add_reset.png
 Adicionando e removendo arquivos do índice
 ```
 
@@ -91,7 +91,7 @@ Uma das funcionalidades mais poderosas do Git é a capacidade criar “mundos pa
 
 Tecnicamente, uma *branch* é apenas uma referência para um commit específico. Para saber em qual *branch* o diretório está, o Git utiliza um ponteiro chamado HEAD.
 
-```{figure} ../../../assets/img/git_branch.png
+```{figure} ../../../assets/img/07_04_git_branch.png
 Ao iniciar, o HEAD aponta para o commit C5 da *branch* master
 ```
 
@@ -103,18 +103,18 @@ git checkout -b minha_branch
 Switched to a new branch 'minha_branch'
 ```
 
-```{figure} ../../../assets/img/git_checkout.png
+```{figure} ../../../assets/img/07_04_git_checkout.png
 Quando fazemos o checkout para uma nova *branch*, mudamos a posição do *HEAD* para ela
 ```
 
 Novos commits são adicionados na nova *branch* mas o Git entende a história e o momento que ela divergiu da *branch* master original:
 
-```{figure} ../../../assets/img/git_commit_nova_branch.png
+```{figure} ../../../assets/img/07_04_git_commit_nova_branch.png
 ```
 
 Podemos fazer esse mesmo processo inúmeras vezes e de forma paralela:
 
-```{figure} ../../../assets/img/git_outra_branch.png
+```{figure} ../../../assets/img/07_04_git_outra_branch.png
 ```
 
 Podemos acessar qualquer *branch* (ou commit) utilizando o `git checkout` também.
@@ -136,16 +136,16 @@ Vamos supor que estamos trabalhando na **minha_outra_branch** e quiséssemos rea
 git merge minha_outra_branch
 ```
 
-```{figure} ../../../assets/img/git_merge_ff.png
+```{figure} ../../../assets/img/07_04_git_merge_ff.png
 ```
 
 Mas se ao invés de alterações sequenciais, tivéssemos trabalhado de forma paralela na **master** e na **minha_branch**? Neste caso o Git precisa encontrar um ponto em comum entre as duas e verificar se há algum conflito. Em caso negativo, uma nova árvore é criada mesclando a história das duas *branches* :
 
-```{figure} ../../../assets/img/git_historias_distintas.png
+```{figure} ../../../assets/img/07_04_git_historias_distintas.png
 Ao trabalhar em paralelo, precisamos descobrir qual a raiz comum entre as *branches*
 ```
 
-```{figure} ../../../assets/img/git_merge_distintas.png
+```{figure} ../../../assets/img/07_04_git_merge_distintas.png
 Se não houver conflito, o Git cria um novo commit para registrar o *merge* entre as histórias
 ```
 
@@ -153,12 +153,12 @@ Se não houver conflito, o Git cria um novo commit para registrar o *merge* entr
 
 O que acontece se dois commits alterarem o mesmo arquivo de forma paralela? Neste caso teremos um conflito ao tentar fazer um merge!!
 
-```{figure} ../../../assets/img/git_conflito.png
+```{figure} ../../../assets/img/07_04_git_conflito.png
 Neste exemplo, há três versões distintas para o mesmo arquivo. Como conciliar? Qual é a correta?
 ```
 Embora o Git consiga identificar um conflito de forma automática, ele não sabe como resolvê-los. Cabe a nós indicar ao Git qual é a versão certa do código que queremos manter:
 
-```{figure} ../../../assets/img/git_fix_conflito.png
+```{figure} ../../../assets/img/07_04_git_fix_conflito.png
 O Git consegue identificar cada linha de código em conflito
 ```
 

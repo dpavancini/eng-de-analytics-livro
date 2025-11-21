@@ -2,7 +2,7 @@
 
 Pensar de forma analítica é decompor um problema complexo em partes compreensíveis e tratáveis. A palavra análise vem do grego e significa quebrar ou decompor algo em suas partes constituintes. No contexto corporativo, o que precisamos destrinchar são processos de vendas, churn, logística, experiência do cliente — sempre com o objetivo de separar sintomas das verdadeiras causas.
 
-```{figure} ../../../assets/img/analise.png
+```{figure} ../../../assets/img/03_01_analise.png
 :name: analisar
 
 Analisar é decompor processos para chegar a causas e insights. Fonte: elaborado pelo autor.
@@ -10,7 +10,7 @@ Analisar é decompor processos para chegar a causas e insights. Fonte: elaborado
 
 O Engenheiro de Analytics atua como um detetive moderno: coleta pistas em múltiplas fontes, cruza hipóteses, testa explicações e constrói narrativas baseadas em evidências. Assim como Sherlock Holmes dizia que os dados eram a “argila de seus tijolos” que constroem conclusões, nós usamos tabelas, painéis e logs para demonstrar o que está acontecendo e por quê.
 
-```{figure} ../../../assets/img/sherlock.png
+```{figure} ../../../assets/img/03_01_sherlock.png
 :name: analisar
 
 Dados são a base da resolução de problemas. Fonte: [The Guardian (2015)](https://www.theguardian.com/books/gallery/2015/jun/29/sherlock-holmes-examining-the-evidence-in-charts).

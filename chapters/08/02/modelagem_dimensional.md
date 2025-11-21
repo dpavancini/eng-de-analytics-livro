@@ -10,7 +10,7 @@ Naturalmente, o primeiro passo do modelo dimensional é identificar como os proc
 
 Cada pergunta acima busca responder a algo sobre um processo específico (vendas, estoque, marketing) através de medidas como soma de vendas, saldo de estoque, ou taxas de conversão. Na “linguagem dimensional”, processos de negócio e suas medidas são fatos. Em geral, quando vistos de forma isolada, os fatos não trazem muita informação. Dizer que uma loja vendeu 100 unidades ou que o estoque é de 50 unidades só é útil quando algum contexto é dado. Em geral, é fácil identificar o contexto em perguntas de negócios pelas preposições que detalham ou filtram as medidas. No exemplo acima, “total vendido” é detalhado “por filial”, enquanto que, nas demais perguntas, o estoque é filtrado “no armazém X” e somente a taxa de conversão de marketing “em janeiro” é de interesse na análise. Atributos que detalham ou filtram fatos são chamados de dimensões na modelagem dimensional. 
 
-```{figure} ../../../assets/img/fatos_dimensoes.png
+```{figure} ../../../assets/img/08_02_fatos_dimensoes.png
 :name: fatos_dimensoes
 
 Geralmente é possível  identificar fatos e dimensões em relatórios

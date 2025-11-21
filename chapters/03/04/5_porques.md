@@ -2,7 +2,7 @@
 
 Criada por Sakichi Toyoda na década de 1930, a técnica dos 5 Porquês se mantém atual pela simplicidade: perguntar “por quê?” repetidas vezes até chegar à causa raiz de um problema. Em analytics engineering ela é útil para investigar quedas de métricas, falhas em pipelines ou bugs que insistem em voltar.
 
-```{figure} ../../../assets/img/5_porques.png
+```{figure} ../../../assets/img/03_04_5_porques.png
 :name: 5_porques
 
 Descobrir a causa raiz do problema com os cinco porquês.

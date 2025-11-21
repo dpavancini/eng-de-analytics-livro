@@ -6,7 +6,7 @@ O ELT nasceu da combinação de três movimentos: storage barato em cloud, motor
 1. **Extrair/Carregar**: conectores (open source e SaaS) movem dados de ERPs, CRMs, bancos, APIs e eventos direto para o DW. Na prática, a extração já envia os dados para a camada _raw_ ou _bronze_. Técnicas como CDC (Change Data Capture) evitam reprocessamentos desnecessários.
 2. **Transformar dentro do DW**: usamos SQL/Python próximos ao dado, organizando camadas, versionando em Git e executando em ambiente gerenciado (dbt Cloud, Lakeflow Declarative Pipelines, notebooks, jobs orquestrados).
 
-```{figure} ../../../assets/img/elt_fluxo.png
+```{figure} ../../../assets/img/13_02_elt_fluxo.png
 :name: elt_fluxo
 
 Exemplo do fluxo de ELT

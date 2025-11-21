@@ -16,13 +16,13 @@ Essas respostas viram um vocabulário comum entre negócio e tecnologia. É com 
 
 Os bancos relacionais usados em cenários OLTP costumam nascer de um diagrama Entidade-Relacionamento. Ele mostra entidades, atributos e a cardinalidade dos vínculos (um-para-um, um-para-muitos, muitos-para-muitos). Cada “pé de galinha” indica quantas ocorrências de uma entidade se conectam à outra, tornando o desenho um guia visual do que será criado no banco.
 
-```{figure} ../../../assets/img/erd1.png
+```{figure} ../../../assets/img/04_05_erd1.png
 :name: erd1
 
 Exemplo de um diagrama de Entidade-Relacionamento (ERD).
 ```
 
-```{figure} ../../../assets/img/erd_2.png
+```{figure} ../../../assets/img/04_05_erd_2.png
 :name: erd2
 
 Detalhe de como entidades, atributos e cardinalidades aparecem no ERD.

@@ -6,7 +6,7 @@ Os esquemas estrela são desenhados para responder a perguntas de negócio de á
 
 Para cada tabela dimensão é gerada uma chave única, em geral sem significado de negócio, chamada de surrogate key, ou, em geral, SK. Nas tabelas fato, essas chaves são tratadas como chaves estrangeiras para as tabelas dimensão e sua combinação define o grão, ou granularidade, da tabela fato. Em geral, as tabelas dimensão não possuem chaves estrangeiras de modo que um esquema estrela só possui um nível de relacionamentos ou JOINs, facilitando as análises de negócio ad-hoc e por ferramentas de BI.
 
-```{figure} ../../../assets/img/esquema_estrela.png
+```{figure} ../../../assets/img/08_03_esquema_estrela.png
 :name: esquema_estrela
 
 Um esquema estrela para vendas contém fatos e dimensões

@@ -13,7 +13,7 @@ Quanto mais fontes, maior o risco de divergências entre campos semelhantes e du
 
 Cerca de 80% dos dados nas empresas são não estruturados (vídeos, áudios, textos), mas, como mostra o comparativo da DB-Engines, os bancos relacionais, voltados a dados estruturados, seguem amplamente dominantes. Por quê?
 
-```{figure} ../../../assets/img/db_engines.png
+```{figure} ../../../assets/img/02_04_db_engines.png
 :name: analisar
 
 Comparativo da DB-Engines. Fonte: [DB-engines](https://db-engines.com/en/ranking_categories)

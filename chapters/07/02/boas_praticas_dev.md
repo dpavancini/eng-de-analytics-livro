@@ -12,7 +12,7 @@ A “regra 90/90” virou meme porque projetos raramente terminam no prazo estim
 Entender como testar e depurar (*debug*) códigos é essencial para um bom desenvolvimento. Um desenvolvedor sênior é definido muito mais pelo quanto "ele já errou" (e os caminhos para não errar novamente) do que pelo quanto ele "sabe". Em times de desenvolvimento, é comum que um profissional experiente consiga isolar rapidamente um erro que um desenvolvedor júnior perdeu uma semana inteira de trabalho resolvendo.
 
 
-```{figure} ../../../assets/img/debugging.png
+```{figure} ../../../assets/img/07_02_debugging.png
 :name: debugging
 :height: 450px
 
@@ -44,7 +44,7 @@ O próximo passo da boa prática de desenvolvimento é o uso de ferramentas de a
 - Integração Contínua (do inglês, *continuous integration*)
 - Entrega Contínua (do inglês, *continuous delivery*)
 
-```{figure} ../../../assets/img/ci_cd_pipeline_meme.jpg
+```{figure} ../../../assets/img/07_02_ci_cd_pipeline_meme.jpg
 :name: ci_cd
 :height: 450px
 

@@ -4,7 +4,7 @@ O Diagrama de Pareto — ou gráfico 80/20 — nos ajuda a priorizar esforços m
 
 O método traduz visualmente o Princípio de Pareto, formulado por Vilfredo Pareto no início do século XX: numa série de eventos, é comum que cerca de 80% do impacto venha de 20% das causas. O objetivo não é achar um número exato, mas identificar padrões concentrados que merecem foco.
 
-```{figure} ../../../assets/img/pareto.png
+```{figure} ../../../assets/img/03_03_pareto.png
 :name: pareto
 
 Diagrama de Pareto com causas ordenadas por impacto acumulado.

@@ -7,7 +7,7 @@ Nesta seção falaremos do controle de versão, um dos processos mais importante
 
 Em primeiro lugar você deve estar se perguntando, afinal o que é "controle de versão"? Eu realmente preciso aprender isso? A resposta começa identificando que você provavelmente já possui seu próprio sistema de controle de versão "caseiro":
 
-```{figure} ../../../assets/img/excel_copia.png
+```{figure} ../../../assets/img/07_03_excel_copia.png
 :name: excel_copia
 
 Quem nunca sofreu com isso? Fonte: [dropbox.fix](https://dropboxfix.wordpress.com/)
@@ -91,7 +91,7 @@ Em resumo, cada vez que realizamos um `commit` no Git, nós tiramos uma foto do 
 
 Por exemplo, ao escrever este livro eu posso ter iniciado escrevendo o Capítulo 1 através de um arquivo texto um formato chamado `markdown` (equivalente a um arquivo docx do MS Word). Na primeira versão do Livro, digo ao Git para "congelar" a versão V1 que contém apenas o arquivo `Cap1.md`. Depois, adiciono um arquivo para o Capítulo 2 e mais uma vez salvo a versão do repositório Git. Como não fiz alterações no Capítulo 1, o Git apenas registra que esse arquivo não sofreu mudanças e salva uma imagem do arquivo `Cap2.md` em seu registro. Em seguida, adiciono algumas seções no Capítulo 1 e o Git altera a versão mais recente do arquivo `Cap1.md` para essa versão e registra que não houve alterações no `Cap2.md`. Porém, ao adicionar o Capítulo 3, equivocadamente deletamos os demais capítulos e salvamos o estado do repositório no Git. Neste caso, o Git vai fazer duas operações: registrar um novo arquivo `Cap3.md` e registrar que os outros arquivos foram excluídos da imagem mais recente do repositório. No entanto, como o Git armazena a **história completa** dos arquivos, conseguimos prontamente restaurar os demais capítulos na Versão 5 do repositório, sem sofrer nenhuma perda no trabalho. Um ponto importante é que o nome dos arquivos não se altera, as versões apontadas entre parênteses na Figura abaixo serve apenas para indicar a versão do arquivo que o Git está apontando.
 
-```{figure} ../../../assets/img/git_versoes.png
+```{figure} ../../../assets/img/07_03_git_versoes.png
 Versões do Git
 ```
 
@@ -111,7 +111,7 @@ Quando trabalhamos em um repositório Git, cada arquivo pode estar em três esta
 - *modified* (modificado): quando o arquivo foi modificado e está diferente da última versão registrada no Git. No entanto, as alterações ainda não foram preparadas (*staged*) e portanto o Git não sabe se deve ou não registrá-las em uma novo *commit*.
 - *staged* (preparado): significa que você indicou ao Git que o arquivo deve ser adicionado na próxima versão (*commit*). É um passo intermediário antes de salvar uma nova imagem do diretório.
 
-```{figure} ../../../assets/img/git_estados.png
+```{figure} ../../../assets/img/07_03_git_estados.png
 Diretório de trabalho, área de preparo (índice), e o diretório Git. Adaptado de [fonte]([Diretório de trabalho, área de preparo, e o diretório Git. [Fonte:](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-O-B%C3%A1sico-do-Git))
 ```
 

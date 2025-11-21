@@ -3,7 +3,7 @@
 
 Todo pipeline começa com um problema de negócio: precisamos entregar informação confiável para uma decisão específica. O ELT é o fio condutor que leva esse problema da descoberta até um dashboard ou produto analítico. Ferramentas são essenciais, mas só produzem valor quando conectadas por um processo coerente.
 
-```{figure} ../../../assets/img/processo_elt.png
+```{figure} ../../../assets/img/13_03_processo_elt.png
 :name: processo_elt_fig
 :height: 450px
 

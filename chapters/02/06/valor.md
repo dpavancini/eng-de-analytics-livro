@@ -13,7 +13,7 @@ Em geral, a área de *analytics* concentra-se no plano informacional — aquele 
 Segundo a consultoria **Gartner**, esse plano pode ser dividido em **quatro tipos de analytics**: **descritiva, explicativa, preditiva e prescritiva**.  
 Não basta gerar gráficos e tabelas: é preciso entender **qual tipo de análise usar para cada problema**.
 
-```{figure} ../../../assets/img/analytics_gartner.png
+```{figure} ../../../assets/img/02_06_analytics_gartner.png
 :name: gartner
 
 Os quatro tipos de analytics. Fonte: adaptado de Gartner (2019)[^Gartner].

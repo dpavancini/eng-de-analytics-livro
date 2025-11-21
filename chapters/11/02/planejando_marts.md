@@ -6,7 +6,7 @@ Talvez um dos maiores erros na implementação de um projeto de BI/DW seja tenta
 
 Não custa lembrar que precisamos ter sempre em mente que o DW é um projeto de negócio, e não de TI. Ao definir os Marts, fatos e dimensões que iremos criar, precisamos construir algo que faça sentido na estrutura atual e futura da empresa. Uma forma de estruturar isso é utilizar uma hierarquia partindo dos departamentos organizacionais, seguindo pelos processos de negócio até chegar às entidades.
 
-```{figure} ../../../assets/img/organizacao_marts.png
+```{figure} ../../../assets/img/11_02_organizacao_marts.png
 :name: organizacao_marts
 :height: 450px
  Organização dos Data Marts

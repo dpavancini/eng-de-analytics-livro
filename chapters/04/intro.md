@@ -9,7 +9,7 @@ Sob o capô, um SGBD coordena três grandes blocos:
 2. **Motor de processamento** — responsável por interpretar a consulta, montar o plano de execução e otimizar recursos.
 3. **Camada de armazenamento** — controla como os dados ficam gravados fisicamente em disco ou memória, aplicando índices, compressores e políticas de acesso.
 
-```{figure} ../../assets/img/banco_de_dados.png
+```{figure} ../../assets/img/04_00_banco_de_dados.png
 :name: arquitetura_sgbd
 
 Componentes básicos de um SGBD.

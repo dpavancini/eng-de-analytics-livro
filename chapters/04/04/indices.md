@@ -6,7 +6,7 @@
 
 Quando o motor recebe uma consulta (`SELECT * FROM pedidos WHERE id = 123`), ele precisa descobrir em qual página de armazenamento esse registro está. Sem índice, o banco realiza um *full table scan*: lê página por página até encontrar a linha desejada. Com índices (geralmente implementados via árvores B+), o banco mantém um mapa ordenado dos valores e consegue chegar ao resultado em poucas operações.
 
-```{figure} ../../../assets/img/blocos_sql.png
+```{figure} ../../../assets/img/04_04_blocos_sql.png
 :name: blocos_relacional
 
 Em bancos de dados tradicionais, os blocos armazenam linhas da tabela.
@@ -18,7 +18,7 @@ Em bancos de dados tradicionais, os blocos armazenam linhas da tabela.
 - **Ambientes analíticos (OLAP)**: agregam milhões de linhas de poucas colunas. Nesses casos, índices tradicionais trazem pouco benefício, pois a consulta acaba lendo grande parte da tabela. Warehouses modernos utilizam outras estratégias (particionamento, clustering).
 - **Custos de escrita**: criar um índice acelera leituras, mas torna inserções e atualizações mais lentas, já que a estrutura precisa ser atualizada. É preciso equilibrar esse trade-off com times de produto.
 
-```{figure} ../../../assets/img/blocos_colunar.png
+```{figure} ../../../assets/img/04_04_blocos_colunar.png
 :name: blocos_colunar
 
 Bancos colunares armazenam colunas de forma sequencial.

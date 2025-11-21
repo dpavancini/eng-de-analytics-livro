@@ -9,7 +9,7 @@ ETL (*extract-transform-load*) é o processo sistemático de extrair, transforma
 - **Transform**: estruturar, padronizar e aplicar regras de negócio. Essa camada costumava ser escrita em scripts proprietários ou ferramentas visuais robustas.
 - **Load**: apenas depois das transformações os dados eram carregados no data warehouse ou data mart.
 
-```{figure} ../../../assets/img/etl_fluxo.png
+```{figure} ../../../assets/img/13_01_etl_fluxo.png
 :name: etl_fluxo
 
 Exemplo de processo de ETL
