@@ -118,10 +118,10 @@ parts:
       sections:
         - file: chapters/15/01/processos_transformacao.md
         - file: chapters/15/02/arquiteturas_transformacao.md
+        - file: chapters/15/03/northwind_modelagem.md
         - file: chapters/15/leia_mais.md
     - file: chapters/16/intro.md
       sections:
-        - file: chapters/16/01/northwind_modelagem.md
         - file: chapters/16/02/overview_dbt.md
         - file: chapters/16/03/setup_northwind.md
         - file: chapters/16/04/primeira_dimensao.md
