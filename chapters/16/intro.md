@@ -2,7 +2,7 @@
 
 Agora que dominamos os conceitos de transformação e o blueprint dimensional da Northwind (Cap. 15), montaremos passo a passo o projeto usando dbt. Cada seção aborda um conceito-chave:
 
-1. Panorama do dbt Cloud/Core e do fluxo Git-first.
+1. Introdução ao dbt.
 2. Configuração do ambiente e carregamento das *seeds*.
 3. Construção das camadas `stg → int → marts`, começando pela dimensão de produtos.
 4. Testes, documentação, pacotes, demais dimensões e fatos.
