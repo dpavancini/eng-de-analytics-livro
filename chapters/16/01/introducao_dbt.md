@@ -21,21 +21,32 @@ Fonte: Criado pelo autor.
 
 ## Primeiros passos pela UI
 
-Com todo a configuração finalizada no capitulo 12 a primeira página do dbt Platform tem o dashboard de informações do seu projeto. Como ainda não connstruimos nada eles estará vazio. O meno a esquerda pode ser expandido e fechado para facilitar navegação. Com o menu expandido temos algumas opções as princiapis que usaremos durante o curso serão: Studio, Orchestration e Account Settings(Na sua UI será o nome da sua conta que pode ser clicado) e Profile Settings (Na sua UI será o seu nome). Convido voce a navegar pelo account settings e profile settings para se familizarizar um pouco com o ambiente.
+Com toda a configuração finalizada no Capítulo 12, ao abrir o dbt Platform você verá um dashboard com informações do projeto. Como ainda não construímos nada, ele estará praticamente vazio. O menu à esquerda pode ser expandido/fechado para facilitar a navegação. Com o menu aberto, as opções mais importantes para este capítulo são:
 
-Nesse primeiro momento, vamos focar em conhecer melhor o "Studio" dentro do dbt. O Studio é uma IDE (integrated development environment) é uma versão web-based similar a ferramentos de dsenvolvimento local como visual studio code, porém tem caracteriscas especificas para o desenvolvimento de projectos de dbt e que facilitam muito o desenolvimento. É no Stuido que iremos criar nossos modelos, testalos e documenta-los.
+- **Studio**: onde desenvolvemos (modelos, testes e documentação).
+- **Orchestration**: onde criamos Jobs, agendamentos e observamos execuções.
+- **Account Settings**: na sua UI aparece como o nome da conta (clicável).
+- **Profile Settings**: na sua UI aparece como o seu nome (clicável).
+
+Vale a pena explorar rapidamente **Account Settings** e **Profile Settings** para se familiarizar com o ambiente.
+
+Neste primeiro momento, vamos focar no **Studio**. Ele funciona como uma IDE (*Integrated Development Environment*) no navegador, com recursos voltados especificamente para projetos dbt. É no Studio que criaremos nossos modelos, executaremos comandos, aplicaremos testes e escreveremos documentação.
 
 ```{figure} ../../../assets/img/16_01_dbt_studio_ui.png
 :name: dbt Platform Studio IDE
 Fonte: dbt.
 ```
 
-Na caixa vermelha temos o controle de versão do Studio. Aqui podemos ver a branch que esamos atualmente que é a branch 'main' no topo. Temos o botão de ação do git no studio. Através desse botão, podemos criar uma nova branch, trocar de branch, fazer os commits para salvar anterações que estamos fazendo e até abrir pull-requests no nosso repositório de código. Finalmente o espao abaixo é onde conseguimos ver que alterações estamos fazendo antes de realizar um commit. Arquivos em versão são novos arquivos adicionaos, ja em laranja são arquivos exuistentes que foram editados e arquivos vermlhos foram arquivos removidos. Perceba que no botão do git a opção indicada é "Create Branch" está assim por que o Studio sempre esta sugerindo o melhor próximo passo no fluxo git. Nesse caso como estamos na branch 'main' e ela esta atualizada o próximo passo é crir uma nova branch para podermos iniciar o desenvolvimento e propors nossas alterações, o dbt está sugerindo isso visto que a branch main não pode ser alterada via commits e apenas por pull-requests.
+Na caixa vermelha fica o **controle de versão** do Studio. No topo, você vê a branch atual (neste momento, `main`). No botão do Git, é possível criar/trocar de branch, fazer commits para salvar alterações e até abrir *pull requests* no repositório. Logo abaixo, você visualiza o *diff* do que mudou antes de commitar. Em geral, o Studio indica (com cores) arquivos novos, arquivos modificados e arquivos removidos.
 
-Na caixa laranja temos o file explorer, é aqui que podemos interagir com os arquivos existentes do nosso repositorio. Tome um tempo e abra as pastas e fique confortável com a UI. Para criar um novo arquivo o pasta basta clicar nos três pontos ("...") no lado do direito do file explorar para abrir a opção de criar um novo arquivo ou renomear um arquivo existente.
+Repare que o botão do Git costuma sugerir o “próximo passo” do fluxo. Se você estiver na `main` e ela estiver atualizada, a sugestão tende a ser **Create Branch**: a ideia é desenvolver em uma branch de feature e levar mudanças para a `main` via *pull request*.
 
-Na caixa azul temos de fato o local onde vemos os arquivos e os editamos. Voce tambem pode criar um arquivo rascunho através dessa aba clicando na opção "create new file" esse novo arquivo não vai aparecer nofile explorer até que voce o salve e escolha um destino entre as pastas do projeo.
+Na caixa laranja fica o **File Explorer**. É por aqui que você navega pelos arquivos do repositório. Reserve alguns minutos para abrir pastas e se familiarizar com a estrutura. Para criar um arquivo ou pasta, clique nos três pontos (`...`) à direita do explorador; ali também aparecem opções como renomear itens entre outras.
 
-Finalmente na caixa verde temos a nossa barras de comandos para enviar comandos de dbt como dbt run, dbt test e dbt build. Nessa area tambem podemos interagir com várias funcionalidades do dbt. Como por exemplo, fazer um "preview" do modelo que estamos criando para ver como os dados modelados estão ficando. Aqui tambem podemos usar opção de compilação para ver o código que será enviado para o data warehouse quando esse modelo for executado. Preste atenção no canto direito dessa caixa onde temos a barra de status, a barra é o botão verde "ready" ali vemos se no projeto está pronto para desenvolvimento e livres de erro, esse botão pode mostrar tambem warnings em laranja ou erros em vermelho dependendo do tipo de problema que pode estar acontecendo no projeto. Os problemas podem variar de erro de conexão entre o dbt e o data warehouse como problemas no próprio codigo do modelo. Nosso ultimo lugar nessa UI é os três pontos ("...") ao lado da barra de status. Ali podemos ver algumas opções adicionais como dar um restart na UI em caso de algum bug ou até mesmo "Rollback to remove" que copia novamente a branch main do repositório removo do git e adicionalmente da um restar na UI.
+Na caixa azul está o **editor**: o local onde abrimos e editamos arquivos. Você também pode criar um rascunho clicando em **Create new file**; ele só aparece no *File Explorer* depois que você salvar e escolher um caminho dentro do projeto.
 
-para mais informçaões sobre a UI acesse: https://docs.getdbt.com/docs/cloud/studio-ide/develop-in-studio
+Por fim, na caixa verde está a **barra de comandos e utilidades** do dbt: é onde você executa comandos como `dbt run`, `dbt test` e `dbt build`. Nessa área também dá para fazer **preview** dos dados de um modelo e ver o SQL **compilado** (a query pura que de fato será enviado ao *data warehouse*).
+
+No canto direito, a barra de status (geralmente como “Ready”) indica se o projeto está pronto para desenvolver/executar. Dependendo do caso, ela pode exibir avisos (*warnings*) ou erros (*errors*) — desde problemas de conexão com o *data warehouse* até erros no próprio SQL/Jinja do modelo. Ao lado, o menu de três pontos (`...`) reúne ações adicionais, como reiniciar a UI em caso de instabilidade.
+
+Para mais informações sobre a UI do Studio, consulte a [documentação do Studio](https://docs.getdbt.com/docs/cloud/studio-ide/develop-in-studio).
