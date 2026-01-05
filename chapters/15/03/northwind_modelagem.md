@@ -1,3 +1,4 @@
+(northwind_datamodel)=
 # 15.3 Conhecendo os dados da Northwind
 
 O exemplo prático deste livro utiliza os dados fictícios da empresa Northwind, que simulam um banco transacional (OLTP) de um sistema de ERP. Vamos usá-los como fonte para construir um modelo dimensional e servir de blueprint para os capítulos de implementação.
@@ -15,8 +16,8 @@ Trabalharemos com uma versão reduzida do ERP original (algumas tabelas foram re
 
 - **Dimensões**:
   - **products**: categorias e fornecedores são tratados como atributos da dimensão de produto. Poderíamos ter uma dimensão exclusiva de fornecedores, mas manter como atributo simplifica o consumo (um *join* a menos para o usuário final).
-  - **customers**: relação direta com `orders` e uma auto-relação que indica hierarquia. Essa característica precisa ser levada em conta ao criar a dimensão.
-  - **employees**: relação direta com `orders`, sem complexidade adicional para virar dimensão.
+  - **employees**: relação direta com `orders` e uma auto-relação que indica hierarquia. Essa característica precisa ser levada em conta ao criar a dimensão.
+  - **customers**: relação direta com `orders`, sem complexidade adicional para virar dimensão.
   - **shippers**: também deriva diretamente de `orders`.
 
 Ao converter esse desenho para o formato estrela, chegamos a:
@@ -42,4 +43,4 @@ Esquema estrela utilizado ao longo do capítulo.
 Fonte: Criado pelo autor.
 ```
 
-Este blueprint direciona os próximos passos: no Capítulo 16 o implementaremos com *dbt Core/Cloud* e, no Capítulo 17, repetiremos o fluxo no Databricks Lakehouse usando o Lakeflow Declarative Pipelines.
+Este blueprint direciona os próximos passos: no Capítulo 16 o implementaremos com *dbt* e, no Capítulo 17, repetiremos o fluxo no Databricks Lakehouse usando o *Lakeflow Declarative Pipelines*.
