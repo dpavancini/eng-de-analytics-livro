@@ -1,14 +1,14 @@
 # 16.6 Configurações de Projeto
 
-O `dbt_project.yml` é o arquivo central de configuração de um projeto dbt: é por ele que o dbt identifica o projeto, define metadados (como `name`, `version` e `profile`) e aplica configurações **globalmente**. Tudo que você declarar aqui vira regra padrão do projeto e pode ser **herdado** por diretórios e modelos, evitando repetição de `{{ config(...) }}` em dezenas de arquivos.
+O `dbt_project.yml` é o arquivo central de configuração de um projeto dbt. É por ele que o dbt identifica o projeto, define metadados (como `name`, `version` e `profile`) e aplica configurações **globalmente**. Tudo que você declara aqui vira regra padrão do projeto e pode ser **herdado** por diretórios e modelos, evitando repetição de `{{ config(...) }}` em dezenas de arquivos.
 
 Além de metadados, é nele que você configura (por projeto, pasta ou até por modelo) comportamentos como:
 
 - **Models**: materialização (`view`, `table`, `incremental`), `schema`/`database`, `tags`, `enabled`, entre outros.
-- **Tests**: severidade/padrões de testes (`warn`/`error`), onde armazenar falhas (`store_failures`), e configurações aplicadas por pasta.
-- **Sources**: forma de carregar/descrever fontes (ex.: `loaded_at_field`, freshness, `tags`) e padrões para grupos de fontes.
+- **Tests**: severidade/padrões de testes (`warn`/`error`), onde armazenar falhas (`store_failures`) e configurações aplicadas por pasta.
+- **Sources**: padrões para fontes (por exemplo, `loaded_at_field`, *freshness*, `tags`) e configurações por grupo de fontes.
 
-Uma prática importante é usar a **estrutura de pastas** dentro de `models/` para agrupar configurações. Como o YAML é hierárquico, configurações definidas para uma pasta (por exemplo `staging/`) valem para todos os modelos ali dentro, e podem ser sobrescritas em níveis mais específicos (subpastas) ou em um modelo individual. Isso mantém o projeto consistente e torna o `dbt_project.yml` um ponto único de verdade para as convenções do time.
+Uma prática importante é usar a **estrutura de pastas** dentro de `models/` para agrupar configurações. Como o YAML é hierárquico, configurações definidas para uma pasta (por exemplo, `staging/`) valem para todos os modelos ali dentro e podem ser sobrescritas em níveis mais específicos (subpastas) ou em um modelo individual. Isso mantém o projeto consistente e transforma o `dbt_project.yml` em um “ponto único de verdade” para as convenções do time.
 
 ```yaml
 models:
@@ -26,9 +26,9 @@ models:
       +schema: stg
       erp:
 ```
-O `+` na frente de algumas chaves é uma convenção do dbt no `dbt_project.yml` para indicar “isto é uma **config**”. Em seções como `models:`, o YAML é hierárquico: chaves **sem** `+` são interpretadas como nomes de pastas/subpastas (ou modelos) dentro de `models/`, enquanto chaves **com** `+` são tratadas como configurações equivalentes ao que você escreveria com `{{ config(...) }}` (por exemplo `+materialized`, `+schema`, `+tags`, `+enabled`). Isso evita ambiguidade e deixa claro o que é estrutura do projeto(pastas) vs. o que é configuração aplicada àquele nível.
+O `+` na frente de algumas chaves é uma convenção do dbt no `dbt_project.yml` para indicar “isto é uma **config**”. Em seções como `models:`, o YAML é hierárquico: chaves **sem** `+` são interpretadas como nomes de pastas/subpastas (ou modelos) dentro de `models/`, enquanto chaves **com** `+` são tratadas como configurações equivalentes ao que você escreveria com `{{ config(...) }}` (por exemplo, `+materialized`, `+schema`, `+tags`, `+enabled`). Isso evita ambiguidade e deixa claro o que é **estrutura do projeto** (pastas) versus o que é **configuração** aplicada naquele nível.
 
-Agora execute novamente o dbt com `dbt build` (ou `dbt run`), analise os logs e observe o que mudou. Veja Em seguida, confira no Databricks (no seu schema de desenvolvimento) como os objetos foram criados. Perceba que com a adição de schema por pastas nossas camadas de transformação tambem foram separadas por schema no databricks.
+Agora execute novamente o dbt com `dbt build` (ou `dbt run`), analise os logs e observe o que mudou. Em seguida, confira no Databricks (no seu schema de desenvolvimento) como os objetos foram criados. Perceba que, ao definir `schema` por pasta, as camadas de transformação também ficam separadas por schema no Databricks.
 
 ## `dbt_project.yml` vs `{{ config(...) }}`: onde colocar cada configuração
 
@@ -40,7 +40,7 @@ Na seção anterior (16.5, `materializacao.md`), nós colocamos `{{ config(mater
 
 A regra prática mais eficiente costuma ser:
 
-- **Padrões por pasta no `dbt_project.yml`** (o “default” do time).
+- **Padrões por pasta no `dbt_project.yml`** (o padrão do time).
 - **Exceções por modelo via `{{ config(...) }}`** (ajustes pontuais onde faz sentido).
 
 ### Quando configurar no `dbt_project.yml`
@@ -61,14 +61,13 @@ Use `{{ config(...) }}` dentro do modelo quando a configuração:
 - Depende de uma **decisão pontual de performance/custo** (otimização guiada pelo uso real).
 - É algo “inerente” ao modelo, como parâmetros de incremental (ex.: `unique_key`, estratégia) ou outras configs específicas do adaptador.
 
-Um exemplo comum: você mantém `marts/` como `table` por padrão no `dbt_project.yml`, mas quando uma fato cresce demais, um próximo passo é sobrescrever **um modelo específico** para `incremental`. Por exemplo, se `fct_transactions` ficar muito grande, você pode ajustar apenas esse modelo:
+Um exemplo comum: você mantém `marts/` como `table` por padrão no `dbt_project.yml`, mas quando um fato cresce demais, um próximo passo é sobrescrever **um modelo específico** para `incremental`. Por exemplo, se `fct_transactions` ficar muito grande, você pode ajustar apenas esse modelo:
 
 ```sql
 {{
     config(
         materialized='incremental',
-        unique_key='transaction_id',
-        incremental_strategy='merge'
+        unique_key='order_item_sk',
     )
 }}
 
