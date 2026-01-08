@@ -30,7 +30,7 @@ Com toda a configuração finalizada no Capítulo 12, ao abrir o dbt Platform vo
 
 Vale a pena explorar rapidamente **Account Settings** e **Profile Settings** para se familiarizar com o ambiente.
 
-Neste primeiro momento, vamos focar no **Studio**. Ele funciona como uma IDE (*Integrated Development Environment*) no navegador, com recursos voltados especificamente para projetos dbt. É no Studio que criaremos nossos modelos, executaremos comandos, aplicaremos testes e escreveremos documentação.
+Vamos focar no **Studio**. Ele funciona como uma IDE (*Integrated Development Environment*) no navegador, com recursos voltados especificamente para projetos dbt. É no Studio que criaremos nossos modelos, executaremos comandos, aplicaremos testes e escreveremos documentação.
 
 ```{figure} ../../../assets/img/16_01_dbt_studio_ui.png
 :name: dbt Platform Studio IDE

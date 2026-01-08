@@ -23,11 +23,13 @@ sources:
   - name: erp
     tables:
       - name: orders_detail
-        tests:
+        description: Line items for each order including product, quantity, unit price, and discount.
+        data_tests:
           - dbt_utils.unique_combination_of_columns:
-              combination_of_columns:
-                - orderid
-                - productid
+              arguments:
+                combination_of_columns:
+                  - orderid
+                  - productid
 ```
 
 O `dbt_utils` compila o teste para SQL e acusa falhas caso o par apareça mais de uma vez. Pacotes também trazem macros úteis (`generate_surrogate_key`, `get_query_results_as_dict`, etc.) que evitam código repetido nas camadas intermediárias.
