@@ -14,7 +14,8 @@ Cada seção do capítulo adiciona uma peça do quebra-cabeça:
 8. **16.8** – criação das demais dimensões.
 9. **16.9** – tabelas fato e métricas (do `intermediate` ao `marts`).
 10. **16.10** – testes singulares para validar métricas críticas.
-11. **16.11** – conclusão e próximos passos.
+11. **16.11** – deploy no dbt Platform (environments e jobs).
+12. **16.12** – conclusão e próximos passos.
 
 O objetivo é que você consiga replicar todo o laboratório no Databricks entendendo o porquê de cada decisão — e, principalmente, como montar um projeto que se mantenha saudável quando ele crescer (mais fontes, mais regras e mais consumidores).
 

@@ -1,8 +1,8 @@
 # 16.8 Criando as demais dimensões
 
-Na seção seção 16.3 (primeira dimensão), modelamos a dimensão (`dim_products`) passando pelo fluxo completo `staging → intermediate → marts`. A partir daqui, vamos repetir o mesmo raciocínio para criar as demais dimensões do projeto da Northwind.
+Na seção 16.3 (primeira dimensão), modelamos a dimensão (`dim_products`) passando pelo fluxo completo `staging → intermediate → marts`. A partir daqui, vamos repetir o mesmo raciocínio para criar as demais dimensões do projeto Northwind.
 
-Vamos partir de um pressuposto importante: **toda a camada `staging` já está modelada** (modelos `stg_` com renome, tipagem e chaves definidas). O foco agora é apenas **da camada `intermediate` para frente**, ou seja, como publicar dimensões consistentes para consumo no *mart*. Para conferir sua camada `staging` cheque o repositório de exemplo do livro na branco `recursos`.
+Vamos partir de um pressuposto importante: **toda a camada `staging` já está modelada** (modelos `stg_` com renome, tipagem e chaves definidas). O foco agora é apenas **da camada `intermediate` para frente**, ou seja, como publicar dimensões consistentes para consumo no *mart*. Para conferir sua camada `staging`, consulte o repositório de exemplo do livro na branch `recursos`.
 
 No blueprint dimensional do projeto, as dimensões restantes são:
 

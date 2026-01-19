@@ -132,7 +132,8 @@ parts:
         - file: chapters/16/08/dimensoes.md
         - file: chapters/16/09/fatos.md
         - file: chapters/16/10/testes_singulares.md
-        - file: chapters/16/11/conclusao.md
+        - file: chapters/16/11/deployment.md
+        - file: chapters/16/12/conclusao.md
         - file: chapters/16/leia_mais.md
     - file: chapters/17/intro.md
       sections:

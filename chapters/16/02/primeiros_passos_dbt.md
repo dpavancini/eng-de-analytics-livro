@@ -82,4 +82,8 @@ dbt seed --select erp_northwind
 
 As seeds já contemplam as tabelas `categories`, `products`, `customers`, `orders`, `orders_detail`, `employees`, `shippers` e `suppliers`. Ao final do comando, confirme se o Databricks contém os dados brutos; são eles que alimentam nossos `sources`.
 
-Após o carregamento não esqueça de desabilitar as seeds alterando o `+enabled: true` novamente para `+enabled: false` isso evita de ter elas rodando em conjunto com o comando: **dbt build**. Você pode fazer isso criando uma nova branch para realizar um novo desenvolvimento. Nessa branch além de fazer a alteração do enabled delete os modelos exemplos e deixa ela limpa para começarmos o projeto da Northwind. Voce pode nomear essa branco como criacao_dimensao_produtos que é a primeira parte do projeto que iremos focar.
+Após o carregamento, não esqueça de desabilitar as seeds alterando `+enabled: true` de volta para `+enabled: false`. Isso evita que elas sejam executadas sem necessidade junto com o `dbt build`.
+
+Uma boa prática aqui é criar uma nova branch para iniciar o desenvolvimento “de verdade”. Nessa branch, além de ajustar o `+enabled`, remova os modelos de exemplo do dbt e deixe o projeto “limpo” para começarmos a Northwind.
+
+Se quiser seguir um padrão de nomes, você pode usar algo como `criacao_dimensao_produtos`, que é exatamente a primeira etapa do projeto que vamos construir.
