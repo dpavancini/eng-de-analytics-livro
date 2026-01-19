@@ -198,3 +198,5 @@ with
 select *
 from dim_products
 ```
+
+Finalize o trabalho fazendo o commit da suas mudanças na branch pela caixa de versionamento de código. Caso não tenha criado uma branch o dbt vai oferecer para criar uma. Escolha um nome para o commit que indique o que voce acabou de adicionar no código. A mensagem de commit é importante para podermos ver no tempo como as mudanças incrementais foram adicionadas ecaso necessário retroceder no tempo para um desses commits.

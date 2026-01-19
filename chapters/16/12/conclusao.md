@@ -1,4 +1,4 @@
-# 16.11 Conclusão e próximos passos
+# 16.12 Conclusão e próximos passos
 
 Neste capítulo percorremos um fluxo completo de construção de *analytics* com dbt usando a Northwind como laboratório:
 

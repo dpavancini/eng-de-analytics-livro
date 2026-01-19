@@ -129,3 +129,18 @@ No dbt, essa documentação é compilada em artefatos e pode ser visualizada via
 À medida que o projeto cresce, algumas descrições se repetem (por exemplo, “chave primária”, “data de criação”, “timestamp de atualização”). Para evitar duplicação e manter consistência, o dbt permite usar **docs blocks**: pequenos trechos reutilizáveis de documentação, escritos em arquivos `.md`, que você referencia nos `schema.yml`.
 
 Um exemplo simples é padronizar a descrição de colunas `id`. Você pode criar um bloco de documentação com algo como “Chave primária da tabela” e reutilizá-lo em várias tabelas/modelos, sem reescrever o texto em cada lugar. Isso acelera a documentação, reduz inconsistências e deixa a manutenção mais fácil.
+
+Finalize a documentação e os testes realizando um novo commit para essa parte do trabalho. Agora é um bom momento para fazer a mesclagem desse código com a branch `main`.
+
+Passo a passo para criar um Pull Request no GitHub (até completar com *merge commit*):
+
+1. No GitHub, abra o repositório e clique em **Compare & pull request** (ou vá em **Pull requests** → **New pull request**).
+2. Selecione **base** = `main` e **compare** = sua branch.
+4. Preencha título/descrição e clique em **Create pull request**.
+5. Clique em **Merge pull request** e escolha **Create a merge commit**.
+6. Confirme em **Confirm merge** e, se quiser, apague a branch no GitHub.
+7. Volte no dbt e troque para a branch `main`. O dbt automaticamente pedirá para você atualizar a sua `main` já que a do repositório foi alterada. Após o `sync` o dbt já recomenda nomente para criar uma nova branch de desenvolvimento.
+
+Você pode pular o passo 1 e 2 se pelo dbt você selcionar "Create pull request" depois do commit que foi feito para salvar suas alterações na branch que desenvolvemos a dim_produtos.
+
+Para o decorrer do projeto, você pode fazer o restante do trabalho em uma única branch e repetir esse mesmo processo de merge para a `main` quando concluir todo o projeto e ter o código de produção pronto para o deployment.
