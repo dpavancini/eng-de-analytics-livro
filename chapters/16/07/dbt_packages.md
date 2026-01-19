@@ -73,7 +73,11 @@ Depois de rodar `dbt deps`, você passa a conseguir usar os recursos do pacote d
 - **Testes genéricos via YAML**, referenciando pelo nome do pacote (ex.: `dbt_utils.unique_combination_of_columns`)
 - **Macros dentro de SQL**, chamando-as via Jinja (ex.: `{{ dbt_utils.generate_surrogate_key(...) }}`)
 
-Vamos implementar os dois casos no nosso projeto. Seguindo a boa pratica apresentada na seção de testes vamos começar primeiro com a adição de testes próximos e nossas soureces para as tabelas remanescentes. Todas as tabelas possuem uma chave primária defina com exceção da tabela fonte `orders_detail` onde a granularidade da tabela é definida por mais de uma coluna. Portanto, para as demais tabelas adicione testes e documentação conforme feito anteriormente. Se tiver dúvidas consulte o repositório exemplo na branch 'recursos' para olhar o código fonte utilizado para o arquivod e sources. Agora para a tabela `orders_detail` vamos ver o exemplo detalhado embaixo utilizando um teste genérico do pacote dbt_utils.
+Vamos implementar os dois casos no nosso projeto. Seguindo a boa prática da seção 16.4 (testes e documentação), comece garantindo que suas `sources` estejam bem documentadas e com testes básicos (como `unique` e `not_null`) nas chaves primárias.
+
+No Northwind, a maioria das tabelas tem uma chave primária simples. A exceção é a tabela fonte `orders_detail`, cuja granularidade é definida por uma **chave natural composta** (mais de uma coluna). É um bom caso para usar um teste genérico do `dbt_utils`.
+
+Se você quiser comparar com o código de referência, consulte o repositório exemplo na branch `recursos` (principalmente o YAML de `sources`). A seguir, vamos ver o exemplo completo para `orders_detail`.
 
 ## Exemplo 1: teste de combinação única na fonte `orders_detail`
 
@@ -85,7 +89,7 @@ Por que isso é importante?
 - Se essa combinação se repetir, você tem duplicidade de item e, quase sempre, vai gerar **métricas infladas** (quantidade, receita, desconto etc.).
 - Esse tipo de duplicidade pode surgir por problemas de ingestão, reprocessamento, ou mudanças na fonte — e é exatamente o tipo de coisa que queremos capturar cedo.
 
-No arquivo `models/staging/erp/_source_erp.yml`, adicione o teste no nível da tabela `orders_detail`:
+No projeto Northwind, no arquivo `models/staging/erp/_source_erp.yml`, adicione o teste no nível da tabela `orders_detail`:
 
 ```yaml
 sources:
@@ -119,7 +123,7 @@ Esse teste vai compilar para um SQL que procura combinações repetidas e falhar
 
 Quando você rodar `dbt test` (ou `dbt build`), o dbt vai executar esse SQL e reportar as linhas problemáticas como falhas de qualidade.
 
-Perceba que por esse teste utilizar mais de uma coluna como input o data_tests foi definido em baixo do nome da tabela fonte e não embaixo de uma coluna.
+Perceba que, como esse teste utiliza mais de uma coluna como entrada, ele é definido no nível da tabela (em `data_tests`). E não no nível de uma coluna específica.
 
 ## Exemplo 2: criando uma `surrogate_key` no staging `stg_erp__order_items`
 
@@ -136,9 +140,9 @@ Essa combinação é uma chave natural válida, mas trabalhar com chaves compost
 - a definição de `unique_key` em modelos incrementais fica mais chata,
 - em fatos/dimensões, é comum preferir uma chave única simples para padronizar relacionamentos.
 
-Uma prática comum é criar uma **surrogate key**: uma chave substituta, estável e determinística, derivada da chave natural.
+Uma prática comum é criar uma **chave substituta (surrogate key)**: uma chave estável e determinística, derivada da chave natural.
 
-No projeto crie um novo arquivo para o modelo staging de itens do pedido `models/staging/erp/stg_erp__order_items.sql`, Nele além da modelagem costumeira de uma staging voce vai poder gerar essa chave utilizando o pacote dessa maneira:
+No projeto Northwind, no modelo de staging de itens do pedido (`models/staging/erp/stg_erp__order_items.sql`), além da modelagem “costumeira” de staging (renomear, padronizar tipos e chaves), gere essa chave com o pacote assim:
 
 ```sql
 select
@@ -147,17 +151,18 @@ select
     , cast(productid as int) as product_fk
     ...
 from {{ source('erp', 'orders_detail') }}
--- Se tiver dúvidas sobre esse modelo consulte a branch 'recursos'.
 ```
 
-Por que vale a pena criar essa `surrogate_key` nesse modelo:
+Se tiver dúvidas sobre esse modelo, consulte a branch `recursos`.
 
-- **Identidade estável do “item do pedido”**: você passa a ter uma coluna única (`order_item_sk`) que identifica cada linha.
-- **Facilita joins e modelagem downstream**: fatos e dimensões (ou modelos intermediários) podem usar uma chave única simples.
-- **Ajuda incrementalidade e deduplicação**: se futuramente esse staging (ou um modelo downstream) virar incremental, a `order_item_sk` pode ser usada como `unique_key` com mais clareza.
-- **Portabilidade**: `generate_surrogate_key` encapsula uma estratégia consistente de hash para múltiplas colunas, evitando implementações manuais diferentes a cada projeto.
+Por que vale a pena criar uma `surrogate_key`:
 
-Para ver como a macro acima é compilada em puro SQL utilize a UI do dbt na area **barra de comandos e utilidades** voce vai ver a opçao de 'Compile' clique na opção e veja o código em SQL puro sem as macros. A linha para a sk será assim em SQL:
+- **Identidade estável do registro**: você passa a ter uma coluna única (por exemplo, `order_item_sk`) para identificar cada linha, mesmo quando a chave natural é composta.
+- **Simplifica joins e modelagem downstream**: reduz a verbosidade dos relacionamentos e facilita padronizar chaves em modelos intermediários, fatos e dimensões.
+- **Ajuda incrementalidade e deduplicação**: a chave pode ser usada como `unique_key` e como referência consistente para identificar reprocessamentos e duplicidades.
+- **Consistência e portabilidade**: macros como `generate_surrogate_key` padronizam a estratégia de hash para múltiplas colunas, evitando implementações manuais divergentes entre projetos.
+
+Para ver como a macro acima vira SQL “puro”, use a opção `Compile` na IDE do dbt ou inspecione o SQL compilado nos artefatos do projeto. O SQL exato varia conforme o warehouse/adaptador, mas a ideia é a mesma: concatenar os valores (tratando `null`) e aplicar um hash. A linha da `order_item_sk` fica parecida com:
 
 ```sql
 md5(cast(coalesce(cast(orderid as TEXT), '_dbt_utils_surrogate_key_null_') || '-' || coalesce(cast(productid as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as order_item_sk
