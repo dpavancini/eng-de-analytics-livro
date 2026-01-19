@@ -1,15 +1,14 @@
 (dimensoes)=
 # Capítulo 10 - Dimensões
 
-Dimensões  são informações de negócios que descrevem os fatos; por exemplo,  cidade, produtos, clientes, datas, etc. De forma geral, podem ser filtradas/agrupadas ou usadas como rótulos em Relatórios e Gráficos.  É comum que uma mesma Tabela Dimensão possa estar relacionada a muitas tabelas Fato, relação essa que é feita por um chave (código que representa uma informação).
+Dimensões são informações de negócio que contextualizam os fatos: cidade, produto, cliente, datas, canais, entre outras. Elas são as colunas que usamos para filtrar, agrupar e rotular análises. Uma mesma dimensão pode se relacionar com várias tabelas fato — a ligação acontece por chaves (surrogate/business keys) que garantem consistência e performance.
 
-Na MAS que descrevemos aqui é importante seguir o princípio de utilizar as mesmas dimensões entre todos os Data Marts, prática chamada de **Dimensões Conformadas**. Desta forma, a mesma Tabela Dimensão de produtos pode ser utilizada no Mart de Vendas e no Mart de Produção, por exemplo, facilitando a análise e cruzamentos.
+No Modern Data Stack, dimensões devem ser conformadas: compartilhadas entre data marts para que métricas batam em toda a empresa. Exemplo: a dimensão de Produto única serve tanto a Vendas quanto a Estoque, com o mesmo código de produto, nomes e hierarquias.
 
-Neste capítulo veremos alguns tipos de Dimensão mais encontrados em projetos de Analytics:
+O que veremos neste capítulo
+- Tipos de chaves para dimensões e fatos (natural, surrogate, estrangeira) e como escolher.
+- Dimensões de Alteração Lenta (SCD): quando e como historizar.
+- Dimensões Degeneradas e Junk: quando simplificam e quando atrapalham.
+- Dimensões “role‑playing” (ex.: Data do Pedido vs. Data de Entrega): reutilizando uma mesma dimensão em papéis distintos.
 
-* Dimensão de Alteração Lenta
-* *Role Playing Dimension*
-* Dimensões degeneradas
-* Dimensões Junk
-
-Mas antes, vamos entender como a modelagem dimensional adapta os conceitos de chaves para o uso analítico.
+Antes, vamos alinhar a terminologia de chaves — base para todos os padrões que vêm na sequência.

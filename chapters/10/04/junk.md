@@ -1,6 +1,6 @@
-# 7.4 Dimensões Junk
+# 10.4 Dimensões Junk
 
-Quando nos deparamos com dimensões que possuem poucos valores únicos (baixa cardinalidade) e não são utilizadas com tanta frequência nas tabelas de fatos, podemos otimizar nosso DW utilizando as dimensões Junk, isto é, uma tabela de dimensões onde a chave é a composição de diferentes dimensões que não tem necessariamente relação entre si. Um exemplo de tabela de dimensão junk pode ser de cores (azul, vermelho, amarelo,preto) e tamanhos (P,M,G,GG). Para evitar a criação de tabelas com atributo único e de baixa cardinalidade, podemos juntá-las utilizando apenas um atributo de chave para a combinação das dimensões:
+Quando nos deparamos com dimensões de baixa cardinalidade e pouco reutilizadas isoladamente, podemos otimizar o DW usando dimensões Junk: uma dimensão que combina múltiplos atributos “soltos” e pouco relacionados entre si (ex.: cor, tamanho, flag de brinde). Isso reduz o número de joins e evita criar várias dimensões minúsculas.
 
 | SK_COR_TAM | COR      | TAMANHO |
 |------------|----------|---------|
@@ -8,3 +8,9 @@ Quando nos deparamos com dimensões que possuem poucos valores únicos (baixa ca
 | 2          | Vermelho | PP      |
 | 3          | Amarelo  | PP      |
 | (...)      | (...)    | (...)   |
+
+```{admonition} Boas práticas
+- Verifique a cardinalidade esperada: combine apenas atributos que não explodirão em combinações (ex.: 4 cores x 5 tamanhos = 20 linhas é ótimo; 50 x 100 pode se tornar inviável).
+- Padronize mapeamentos e valores (domínios controlados) para manter a dimensão estável.
+- Gere uma SK para cada combinação e exponha os atributos originais na dimensão para fácil leitura.
+```

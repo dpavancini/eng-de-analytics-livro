@@ -50,19 +50,21 @@ parts:
         - file: chapters/05/03/agregadas.ipynb
         - file: chapters/05/04/group_by.ipynb
         - file: chapters/05/05/case_when.ipynb
+        - file: chapters/05/07/funcoes_janela.md
         - file: chapters/05/06/sub.ipynb
         - file: chapters/05/leia_mais.md
     - file: chapters/06/intro.md
       sections:
-        - file: chapters/06/01/boas_praticas_prog.md
-        - file: chapters/06/02/boas_praticas_dev.md
-        - file: chapters/06/03/intro_git.md
-        - file: chapters/06/04/git_pratica.md
+        - file: chapters/06/01/principios.md
+        - file: chapters/06/02/arq_referencia.md
+        - file: chapters/06/03/convencoes.md
         - file: chapters/06/leia_mais.md
     - file: chapters/07/intro.md
       sections:
-        - file: chapters/07/01/principios.md
-        - file: chapters/07/02/arq_referencia.md
+        - file: chapters/07/01/boas_praticas_prog.md
+        - file: chapters/07/02/boas_praticas_dev.md
+        - file: chapters/07/03/intro_git.md
+        - file: chapters/07/04/git_pratica.md
         - file: chapters/07/leia_mais.md
   - caption: Modelando Dados
     chapters:
@@ -83,6 +85,7 @@ parts:
         - file: chapters/10/02/scd.md
         - file: chapters/10/03/degeneradas.md
         - file: chapters/10/04/junk.md
+        - file: chapters/10/05/role_playing.md
         - file: chapters/10/leia_mais.md
     - file: chapters/11/intro.md
       sections:
@@ -93,8 +96,13 @@ parts:
         - file: chapters/11/05/mapeamento_chaves.md
         - file: chapters/11/06/tabela_fato.md
         - file: chapters/11/07/agregadas_derivadas.md
+        - file: chapters/11/08/modelando_com_ia.md
         - file: chapters/11/leia_mais.md
     - file: chapters/12/intro.md
+      sections:
+        - file: chapters/12/01/databricks.md
+        - file: chapters/12/02/github.md
+        - file: chapters/12/03/dbt_platform.md
   - caption: Transformando dados
     chapters:
     - file: chapters/13/intro.md
@@ -106,9 +114,28 @@ parts:
       sections:
         - file: chapters/14/01/acessando_dados.md
         - file: chapters/14/02/tipos_de_ingestao.md
-        - file: chapters/14/03/exemplo_pratico.md
     - file: chapters/15/intro.md
       sections:
         - file: chapters/15/01/processos_transformacao.md
         - file: chapters/15/02/arquiteturas_transformacao.md
-        - file: chapters/15/03/dbt.md
+        - file: chapters/15/03/northwind_modelagem.md
+        - file: chapters/15/leia_mais.md
+    - file: chapters/16/intro.md
+      sections:
+        - file: chapters/16/01/introducao_dbt.md
+        - file: chapters/16/02/primeiros_passos_dbt.md
+        - file: chapters/16/03/primeira_dimensao.md
+        - file: chapters/16/04/testes_documentacao.md
+        - file: chapters/16/05/materializacao.md
+        - file: chapters/16/06/estrutura_projeto.md
+        - file: chapters/16/07/dbt_packages.md
+        - file: chapters/16/08/dimensoes.md
+        - file: chapters/16/09/fatos.md
+        - file: chapters/16/10/testes_singulares.md
+        - file: chapters/16/11/deployment.md
+        - file: chapters/16/12/conclusao.md
+        - file: chapters/16/leia_mais.md
+    - file: chapters/17/intro.md
+      sections:
+        - file: chapters/17/01/lakeflow.md
+        - file: chapters/17/leia_mais.md

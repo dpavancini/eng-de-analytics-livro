@@ -1,42 +1,49 @@
 # 3.2 Técnicas para resolução de problemas
 
-Ao longo dos anos, algumas técnicas foram desenvolvidas para facilitar a resolução de problemas e o raciocínio analítico. Nesta seção, vamos apresentar algumas delas que podem ser importantes para o analista de dados.
+Pensamento analítico precisa de método. Técnicas estruturadas nos ajudam a sair do improviso, alinhar expectativas com o negócio e iterar com rapidez. Nesta seção revisitamos o ciclo PDCA — clássico da qualidade — e mostramos como adaptá-lo à rotina de equipes de dados. Ao final, você encontrará uma tabela com práticas modernas que combinam com o framework.
 
 ## Ciclo PDCA
 
-O ciclo PDCA foi criado na década de 1920 por Walter Andrew Shewart, um físico norte-americano conhecido por ser pioneiro no controle estatístico de qualidade com o objetivo de facilitar a  tomada de decisões e o alcance de metas. A metodologia trabalha algumas competências essenciais nos colaboradores, como o pensamento estratégico, a capacidade analítica e a comunicação efetiva.
+O PDCA (Plan-Do-Check-Act) surgiu na década de 1920 com Walter A. Shewhart e ganhou o mundo pelas mãos de W. Edwards Deming. Embora tenha sido popularizado na indústria, continua muito relevante para analytics: cada etapa força o time a planejar, executar, medir e aprender antes de avançar para o próximo experimento.
 
-Na década de 1950, ele foi popularizado no mundo todo por outro americano, o professor William Edwards Deming, conhecido como guru do gerenciamento de qualidade e reconhecido por sua importância para a melhoria dos processos produtivos nos EUA durante a Segunda Guerra e também por seu trabalho de consultoria com executivos japoneses.
+```{figure} ../../../assets/img/03_02_ciclo_pdca.png
+:name: ciclo_pdca
+```
 
-### O que é?
+Vamos conectar o PDCA ao trabalho de um Engenheiro de Analytics.
 
-O ciclo PDCA é assim chamado devido ao nome em inglês de cada uma das etapas que o compõem:
+### Planejamento (*Plan*)
 
-* P: do verbo plan, ou planejar
-* D: do verbo do, fazer ou executar
-* C: do verbo check, checar, analisar ou verificar
-* A: do verbo action, agir de forma a corrigir eventuais erros ou falhas
+1. Defina claramente o problema ou a hipótese. Ex.: “as conversões no funil de vendas caíram 15% na última semana”.
+2. Escolha indicadores e fontes de dados que vão demonstrar a evolução do problema.
+3. Estruture um plano de ação: stakeholders envolvidos, alçadas de decisão, riscos e critérios de sucesso.
+4. Se possível, desenhe o *mockup* do dashboard, relatório ou experimento que deseja entregar.
 
-A metodologia PDCA é largamente utilizada por corporações que desejam melhorar seu nível de gestão através do controle eficiente de processos e atividades internas e externas, padronizando informações e minimizando as chances de erros na tomada de decisões importantes.
+### Execução (*Do*)
 
-Ressaltamos que, uma vez implantado, o ciclo PDCA deve tornar-se uma constante dentro da empresa, um verdadeiro círculo virtuoso objetivando sempre a melhoria contínua.
-Etapas 
+1. Construa ou ajuste os pipelines necessários (ingestão, transformação, modelagem).
+2. Garanta qualidade mínima com testes automatizados e *data contracts* — ninguém quer tomar decisões com dados quebrados.
+3. Publique protótipos para coletar feedback rápido e ajuste o escopo conforme necessário.
 
-Para compreender melhor o que é ciclo PDCA, confira uma breve explicação sobre cada uma das suas quatro etapas.
+### Checagem (*Check*)
 
-### Planejamento
+1. Compare o resultado com o que foi planejado: métricas bateram? hipóteses foram validadas?
+2. Analise logs, painéis de observabilidade e alertas para entender desvios.
+3. Colete feedback dos consumidores: o que funcionou? onde há ruído? quais novas perguntas surgiram?
 
-Um projeto bem elaborado é primordial para o ciclo PDCA, pois impede falhas futuras e gera um enorme ganho de tempo. Paute o planejamento de acordo com a missão, visão e os valores da empresa, estabelecendo metas e objetivos e definindo o melhor caminho para atingi-los.
+### Ação (*Act*)
 
-### Execução
+1. Documente aprendizados, tome decisões e defina o próximo ciclo.
+2. Padronize o que deu certo (modelos dbt, macros reutilizáveis, dashboards canônicos).
+3. Se algo falhou, ajuste processos, atualize contratos de dados ou refine o escopo com os parceiros de negócio.
 
-Coloque o planejamento em prática e siga-o à risca, ou seja, não queime etapas nem improvise para não comprometer todo o ciclo PDCA. A fase da execução é subdividida em outras três: treinamento de todos os funcionários e gestores envolvidos no projeto, realização propriamente dita, e colheita de dados para uma posterior avaliação.
+### PDCA na prática
 
+| Etapa | Perguntas-chave | Ferramentas e práticas |
+| ----- | --------------- | ---------------------- |
+| Plan  | Qual problema estamos resolvendo? Qual o impacto esperado? | Canvas de problema, briefings com stakeholders, métricas alvo |
+| Do    | Como entregamos rápido e com qualidade? | dbt, notebooks colaborativos, feature branches, testes automatizados |
+| Check | O resultado foi o esperado? | Monitoramento, experimentos, sessões de leitura de dashboard, *post-analysis* |
+| Act   | O que padronizar ou ajustar? | Playbooks, documentação, retrospectivas, gestão do backlog |
 
-### Checagem 
-
-É o estágio do ciclo PDCA em que são identificadas possíveis brechas no projeto. As metas alcançadas e os resultados obtidos são mensurados através dos dados coletados e do mapeamento de processos ao final da execução. A checagem pode e deve ser feita de duas maneiras: paralelamente à execução, de modo a ter certeza de que o trabalho está sendo bem feito, e ao final dela, para uma análise estatística mais abrangente que permita os ajustes e acertos necessários.
-
-### Ação
-
-É a última etapa, na qual são aplicadas ações corretivas de modo a estar sempre e continuamente aperfeiçoando o projeto. É simultaneamente fim e começo, pois, após uma minuciosa apuração do que tenha causado erros anteriores, todo o ciclo PDCA é refeito com novas diretrizes e parâmetros.
+O PDCA não elimina outras técnicas. Nas próximas seções veremos ferramentas específicas — Diagrama de Pareto e 5 Porquês — que ajudam a aprofundar a etapa de diagnóstico dentro do ciclo.

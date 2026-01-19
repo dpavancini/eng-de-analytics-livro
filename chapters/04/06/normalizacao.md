@@ -1,11 +1,23 @@
 # 4.6 ER e Normalização de dados
 
-Os modelos ER são muito utilizados pelos arquitetos de bancos de dados para facilitar a criação de bancos de dados normalizados pois facilitam visualizar as relações entre as tabelas no processo de normalização. Este processo é muito útil em bancos de dados transacionais porque ao evitar a redundância os bancos de dados conseguem fazer transações de escrita  de forma muito eficiente. Por exemplo, para registrar uma nova venda para um cliente é muitas vezes possível realizar uma única operação de escrita em uma única tabela do banco de dados.
+Modelos entidade-relacionamento geralmente são acompanhados de um processo de **normalização**: dividir dados em tabelas menores para reduzir redundância e garantir consistência nas operações de escrita. Isso permite que sistemas transacionais registrem vendas, cadastros ou lançamentos financeiros com rapidez e segurança.
 
-Quando o objetivo é realizar uma consulta analítica, entretanto, a normalização[^normalizacao] se torna um grande desafio para o analista. Na figura 4.6, por exemplo, a relação entre 2 tabelas como Pedidos e Territórios pode ser feita de muitas maneiras distintas e muitas delas não darão o mesmo resultado. Em bancos de dados normalizados, consultas são difíceis de otimizar e as chances de erros são grandes. Esse problema é especialmente importante quando utilizamos ferramentas de BI que inferem o modelo de dados de forma automática. Se os relacionamentos errados forem feitos, as consultas e métricas também estarão erradas. A normalização é complexa tanto para humanos como para máquinas.
+## Por que normalizar?
 
-Além disso, bancos de dados transacionais frequentemente são “mutáveis”, isto é, salvam novos dados sem se preocupar com a histórias das alterações. Embora isso possa fazer sentido para um serviço operacional, as comparações ao longo do tempo e visualização de alterações são importantes para a análise de dados em geral. 
+- **Elimina duplicidade**: se o endereço do cliente está em uma única tabela, uma atualização reflete em todos os pedidos.
+- **Garante integridade**: chaves estrangeiras evitam registros órfãos e asseguram relacionamentos corretos.
+- **Facilita atualizações**: cada transação envolve o mínimo necessário de colunas, acelerando operações OLTP.
 
-Como veremos no capítulo 6, os bancos de dados analíticos pedem um modelo de dados que seja otimizado para a análise de dados, não para o desenvolvedor de bancos de dados ou performance operacional. Geralmente esse modelo será alguma variação do chamado **modelo dimensional**, que não utiliza dados normalizados e simplifica sua estrutura nos chamados esquema estrela (do inglês, star schema).
+As “formas normais” — 1FN, 2FN, 3FN e além — definem regras progressivas para alcançar esse estado. Na terceira forma normal (3FN), por exemplo, cada atributo depende apenas da chave primária, e nada mais[^normalizacao].
 
-[^normalizacao]:  Existem diferentes níveis de normalização de bancos de dados. A forma considerada “canônica” é chamada de terceira forma normal, ou simplesmente pela sigla 3FN. Nesse método, cada atributo de uma tabela deve depender apenas das chaves e nada mais.. Há inclusive uma frase em inglês utilizada para lembrar dessa restrição e que menciona Edgar Codd, o criador do modelo relacional: “The key, the whole key, and nothing but the key. So help me Codd”.
+## Desafios para analytics
+
+Quando o objetivo é análise, tanta fragmentação se torna um obstáculo:
+
+- **Consultas complexas**: métricas simples podem exigir dezenas de *joins*, deixando as transformações difíceis de manter.
+- **Interfaces automáticas**: ferramentas de BI que inferem relacionamentos podem errar conexões em modelos muito normalizados.
+- **Histórico limitado**: sistemas transacionais costumam sobrescrever valores em vez de manter o histórico completo, o que impede análises de evolução.
+
+Por isso, ao migrarmos dados para um ambiente analítico, normalmente recorremos a modelos **denormalizados** — como o modelo dimensional — que favorecem leituras rápidas e entendimento intuitivo. No {ref}`dw` (Capítulo 8) e nos Capítulos 9–11 veremos esse processo em detalhe.
+
+[^normalizacao]: Existem diferentes níveis de normalização. A mais utilizada é a terceira forma normal (3FN). A mnemônica popular entre arquitetos diz: “The key, the whole key, and nothing but the key. So help me Codd.” em homenagem a Edgar Codd, criador do modelo relacional.

@@ -1,11 +1,8 @@
 (5_vs)=
 # Capítulo 2 - Fundamentos de Analytics
 
-Analytics pode ser definido como o processo sistemático de compilar, processar e analisar dados para a tomada de decisão. Embora possa variar em complexidade e ferramentas utilizadas para cada tipo de empresa e problema, o objetivo é o mesmo: gerar valor para a organização a partir de seus dados internos e externos.
+Analytics é a prática estruturada de transformar dados em decisões melhores. As formas de execução variam com o porte da empresa, a maturidade da equipe e as perguntas que precisam ser respondidas, mas o objetivo permanece: gerar valor de negócio continuamente a partir de dados internos e externos.
 
-Para implementar um processo bem estruturado de Analytics, é necessária uma complexa teia de outros processos e ferramentas com base nas características dos dados e das análises de cada empresa e caso de uso. 
+Construir esse processo exige muito mais do que extrair dados e preencher dashboards. É preciso orquestrar pipelines confiáveis, garantir custos sustentáveis, cultivar parcerias com as áreas de negócio e adaptar-se a dados que chegam em formatos, volumes e cadências muito diferentes. Para o Engenheiro de Analytics, o desafio está justamente em equilibrar os aspectos técnicos e organizacionais que dão suporte a essas decisões.
 
-No passado, os desafios dessa implementação eram chamados de os 5Vs do big data: volume, velocidade, variedade, veracidade e valor. 
-Com o surgimento dos ambientes escaláveis na nuvem, é possível dizer que esses desafios se aplicam a qualquer volume de dados, de uma startup com alguns gigabytes de dados até empresas que geram volumes massivos de dados.
-
-Neste capítulo veremos o que são esses desafios e como eles impactam na função de Engenharia de Analytics. Vamos lá?
+Historicamente, os dilemas dessa disciplina foram sintetizados nos **5 Vs do big data** — volume, velocidade, variedade, veracidade e valor. Mesmo em ambientes modernos na nuvem, com poder de processamento praticamente elástico, eles continuam sendo uma boa lente para entendermos onde focar esforços. Ao longo do capítulo, revisitaremos cada um dos Vs com a perspectiva atual de equipes *data-driven* e mostraremos como eles moldam a atuação do Engenheiro de Analytics.

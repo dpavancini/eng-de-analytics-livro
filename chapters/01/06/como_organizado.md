@@ -1,9 +1,54 @@
 # 1.6 Como este livro está organizado
 
-O livro está organizado para incluir de forma abrangente os conhecimentos necessários em maior ou menor grau no dia-a-dia de um Engenheiro de Analytics. Não por acaso, ele combina seções voltadas para Conhecimentos de Negócio com conteúdos mais técnicos, característica deste profissional híbrido.
+Agora que já entendemos o contexto, o papel do Engenheiro de Analytics e o público-alvo, é hora de ver **como este livro foi estruturado**.  
+Nosso objetivo é equilibrar teoria e prática, refletindo a natureza híbrida da profissão: técnica e de negócios ao mesmo tempo.  
 
-Na primeira parte **Fundamentos**, apresentamos conceitos introdutórios sobre os desafios de dados e analytics através dos {ref}`5 Vs<5_vs>`. Em seguida, o {ref}`pensando_analitico` fala de técnicas para facilitar a resolução de problemas de negócio que também são aplicadas pelo Engenheiro de Analytics para solucionar problemas variados relacionados ao pipeline de dados. Em seguida, o {ref}`banco_dados` é essencial para profissionais de negócio que ainda não tem um contato formal com os bancos de dados. Ele é complementado pelo {ref}`sql` que, de forma introdutória, apresenta as principais operações desta linguagem necessárias em projetos de Analytics em geral.
+O conteúdo está dividido em três grandes módulos:
 
-Na parte 2 **Modelando Dados** somos apresentados aos Data Warehouses e às técnicas de modelagem de dados. O {ref}`dw` trata de aspectos conceituais sobre os DWs e seu papel no *Modern Data Stack*. Em seguida, o {ref}`fatos` discute o que são as tabelas fato. O o {ref}`dimensoes` mostra como definir e identificar dimensões e o {ref}`modelagem_dw` aplica um passo-a-passo para modelagem conceitual de um *data warehouse*. Por fim, no {ref}`bigquery` mostramos como configurar um Data Warehouse moderno na prática utilizando o Google BigQuery.
+---
 
-A terceira parte deste livro aplica os conceitos do ELT para **transformar dados** em projetos de Engenharia de Analytics. O primeiro capítulo {ref}`intro_elt` apresenta conceitos do ELT e ETL para profissionais com menos contato na área. Já o o {ref}`ingestao` mostra a teoria e a prática de Ingestão de dados no MDS. Já o  {ref}`transformacao` apresenta as etapas de transformação de dados e faz um exemplo prática completo utilizando o dbt.
+## Fundamentos
+
+Começamos com conceitos introdutórios sobre os desafios de dados e analytics através dos {ref}`5 Vs<5_vs>`.  
+Em seguida, o {ref}`pensando_analitico` apresenta técnicas de resolução de problemas aplicadas tanto ao negócio quanto ao pipeline de dados.  
+
+Na sequência, o {ref}`banco_dados` introduz conceitos essenciais de bancos de dados, especialmente para profissionais vindos do negócio que ainda não tiveram contato formal com SQL.  
+Esse capítulo se conecta com o {ref}`sql`, que apresenta de forma introdutória as principais operações necessárias em projetos de analytics.  
+
+---
+
+## Modelando Dados
+
+Neste módulo, entramos no coração do **data warehouse**.  
+O {ref}`dw` traz os conceitos fundamentais e o papel dos DWs no *Modern Data Stack*.  
+Depois, o {ref}`fatos` explica o conceito de tabelas fato e o {ref}`dimensoes` mostra como definir e identificar dimensões.  
+
+Por fim, o {ref}`modelagem_dw` apresenta um passo a passo de modelagem conceitual e o {ref}`databricks` mostra como configurar, na prática, um data warehouse moderno com Databricks.  
+
+---
+
+## Transformando Dados (ELT)
+
+Na terceira parte, aplicamos os conceitos de ELT em projetos reais de Engenharia de Analytics.  
+
+- O {ref}`intro_elt` introduz os conceitos de ETL e ELT para leitores menos familiarizados;  
+- O {ref}`ingestao` discute teoria e prática da ingestão de dados no *Modern Data Stack*;  
+- O {ref}`transformacao` apresenta as etapas de transformação, incluindo um exemplo completo com o **dbt**.  
+<!-- TO-DO: Adicionar aqui o capítulo sobre modelagem com declarative pipelines como paralelo ao uso do dbt. -->
+
+---
+
+### Mini‑glossário (para ancorar os próximos capítulos)
+
+- **Camadas de dados**:  
+  - staging: padronização inicial e limpeza mínima das fontes;  
+  - intermediate: junções e regras de negócio intermediárias;  
+  - marts: modelos prontos para consumo analítico (fatos e dimensões).  
+- **Layer semântico**: local onde métricas são definidas de forma centralizada (fórmula, granularidade, filtros, escopo).  
+- **Testes de dados**: validações de esquema (not null, unique) e de conteúdo (valores aceitos, relacionamentos).  
+- **CI/CD de dados**: revisão por pares, execuções automatizadas de builds/testes e promoção controlada entre ambientes.  
+- **Delta Lake / Lakehouse**: formato de armazenamento transacional para o data lake; combina flexibilidade de lakes com consistência de warehouses.  
+
+```{note}
+Cada capítulo se conecta ao estudo de caso da **Northwind Traders**.  
+Assim, você verá como aplicar os conceitos em um cenário prático, finalizando sempre com um **desafio** que reforça o aprendizado.

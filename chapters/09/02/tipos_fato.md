@@ -1,8 +1,8 @@
 # 9.2 Tipos de Tabelas Fato
 
-Existem três tipos principais de Tabelas Fato:
+Existem três tipos principais de tabelas fato. Escolher o tipo correto depende da natureza do processo e da forma como as métricas evoluem no tempo.
 
--  Transacional: o grão é definido ao nível de um registro individual como um contrato ou transação.
+-  Transacional: o grão é o evento atômico (ex.: item do pedido, pagamento, clique). Excelente para análises detalhadas e flexíveis.
 
 | **FK_Dia** | **FK_Cidade** | **FK_Cliente** | **FK_Produto** | **ID_Contrato** | **Unid. Vendidas** | **Valor** |
 |------------|---------------|----------------|----------------|-----------------|--------------------|-----------|
@@ -10,23 +10,32 @@ Existem três tipos principais de Tabelas Fato:
 | 2019-01-01 | 30            | 15             | 2              | A30152          | 2                  | 400       |
 | 2019-01-02 | 10            | 5              | 2              | B1052           | 1                  | 200       |
 
-**Tabela 6.2. Tabela Fato Transacional**
+Exemplo — Fato Transacional
 
-- Snapshot Periódico: grão definido ao nível de algum período específico, como dia, semana, etc.
+- Snapshot Periódico: captura o estado em cortes regulares (dia, semana, mês). Útil para saldos/semiaditivos (estoque, assinantes ativos) e KPIs de fechamento.
 
-| **FK_Dia** | **FK_Cidade** | **FK_Cliente** | **FK_Produto** | **unidades** | **valor_total** | **media_desconto** |
+| **FK_Dia** | **FK_Cidade** | **FK_Cliente** | **FK_Produto** | **Unidades** | **Valor_Total** | **Media_Desconto** |
 |------------|---------------|----------------|----------------|--------------|-----------------|--------------------|
 | 2019-01-01 | 10            | 5              | 2              | 1            | 800             | 7.75%              |
 | 2019-01-01 | 30            | 15             | 2              | 2            | 2000            | 10%                |
 | 2019-01-02 | 10            | 5              | 2              | 1            | 1000            | 11%                |
-**Tabela 6.3. Tabela Fato de Snapshot Periódico**
 
-- Snapshot Acumulativo: grão é um processo que tem um início e fim claro, por exemplo um atendimento de suporte ou um chamado de seguro.
+Exemplo — Fato de Snapshot Periódico
 
-| **FK_Dia_inicio** | **FK_dia_fim** | **FK_Cliente** | **FK_Motivo** | **tempo_dias** | **valor_total** |
+- Snapshot Acumulativo: acompanha um processo com início e fim (pipeline de vendas, atendimento de suporte). Inclui múltiplas chaves de data (início, etapas, término) para calcular tempos de ciclo e funis.
+
+| **FK_Dia_Inicio** | **FK_Dia_Fim** | **FK_Cliente** | **FK_Motivo** | **Tempo_Dias** | **Valor_Total** |
 |-------------------|----------------|----------------|---------------|----------------|-----------------|
-| 2019-01-01        | 10             | 5              | 2             | 1              | 800             |
-| 2019-01-01        | 30             | 15             | 2             | 2              | 2000            |
-| 2019-01-02        | 10             | 5              | 2             | 1              | 1000            |
+| 2019-01-01        | 2019-01-02     | 5              | 2             | 1              | 800             |
+| 2019-01-01        | 2019-01-03     | 15             | 2             | 2              | 2000            |
+| 2019-01-02        | 2019-01-03     | 5              | 2             | 1              | 1000            |
 
-**Tabela 6.4. Tabela Fato de Snapshot Acumulativo**
+Exemplo — Fato de Snapshot Acumulativo
+
+Outros padrões úteis
+- Fato sem medidas (factless fact): registra a ocorrência de um evento ou a cobertura (ex.: presença em um curso, elegibilidade de promoções). As “medidas” são contagens derivadas no consumo.
+- Fato agregada: pré‑agrega uma transacional para melhorar performance em consultas frequentes (ex.: vendas por dia/produto/loja). Útil pontualmente; mantenha a transacional como fonte de verdade e documente regras para evitar dupla contagem.
+
+```{admonition} Cuidado
+Não misture grãos em uma mesma fato (ex.: itens e pedidos). Isso causa duplicidade e métricas inconsistentes. Se precisar de ambos, mantenha tabelas separadas e defina métricas claramente (e/ou use camada semântica para compor).
+```

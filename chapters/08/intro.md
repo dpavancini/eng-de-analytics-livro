@@ -1,18 +1,26 @@
+
 (dw)=
 # Capítulo 8 - Data Warehouses
 
-Data Warehouses são bancos de dados otimizados para consulta de grandes volumes de dados. Ele faz parte das aplicações chamadas OLAP (‘On-line Analytical Processing’) em contraponto aos bancos de dados transacionais OLTP ('Online Transaction Processing’). Embora em muitos casos sejam apresentados como tecnologias distintas, não é incomum que tanto bancos transacionais como DW utilizem o mesmo banco de dados relacional ou alguma variação dele (ex. Amazon Redshift é baseado em PostgreSQL).
+No Modern Data Stack, o Data Warehouse (DW) é o “cérebro analítico” da organização: concentra dados de várias fontes, processa consultas complexas com performance e expõe informações consistentes para produtos de dados e BI. Enquanto bancos transacionais (OLTP) são otimizados para muitas pequenas transações, o DW pertence ao mundo OLAP — consultas agregadas sobre grandes volumes, tipicamente em armazenamento colunar e com execução massivamente paralela (MPP).
 
-Na prática, as principais diferenças entre um DW e um banco transacional dizem respeito à arquitetura dos modelos de dados, isto é, a forma como tabelas, entidades e relações estão dispostas dentro do banco de dados. Um banco transacional com alto grau de normalização permite realizar operações de leitura e escrita de pequenas transações de uma forma muito eficiente e consistente, de modo que se realizamos uma consulta do saldo de um usuário na sua conta corrente temos uma garantia que entre o momento que iniciamos nossa consulta e a resposta do banco de dados esse mesmo usuário não fez um saque desses recursos e portanto tornaria esse saldo incorreto.   
+Embora OLTP e DW, às vezes, usem tecnologias parecidas, a diferença prática está na modelagem e no padrão de acesso. Em bancos normalizados, otimizamos atualizações transacionais e consistência linha a linha. No DW, priorizamos leitura analítica: sumarizações, junções e filtros por vários eixos, em alto volume.
 
-Por outro lado, se ao invés de consultar os dados de um usuário específico quiséssemos fazer a contagem de todos os correntistas de um banco que possuem pelo menos R$500,00 na conta corrente teríamos provavelmente que conhecer o modelo de dados do sistema do Banco, realizar uma consulta com algumas dezenas de JOINs e não raramente ter que esperar alguns dias até um Analista de TI nos trazer essa informação. 
+Exemplo: consultar o saldo de um cliente específico é simples e rápido em OLTP. Já responder “quantos clientes têm saldo acima de R$ 500,00?” exige varrer muitas linhas, calcular e agregar — algo natural para um DW bem modelado.
 
-Ao longo dos anos, diferentes metodologias foram desenvolvidas para facilitar o acesso e processamento de consultas analíticas e o desenvolvimento dos data warehouses. Grande parte do sucesso de algumas dessas metodologias se deu em razão de dois prolíficos autores no campo de analytics, Ralph Kimball e William Inmon. Muito do que foi desenvolvido originalmente tinha como objetivo contornar limitações técnicas dos bancos de dados e tecnologias disponíveis à época e de certa forma se tornaram obsoletos no mundo da computação em nuvem e armazenamento barato. No entanto, a forma com que esses autores abordaram os principais problemas de analytics e muitas de suas soluções são de certa forma independentes da tecnologia disponível e permanecem cruciais para o desenvolvimento de processo de analytics até os dias de hoje. Em especial, a ênfase dada por esses autores em criar modelos de dados que facilitem o entendimento do usuário de negócios não técnicos continua mais atual do que nunca. Processo de analytics são processo de negócio, não de TI.
+Com a nuvem, surgiram os cloud data warehouses e lakehouses que baratearam, escalaram e simplificaram a infraestrutura. Além de MPP e armazenamento colunar, muitos oferecem recursos como separação de computação e armazenamento, autoscaling, time travel, partição/clustering e integração nativa com ferramentas de dados. Lakehouses combinam tabelas transacionais e analíticas com formatos de tabela abertos (ex.: Delta Lake, Apache Iceberg), permitindo medallion architecture (bronze/prata/ouro).
+
+Ao longo deste capítulo, conectamos conceitos clássicos (Kimball/Inmon) às práticas modernas (cloud, lakehouse, métricas/semântica) para construir modelos fáceis de entender e eficientes de consultar — porque no fim, analytics é sobre responder perguntas de negócio, não sobre tecnologia.
 
 ```{table}
-|                  | **Banco de Dados Transacional**                                                  | **Data Warehouse**                                                                       |
-|------------------|----------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-| Características  | "Alto volume de Transações, Pequenas Transações, Normalizado, Consultas Rápidas" | "Alto volume de Dados,  Transações Grandes, Denormalizado, Consultas Agregadas, Colunar" |
-| Tipo de pergunta | Qual o saldo do usuário com CPF xyz?                                             | Quantos usuários possuem saldo maior que R$500,00?                                       |
-| Aplicações       | SQL Server, MySQL, Oracle SQL, PostgreSQL                                        | Amazon Redshift, Google Big Query, Snowflake
+|                      | **Banco de Dados Transacional**                                     | **Data Warehouse**                                                                              |
+|----------------------|---------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
+| **Características**  | Alto volume de pequenas transações; consultas rápidas e pontuais    | Alto volume de dados; consultas complexas e agregadas; armazenamento colunar                    |
+| **Estrutura**        | Normalizada                                                         | Denormalizada                                                                                   |
+| **Tipo de consulta** | Qual o saldo do usuário com CPF xyz?                                | Quantos usuários possuem saldo maior que R$500,00?                                              |
+| **Tecnologias**      | SQL Server, MySQL, Oracle Database, PostgreSQL                      | Databricks, BigQuery, Snowflake, Redshift                                                       |
+```
+
+```{admonition} Dica
+No seu projeto, escolha primeiro o “como pensar” (modelagem, métricas e governança) antes do “onde rodar”. A maioria dos DWs modernos oferece capacidades semelhantes; o diferencial vem da clareza do modelo e da qualidade do processo.
 ```

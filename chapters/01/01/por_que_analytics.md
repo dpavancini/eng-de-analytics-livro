@@ -1,21 +1,35 @@
-# 1.1 Por quê Engenharia de Analytics?
+# 1.1 Por que Engenharia de Analytics?
 
-Nos últimos anos, vimos uma revolução no acesso a formas avançadas de analytics, como ferramentas de self-service, modelos de machine learning, deep learning, big data etc. Saem de cena os relatórios em PowerPoint e Excel e entram os notebooks criados em Python e R como a onda do momento. Empresas de todos os portes lutam para contratar profissionais de dados para “revolucionar seus negócios”. No entanto, os resultados práticos dos projetos de analytics  ou ciência de dados ainda parecem muito aquém do inicialmente esperado pelos gestores.
+Nos últimos anos, o mundo dos dados passou por uma verdadeira revolução. Ferramentas de *self-service analytics*, *machine learning*, *deep learning* e *cloud data warehouses* se popularizaram, e a busca por profissionais capazes de "revolucionar negócios" cresceu rapidamente.  
 
-Para resolver este problema, uma nova onda de tecnologias e processos chamada de *Modern Data Stack* vem se popularizando nos times de dados mundo afora. Esta onda tem como objetivo principal a **geração de valor de negócio** a partir dos dados e como filosofia a constatação de que **dados devem ser tratados como software**.
+A realidade, no entanto, muitas vezes frustra: a geração de valor real ainda fica aquém das expectativas.
 
-Para aplicar o Modern Data Stack (*MDS*), não basta contratar ou implementar ferramentas (que por sinal já são muitas). Provavelmente, o maior desafio na aplicação do MDS é a necessidade de profissionais e processos inteiramente novos para a maioria das organizações e que não são formados em um curso universitário tradicional ( pelo menos por enquanto ). 
+É nesse cenário que surge o conceito de **Modern Data Stack (MDS)** — uma abordagem que vem se popularizando globalmente com a filosofia de que **dados devem ser tratados como software**, e que o objetivo central é a **geração de valor de negócio** de forma eficiente, escalável e sustentável.  
 
-Na verdade, as equipes de analytics modernas são compostas por uma mistura de profissionais de áreas e competências distintas: TI, negócios, engenharias, ciências etc. Boa parte desses profissionais nunca teve um treinamento formal na área, mas deriva seu conhecimento da prática, de blogs, competições no Kaggle ou ainda de centenas de cursos online de ciência de dados e analytics que proliferaram nos últimos anos.
+## Muito além das ferramentas
 
-Embora importante para suprir uma demanda sempre crescente de profissionais de dados, a falta de uma visão holística, geralmente obtida em um curso formal, somada a uma combinação nova de conhecimento de negócio, estatística e programação, gerou uma grande “dívida técnica” (do inglês, *technical debt*)  na área de analytics. O que isso significa é que muitos profissionais de dados tem pouco ou nenhum conhecimento da complexidade por trás de sistemas de analytics modernos em produção [^label1]. 
+Adotar o *Modern Data Stack* vai muito além de contratar ferramentas (que já são muitas). O verdadeiro gargalo está em preencher a lacuna de **profissionais e processos** — algo que a maioria das empresas ainda não possui.  
 
-Na prática, a "passagem de bastão" entre o que é desenvolvido pelos analistas e cientistas de dados para se tornar um projeto com **geração de valor real** para as organizações ainda muito complexa e ineficiente.  Pior, muitas ferramentas e processos que são ensinados ou utilizados em Analytics não são adequados para o mundo real das boas práticas de engenharia de software, como versionamento, testes, CI/CD etc. 
+Essa expertise raramente é ensinada em cursos universitários tradicionais (ainda). As equipes de analytics atuais costumam ser formadas por uma mistura de profissionais vindos de TI, negócios, engenharia e ciências diversas. Boa parte nunca teve treinamento formal em dados, aprendendo na prática, em blogs, competições como o Kaggle ou cursos online que se multiplicaram nos últimos anos.  
 
-Em resumo: 
+Esse modelo supre parte da demanda, mas gera **dívida técnica**: a falta de visão holística e a necessidade de combinar negócios, estatística e programação fazem com que muitos profissionais não compreendam a complexidade de rodar sistemas de analytics de ponta em produção[^label1].  
 
-*  uma nova metodologia de dados chamada **Modern Data Stack** está se popularizando no mercado através do foco em geração de valor de negócio e da visão de dados como *software*;
-* as funções de dados no MDS precisam aproximar o negócio da tecnologia sem abrir mão das boas práticas de desenvolvimento de software.
+Na prática, a "passagem de bastão" entre o que analistas e cientistas de dados desenvolvem e o que de fato gera **valor real em produção** ainda é lenta e ineficiente.  
 
+Pior: muitas ferramentas e métodos ensinados não seguem boas práticas de engenharia de software, como **versionamento**, **testes**, **CI/CD**, **observabilidade de dados** e **documentação**.  
 
-[^label1]: Em desenvolvimento de softwares, **ambiente produção (ou prod)** é o ambiente em que o sistema é utilizado pelo usuário final (por exemplo: website que está no ar) em contraponto ao **ambiente de desenvolvimento (ou dev)**.
+```{admonition} Anti‑padrão comum
+:class: warning
+Dashboards construídos sobre consultas ad‑hoc não versionadas.  
+Efeitos colaterais: métricas inconsistentes entre áreas, dificuldade de reprocessar e auditar resultados, dependência de pessoas específicas e alto retrabalho.  
+Como evitar: padronize fontes via modelos versionados (dbt), valide com testes de esquema/dados e centralize definições de métricas em um layer semântico.
+```
+
+---
+
+## Em resumo
+
+- O **Modern Data Stack (MDS)** é uma nova forma de trabalhar com dados, inspirada em boas práticas de engenharia de software.  
+- A função do Engenheiro de Analytics é **conectar negócio e tecnologia**, aplicando processos robustos, versionados e escaláveis para garantir valor real.  
+
+[^label1]: Em desenvolvimento de software, **ambiente de produção (ou *prod*)** é onde o sistema é usado pelo usuário final (ex: site no ar), em contraste com o **ambiente de desenvolvimento (ou *dev*)**.

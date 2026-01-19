@@ -1,6 +1,6 @@
 (pensando_analitico)=
 # Capítulo 3 - Pensando de forma analítica
 
-Mais importante que conhecer os conceitos e as tecnologias que vamos apresentar neste livro, é a capacidade de pensar de forma analítica. Talvez mais do que qualquer outro profissional de uma organização, sendo um analytics engineer, você precisa ser mestre em utilizar dados para identificar, explicar e sugerir soluções para problemas de negócio. E deve fazer isso de uma forma rápida e eficiente para evitar que esses problemas causem grandes danos e prejuízos à organização. 
+Conhecer ferramentas importa, mas o diferencial do Engenheiro de Analytics é a maneira como ele enxerga problemas. Somos contratados para transformar dados em narrativas que orientam decisões, antecipam riscos e revelam oportunidades. Fazer isso bem significa investigar além dos sintomas, conectar pontos entre áreas distintas e articular soluções que façam sentido para o negócio.
 
-Neste capítulo faremos um resumo de técnicas de resolução de problemas que lhe permitirão pensar nos problemas de dados de uma forma estruturada. Também apresentaremos algumas técnicas e variedades de indicadores comuns nas organizações e que fazem parte do dia-a-dia de qualquer profissional de analytics.
+Neste capítulo revisitaremos técnicas clássicas de resolução de problemas — agora sob a ótica de equipes modernas orientadas a dados. Você verá como o pensamento analítico se manifesta no dia a dia, quais frameworks ajudam a estruturar hipóteses e como indicadores bem escolhidos sustentam histórias convincentes. A ideia é fortalecer sua capacidade de raciocínio antes de falar sobre ferramentas.

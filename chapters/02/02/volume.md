@@ -1,49 +1,43 @@
 # 2.2 Volume
 
-Dados são gerados a todo momento em empresas, governos ou qualquer tipo de sistema. Na sua forma bruta, dados incluem qualquer tipo de informação ou fato que pode ser armazenado por um computador, como imagens, textos, áudios, tabelas, vídeos, cliques em um website e muito mais.
+Dados surgem a cada clique, transação ou interação digital. Para o Engenheiro de Analytics, o problema raramente é “não ter dados”, e sim priorizar o que merece virar produto analítico. Ambientes na nuvem tornaram o armazenamento barato, porém trouxeram novos dilemas: manter custos previsíveis, definir camadas de historização e projetar modelos que continuem performando à medida que os volumes crescem.
 
-O maior volume de dados gerados estão na forma de dados não estruturados, como vídeos, áudios, textos etc. Até recentemente, a maior parte desses dados não era coletada e acabava sendo perdida devido ao alto custo de capturar e armazenar a informação. 
+O maior crescimento está nos dados não estruturados — vídeos, áudios, texto livre —, mas as decisões de negócio do dia a dia ainda dependem majoritariamente de dados estruturados. Eles estão em CRMs, ERPs, planilhas e sistemas transacionais, acessados via bancos de dados relacionais ou APIs SaaS. Dominar como esses dados são modelados, versionados e extraídos é o ponto de partida para qualquer iniciativa analítica relevante.
 
-No entanto, nos últimos 10 anos, os avanços na tecnologia de armazenagem fizeram com que praticamente todos os dados gerados pudessem ser armazenados a um custo desprezível, ampliando em muitas ordens de magnitude o volume de informação armazenada pelo homem.
+## Como volume informa escolhas de arquitetura
 
-Embora em menor volume, dados estruturados, como tabelas, planilhas, relatórios etc., são responsáveis pela maior parte das informações utilizadas na tomada de decisão nas organizações, e está armazenada em sistemas de gerenciamento de bancos de dados (SGBD, ou DBMS na sigla em inglês), ou simplesmente, bancos de dados. Por isso, um analista de BI moderno deve dominar os principais conceitos sobre como dados são estruturados, transformados e consultados dentro desses sistemas. 
+Quando o volume cresce, decisões arquiteturais importam mais do que rótulos. Em linhas gerais:
 
-## Estrutura dos dados
+- Em dados estruturados e semiestruturados, priorize tabelas colunares transacionais (ex.: Delta Lake) e cargas incrementais para evitar varreduras completas.
+- Em dados não estruturados (áudio, vídeo, imagem), planeje extração de metadados úteis e índices de busca; nem tudo precisa virar tabela.
+- Em todos os casos, monitore custo por consulta e por atualização, e ajuste particionamento/sort e tamanhos de arquivo para evitar “small files”.  
 
-Dados podem estar armazenados de diferentes formas em um sistema computacional. É comum diferenciar a forma como eles estão estruturados em:
+Para uma visão detalhada de tipos de dados e implicações, veja o Capítulo 4 (Tipos de Dados).
 
-* **dados estruturados:** tipos bem definidos e consistentes. 
-Ex: dados numéricos, categóricos etc. armazenados em um banco de dados.
+### Classificação prática de volume
 
-* **dados semiestruturados:** geralmente armazenados em formato chave-valor sem um esquema e tipo definidos.  
-Ex: JSON, XML etc.
+Não há corte exato de “grande” ou “pequeno”; trate como ordens de grandeza e considere também concorrência e cardinalidade:
 
-* **dados não estruturados:** todo o resto.
-Ex.: imagens, áudios, e-mails, dados de sensores, textos sem tipo definido etc.
-
-### Classificação de volume de dados
-À medida que aumenta o volume de dados processado e armazenado por um banco de dados, diferentes desafios técnicos e tecnologias são necessárias. 
-
-Embora não exista uma classificação precisa quanto ao volume de dados, nós podemos sugerir uma classificação conforme abaixo:
-
-* **small data (kb  - 100s Mb)**: cabem em arquivos, planilhas etc. e são consultados em memória.
-* **medium data (100s Mb - 100s Gb)**: armazenados em bancos de dados tradicionais, podem ter algumas dezenas de Gigabytes, mas ainda podem ser consultados em memória na maioria dos casos. 
-* **big data (>100s Gb):** estruturados ou não estruturados, precisam ser armazenados em grandes servidores, geralmente na nuvem.
+- Pequeno: cabe em memória local para exploração; útil para protótipos e testes rápidos.
+- Médio: dezenas a centenas de GB; requer warehouse/lakehouse e paralelismo básico.
+- Grande: múltiplos TB+ e/ou alta concorrência; exige particionamento cuidadoso, layout de arquivos e planejamento de custos.
 
 ### Métodos de armazenamento de dados
 
-Conforme o volume de dados que precisamos armazenar, diferentes métodos de armazenamento e ferramentas podem ser necessários.  Tradicionalmente, quando as planilhas começavam a ficar grandes demais ou complexas demais para as necessidades analíticas, empresas migravam para um *data warehouse*. 
+Quando uma empresa começa a extrapolar os limites de planilhas ou de bancos transacionais, a primeira decisão arquitetural costuma ser onde armazenar e organizar os dados analíticos. Entre as opções mais comuns estão *data warehouses*, *data lakes* e, mais recentemente, arquiteturas híbridas chamadas de *lakehouses*. A escolha não precisa ser excludente: cada abordagem atende a necessidades específicas e, na prática, é comum combiná-las.
 
-Mais recentemente,  os *data lakes* ganharam lugar de destaque no mundo dos dados, gerando certa confusão sobre qual tecnologia é melhor ou mais adequada. Na prática, *data lakes* e *data warehouses* possuem objetivos distintos dentro do ambiente de análise de dados e acabam se complementando quando implementados corretamente.
+**Mas afinal, o que são data lakes, data warehouses e lakehouses?**
+* **Data warehouse (DW)**: funciona como um armazém estruturado e otimizado para consultas analíticas. Ele centraliza dados de múltiplas fontes — ERPs, CRMs, planilhas, sistemas financeiros — aplicando transformações que garantem consistência e performance. Serviços como Snowflake, BigQuery, Redshift ou Azure Synapse popularizaram o modelo ao oferecer elasticidade de armazenamento e processamento, além de recursos nativos de governança e segurança. A principal vantagem do DW é entregar dados prontos para negócios com latência previsível.
 
-**Mas afinal, o que são data lakes e data warehouses?**
+* **Data lake**: pode ser imaginado como um grande lago onde dados de qualquer formato (estruturados, semiestruturados ou não estruturados) são depositados em sua forma quase bruta. Ele costuma ser construído sobre armazenamentos de objetos como Amazon S3, Azure Data Lake ou Google Cloud Storage. Por aceitar todos os formatos, o data lake é ideal para cenários exploratórios, projetos de machine learning, IA generativa, análises de logs e arquivamento de alto volume. Em contrapartida, exige governança e catálogos bem definidos para que o conteúdo não se torne um “pântano de dados”.
 
-Pode-se dizer que o data warehouse (DW) é o armazém dos dados. Um local seguro que armazena e integra dados estruturados em um só lugar. Portanto, um *data warehouse* é um grande banco de dados otimizado e desenhado para consultas analíticas.
+* **Lakehouse**: surgiu para unir as vantagens dos dois mundos. Tecnologias como Delta Lake, Apache Iceberg e Apache Hudi fornecem transações ACID, versionamento e gerenciamento de tabelas sobre um data lake, permitindo que dados brutos, refinados e prontos para consumo coexistam no mesmo ambiente, porém com governança mais próxima de um DW. Esse modelo facilita workloads mistos: ciência de dados, análises ad-hoc e dashboards usando a mesma fonte controlada. O Databricks funciona também como um Lakehouse.
 
-Dados de fontes e formatos diferentes não se integram naturalmente. A grande vantagem de um *data warehouse* é justamente a consolidação de dados de diversas fontes de informação - sistemas operacionais, planilhas e CRMs - em um local centralizado.
+```{admonition} Como isso se parece no Databricks
+:class: tip
+No Databricks Lakehouse, use tabelas Delta e ajuste layout para escala: particionamento por colunas filtradas com frequência; `OPTIMIZE` para compactar arquivos; `ZORDER` para acelerar filtros seletivos; e escolha um SQL Warehouse adequado ao perfil de carga (serverless para elasticidade).
+```
 
-Você pode imaginar um data lake como um lago de dados que contém informações de diversos tipos e tamanhos diferentes. Ao contrário de um data warehouse, que armazena apenas dados estruturados, o data lake permite o armazenamento de todos os tipos de dados - estruturados, não estruturados e híbridos - em um só lugar. Portanto, é um repositório muito mais amplo que possibilita análises adicionais e menos restritivas que um DW, como pesquisas de texto completo, análises de big data em tempo real, machine learning etc.
+### Estratégias para o Engenheiro de Analytics
 
-Embora seja possível consultar dados diretamente de um data lake, seu objetivo não é servir como uma camada final de consulta por uma ferramenta de BI, por exemplo, mas sim como uma camada intermediária que permite outras aplicações de análise de dados. 
-
-Em alguns casos, o data lake pode ainda ser uma camada intermediária entre os dados brutos e um data warehouse, permitindo o “melhor dos dois mundos” em termos de armazenamento e integração de dados. No entanto, é sempre bom lembrar que o gerenciamento de data lakes e data warehouse é uma tarefa complexa mesmo quando utilizamos serviços gerenciados na nuvem, como o Amazon S3 ou Amazon Redshift.  Na hora de desenhar a arquitetura de dados, é importante levar em conta o valor que eles irão gerar à empresa em relação aos custos de manter uma infraestrutura mais complexa. Em geral, empresas que seguem uma evolução gradual de sua infraestrutura tendem a ter resultados melhores do que tentativas de pular etapas ao criar infraestruturas muito complexas sem ainda ter a maturidade analítica necessária para extrair todo o valor dessas ferramentas.
+Ao projetar a arquitetura de dados, é essencial equilibrar o valor que ela gerará para o negócio com o custo e a complexidade de mantê-la. Mesmo quando se opta por um único serviço na nuvem, é importante avaliar o nível de maturidade analítica e o tipo de decisão que se deseja habilitar. Empresas em estágio inicial podem obter ótimo retorno começando com um data warehouse gerenciado e ferramentas de ingestão automatizada (como Fivetran, Airbyte ou Stitch), evoluindo gradualmente para camadas históricas e arquiteturas mais sofisticadas à medida que o volume e a maturidade de uso dos dados aumentam. Essa evolução progressiva tende a gerar resultados mais sustentáveis do que tentativas de adotar soluções complexas sem estar preparado para extrair seu real valor.

@@ -1,55 +1,47 @@
 (processo_elt)=
 # 13.3 O Processo de ELT
 
-O processo de ELT  se inicia com o problema de negócio: precisamos ter dados confiáveis para utilização na tomada de decisão. Esse problema é o norte de todo o projeto de Analytics ainda que apareça em diferentes "sabores" a depender do cliente ou metodologia utilizada. Vendo dessa forma, percebemos que a maior parte dos conceitos e ferramentas apresentadas neste livro como parte da "caixa de ferramentas" de um Engenheiro de Analytics são necessárias mas não suficientes para um projeto de analytics de sucesso. O real valor será calculado a partir da qualidade e disponibilidade da informação disponível para o usuário final dos dados: o tomador de decisão.
+Todo pipeline começa com um problema de negócio: precisamos entregar informação confiável para uma decisão específica. O ELT é o fio condutor que leva esse problema da descoberta até um dashboard ou produto analítico. Ferramentas são essenciais, mas só produzem valor quando conectadas por um processo coerente.
 
-
-```{figure} ../../../assets/img/processo_elt.png
+```{figure} ../../../assets/img/13_03_processo_elt.png
 :name: processo_elt_fig
 :height: 450px
 
 Etapas do Processo de ELT
 ```
 
-Assim, o processo de ELT é na verdade muito mais amplo que apenas extrair os dados das fontes transacionais e disponibilizá-los em um *data warehouse*. De fato, ele engloba todas as etapas de desenvolvimento de uma infraestrutura moderna de analytics: desde o planejamento dos requisitos de negócio, até a entrega final dos dados através de tabelas ou *dashboards*. 
+## Planejamento e tradução do problema
 
-## Planejamento
+Planejamento não precisa ser um documento gigantesco, e sim um ciclo contínuo de entendimento, priorização e feedback. O objetivo é alinhar expectativas, preparar o terreno para a ingestão e garantir que tudo o que for modelado tenha dono e propósito claros.
 
-O planejamento é essencial para alinhar os objetivos de negócio com a implementação técnica. As etapas de planejamento no entanto não são feitas pensando em entregar um planejamento completo do projeto, mas sim **de forma incremental** e incluindo o necessário para a implementação de cada pequena etapa.
+### Entendimento do problema
 
-### Entendimento do Problema
+Colete materiais que expliquem o contexto: objetivos estratégicos, indicadores atuais, painéis existentes, planilhas paralelas e quem responde por cada métrica. Pergunte como as decisões são tomadas hoje, quais são os gargalos e quais valores de referência ajudarão na validação futura.
 
-Na etapa de **Entendimento do Problema**, nosso objetivo é obter o máximo de informações sobre os problemas de negócio que devem ser resolvidos com o projeto. Para isso, precisamos solitar aos times de negócio e *stakeholders* informações relevantes para o entendimento dos dados, tais como planilhas, consultas, relatórios e dashboards. Entre as informações que queremos obter estão:
+### Mapeamento de dados
 
-* Background da empresa
-* Objetivos estratégicos
-* Expectativas com o projeto
-* Principais KPIs (indicadores) relacionados ao projeto
-* "Donos" dos indicadores ou stakeholders que devem ser consultados
-* Valores de referência para validação posterior
-* Fluxo de decisão: quem usa os indicadores, quando e para quê.
+Com o problema em mãos, investigue onde os dados vivem. Muitas vezes o que vemos na tela do sistema não corresponde ao formato armazenado na base. Use {ref}`diagramas ERD<modelagem_bd>`, navegação exploratória e entrevistas com os donos dos sistemas. Sempre que possível, estabeleça contratos de dados (schema, tipos, periodicidade, SLAs e responsáveis).
 
+### Modelo conceitual do DW
 
-### Mapeamento de Dados
+Atualize o modelo dimensional desenhando fatos e dimensões coerentes com as necessidades mapeadas. Reforce a conformidade entre dimensões e identifique atributos que podem ser compartilhados no futuro. Esse blueprint ajudará tanto a ingestão (saber o que buscar) quanto a transformação (saber como organizar).
 
-A partir das necessidades de negócio identificadas, precisamos avaliar a disponibilidade de dados. Nem sempre os dados identificados pelos usuários de negócio são de fácil acesso, ou mesmo acessáveis em primeiro lugar. Além disso, é comum que a forma com que os dados brutos estão armazenados fisicamente seja bem diferente do formato com que os dados são acessados pela interface dos sistemas empresariais ou relatórios.
+## Ingestão de dados
 
-Para realizar o mapeamento de dados utilizamos técnicas como {ref}`diagramas ERD<modelagem_bd>`, planilhas e outros documentos. O importante é conseguir mapear quais dados estão disponíveis e onde estão de uma forma mais conceitual, sem entrar em muitos detalhes ainda. 
-
-### Elaboração do Modelo Conceitual do DW
-
-O próximo passo é desenharmos (ou atualizarmos) o modelo conceitual do *data warehouse* que estamos desenvolvendo. Como já falamos no {ref}`modelagem_dw`, precisamos desenhar as tabelas Fato e Dimensão apropriadas e o relacionamento entre elas, tomando especial atenção na conformidade entre dimensões.
-
-## Ingestão de Dados
-
-Definido **quais** dados precisamos e **onde** buscá-los, precisamos realizar a Ingestão de dados para nosso *Data Warehouse*. Isto é, extrair esses dados das fontes transacionais e disponibizá-los na camada bruta do *data warehouse*. Falaremos de forma detalhada sobre essa etapa no {ref}`ingestao`.
+Com o que e o onde definidos, partimos para trazer os dados à camada bruta (_raw_/Bronze). A ingestão responde a perguntas como: qual conector usar? É _batch_ ou streaming? Preciso de CDC? No {ref}`ingestao` entraremos na teoria dessa etapa para que você possa desenhar pipelines de transformação com segurança.
 
 ## Transformação
 
-Na etapa de transformação é que os dados brutos, extraído diretamente dos diferentes sistemas da empresa, são lapidados e transformados em dados prontos para serem utilizados na tomada de decisão. É nesta **etapa que reside o maior esforço e valor gerado da Engenharia de Analytics.** Veremos quais as principais tarefas, boas práticas e ferramentas práticas no {ref}`transformacao`.
+Aqui os dados brutos evoluem para conjuntos confiáveis. Aplicamos regras de negócio, normalizamos dimensões, calculamos métricas e estruturamos camadas intermediárias. Esse é o coração do trabalho de um Analytics Engineer, e será aprofundado no {ref}`transformacao`.
 
-### Entrega Final
+### Entrega e consumo
 
-Seguindo as {ref}`boas práticas de programação<boas_praticas>`), somente disponibilizaremos os novos dados pro usuário final depois de realizar testes, documentação e outras tarefas comuns no processo de ***deploy*** de softwares. Ao final do processo, os novos dados ficam disponibilizados no ambiente "produção" do data warehouse para serem transformados em informação e geração de valor de negócio.
+Dados só geram valor quando chegam ao usuário final. Promova modelos após revisão por pares, testes e documentação ({ref}`boas_praticas`). Automatize deploys com CI/CD e disponibilize os resultados em catálogos, APIs ou modelos prontos para BI, sempre com ownership definido.
 
-No próximoa capítulo vamos detalhar o processo de ingestão de dados, a etapa inicial do ELT. Vamos lá?
+## Operar, monitorar e evoluir
+
+- **Orquestração**: agende pipelines, trate dependências e configure retentativas com Airflow, Dagster, Prefect ou workflows nativos. Conecte tudo ao Git para ter rastreabilidade.  
+- **Observabilidade e custos**: monitore freshness, volume, schema e custos de execução. Alertas rápidos reduzem impacto e evitam surpresas na conta.  
+- **Segurança**: implemente IAM por papéis, segregue ambientes (dev/staging/prod) e aplique mascaramento quando necessário.
+
+Com esse processo como referência, seguimos para o Capítulo 14, onde destrincharemos as decisões de ingestão antes de mergulharmos na transformação prática do Capítulo 15.

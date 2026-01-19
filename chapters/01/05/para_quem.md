@@ -1,18 +1,32 @@
 # 1.5 Para quem é este livro
 
-Este livro foi pensado para servir como **referência para profissionais que atuam como Engenheiros ou Engenharias de Analytics** em empresas de diferentes portes. Por ser uma uma função muito recente nos times de dados, acreditamos que outros profissionais também podem se beneficar deste conteúdo na sua atuação profissional:
+No capítulo anterior conhecemos a Northwind, nosso estudo de caso prático. Antes de mergulharmos na construção da sua infraestrutura de dados, vale esclarecer: **para quem este livro foi escrito?**
 
-- Analistas de BI buscando aprimorar seu conhecimento técnico;
-- Engenheiros de Dados que atuam na construção de Data Warehouses em times tradicionais;
-- Entusiastas por dados e analytics em busca de novos conhecimentos;
-- Profissionais em transição de carreira.
+Este conteúdo foi pensado como uma **referência prática para Engenheiros de Analytics** em empresas de diferentes portes. Por ser uma função relativamente recente nos times de dados, acreditamos que outros perfis também podem se beneficiar do material:  
 
-É provável (e esperado) que o leitor conheça de forma mais aprofundada algum dos temas apresentado. Desta forma, ao invés de uma leitura linear você pode ir diretamente para um tema de interesse utilizando o menu de navegação, índice ou busca.
+- **Analistas de BI** que querem ampliar seu conhecimento técnico;  
+- **Engenheiros de Dados** vindos de times tradicionais de DW que desejam se aproximar do negócio;  
+- **Cientistas de Dados** que precisam ganhar maturidade em produção e escalabilidade;  
+- **Profissionais em transição de carreira** ou entusiastas da área que buscam novos conhecimentos.  
+
+É provável (e até esperado) que cada leitor já tenha mais familiaridade com alguns dos temas apresentados. Por isso, a leitura não precisa ser linear: você pode navegar diretamente para os capítulos de maior interesse usando o menu, índice ou busca.  
+
+---
 
 ## Pré-requisitos
 
-O principal pré-requisito para o entendimento do livro é alguma experiência prévia profissional ou acadêmica com projetos de analytics. Além disso, outros conhecimentos prévios facilitarão o entendimento de alguns capítulos mas podem ser obtidos paralelamente à leitura:
+O principal pré-requisito é alguma experiência prévia — profissional ou acadêmica — com projetos de analytics. Além disso, alguns conhecimentos facilitam a compreensão de certos capítulos (mas podem ser adquiridos paralelamente à leitura):  
 
-- Conhecimento básico em programação (em especial, Python e terminal Bash);
-- Conhecimento básico em BI;
-- Experiência com ferramentas de suporte a decisão (planilhas, etc).
+- **Programação básica** (Python, SQL e terminal Bash);  
+- **Ferramentas de BI** (Power BI, Tableau, Looker Studio);  
+- **Ferramentas de apoio à decisão** como planilhas (Excel ou Google Sheets).  
+
+---
+
+```{admonition} Fora de escopo
+:class: important
+Não cobrimos engenharia de streaming em tempo real, MLOps aprofundado, ou infraestrutura de baixo nível (rede, provisionamento de clusters e IaC detalhado). Indicaremos referências quando pertinente.
+```
+
+```{note}
+Mesmo que você não domine todos os pré-requisitos, siga em frente. A proposta deste livro é justamente guiar o aprendizado de forma prática e incremental, com exemplos e desafios aplicados ao estudo de caso.
