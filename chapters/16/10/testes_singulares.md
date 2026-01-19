@@ -56,7 +56,7 @@ Existe um *trade-off*: quando o teste falha, os dados podem ficar **desatualizad
 
 ## Exemplo: teste singular das vendas de 2012
 
-Vamos usar um exemplo clássico de reconciliação: existe um valor auditado para o **total bruto de vendas de 2012**. No projeto de da Northwind, as métricas de item de pedido são calculadas no modelo `int_order_items__metrics`. É nele que nasce a métrica `gross_total`, que depois é agregada em análises.
+Vamos usar um exemplo clássico de reconciliação: existe um valor auditado para o **total bruto de vendas de 2012**. No projeto Northwind, as métricas no grão do item são calculadas no modelo `int_order_items__metrics`. É nele que nasce a métrica `gross_total`, que depois é agregada em análises.
 
 Para entender o teste, primeiro veja os modelos envolvidos.
 
@@ -202,7 +202,7 @@ Repare como esse modelo materializa **regras de negócio em métricas**:
 - `net_total`: valor líquido com desconto
 - `freight_allocated`: uma regra explícita de alocação de frete para não misturar grãos
 
-É justamente por centralizar regras assim que faz sentido colocar testes singulares na `intermediate`: aqui a métrica “nasce” e qualquer erro vai contaminar tudo que depende dela.
+É justamente por centralizar regras assim que faz sentido colocar testes singulares na `intermediate`: aqui a métrica “nasce” e qualquer erro vai contaminar tudo o que depende dela.
 
 ## O teste singular (reconciliação) em si
 
@@ -236,4 +236,10 @@ Como ler esse teste:
 
 Esse padrão (“métrica agregada vs valor conhecido”) é uma das formas mais efetivas de testar fatos. Em projetos reais, é comum manter um conjunto pequeno de testes desse tipo para métricas críticas, como receita e pedidos, apoiados por números validados (contábil, financeiro, sistema fonte, auditoria, *back-office* etc.).
 
-Esse teste protege a tabela contra edições upstream que não tragram problemas para a chave unitárias, mas que acidentalmente mudam a forma de calculo das métricas o que por sua vez passar a apresentar dados erroneos.
+Esse teste protege o projeto contra mudanças upstream que não quebram chaves ou relacionamentos (ou seja, passam nos testes genéricos), mas que alteram acidentalmente a regra de cálculo da métrica e acabam gerando números incorretos no consumo.
+
+## Recap
+
+- Testes genéricos protegem estrutura (nulos, unicidade, relacionamentos); testes singulares protegem semântica e métricas.
+- Coloque testes singulares perto de onde a regra “nasce” (muitas vezes na `intermediate`) para evitar que dados errados cheguem aos *marts*.
+- Para fatos, priorize ao menos um teste “número dourado” por métrica crítica (reconciliada com um valor auditado/known-good), mesmo com tolerância de arredondamento quando fizer sentido.

@@ -1,6 +1,6 @@
 # 16.6 Configurações de Projeto
 
-O `dbt_project.yml` é o arquivo central de configuração de um projeto dbt. É por ele que o dbt identifica o projeto, define metadados (como `name`, `version` e `profile`) e aplica configurações **globalmente**. Tudo que você declara aqui vira regra padrão do projeto e pode ser **herdado** por diretórios e modelos, evitando repetição de `{{ config(...) }}` em dezenas de arquivos.
+O `dbt_project.yml` é o arquivo central de configuração de um projeto dbt. É por ele que o dbt identifica o projeto, define metadados (como `name`, `version` e `profile`) e aplica configurações **globalmente**. Tudo o que você declara aqui vira regra padrão do projeto e pode ser **herdado** por diretórios e modelos, evitando repetição de `{{ config(...) }}` em dezenas de arquivos.
 
 Além de metadados, é nele que você configura (por projeto, pasta ou até por modelo) comportamentos como:
 
@@ -75,3 +75,9 @@ select ...
 ```
 
 Essa combinação de “padrões por pasta” (no `dbt_project.yml`) com “exceções por modelo” (via `config`) é uma das formas mais eficientes de manter o projeto consistente e, ao mesmo tempo, otimizar pontos críticos conforme o uso real aparece.
+
+## Recap
+
+- Use o `dbt_project.yml` como “fonte única de verdade” para padrões por camada/pasta (materialização, schema, tags e convenções).
+- Use `{{ config(...) }}` apenas quando houver uma exceção clara (por exemplo, um fato que precise virar `incremental`).
+- Prefira consistência e previsibilidade: isso reduz *drift* e facilita manutenção, revisão de código e depuração.

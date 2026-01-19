@@ -12,12 +12,7 @@ O “pulo” que o dbt deu no trabalho de times de analytics foi juntar, em uma 
 
 O dbt funciona por **adaptadores**, então a lista de plataformas suportadas evolui com o ecossistema. Em geral, o dbt Platform (e o dbt Core via CLI) é usado com os principais *data warehouses/lakehouses* (por ex.: **Databricks**, **Snowflake**, **Google BigQuery**, **Amazon Redshift**, **PostgreSQL**), além de *query engines* e bancos suportados por adaptadores (por ex.: **Apache Spark**, **AWS Athena**, **Trino**, **DuckDB**, **ClickHouse**, **Dremio**, **Azure Synapse/Microsoft Fabric**, entre outros). Para a lista completa e atualizada de adaptadores suportados, consulte a documentação oficial do dbt.
 
-
-```{figure} ../../../assets/img/16_01_dbt_no_elt.png
-:name: Como dbt se encaixa em uma estrutura moderna de analytics.
-Fonte: Criado pelo autor.
-#TODO Adicionar uma imagem mostrando aqui o dbt como parte centra da transaformação (ELT). Usar a imagem clássica da indicium com fontes -> dw+dbt -> data products.
-```
+Em uma arquitetura moderna de **ELT**, o papel do dbt é ser a camada de **transformação versionada e testável**: os dados chegam “crus” no lakehouse/warehouse e, a partir daí, o dbt aplica regras de negócio, padronização, modelagem dimensional e validações de qualidade até produzir *data products* prontos para consumo.
 
 ## Primeiros passos pela UI
 

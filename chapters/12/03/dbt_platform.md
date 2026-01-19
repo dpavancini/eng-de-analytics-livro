@@ -15,7 +15,7 @@ Chegou a hora de conectar tudo o que você preparou nas seções anteriores. Aqu
 3. **Preencha as credenciais do Databricks**
    - **Host**: utilize o _Server Hostname_ copiado na Seção 12.1 (equivalente ao domínio do seu workspace, sem `https://` nem `/`). Ex.: `adb-1234567890123456.17.azuredatabricks.net`.
    - **HTTP Path**: insira o caminho do `Serverless Starter Warehouse`, algo como `/sql/1.0/warehouses/<warehouse-id>`, obtido na mesma seção.
-   - **Token**: cole o token `dbt-developer` criado anteriormente (o `dbt-production` ficará reservado para o ambiente de produção).
+   - **Token**: cole o token `dbt-developer` criado anteriormente.
    - **Catalog**: defina `dev` para manter o isolamento do ambiente de desenvolvimento.
    - (Opcional) Ajuste o **Schema** para algo único, como `dbt_<seu_usuario>`, e evite conflitos com outros praticantes.
    - Clique em **Test Connection** e confirme que o dbt consegue acessar o Databricks.

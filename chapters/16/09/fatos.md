@@ -48,7 +48,7 @@ O `stg_erp__order_items` traz as métricas “de linha” (preço, quantidade, d
 
 Como a relação é **1 pedido → N itens**, este `join` é do tipo **one-to-many**. No grão do item, isso é exatamente o que queremos: **cada linha continua representando um item de pedido**, agora enriquecido com atributos do pedido.
 
-#TODO: Arrumar o texto a seguir, o correto é usar left join, embora é esperado que num sistema transacional isso não devia acontecer, se acontecer vamos saber via testes: Usamos `inner join` porque um item sem pedido correspondente seria um problema de integridade referencial (em sistemas transacionais, isso “não deveria acontecer”). Em projetos reais, se você quiser “não perder” itens órfãos por diagnóstico, você poderia temporariamente usar `left join` e criar uma coluna de auditoria para identificar o caso.
+Usamos `left join` para preservar o grão do item de pedido mesmo se houver anomalias upstream. Em um sistema transacional bem modelado, espera-se que não existam itens órfãos (um item sem pedido correspondente). Ainda assim, em pipelines analíticos reais, falhas de ingestão e reprocessamentos podem produzir inconsistências temporárias. Ao manter o `left join` e cobrir integridade referencial com testes, você evita perder registros silenciosamente e consegue diagnosticar o problema mais cedo.
 
 ### Métricas do item (e por que elas existem)
 
@@ -60,7 +60,7 @@ No grão do item, criamos métricas **aditivas** (somáveis) que funcionam bem e
 
 Também resolvemos um problema comum de modelagem: o `freight` (frete) está no grão do **pedido**, mas `fct_transactions` está no grão do **item**. Para não misturar grãos (e para possibilitar análises de custo por produto/transação), alocamos o frete proporcionalmente por linha.
 
-No projeto, por razões academicas a regra escolhida é simples e direta: **dividir o frete igualmente entre os itens do pedido**. No mundo real o frete de um item é dado por outros fatores como peso e volume.
+No projeto, por razões acadêmicas, a regra escolhida é simples e direta: **dividir o frete igualmente entre os itens do pedido**. No mundo real, o frete de um item costuma depender de fatores como peso, volume e modalidade de entrega.
 
 `models/intermediate/int_order_items__metrics.sql`
 

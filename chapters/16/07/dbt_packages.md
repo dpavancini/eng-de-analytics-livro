@@ -26,8 +26,7 @@ Depois de declarar o pacote, você roda:
 dbt deps
 ```
 
-E o dbt baixa os pacotes e salva o código em `dbt_packages/` (pasta gerenciada pelo dbt),
-
+E o dbt baixa os pacotes e salva o código em `dbt_packages/` (pasta gerenciada pelo dbt).
 
 ## Exemplo: instalando o `dbt_utils`
 
@@ -168,7 +167,7 @@ Para ver como a macro acima vira SQL “puro”, use a opção `Compile` na IDE 
 md5(cast(coalesce(cast(orderid as TEXT), '_dbt_utils_surrogate_key_null_') || '-' || coalesce(cast(productid as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as order_item_sk
 ```
 
-## Recap e próximos passos
+## Recap
 
 Nesta seção você viu como pacotes deixam o dbt mais produtivo:
 

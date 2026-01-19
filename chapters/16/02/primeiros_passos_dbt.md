@@ -66,7 +66,7 @@ Na prática, você pode fazer o “fluxo completo” de duas formas:
 - `dbt run` + `dbt test`: você controla cada etapa separadamente. É comum no desenvolvimento, quando você quer rodar só modelos (`dbt run`) sem pagar o custo de testes a cada alteração, ou quer testar algo específico.
 - `dbt build`: é um comando “orquestrador” que constrói os recursos selecionados (incluindo outros objetos do dbt como **seeds**, **modelos** e **snapshots**) e roda os **testes** associados. Em geral é a melhor opção para pipelines/CI, porque valida o que foi construído no mesmo fluxo e na ordem correta.
 
-Experimente as duas abordagens e observe as diferenças. Um ponto importante: quando um **modelo upstream falha**, tudo que depende dele fica como **skipped** (porque a DAG não consegue avançar com segurança). Já quando um **teste falha**, o comando termina com status de erro (e, dependendo da configuração — por exemplo, com opções de *fail fast* —, o restante pode ser interrompido).
+Experimente as duas abordagens e observe as diferenças. Um ponto importante: quando um **modelo upstream falha**, tudo o que depende dele fica como **skipped** (porque a DAG não consegue avançar com segurança). Já quando um **teste falha**, o comando termina com status de erro.
 
 ## Carregando os dados da Northwind com seeds
 

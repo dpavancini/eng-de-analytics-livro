@@ -122,15 +122,16 @@ parts:
         - file: chapters/15/leia_mais.md
     - file: chapters/16/intro.md
       sections:
-        - file: chapters/16/02/overview_dbt.md
-        - file: chapters/16/03/setup_northwind.md
-        - file: chapters/16/04/primeira_dimensao.md
-        - file: chapters/16/05/testes_documentacao.md
-        - file: chapters/16/06/dbt_packages.md
-        - file: chapters/16/07/dimensoes.md
-        - file: chapters/16/08/fatos.md
-        - file: chapters/16/09/testes_singulares.md
-        - file: chapters/16/10/estrutura_projeto.md
+        - file: chapters/16/01/introducao_dbt.md
+        - file: chapters/16/02/primeiros_passos_dbt.md
+        - file: chapters/16/03/primeira_dimensao.md
+        - file: chapters/16/04/testes_documentacao.md
+        - file: chapters/16/05/materializacao.md
+        - file: chapters/16/06/estrutura_projeto.md
+        - file: chapters/16/07/dbt_packages.md
+        - file: chapters/16/08/dimensoes.md
+        - file: chapters/16/09/fatos.md
+        - file: chapters/16/10/testes_singulares.md
         - file: chapters/16/11/conclusao.md
         - file: chapters/16/leia_mais.md
     - file: chapters/17/intro.md
