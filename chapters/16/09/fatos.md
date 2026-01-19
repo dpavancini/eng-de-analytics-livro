@@ -1,41 +1,255 @@
-# 16.8 Criando as tabelas fato
+# 16.9 Tabelas fato
 
-Construímos duas tabelas fato complementares para cobrir diferentes grãos.
+Nesta seção vamos modelar as **tabelas fato** do projeto. Se dimensões respondem “**quem/o quê/onde**”, fatos respondem “**o que aconteceu**” e carregam as **métricas** (medidas) no **grão** escolhido.
 
-## `fct_transactions` (grão: item do pedido)
+No nosso caso, temos dois eventos centrais no processo de vendas da Northwind:
 
-- Mede receita linha a linha.
-- Replica o freight total em cada linha e calcula `freight_allocated`.
-- Reaproveita o modelo `int_order_items__metrics`.
+- **Pedido** (`orders`): um pedido feito por um cliente, atendido por um funcionário e entregue por uma transportadora.
+- **Item de pedido** (`order_items`): cada produto comprado dentro de um pedido (com quantidade, preço e desconto).
+
+Isso se traduz em duas tabelas fato na camada `marts`:
+
+- `fct_orders`: **1 linha por pedido**
+- `fct_transactions`: **1 linha por item do pedido** (transação/linha)
+
+> Pressuposto: a camada `staging` já está pronta (`stg_erp__orders`, `stg_erp__order_items`, etc.). O foco aqui é **intermediate → marts**.
+
+## Grão primeiro, métricas depois
+
+A decisão mais importante ao criar uma fato é o **grão**. Ele determina:
+
+- Qual a pergunta que a tabela responde (ex.: “vendas por pedido” vs “vendas por produto”).
+- Quais métricas fazem sentido (e como agregá-las).
+- Quais chaves estrangeiras entram na tabela (quais dimensões a fato referencia).
+
+No nosso esquema estrela:
+
+- `fct_orders` referencia `dim_customers`, `dim_employees` e `dim_shippers` (um pedido aponta para exatamente um cliente, um funcionário e uma transportadora).
+- `fct_transactions` referencia as mesmas dimensões e adiciona `dim_products` (um item de pedido aponta para exatamente um produto).
+
+## Por que temos modelos `intermediate` para fatos?
+
+Em teoria, poderíamos construir as fatos diretamente em `marts`. Mas existe uma vantagem prática em colocar as regras e cálculos em `intermediate`:
+
+- **Reuso e consistência**: a mesma métrica (ex.: `net_total`) é usada por diferentes análises; centralizar evita divergências.
+- **Testabilidade**: fica mais simples criar testes e validar cada etapa (join, cálculo, agregação).
+- **Contrato limpo em `marts`**: a camada final apenas “publica” um dataset já pronto que foi testado previamente na camada `intermediate`.
+
+No projeto, usamos dois modelos intermediários:
+
+- `int_order_items__metrics`: cria métricas no grão de **item de pedido**
+- `int_orders__metrics`: agrega as métricas no grão de **pedido**
+
+## Fato no grão de item: `int_order_items__metrics` → `fct_transactions`
+
+### Por que fazemos `join` entre `orders` e `order_items`?
+
+O `stg_erp__order_items` traz as métricas “de linha” (preço, quantidade, desconto), mas não possui todas as chaves e datas que são úteis no consumo (por exemplo, `customer_fk`, `employee_fk`, `order_date`). Essas informações vivem em `orders`.
+
+Como a relação é **1 pedido → N itens**, este `join` é do tipo **one-to-many**. No grão do item, isso é exatamente o que queremos: **cada linha continua representando um item de pedido**, agora enriquecido com atributos do pedido.
+
+#TODO: Arrumar o texto a seguir, o correto é usar left join, embora é esperado que num sistema transacional isso não devia acontecer, se acontecer vamos saber via testes: Usamos `inner join` porque um item sem pedido correspondente seria um problema de integridade referencial (em sistemas transacionais, isso “não deveria acontecer”). Em projetos reais, se você quiser “não perder” itens órfãos por diagnóstico, você poderia temporariamente usar `left join` e criar uma coluna de auditoria para identificar o caso.
+
+### Métricas do item (e por que elas existem)
+
+No grão do item, criamos métricas **aditivas** (somáveis) que funcionam bem em praticamente qualquer agregação:
+
+- `gross_total`: **valor bruto** da linha (`unit_price * quantity`), antes de desconto.
+- `net_total`: **valor líquido** da linha (aplica desconto: `unit_price * (1 - discount_pct) * quantity`).
+- `had_discount`: flag booleana para análises de desconto (ex.: “% de itens com desconto”).
+
+Também resolvemos um problema comum de modelagem: o `freight` (frete) está no grão do **pedido**, mas `fct_transactions` está no grão do **item**. Para não misturar grãos (e para possibilitar análises de custo por produto/transação), alocamos o frete proporcionalmente por linha.
+
+No projeto, por razões academicas a regra escolhida é simples e direta: **dividir o frete igualmente entre os itens do pedido**. No mundo real o frete de um item é dado por outros fatores como peso e volume.
+
+`models/intermediate/int_order_items__metrics.sql`
 
 ```sql
-with transactions as (
-    select * from {{ ref('int_order_items__metrics') }}
-)
-select * from transactions
+with
+    orders as (
+        select *
+        from {{ ref('stg_erp__orders') }}
+    )
+
+    , order_items as (
+        select *
+        from {{ ref('stg_erp__order_items') }}
+    )
+
+    , joined as (
+        select
+            order_items.order_item_sk
+            , order_items.order_fk
+            , order_items.product_fk
+            , orders.employee_fk
+            , orders.customer_fk
+            , orders.shipper_fk
+            , orders.order_date
+            , orders.ship_date
+            , orders.required_delivery_date
+            , order_items.discount_pct
+            , order_items.unit_price
+            , order_items.quantity
+            , orders.freight
+            , orders.order_number
+            , orders.recipient_name
+            , orders.recipient_city
+            , orders.recipient_region
+            , orders.recipient_country
+        from order_items
+        left join orders on order_items.order_fk = orders.order_pk
+    )
+
+	    , metrics as (
+	        select
+	        order_item_sk
+	        , order_fk
+	        , product_fk
+	        , employee_fk
+	        , customer_fk
+	        , shipper_fk
+	        , order_date
+	        , ship_date
+	        , required_delivery_date
+            , discount_pct
+            , unit_price
+            , quantity
+            , unit_price * quantity as gross_total
+            , unit_price * (1 - discount_pct) * quantity as net_total
+            , cast((freight / count(*) over (partition by order_number)) as numeric(18,2)) as freight_allocated
+            , case
+                when discount_pct > 0 then true
+                else false
+            end as had_discount
+            , order_number
+            , recipient_name
+            , recipient_city
+            , recipient_region
+            , recipient_country
+        from joined
+    )
+
+select *
+from metrics
 ```
 
-Boas práticas:
+Algumas observações importantes sobre esse modelo:
 
-- Sempre inclua `order_item_sk` como chave primária com testes `unique` e `not_null`.
-- Documente `order_fk`, `product_fk`, `customer_fk` e demais chaves estrangeiras.
-- Adicione colunas derivadas (`gross_total`, `net_total`, `had_discount`) no intermediário para manter a fato enxuta.
+- `freight_allocated` usa uma **função de janela** para contar quantas linhas existem por pedido e dividir o frete por esse número.
+- `gross_total` e `net_total` são métricas que você vai somar com frequência. Por isso, é melhor tê-las pré-calculadas na fato do que repetir a regra em cada consumo.
 
-## `fct_orders` (grão: pedido)
+### Publicação no mart: `fct_transactions`
 
-- Consolida métricas agregadas por pedido.
-- Mostra o total de freight, a quantidade de itens e um *flag* se houve desconto.
-- Usa o intermediário `int_orders__metrics`.
+Com as métricas prontas em `intermediate`, a fato final fica enxuta:
+
+`models/marts/fct_transactions.sql`
 
 ```sql
-with orders_metrics as (
-    select * from {{ ref('int_orders__metrics') }}
-)
-select * from orders_metrics
+with
+    transactions as (
+        select *
+        from {{ ref('int_order_items__metrics') }}
+    )
+
+select *
+from transactions
 ```
 
-Recomendações:
+## Fato no grão de pedido: `int_orders__metrics` → `fct_orders`
 
-- Mantenha nomes consistentes (`order_pk`, `order_number`) e reutilize as dimensões já criadas.
-- Aproveite a modularidade: qualquer ajuste em `int_order_items__metrics` beneficia ambas as fatos.
-- Use *tags* para diferenciar fatos diários vs. em lote (`tags: ["fact", "transactions"]`).
+O grão do pedido é muito útil quando a pergunta é sobre o **pedido como unidade**: quantidade de pedidos, ticket médio por pedido, tempo de entrega, etc.
+
+O desafio é que muitas métricas “de venda” nascem no item (`quantity`, `net_total`) e precisam ser **agregadas** no nível do pedido. Por isso, `int_orders__metrics` depende de `int_order_items__metrics`.
+
+### Métricas do pedido (e por que elas existem)
+
+No modelo de pedidos, criamos agregações diretas:
+
+- `total_quantity`: soma das quantidades dos itens do pedido.
+- `gross_total`: soma do valor bruto das linhas.
+- `net_total`: soma do valor líquido das linhas (já com desconto).
+- `line_item_count`: contagem de itens (linhas) no pedido.
+- `had_discount_flag`: indicador se o pedido teve ao menos um item com desconto.
+- `freight_total`: frete no grão do pedido (sem alocação).
+
+Além disso, carregamos as chaves estrangeiras e datas que conectam o pedido às dimensões e permitem análises temporais.
+
+`models/intermediate/int_orders__metrics.sql`
+
+```sql
+with
+    order_items_metrics as (
+        select *
+        from {{ ref('int_order_items__metrics') }}
+    )
+
+    , aggregated_line_metrics as (
+        select
+            order_fk
+            , sum(quantity) as total_quantity
+            , sum(gross_total) as gross_total
+            , sum(net_total) as net_total
+            , count(*) as line_item_count
+            , max(case when had_discount then 1 else 0 end) as had_discount_flag
+        from order_items_metrics
+        group by order_fk
+    )
+
+    , orders as (
+        select *
+        from {{ ref('stg_erp__orders') }}
+    )
+
+select
+    orders.order_pk
+    , orders.order_number
+    , orders.employee_fk
+    , orders.customer_fk
+    , orders.shipper_fk
+    , orders.order_date
+    , orders.ship_date
+    , orders.required_delivery_date
+    , orders.freight as freight_total
+    , coalesce(aggregated_line_metrics.total_quantity, 0) as total_quantity
+    , coalesce(aggregated_line_metrics.gross_total, 0) as gross_total
+    , coalesce(aggregated_line_metrics.net_total, 0) as net_total
+    , coalesce(aggregated_line_metrics.line_item_count, 0) as line_item_count
+    , coalesce(aggregated_line_metrics.had_discount_flag, 0) as had_discount_flag
+    , orders.recipient_name
+    , orders.recipient_city
+    , orders.recipient_region
+    , orders.recipient_country
+from orders
+left join aggregated_line_metrics on aggregated_line_metrics.order_fk = orders.order_pk
+```
+
+Por que `left join` aqui?
+
+- Queremos preservar o grão de `orders` (1 linha por pedido) mesmo que, por alguma anomalia, um pedido não tenha itens associados.
+- Ao usar `coalesce(..., 0)`, garantimos que as métricas numéricas não fiquem nulas e funcionem bem em agregações.
+
+### Publicação no mart: `fct_orders`
+
+Assim como na fato de itens, a camada `marts` apenas publica o dataset intermediário:
+
+`models/marts/fct_orders.sql`
+
+```sql
+with
+    orders_metrics as (
+        select *
+        from {{ ref('int_orders__metrics') }}
+    )
+
+select *
+from orders_metrics
+```
+
+## Como escolher a fato certa no consumo
+
+Uma forma rápida de decidir:
+
+- Use `fct_orders` quando o objeto de análise for o **pedido** (ex.: ticket médio, pedidos por cliente, taxa de desconto por pedido).
+- Use `fct_transactions` quando o objeto de análise for o **produto/linha** (ex.: vendas por produto, desconto por categoria, margem por item — se você tiver custo).
+
+E lembre do princípio central: **não misture grãos**. Se uma métrica nasce no pedido (como `freight_total`), ela deve estar em `fct_orders` (ou ser alocada para o grão menor com uma regra explícita, como fizemos em `freight_allocated`).
