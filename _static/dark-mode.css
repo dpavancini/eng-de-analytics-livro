@@ -1,0 +1,338 @@
+/* =============================================================
+   dark-mode.css — Engenharia de Analytics
+   Modo noturno acessível com detecção automática do sistema.
+   Criado como contribuição ao projeto open source.
+   ============================================================= */
+
+/* -------------------------------------------------------
+   1. VARIÁVEIS DE CORES — Tema Claro (padrão)
+   ------------------------------------------------------- */
+:root {
+  --dm-bg-primary:    #ffffff;
+  --dm-bg-secondary:  #f8f9fa;
+  --dm-bg-sidebar:    #f8f9fa;
+  --dm-bg-header:     #343a40;
+  --dm-bg-code:       #f3f4f6;
+  --dm-bg-code-block: #f0f2f4;
+
+  --dm-text-primary:   #1c1e21;
+  --dm-text-secondary: #495057;
+  --dm-text-muted:     #6c757d;
+
+  --dm-link:       #0066cc;
+  --dm-link-hover: #004499;
+
+  --dm-border:     #dee2e6;
+  --dm-shadow:     rgba(0, 0, 0, 0.1);
+
+  --dm-btn-bg:      #ffffff;
+  --dm-btn-border:  #ced4da;
+  --dm-btn-text:    #495057;
+  --dm-btn-shadow:  rgba(0, 0, 0, 0.15);
+}
+
+/* -------------------------------------------------------
+   2. VARIÁVEIS DE CORES — Tema Escuro
+   ------------------------------------------------------- */
+[data-theme="dark"] {
+  --dm-bg-primary:    #111827;
+  --dm-bg-secondary:  #1f2937;
+  --dm-bg-sidebar:    #1a2332;
+  --dm-bg-header:     #0f172a;
+  --dm-bg-code:       #1e293b;
+  --dm-bg-code-block: #0f172a;
+
+  --dm-text-primary:   #e5e7eb;
+  --dm-text-secondary: #d1d5db;
+  --dm-text-muted:     #9ca3af;
+
+  --dm-link:       #60a5fa;
+  --dm-link-hover: #93c5fd;
+
+  --dm-border:     #374151;
+  --dm-shadow:     rgba(0, 0, 0, 0.4);
+
+  --dm-btn-bg:      #1f2937;
+  --dm-btn-border:  #4b5563;
+  --dm-btn-text:    #e5e7eb;
+  --dm-btn-shadow:  rgba(0, 0, 0, 0.4);
+}
+
+/* -------------------------------------------------------
+   3. APLICAÇÃO DAS CORES — Elementos Globais
+   ------------------------------------------------------- */
+[data-theme="dark"] body {
+  background-color: var(--dm-bg-primary);
+  color: var(--dm-text-primary);
+}
+
+/* Fundo da página inteira */
+[data-theme="dark"] html {
+  background-color: var(--dm-bg-primary);
+}
+
+/* -------------------------------------------------------
+   4. CABEÇALHO (barra superior)
+   ------------------------------------------------------- */
+[data-theme="dark"] .bd-header,
+[data-theme="dark"] nav.bd-header-article,
+[data-theme="dark"] .navbar,
+[data-theme="dark"] .navbar-dark {
+  background-color: var(--dm-bg-header) !important;
+  border-bottom: 1px solid var(--dm-border);
+}
+
+[data-theme="dark"] .navbar-brand,
+[data-theme="dark"] .navbar-nav .nav-link {
+  color: var(--dm-text-primary) !important;
+}
+
+/* -------------------------------------------------------
+   5. MENU LATERAL (sidebar)
+   ------------------------------------------------------- */
+[data-theme="dark"] .bd-sidebar,
+[data-theme="dark"] .bd-sidebar-primary,
+[data-theme="dark"] #site-navigation,
+[data-theme="dark"] .bd-sidenav {
+  background-color: var(--dm-bg-sidebar) !important;
+  border-right: 1px solid var(--dm-border);
+}
+
+/* Links do menu lateral */
+[data-theme="dark"] .bd-sidebar a,
+[data-theme="dark"] .bd-sidenav a,
+[data-theme="dark"] #site-navigation a {
+  color: var(--dm-text-secondary) !important;
+}
+
+[data-theme="dark"] .bd-sidebar a:hover,
+[data-theme="dark"] .bd-sidenav a:hover,
+[data-theme="dark"] #site-navigation a:hover {
+  color: var(--dm-link) !important;
+  text-decoration: none;
+}
+
+/* Item ativo no menu */
+[data-theme="dark"] .bd-sidebar .active > a,
+[data-theme="dark"] #site-navigation .active > a {
+  color: var(--dm-link) !important;
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------
+   6. CONTEÚDO PRINCIPAL (artigo)
+   ------------------------------------------------------- */
+[data-theme="dark"] .bd-article-container,
+[data-theme="dark"] .bd-article,
+[data-theme="dark"] main,
+[data-theme="dark"] .bd-content,
+[data-theme="dark"] article {
+  background-color: var(--dm-bg-primary);
+  color: var(--dm-text-primary);
+}
+
+/* Títulos */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--dm-text-primary);
+}
+
+/* Parágrafos */
+[data-theme="dark"] p {
+  color: var(--dm-text-primary);
+}
+
+/* Links no conteúdo */
+[data-theme="dark"] .bd-article a,
+[data-theme="dark"] article a,
+[data-theme="dark"] main a {
+  color: var(--dm-link);
+}
+
+[data-theme="dark"] .bd-article a:hover,
+[data-theme="dark"] article a:hover {
+  color: var(--dm-link-hover);
+}
+
+/* -------------------------------------------------------
+   7. BLOCOS DE CÓDIGO
+   ------------------------------------------------------- */
+[data-theme="dark"] pre,
+[data-theme="dark"] code,
+[data-theme="dark"] kbd,
+[data-theme="dark"] .highlight,
+[data-theme="dark"] div.highlight {
+  background-color: var(--dm-bg-code-block) !important;
+  color: #e2e8f0 !important;
+  border: 1px solid var(--dm-border);
+  border-radius: 6px;
+}
+
+/* Código inline (dentro do texto) */
+[data-theme="dark"] :not(pre) > code {
+  background-color: var(--dm-bg-code) !important;
+  color: #f9a8d4 !important;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--dm-border);
+}
+
+/* Syntax highlighting no modo escuro */
+[data-theme="dark"] .highlight .c,
+[data-theme="dark"] .highlight .c1  { color: #6b7280; } /* Comentário */
+[data-theme="dark"] .highlight .k   { color: #93c5fd; } /* Keyword */
+[data-theme="dark"] .highlight .n   { color: #e2e8f0; } /* Nome */
+[data-theme="dark"] .highlight .s,
+[data-theme="dark"] .highlight .s1,
+[data-theme="dark"] .highlight .s2  { color: #86efac; } /* String */
+[data-theme="dark"] .highlight .mi  { color: #fca5a5; } /* Número inteiro */
+[data-theme="dark"] .highlight .o   { color: #f9a8d4; } /* Operador */
+[data-theme="dark"] .highlight .nb  { color: #67e8f9; } /* Builtin */
+[data-theme="dark"] .highlight .nf  { color: #a78bfa; } /* Função */
+
+/* -------------------------------------------------------
+   8. TABELA DE CONTEÚDOS (índice lateral direito)
+   ------------------------------------------------------- */
+[data-theme="dark"] .bd-toc,
+[data-theme="dark"] .bd-toc-item,
+[data-theme="dark"] #bd-toc-nav {
+  background-color: var(--dm-bg-primary);
+  color: var(--dm-text-muted);
+}
+
+[data-theme="dark"] .bd-toc a {
+  color: var(--dm-text-muted) !important;
+}
+
+[data-theme="dark"] .bd-toc a:hover {
+  color: var(--dm-link) !important;
+}
+
+/* -------------------------------------------------------
+   9. RODAPÉ
+   ------------------------------------------------------- */
+[data-theme="dark"] .bd-footer,
+[data-theme="dark"] footer {
+  background-color: var(--dm-bg-secondary);
+  color: var(--dm-text-muted);
+  border-top: 1px solid var(--dm-border);
+}
+
+[data-theme="dark"] .bd-footer a,
+[data-theme="dark"] footer a {
+  color: var(--dm-link);
+}
+
+/* -------------------------------------------------------
+   10. ELEMENTOS EXTRAS (tabelas, notas, avisos)
+   ------------------------------------------------------- */
+/* Tabelas */
+[data-theme="dark"] table,
+[data-theme="dark"] .table {
+  background-color: var(--dm-bg-primary);
+  color: var(--dm-text-primary);
+  border-color: var(--dm-border);
+}
+
+[data-theme="dark"] thead th {
+  background-color: var(--dm-bg-secondary);
+  color: var(--dm-text-primary);
+  border-color: var(--dm-border);
+}
+
+[data-theme="dark"] tbody tr:nth-child(even) {
+  background-color: var(--dm-bg-secondary);
+}
+
+[data-theme="dark"] tbody td {
+  border-color: var(--dm-border);
+}
+
+/* Blocos de nota/aviso */
+[data-theme="dark"] .note,
+[data-theme="dark"] .admonition,
+[data-theme="dark"] .warning,
+[data-theme="dark"] .tip {
+  background-color: var(--dm-bg-secondary) !important;
+  border-color: var(--dm-border) !important;
+  color: var(--dm-text-primary);
+}
+
+[data-theme="dark"] .admonition-title {
+  background-color: var(--dm-bg-code) !important;
+  color: var(--dm-text-primary);
+}
+
+/* Citações (blockquote) */
+[data-theme="dark"] blockquote {
+  border-left-color: var(--dm-link);
+  background-color: var(--dm-bg-secondary);
+  color: var(--dm-text-secondary);
+}
+
+/* Separadores */
+[data-theme="dark"] hr {
+  border-color: var(--dm-border);
+}
+
+/* -------------------------------------------------------
+   11. BOTÃO DE ALTERNÂNCIA DE TEMA
+   ------------------------------------------------------- */
+#dark-mode-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  background-color: var(--dm-btn-bg);
+  border: 2px solid var(--dm-btn-border);
+  color: var(--dm-btn-text);
+  cursor: pointer;
+
+  font-size: 20px;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 12px var(--dm-btn-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+
+  /* Acessibilidade: foco visível */
+  outline: none;
+}
+
+#dark-mode-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px var(--dm-btn-shadow);
+}
+
+#dark-mode-toggle:focus-visible {
+  outline: 3px solid var(--dm-link);
+  outline-offset: 4px;
+}
+
+/* -------------------------------------------------------
+   12. TRANSIÇÃO SUAVE ao trocar de tema
+   ------------------------------------------------------- */
+body,
+.bd-header,
+.bd-sidebar,
+.bd-article,
+.bd-footer,
+pre,
+code {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
