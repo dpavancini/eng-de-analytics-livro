@@ -33,6 +33,12 @@ html:
   baseurl: "https://www.engdeanalytics.com.br"
   favicon_url: "favicon.ico"
 
+
+  extra_css:
+    - dark-mode.css
+  extra_javascript:
+    - dark-mode.js
+
 exclude_patterns:
 - venv/*
 - "README.md"  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
